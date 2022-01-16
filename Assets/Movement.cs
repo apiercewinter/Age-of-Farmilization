@@ -8,12 +8,12 @@ public class Movement : MonoBehaviour
     public float moveSpeed;
     public Vector3 moveChange;
 
-    private Animator animation = GetComponent<Animator>();
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     {
         if (!moveChange.Equals(0))
         {
-            
+            animator.SetFloat("Speed_f", moveChange.magnitude*10);
             transform.position += moveChange;
         }
     }
