@@ -14,8 +14,6 @@ public class UnitScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject model = Instantiate(myData.modelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        model.transform.SetParent(gameObject.transform);
         myAgent = gameObject.GetComponent<NavMeshAgent>();
         //myAnimator = gameObject.GetComponent<Animator>();
     }
