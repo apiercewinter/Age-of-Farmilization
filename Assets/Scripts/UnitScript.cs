@@ -9,13 +9,16 @@ public class UnitScript : MonoBehaviour
     public UnitScriptableObject myData;
 
     private NavMeshAgent myAgent;
-    private Animator myAnimator; //To not have to recall for this
+    private GameObject myModel;
+    private Animator myAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         myAgent = gameObject.GetComponent<NavMeshAgent>();
-        //myAnimator = gameObject.GetComponent<Animator>();
+        myAgent.speed = myData.speed;
+
+        myAnimator = myModel.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,16 +26,22 @@ public class UnitScript : MonoBehaviour
     {
         if (myAgent.remainingDistance == 0)
         {
-            //myAnimator.SetFloat("Speed_f", 0f);
-            //myAnimator.SetBool("Static_b", true);
+            myAnimator.SetFloat("Speed_f", 0f);
+            myAnimator.SetBool("Static_b", true);
         }
+    }
+
+    public void setModel(GameObject m)
+    {
+        myModel = m;
+        m.transform.SetParent(gameObject.transform);
     }
 
     public void moveTo(Vector3 movementDestination)
     {
         myAgent.SetDestination(movementDestination);
 
-        //myAnimator.SetFloat("Speed_f", myData.speed);
-        //myAnimator.SetBool("Static_b", false);
+        myAnimator.SetFloat("Speed_f", myData.speed);
+        myAnimator.SetBool("Static_b", false);
     }
 }
