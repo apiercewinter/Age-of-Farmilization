@@ -56,22 +56,8 @@ public class Movement : MonoBehaviour
             {
                 foreach (GameObject unit in selected)
                 {
-                    NavMeshAgent playerAgent = unit.GetComponent<NavMeshAgent>();
-                    Animator animator = unit.GetComponent<Animator>();
-                    //We can likely do this within the unit at some point, akin to unit.moveTo ... and it will just run this
-                    //  which allows for variable speed, own handling of animations, .....
-
-                    playerAgent.SetDestination(hitPos.point);
-
-                    animator.SetFloat("Speed_f", 0.3f);
-                    animator.SetBool("Static_b", false);
-
-                    if (playerAgent.remainingDistance == 0)
-                    { //Note that this causes the animation to turn to static standing when
-                        //moving after arriving at destination
-                        animator.SetFloat("Speed_f", 0f);
-                        animator.SetBool("Static_b", true);
-                    }
+                    UnitScript script = unit.GetComponent<UnitScript>();
+                    script.moveTo(hitPos.point);
                 }
             }
         }
