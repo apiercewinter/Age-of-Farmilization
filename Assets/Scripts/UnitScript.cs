@@ -29,19 +29,33 @@ public class UnitScript : MonoBehaviour
             myAnimator.SetFloat("Speed_f", 0f);
             myAnimator.SetBool("Static_b", true);
         }
+        else
+        {
+            myAnimator.SetFloat("Speed_f", myData.speed);
+            myAnimator.SetBool("Static_b", false);
+        }
     }
 
     public void setModel(GameObject m)
     {
         myModel = m;
         m.transform.SetParent(gameObject.transform);
+        //setModelLayerToMine(m);
     }
 
     public void moveTo(Vector3 movementDestination)
     {
         myAgent.SetDestination(movementDestination);
 
-        myAnimator.SetFloat("Speed_f", myData.speed);
-        myAnimator.SetBool("Static_b", false);
+    }
+
+    private void setModelLayerToMine(GameObject m)
+    {
+        m.layer = gameObject.layer;
+
+        foreach (Transform child in m.transform)
+        {
+            setModelLayerToMine(child.gameObject);
+        }
     }
 }

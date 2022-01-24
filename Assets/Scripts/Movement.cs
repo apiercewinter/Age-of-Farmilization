@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        groundLayer = LayerMask.NameToLayer("ground");
+        groundLayer = 1<<LayerMask.NameToLayer("Ground");
     }
 
     // Update is called once per frame
@@ -19,13 +19,12 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1)) //right click to move
         {
-            //Toggle selection
             RaycastHit hitPos;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitPos, Mathf.Infinity, groundLayer)) //Only when user click on ground layer
             {
                 foreach (GameObject go in SelectionDictionary.selectedDictionary.Values)
                 {
-                    go.GetComponent<NavMeshAgent>().SetDestination(hitPos.point);
+                    go.GetComponent<UnitScript>().moveTo(hitPos.point);
                 }
             }
         }
