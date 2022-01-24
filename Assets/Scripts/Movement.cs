@@ -7,62 +7,27 @@ using System;
 public class Movement : MonoBehaviour
 {
 
-    public List<GameObject> selected;
+    private LayerMask groundLayer;
 
-    // Start is called before the first frame update
+    void Start()
+    {
+        groundLayer = LayerMask.NameToLayer("ground");
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) //Left click
+        if (Input.GetMouseButtonDown(1)) //right click to move
         {
             //Toggle selection
             RaycastHit hitPos;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitPos, Mathf.Infinity, 1 << 7)) //Layermask 7 (Unit) only
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitPos, Mathf.Infinity, groundLayer)) //Only when user click on ground layer
             {
-                GameObject unitHit = hitPos.transform.gameObject;
-
-                if (!selected.Remove(unitHit)) //And check that its actually controllable by the player
+                foreach (GameObject go in SelectionDictionary.selectedDictionary.Values)
                 {
-                    selected.Add(unitHit);
+                    go.GetComponent<NavMeshAgent>().SetDestination(hitPos.point);
                 }
             }
         }
-
-        if (Input.GetMouseButtonDown(1)) //Right click
-        {
-            RaycastHit hitPos;
-            bool hitEnemy = false;
-
-            //Check first if clicked a unit (to attack it)
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitPos, Mathf.Infinity, 1 << 7)) //Layermask 7 (Unit) only
-            {
-                //Implement logic for attacking here
-                //  Likely in the form of ~if hitPos.transform.gameObject == ENEMY -> attack
-                GameObject unitHit = hitPos.transform.gameObject;
-                hitEnemy = !selected.Contains(unitHit); 
-                    //!Array.Exists(selected, element => element == unitHit); //for arrays
-
-                if (hitEnemy)
-                {
-                    //Attack
-                    Debug.Log("Attack enemy " + unitHit.name);
-
-                }
-            }
-
-            //Check for where player clicked (if didn't click enemy)
-            if (!hitEnemy && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitPos, Mathf.Infinity, 1<<6)) //Layermask 6 (Ground) only
-            {
-                foreach (GameObject unit in selected)
-                {
-                    UnitScript script = unit.GetComponent<UnitScript>();
-                    script.moveTo(hitPos.point);
-                }
-            }
-        }
-
     }
-
-
 }
