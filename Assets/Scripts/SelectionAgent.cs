@@ -14,6 +14,7 @@ public class SelectionAgent : MonoBehaviour
     bool dragSelect;
 
     LayerMask selectableLayer;
+    LayerMask groundLayer;
 
     //Collider variables
     MeshCollider selectionBox;
@@ -33,7 +34,8 @@ public class SelectionAgent : MonoBehaviour
     void Start()
     {
         dragSelect = false;
-        selectableLayer = LayerMask.NameToLayer("Selectable");
+        selectableLayer = 1<<LayerMask.NameToLayer("Selectable");
+        groundLayer = 1 << LayerMask.NameToLayer("Ground");
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class SelectionAgent : MonoBehaviour
         //3. when mouse button comes up
         if (Input.GetMouseButtonUp(0))
         {
-            if (dragSelect == false) //single select
+            if (!dragSelect) //single select
             {
                 Ray ray = Camera.main.ScreenPointToRay(p1);
 
