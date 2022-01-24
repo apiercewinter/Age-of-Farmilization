@@ -34,8 +34,8 @@ public class SelectionAgent : MonoBehaviour
     void Start()
     {
         dragSelect = false;
-        selectableLayer = 1<<LayerMask.NameToLayer("Selectable");
-        groundLayer = 1 << LayerMask.NameToLayer("Ground");
+        selectableLayer = LayerMask.NameToLayer("Selectable");
+        groundLayer = LayerMask.NameToLayer("Ground");
     }
 
     // Update is called once per frame
@@ -61,19 +61,23 @@ public class SelectionAgent : MonoBehaviour
         {
             if (!dragSelect) //single select
             {
+                Debug.Log("not draging select");
                 Ray ray = Camera.main.ScreenPointToRay(p1);
 
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
+                    Debug.Log("hit something");
                     // If user click on anything
                     // or the ray hits anything
                     GameObject objHit = hit.transform.gameObject;
 
                     if (objHit.layer == selectableLayer)
                     {
+                        Debug.Log("selectable object");
                         // If user clicks on anything that is selectable
                         if (Input.GetKey(KeyCode.LeftShift))
                         {
+                            Debug.Log(objHit.GetInstanceID() + "added to the dict");
                             // holding left shift to add the unit to the current selection
                             SelectionDictionary.addSelected(objHit);
                         }
@@ -81,12 +85,14 @@ public class SelectionAgent : MonoBehaviour
                         {
                             // If not holding left shift, all current selected objects will be deselected
                             // then add the object hit to the selection dictinoary
+                            Debug.Log(objHit.GetInstanceID() + "added to the dict, but all others are deselected");
                             SelectionDictionary.deselectAll();
                             SelectionDictionary.addSelected(objHit);
                         }
                     }
                     else
                     {
+                        Debug.Log("not selectable, and all is deselected");
                         // If user does not click on any selectable object, every thing selected will be deselected
                         SelectionDictionary.deselectAll();
                     }

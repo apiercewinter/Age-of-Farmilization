@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        groundLayer = 1<<LayerMask.NameToLayer("Ground");
+        groundLayer = 1 << 6;
     }
 
     // Update is called once per frame
