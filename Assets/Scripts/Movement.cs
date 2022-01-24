@@ -20,12 +20,12 @@ public class Movement : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) //right click to move
         {
             //Toggle selection
-            RaycastHit hitPos;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitPos, Mathf.Infinity, groundLayer)) //Only when user click on ground layer
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, groundLayer)) //Only when user click on ground layer
             {
-                foreach (GameObject go in SelectionDictionary.selectedDictionary.Values)
+                foreach (GameObject go in SelectionDictionary.getDict().Values)
                 {
-                    go.GetComponent<NavMeshAgent>().SetDestination(hitPos.point);
+                    go.GetComponent<NavMeshAgent>().SetDestination(hit.point);
                 }
             }
         }

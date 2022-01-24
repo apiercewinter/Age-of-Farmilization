@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Code heavily adapted from the YouTube tutorials: https://www.youtube.com/watch?v=OL1QgwaDsqo
+// This SelectionAgent uses the box collider to detect whether some GameObjects are selected
+// When some GameObjects collide with the Mesh Collider created by the drawing a box in the screen,
+// OnTriggerEnter() method will be called and add all GameObjects that collide with to the SelectionDictionary
+
 public class SelectionAgent : MonoBehaviour
 {
     RaycastHit hit;
@@ -11,8 +16,6 @@ public class SelectionAgent : MonoBehaviour
     LayerMask selectableLayer;
 
     //Collider variables
-    //=======================================================//
-
     MeshCollider selectionBox;
     Mesh selectionMesh;
 
@@ -56,20 +59,35 @@ public class SelectionAgent : MonoBehaviour
         {
             if (dragSelect == false) //single select
             {
-                Debug.Log("single select is called");
-
                 Ray ray = Camera.main.ScreenPointToRay(p1);
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
-                    SelectionDictionary.addSelected(hit.transform.gameObject);
-                    Debug.Log("GameObject" + hit.transform.gameObject.GetInstanceID() + "added to the selectionDict");
-                }
-                else //if we didnt hit something
-                {
-                    Debug.Log("but nothing is added");
+                    // If user click on anything
+                    // or the ray hits anything
+                    GameObject objHit = hit.transform.gameObject;
 
-                    SelectionDictionary.deselectAll();
+                    if (objHit.layer == selectableLayer)
+                    {
+                        // If user clicks on anything that is selectable
+                        if (Input.GetKey(KeyCode.LeftShift))
+                        {
+                            // holding left shift to add the unit to the current selection
+                            SelectionDictionary.addSelected(objHit);
+                        }
+                        else
+                        {
+                            // If not holding left shift, all current selected objects will be deselected
+                            // then add the object hit to the selection dictinoary
+                            SelectionDictionary.deselectAll();
+                            SelectionDictionary.addSelected(objHit);
+                        }
+                    }
+                    else
+                    {
+                        // If user does not click on any selectable object, every thing selected will be deselected
+                        SelectionDictionary.deselectAll();
+                    }
                 }
             }
             else //marquee select
@@ -84,7 +102,7 @@ public class SelectionAgent : MonoBehaviour
                 {
                     Ray ray = Camera.main.ScreenPointToRay(corner);
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer))
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                     {
                         verts[i] = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                         vecs[i] = ray.origin - hit.point;
@@ -95,7 +113,6 @@ public class SelectionAgent : MonoBehaviour
 
                 //generate the mesh
                 selectionMesh = generateSelectionMesh(verts, vecs);
-                selectionMesh.RecalculateBounds();
 
                 selectionBox = gameObject.AddComponent<MeshCollider>();
                 selectionBox.sharedMesh = selectionMesh;
