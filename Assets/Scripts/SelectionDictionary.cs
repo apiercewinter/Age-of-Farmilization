@@ -29,12 +29,16 @@ public class SelectionDictionary : MonoBehaviour
     // Remove a certain GameObject (identify by its unique instance ID) from the selectionDictionary
     public static void deselect(int id)
     {
+        selectedDictionary[id].GetComponent<Transform>().Find("Canvas").gameObject.SetActive(false);
+
         selectedDictionary.Remove(id);
     }
 
     // Remove all GameObject from the selectionDictionary
     public static void deselectAll()
     {
+        disableIndicator();
+
         selectedDictionary.Clear();
     }
 
@@ -42,5 +46,25 @@ public class SelectionDictionary : MonoBehaviour
     public static Dictionary<int, GameObject> getDict()
     {
         return selectedDictionary;
+    }
+
+    // This method will enable canvas (indicates that the objects are selected) of 
+    // all the GameObjects stored in the selectionDictionary
+    public static void enableIndicater()
+    {
+        foreach (GameObject go in selectedDictionary.Values)
+        {
+            go.GetComponent<Transform>().Find("Canvas").gameObject.SetActive(true);
+        }
+    }
+
+    // This method will disable canvas (indicates that the objects are selected) of 
+    // all the GameObjects stored in the selectionDictionary
+    public static void disableIndicator()
+    {
+        foreach (GameObject go in selectedDictionary.Values)
+        {
+            go.GetComponent<Transform>().Find("Canvas").gameObject.SetActive(false);
+        }
     }
 }

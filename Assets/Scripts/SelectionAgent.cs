@@ -129,6 +129,8 @@ public class SelectionAgent : MonoBehaviour
 
         }
 
+        SelectionDictionary.enableIndicater();
+
     }
 
     private void OnGUI()
