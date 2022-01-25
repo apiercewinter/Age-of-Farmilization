@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 931a8ea63f24790429913699820bff89, type: 3}
-  m_Name: Player1
+  m_Name: Player2
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 100046, guid: f8abbdd178867d2419ba9feb6ff2cba0, type: 3}
-  unitName: Player1
+  modelPrefab: {fileID: 100000, guid: 7169122e91e1981469b2b6045ddf7963, type: 3}
+  unitName: Player2
   unitType: Player
   maxHealth: 50
   attack: 5

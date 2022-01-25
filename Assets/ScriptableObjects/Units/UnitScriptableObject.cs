@@ -14,7 +14,9 @@ public class UnitScriptableObject : ScriptableObject
     public float maxHealth;
     public float attack;
 
+    public ProjectileScriptableObject projectile;
     public float speed;
     public float range;
+    public float attackCooldown;
 
 }
