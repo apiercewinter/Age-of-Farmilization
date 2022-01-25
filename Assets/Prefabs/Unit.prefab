@@ -437,8 +437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed44861495074b4890a771a1da61182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8376868587035279634, guid: 90d94604b273ebe40973ee513515a618, type: 3}
   team: 
-  myData: {fileID: 0}
+  myTarget: {fileID: 0}
 --- !u!195 &688448318951303779
 NavMeshAgent:
   m_ObjectHideFlags: 0

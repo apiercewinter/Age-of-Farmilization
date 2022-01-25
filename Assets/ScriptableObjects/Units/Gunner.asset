@@ -17,5 +17,7 @@ MonoBehaviour:
   unitType: Troop
   maxHealth: 5.12
   attack: 5.41
+  projectile: {fileID: 11400000, guid: 79d33792ce7a36343bb5836d4138310e, type: 2}
   speed: 7.47
-  range: 40.59
+  range: 10
+  attackCooldown: 2.5

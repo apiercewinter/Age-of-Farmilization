@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class Health : MonoBehaviour
 
     public void Damage(float d)
     {
-        m_CurrentHealth -= d;
+        if (gameObject.GetComponent<UnitScript>().unitData.maxHealth != m_MaxHealth)
+        {//Check if the Scriptable Object has been changed for whatever reason
+            m_MaxHealth = gameObject.GetComponent<UnitScript>().unitData.maxHealth;
+            m_CurrentHealth = m_MaxHealth;
+        }
+        m_CurrentHealth = Math.Max(m_CurrentHealth-d, 0);
     }
 }
