@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 931a8ea63f24790429913699820bff89, type: 3}
-  m_Name: Barbarian
+  m_Name: Gunner
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 140746, guid: 02eca77e7e6a2ec41ba4c68f20e26098, type: 3}
-  unitName: Barbarian
+  modelPrefab: {fileID: 120214, guid: 9bf484c5ec3d3bf43b2034c829f1abbe, type: 3}
+  unitName: Gunner
   unitType: Troop
-  maxHealth: 10
-  attack: 2
-  speed: 4.71
-  range: 2.61
+  maxHealth: 5.12
+  attack: 5.41
+  speed: 7.47
+  range: 40.59

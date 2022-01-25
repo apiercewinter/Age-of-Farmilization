@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        m_MaxHealth = gameObject.GetComponent<UnitScript>().myData.maxHealth;
+        m_MaxHealth = gameObject.GetComponent<UnitScript>().unitData.maxHealth;
         m_CurrentHealth = m_MaxHealth;
     }
 

@@ -6,8 +6,24 @@ using UnityEngine.AI;
 public class UnitScript : MonoBehaviour
 {
     public string team;
-    public UnitScriptableObject myData;
+    public UnitScriptableObject unitData
+    {
+        get { return myData; }
+        set 
+        {
+            myData = value;
+            myAgent = gameObject.GetComponent<NavMeshAgent>();
+            myAgent.speed = myData.speed;
 
+            //Set model
+            Destroy(myModel);
+            myModel = Instantiate(myData.modelPrefab, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);
+            myAnimator = myModel.GetComponent<Animator>();
+
+        }
+    }
+
+    private UnitScriptableObject myData;
     private NavMeshAgent myAgent;
     private GameObject myModel;
     private Animator myAnimator;
@@ -15,38 +31,31 @@ public class UnitScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myAgent = gameObject.GetComponent<NavMeshAgent>();
-        myAgent.speed = myData.speed;
 
-        myAnimator = myModel.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (myAgent.remainingDistance == 0)
+        //Animations
+        if (myAnimator)
         {
-            myAnimator.SetFloat("Speed_f", 0f);
-            myAnimator.SetBool("Static_b", true);
+            if (myAgent.remainingDistance == 0)
+            {
+                myAnimator.SetFloat("Speed_f", 0f);
+                myAnimator.SetBool("Static_b", true);
+            }
+            else
+            {
+                myAnimator.SetFloat("Speed_f", myData.speed);
+                myAnimator.SetBool("Static_b", false);
+            }
         }
-        else
-        {
-            myAnimator.SetFloat("Speed_f", myData.speed);
-            myAnimator.SetBool("Static_b", false);
-        }
-    }
-
-    public void setModel(GameObject m)
-    {
-        myModel = m;
-        m.transform.SetParent(gameObject.transform);
-        //setModelLayerToMine(m);
     }
 
     public void moveTo(Vector3 movementDestination)
     {
         myAgent.SetDestination(movementDestination);
-
     }
 
     private void setModelLayerToMine(GameObject m)
