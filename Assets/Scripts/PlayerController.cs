@@ -9,7 +9,7 @@ using System;
 // units at the same time, it needs to know what units are currently selected, which is 
 // stored in the SelectionDictionary and accessible by calling getDict() method.
 
-public class Movement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private LayerMask groundLayer;
 

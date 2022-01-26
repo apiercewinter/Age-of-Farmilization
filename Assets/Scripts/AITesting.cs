@@ -22,7 +22,7 @@ public class AITesting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("isMoveing: " + isMoving + ", remainingDistance: " + GetComponent<NavMeshAgent>().remainingDistance);
+
     }
 
     IEnumerator MoveThenIdle()
@@ -42,11 +42,11 @@ public class AITesting : MonoBehaviour
                 isMoving = true;
             }
 
-            Debug.Log("Waiting for " + idleTime + " secs");
+
 
             yield return new WaitForSeconds(idleTime);
 
-            Debug.Log("IdleTime finished, move to next destination");
+
 
     }
     }
