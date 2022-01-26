@@ -37,6 +37,8 @@ public class SelectionDictionary : MonoBehaviour
     // Remove all GameObject from the selectionDictionary
     public static void deselectAll()
     {
+        SelectionDictionary.disableIndicator();
+
         selectedDictionary.Clear();
     }
 

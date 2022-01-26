@@ -78,7 +78,7 @@ public class SelectionAgent : MonoBehaviour
                     {
                         // If not holding left shift, all current selected objects will be deselected
                         // then add the object hit to the selection dictinoary
-                        SelectionDictionary.disableIndicator();
+                        
 
                         SelectionDictionary.deselectAll();
                         SelectionDictionary.addSelected(objHit);
@@ -87,7 +87,6 @@ public class SelectionAgent : MonoBehaviour
                 else
                 {
                     // If user does not click on any selectable object, every thing selected will be deselected
-                    SelectionDictionary.disableIndicator();
 
                     SelectionDictionary.deselectAll();
                 }
