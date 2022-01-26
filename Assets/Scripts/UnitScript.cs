@@ -36,11 +36,16 @@ public class UnitScript : MonoBehaviour
 
     [SerializeField]private GameObject myTarget;
     private float nextAttackTime;
+    [SerializeField] private float gatherDistance = 4;
+    [SerializeField] private float gatherCooldown = 4;
+    [SerializeField] private GameObject resourceToGather;
+    private float nextGatherTime;
 
     // Start is called before the first frame update
     void Start()
     {
         nextAttackTime = Time.time;
+        nextGatherTime = Time.time;
     }
 
     // Update is called once per frame
@@ -80,12 +85,31 @@ public class UnitScript : MonoBehaviour
                 }
             }
         }
+
+        if(resourceToGather)
+        {
+            if (Vector3.Distance(resourceToGather.transform.position, gameObject.transform.position) > gatherDistance)
+            { //Keep moving, can't gather
+
+            }
+            else
+            { //Try to gather now (need to be fully stopped and have cooldown ready)
+                myAgent.ResetPath();
+                if (nextGatherTime < Time.time && myAgent.velocity.magnitude == 0)
+                {   // Gather !!!
+                    nextGatherTime = Time.time + gatherCooldown;
+
+                    Debug.Log(gameObject.name + " gathered " + resourceToGather.name);
+                }
+            }
+        }
     }
 
     public void moveTo(Vector3 movementDestination)
     {
         //Stop attacking if doing so
         myTarget = null;
+        resourceToGather = null;
         myAgent.stoppingDistance = 1; //Some calculated constant idk
         myAgent.SetDestination(movementDestination);
     }
@@ -96,8 +120,21 @@ public class UnitScript : MonoBehaviour
         if (target.GetComponent<UnitScript>().team == team) return false; //Dont attack teammates :) thanks
 
         myTarget = target;
+        resourceToGather = null;
         myAgent.stoppingDistance = myData.range;
         myAgent.SetDestination(myTarget.transform.position);
+
+        return true;
+    }
+
+    public bool gather(GameObject resource)
+    {//Returns whether its a valid resource :)
+        if (!resource.GetComponent<MonoBehaviour>()) return false; //Temp placeholder before ResourceScript type of class
+
+        myTarget = null;
+        resourceToGather = resource;
+        myAgent.stoppingDistance = gatherDistance;
+        myAgent.SetDestination(resourceToGather.transform.position);
 
         return true;
     }

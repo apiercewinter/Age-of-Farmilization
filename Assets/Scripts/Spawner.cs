@@ -49,6 +49,15 @@ public class Spawner : MonoBehaviour
         return spawnUnit(spawnableUnits[unitIndex], position, rotation);
     }
 
+    //Spawn on player
+    public GameObject spawnUnit(uint unitIndex)
+    {
+        if (unitIndex >= spawnableUnits.Length) return null;
+        if (!myPlayer) return null;
+
+        return spawnUnit(spawnableUnits[unitIndex], myPlayer.transform.position, myPlayer.transform.rotation);
+    }
+
     private GameObject spawnUnit(UnitScriptableObject unitType, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
     {
         //Instantiate Unit, get UnitScript & Health
