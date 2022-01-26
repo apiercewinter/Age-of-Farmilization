@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
                 // SetDestination() method to move all the units
                 foreach (GameObject go in SelectionDictionary.getDict().Values)
                 {
-                    go.GetComponent<NavMeshAgent>().SetDestination(hit.point);
+                    go.GetComponent<UnitScript>().moveTo(hit.point);
                 }
             }
         }
