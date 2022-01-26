@@ -26,15 +26,27 @@ public class PlayerController : MonoBehaviour
         {
             //Toggle selection
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, groundLayer)) //Only when user click on ground layer
+
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)) //Only when user click on ground layer
             {
+                GameObject objHit = hit.transform.gameObject;
+
+
                 // Iterate through all selected units and use NavMeshAgent's
                 // SetDestination() method to move all the units
                 foreach (GameObject go in SelectionDictionary.getDict().Values)
                 {
-                    go.GetComponent<UnitScript>().moveTo(hit.point);
+                    UnitScript myScript = go.GetComponent<UnitScript>();
+
+                    if (!myScript.target(objHit))
+                    {
+                        myScript.moveTo(hit.point);
+                    }
                 }
             }
+
+
         }
     }
 }
