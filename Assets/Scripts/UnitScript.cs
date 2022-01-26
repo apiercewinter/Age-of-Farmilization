@@ -92,6 +92,7 @@ public class UnitScript : MonoBehaviour
 
     public bool target(GameObject target)
     {//Returns whether it was a valid target to attack
+        if (!target.GetComponent<UnitScript>()) return false; //Attacking nothing
         if (target.GetComponent<UnitScript>().team == team) return false; //Dont attack teammates :) thanks
 
         myTarget = target;
