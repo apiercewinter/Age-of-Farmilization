@@ -7,23 +7,31 @@ public class HealthBar : MonoBehaviour
 {
 
     public Slider slider;
-    public int currentHealth;
-    public int maxHealth;
+    public float currentHealth;
+    public float maxHealth;
     public Gradient gradient;
     public Image fill;
 
+    void Start()
+    {
+        subscribe();
+        SetMaxHealth(50);
+    }
+
+
     // Set the max amount of health
-    void SetMaxHealth(int amount)
+    void SetMaxHealth(float amount)
     {
         maxHealth = amount;
         currentHealth = amount;
+        slider.maxValue = amount;
         slider.value = amount;
 
         fill.color = gradient.Evaluate(1f);
     }
 
     // substract will substract a certain amount of health from the health bar
-    void substract(int amount)
+    void substract(float amount)
     {
         slider.value -= amount;
 
@@ -31,10 +39,16 @@ public class HealthBar : MonoBehaviour
     }
 
     // add will add a certain amount of health to the health bar
-    void add(int amount)
+    void add(float amount)
     {
         slider.value += amount;
 
         fill.color = gradient.Evaluate(slider.normalizedValue);
+    }
+
+    // This method will subscribe to the Health class, which will notify when taking damage
+    void subscribe()
+    {
+        GetComponentInParent<Health>().updateHealthDel += substract;
     }
 }

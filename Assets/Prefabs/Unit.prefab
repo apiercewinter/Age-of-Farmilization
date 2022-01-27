@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 47787305}
   - component: {fileID: 47787304}
   - component: {fileID: 5047994900208144223}
+  - component: {fileID: 2497488599224871526}
   m_Layer: 7
   m_Name: HealthBarCanvas
   m_TagString: Untagged
@@ -114,6 +115,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+--- !u!114 &2497488599224871526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47787302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feafd17b27113c54aa06c91be2781f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 172011143}
+  currentHealth: 0
+  maxHealth: 0
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.20784315, b: 0.13725491, a: 1}
+    key1: {r: 1, g: 0.98488486, b: 0.025157154, a: 1}
+    key2: {r: 0.50315166, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  fill: {fileID: 1651947695}
 --- !u!1 &172011140
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +170,6 @@ GameObject:
   m_Component:
   - component: {fileID: 172011141}
   - component: {fileID: 172011143}
-  - component: {fileID: 172011142}
   m_Layer: 7
   m_Name: Bar
   m_TagString: Untagged
@@ -205,51 +250,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &172011142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172011140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feafd17b27113c54aa06c91be2781f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 172011143}
-  currentHealth: 100
-  maxHealth: 100
-  gradient:
-    serializedVersion: 2
-    key0: {r: 0.93725497, g: 0.058823533, b: 0.11764707, a: 1}
-    key1: {r: 1, g: 0.9740616, b: 0.06289297, a: 1}
-    key2: {r: 0.23059177, g: 1, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 32768
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
-  fill: {fileID: 1651947695}
 --- !u!1 &526477164
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &715848934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -916,6 +916,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8376868587035279634, guid: 90d94604b273ebe40973ee513515a618, type: 3}
   team: 
   myTarget: {fileID: 0}
+  gatherDistance: 4
+  gatherCooldown: 4
+  resourceToGather: {fileID: 0}
 --- !u!195 &688448318951303779
 NavMeshAgent:
   m_ObjectHideFlags: 0
