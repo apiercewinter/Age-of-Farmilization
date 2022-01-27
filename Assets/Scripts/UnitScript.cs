@@ -129,7 +129,8 @@ public class UnitScript : MonoBehaviour
 
     public bool gather(GameObject resource)
     {//Returns whether its a valid resource :)
-        if (!resource.GetComponent<MonoBehaviour>()) return false; //Temp placeholder before ResourceScript type of class
+        //if (!resource.GetComponent<MonoBehaviour>()) return false; //Temp placeholder before ResourceScript type of class
+        if (!resource.GetComponent<ResourceScript>()) return false;
 
         myTarget = null;
         resourceToGather = resource;
