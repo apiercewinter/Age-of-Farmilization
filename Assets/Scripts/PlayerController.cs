@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using System;
 
 // Movement class deals with the movement of the units currently selected by the players
@@ -27,26 +28,29 @@ public class PlayerController : MonoBehaviour
             //Toggle selection
             RaycastHit hit;
 
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)) //Only when user click on ground layer
+            if(!EventSystem.current.IsPointerOverGameObject())
             {
-                GameObject objHit = hit.transform.gameObject;
-
-
-                // Iterate through all selected units and use NavMeshAgent's
-                // SetDestination() method to move all the units
-                foreach (GameObject go in SelectionDictionary.getDict().Values)
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)) //Only when user click on ground layer
                 {
-                    UnitScript myScript = go.GetComponent<UnitScript>();
+                    GameObject objHit = hit.transform.gameObject;
 
-                    if (!myScript.target(objHit))
+
+                    // Iterate through all selected units and use NavMeshAgent's
+                    // SetDestination() method to move all the units
+                    foreach (GameObject go in SelectionDictionary.getDict().Values)
                     {
-                        myScript.moveTo(hit.point);
+                        UnitScript myScript = go.GetComponent<UnitScript>();
+
+                        if (!myScript.target(objHit))
+                        {
+                            if (!myScript.gather(objHit))
+                            {
+                                myScript.moveTo(hit.point);
+                            }
+                        }
                     }
                 }
             }
-
-
         }
     }
 }
