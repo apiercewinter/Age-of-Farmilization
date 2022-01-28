@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // CameraMovement class deals with the movement of the camera
 // Players can use WASD keys and scroll wheel to move the camera.
 //Player can toggle locked camera mode to follow their player character around using space
 =======
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+// CameraMovement class deals with the movement of the camera
+// Players can use WASD keys and scroll wheel to move the camera.
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
 public class CameraMovement : MonoBehaviour
 {
 
@@ -30,6 +35,7 @@ public class CameraMovement : MonoBehaviour
     
 =======
 
+<<<<<<< HEAD
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +43,8 @@ public class CameraMovement : MonoBehaviour
     }
 
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
     // Update is called once per frame
     void Update()
     {

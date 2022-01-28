@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using System;
 
 public delegate void myDel(float d);
 =======
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+using System;
+
+public delegate void myDel(float d);
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
 
 public class Health : MonoBehaviour
 {
@@ -17,10 +23,15 @@ public class Health : MonoBehaviour
     public float m_CurrentHealth;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public myDel updateHealthDel;
 
 =======
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+    public myDel updateHealthDel;
+
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
     void Start()
     {
         m_MaxHealth = gameObject.GetComponent<UnitScript>().unitData.maxHealth;
@@ -41,6 +52,9 @@ public class Health : MonoBehaviour
     public void Damage(float d)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
         if (gameObject.GetComponent<UnitScript>().unitData.maxHealth != m_MaxHealth)
         {//Check if the Scriptable Object has been changed for whatever reason
             m_MaxHealth = gameObject.GetComponent<UnitScript>().unitData.maxHealth;
@@ -49,8 +63,11 @@ public class Health : MonoBehaviour
         m_CurrentHealth = Math.Max(m_CurrentHealth-d, 0);
 
         updateHealthDel(d);
+<<<<<<< HEAD
 =======
         m_CurrentHealth -= d;
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
     }
 }

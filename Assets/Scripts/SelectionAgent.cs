@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using UnityEngine.EventSystems;
 =======
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+using UnityEngine.EventSystems;
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
 
 // Code heavily adapted from the YouTube tutorials: https://www.youtube.com/watch?v=OL1QgwaDsqo
 // This SelectionAgent uses the box collider to detect whether some GameObjects are selected
@@ -38,9 +42,13 @@ public class SelectionAgent : MonoBehaviour
     {
         dragSelect = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
         // "Selectable" layer
 =======
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+        // "Selectable" layer
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
         selectableLayer = 1 << 7;
     }
 
@@ -69,6 +77,7 @@ public class SelectionAgent : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(p1);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                 if(!EventSystem.current.IsPointerOverGameObject())
                 {
@@ -103,31 +112,48 @@ public class SelectionAgent : MonoBehaviour
                 }
 =======
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer))
+=======
+                if(!EventSystem.current.IsPointerOverGameObject())
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
                 {
-                    // If user click on anything
-                    // or the ray hits anything
-                    GameObject objHit = hit.transform.gameObject;
-
-                    // If user clicks on anything that is selectable
-                    if (Input.GetKey(KeyCode.LeftShift))
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer))
                     {
-                        // holding left shift to add the unit to the current selection
-                        SelectionDictionary.addSelected(objHit);
+                        // If user click on anything
+                        // or the ray hits anything
+                        GameObject objHit = hit.transform.gameObject;
+
+                        // If user clicks on anything that is selectable
+                        if (Input.GetKey(KeyCode.LeftShift))
+                        {
+                            // holding left shift to add the unit to the current selection
+                            SelectionDictionary.addSelected(objHit);
+                        }
+                        else
+                        {
+                            // If not holding left shift, all current selected objects will be deselected
+                            // then add the object hit to the selection dictinoary
+
+
+                            SelectionDictionary.deselectAll();
+                            SelectionDictionary.addSelected(objHit);
+                        }
                     }
                     else
                     {
-                        // If not holding left shift, all current selected objects will be deselected
-                        // then add the object hit to the selection dictinoary
+                        // If user does not click on any selectable object, every thing selected will be deselected
+
                         SelectionDictionary.deselectAll();
-                        SelectionDictionary.addSelected(objHit);
                     }
                 }
+<<<<<<< HEAD
                 else
                 {
                     // If user does not click on any selectable object, every thing selected will be deselected
                     SelectionDictionary.deselectAll();
                 }
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
             }
             else //marquee select
             {
@@ -260,14 +286,20 @@ public class SelectionAgent : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
         if (other.gameObject.GetComponent<UnitScript>())
         {
             SelectionDictionary.addSelected(other.gameObject);
         }
         
+<<<<<<< HEAD
 =======
         SelectionDictionary.addSelected(other.gameObject);
 >>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
+=======
+>>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
     }
 
 }
