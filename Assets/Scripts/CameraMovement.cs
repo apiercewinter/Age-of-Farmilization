@@ -13,19 +13,13 @@ public class CameraMovement : MonoBehaviour
     private float scrollInput;
     
     public bool lockedTrue = false;
-    public Transform Target;
+    public Vector3 Target;
 
     public float movementSpeed = 0.06f;
     public float zoomSpeed = 10.0f;
 
     public float maxHeight = 40f;
     public float minHeight = 4f;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -68,16 +62,36 @@ public class CameraMovement : MonoBehaviour
         transform.position += move;
 
         //Camera is set to lock on player character
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Target = GameObject.FindWithTag("Player").transform;
-            LockPlayer();
+            lockedTrue = !lockedTrue;
+        }
+        if (lockedTrue)
+        {
+            LockPosition();
         }
     }
 
-    public void LockPlayer()
+    
+    public void FindCenterPosition()
     {
+        GameObject[] controlledUnits = GameObject.FindGameObjectsWithTag("Player");
+
+        Vector3 center = new Vector3();
+        int total = controlledUnits.Length;
+
+        foreach(GameObject units in controlledUnits)
+        {
+            center += units.transform.position;
+        }
+
+        Target = center / total;
+    }
+
+    public void LockPosition()
+    {
+        FindCenterPosition();
         Vector3 Overhead = new Vector3(10f, 15f, 10f);
-        transform.position = Target.position + Overhead;
+        transform.position = Target + Overhead;
     }
 }

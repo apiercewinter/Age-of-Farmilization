@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 9500000}
   m_Layer: 7
   m_Name: SimpleFarmer_Man_01_Black
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

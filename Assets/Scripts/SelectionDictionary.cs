@@ -22,6 +22,7 @@ public class SelectionDictionary : MonoBehaviour
 
         if (!(selectedDictionary.ContainsKey(id)))
         {
+            go.gameObject.tag = "Player";
             selectedDictionary.Add(id, go);
         }
     }
@@ -41,7 +42,21 @@ public class SelectionDictionary : MonoBehaviour
         disableIndicator();
         SelectionDictionary.disableIndicator();
 
+        deselectCamera();
         selectedDictionary.Clear();
+    }
+
+    //Remove all "Player" tags from GameObject in the selectionDictionary
+    public static void deselectCamera()
+    {
+        GameObject[] controlledUnits = GameObject.FindGameObjectsWithTag("Player");
+        if (controlledUnits != null)
+        {
+            foreach(GameObject units in controlledUnits)
+            {
+                units.gameObject.tag = "Untagged";
+            }
+        }
     }
 
     // Return the selectedDictionary
