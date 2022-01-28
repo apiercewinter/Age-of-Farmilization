@@ -2,49 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 // CameraMovement class deals with the movement of the camera
 // Players can use WASD keys and scroll wheel to move the camera.
 //Player can toggle locked camera mode to follow their player character around using space
-=======
->>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
-=======
-// CameraMovement class deals with the movement of the camera
-// Players can use WASD keys and scroll wheel to move the camera.
->>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
 public class CameraMovement : MonoBehaviour
 {
 
     private float horizontalInput;
     private float verticalInput;
     private float scrollInput;
-<<<<<<< HEAD
     
     public bool lockedTrue = false;
     public Transform Target;
-=======
->>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
 
     public float movementSpeed = 0.06f;
     public float zoomSpeed = 10.0f;
 
     public float maxHeight = 40f;
     public float minHeight = 4f;
-<<<<<<< HEAD
     
-=======
-
-<<<<<<< HEAD
     // Start is called before the first frame update
     void Start()
     {
 
     }
 
->>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
-=======
->>>>>>> e50c5c28b8cbf917ee55e27f3a12250adbe2452f
     // Update is called once per frame
     void Update()
     {
@@ -84,7 +66,6 @@ public class CameraMovement : MonoBehaviour
         Vector3 move = verticalMove + lateralMove + forwardMove;
 
         transform.position += move;
-<<<<<<< HEAD
 
         //Camera is set to lock on player character
         if(Input.GetKeyDown(KeyCode.Space))
@@ -98,7 +79,5 @@ public class CameraMovement : MonoBehaviour
     {
         Vector3 Overhead = new Vector3(10f, 15f, 10f);
         transform.position = Target.position + Overhead;
-=======
->>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
     }
 }
