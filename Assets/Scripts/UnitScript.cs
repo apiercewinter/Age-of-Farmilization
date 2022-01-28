@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+<<<<<<< HEAD
 using System;
 
 public class UnitScript : MonoBehaviour
@@ -9,6 +10,12 @@ public class UnitScript : MonoBehaviour
     public GameObject projectilePrefab;
     public string team;
 
+=======
+
+public class UnitScript : MonoBehaviour
+{
+    public string team;
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
     public UnitScriptableObject unitData
     {
         get { return myData; }
@@ -17,6 +24,7 @@ public class UnitScript : MonoBehaviour
             myData = value;
             myAgent = gameObject.GetComponent<NavMeshAgent>();
             myAgent.speed = myData.speed;
+<<<<<<< HEAD
             myAgent.stoppingDistance = myData.range;
 
             //Set model
@@ -25,6 +33,13 @@ public class UnitScript : MonoBehaviour
             myModel.transform.SetParent(gameObject.transform, false);
             myAnimator = myModel.GetComponent<Animator>();
             if (myAnimator) myAnimator.logWarnings = false;
+=======
+
+            //Set model
+            Destroy(myModel);
+            myModel = Instantiate(myData.modelPrefab, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);
+            myAnimator = myModel.GetComponent<Animator>();
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
 
         }
     }
@@ -34,6 +49,7 @@ public class UnitScript : MonoBehaviour
     private GameObject myModel;
     private Animator myAnimator;
 
+<<<<<<< HEAD
     [SerializeField]private GameObject myTarget;
     private float nextAttackTime;
     [SerializeField] private float gatherDistance = 4;
@@ -46,11 +62,18 @@ public class UnitScript : MonoBehaviour
     {
         nextAttackTime = Time.time;
         nextGatherTime = Time.time;
+=======
+    // Start is called before the first frame update
+    void Start()
+    {
+
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         float curSpeed = myAgent.velocity.magnitude;
 
         //Animations
@@ -101,12 +124,27 @@ public class UnitScript : MonoBehaviour
 
                     Debug.Log(gameObject.name + " gathered " + resourceToGather.name);
                 }
+=======
+        //Animations
+        if (myAnimator)
+        {
+            if (myAgent.remainingDistance == 0)
+            {
+                myAnimator.SetFloat("Speed_f", 0f);
+                myAnimator.SetBool("Static_b", true);
+            }
+            else
+            {
+                myAnimator.SetFloat("Speed_f", myData.speed);
+                myAnimator.SetBool("Static_b", false);
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
             }
         }
     }
 
     public void moveTo(Vector3 movementDestination)
     {
+<<<<<<< HEAD
         //Stop attacking if doing so
         myTarget = null;
         resourceToGather = null;
@@ -145,6 +183,11 @@ public class UnitScript : MonoBehaviour
         return Array.IndexOf(myAnimator.parameters, p) >= 0;
     }
 
+=======
+        myAgent.SetDestination(movementDestination);
+    }
+
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
     private void setModelLayerToMine(GameObject m)
     {
         m.layer = gameObject.layer;

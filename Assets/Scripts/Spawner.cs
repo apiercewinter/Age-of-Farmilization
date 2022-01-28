@@ -29,7 +29,11 @@ public class Spawner : MonoBehaviour
             myTeamContainer.transform.SetParent(unitContainer.transform, true);
         }
 
+<<<<<<< HEAD
         myPlayer = spawnUnit(playerUnit, gameObject.transform.position, gameObject.transform.rotation);
+=======
+        myPlayer = spawnUnit(playerUnit);
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class Spawner : MonoBehaviour
         return spawnUnit(spawnableUnits[unitIndex], position, rotation);
     }
 
+<<<<<<< HEAD
     //Spawn on player
     public GameObject spawnUnit(uint unitIndex)
     {
@@ -62,6 +67,12 @@ public class Spawner : MonoBehaviour
     {
         //Instantiate Unit, get UnitScript & Health
         GameObject spawnedUnit = Instantiate(unitPrefab, position, rotation, myTeamContainer.transform);
+=======
+    private GameObject spawnUnit(UnitScriptableObject unitType, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
+    {
+        //Instantiate Unit, get UnitScript & Health
+        GameObject spawnedUnit = Instantiate(unitPrefab, new Vector3(0,0,0), Quaternion.identity, myTeamContainer.transform);
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
         spawnedUnit.name = unitType.unitName;
         UnitScript script = spawnedUnit.GetComponent<UnitScript>();
 

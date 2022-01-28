@@ -25,7 +25,11 @@ public class SpawnerSimpleUITest : MonoBehaviour
 
             uint localI = i;
             button.GetComponent<Button>().onClick.AddListener(() => {
+<<<<<<< HEAD
                 spawner.GetComponent<Spawner>().spawnUnit(localI);
+=======
+                spawner.GetComponent<Spawner>().spawnUnit(localI, new Vector3());
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
             });
         }
     }

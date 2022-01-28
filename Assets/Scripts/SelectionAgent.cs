@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.EventSystems;
+=======
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
 
 // Code heavily adapted from the YouTube tutorials: https://www.youtube.com/watch?v=OL1QgwaDsqo
 // This SelectionAgent uses the box collider to detect whether some GameObjects are selected
@@ -34,7 +37,10 @@ public class SelectionAgent : MonoBehaviour
     void Start()
     {
         dragSelect = false;
+<<<<<<< HEAD
         // "Selectable" layer
+=======
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
         selectableLayer = 1 << 7;
     }
 
@@ -63,6 +69,7 @@ public class SelectionAgent : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(p1);
 
+<<<<<<< HEAD
                 if(!EventSystem.current.IsPointerOverGameObject())
                 {
                     if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer))
@@ -94,6 +101,33 @@ public class SelectionAgent : MonoBehaviour
                         SelectionDictionary.deselectAll();
                     }
                 }
+=======
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer))
+                {
+                    // If user click on anything
+                    // or the ray hits anything
+                    GameObject objHit = hit.transform.gameObject;
+
+                    // If user clicks on anything that is selectable
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        // holding left shift to add the unit to the current selection
+                        SelectionDictionary.addSelected(objHit);
+                    }
+                    else
+                    {
+                        // If not holding left shift, all current selected objects will be deselected
+                        // then add the object hit to the selection dictinoary
+                        SelectionDictionary.deselectAll();
+                        SelectionDictionary.addSelected(objHit);
+                    }
+                }
+                else
+                {
+                    // If user does not click on any selectable object, every thing selected will be deselected
+                    SelectionDictionary.deselectAll();
+                }
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
             }
             else //marquee select
             {
@@ -225,11 +259,15 @@ public class SelectionAgent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+<<<<<<< HEAD
         if (other.gameObject.GetComponent<UnitScript>())
         {
             SelectionDictionary.addSelected(other.gameObject);
         }
         
+=======
+        SelectionDictionary.addSelected(other.gameObject);
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
     }
 
 }

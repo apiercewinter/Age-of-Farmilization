@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
 * text=auto
 
 # Unity files
@@ -84,3 +88,10 @@
 *.gz filter=lfs diff=lfs merge=lfs -text
 *.rar filter=lfs diff=lfs merge=lfs -text
 *.tar filter=lfs diff=lfs merge=lfs -text
+<<<<<<< HEAD
+=======
+=======
+# Auto detect text files and perform LF normalization
+* text=auto
+>>>>>>> f248ea4ed63ad6edbcb65875dba4b8fa40648fd7
+>>>>>>> 0f8ac105f7446494ace63d341113757fe1908527
