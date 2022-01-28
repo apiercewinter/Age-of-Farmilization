@@ -99,7 +99,15 @@ public class UnitScript : MonoBehaviour
                 {   // Gather !!!
                     nextGatherTime = Time.time + gatherCooldown;
 
-                    Debug.Log(gameObject.name + " gathered " + resourceToGather.name);
+                    if(resourceToGather.GetComponent<ResourceScript>().resourcetype == "Food")
+                    {
+                        InventoryScript.AddFoodAmount(resourceToGather.GetComponent<ResourceScript>().gathervalue);
+                    }
+
+                    //resourceToGather.GetComponent<ResourceScript>().resourcetype
+                    //resourceToGather.GetComponent<ResourceScript>().gathervalue
+
+                    //Debug.Log(gameObject.name + " gathered " + InventoryScript.GetFoodAmount());
                 }
             }
         }
