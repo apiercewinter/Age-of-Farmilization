@@ -265,7 +265,6 @@ public class SelectionAgent : MonoBehaviour
             SelectionDictionary.addSelected(other.gameObject);
         }
         
-        SelectionDictionary.addSelected(other.gameObject);
     }
 
 }

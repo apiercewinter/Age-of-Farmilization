@@ -30,8 +30,7 @@ public class Spawner : MonoBehaviour
         }
 
         myPlayer = spawnUnit(playerUnit, gameObject.transform.position, gameObject.transform.rotation);
-        myPlayer = spawnUnit(playerUnit);
-        myPlayer = spawnUnit(playerUnit, gameObject.transform.position, gameObject.transform.rotation);
+        
     }
 
     // Update is called once per frame
