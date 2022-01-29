@@ -93,42 +93,7 @@ public class SelectionAgent : MonoBehaviour
                         SelectionDictionary.deselectAll();
                     }
                 }
-                if(!EventSystem.current.IsPointerOverGameObject())
-                {
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer))
-                    {
-                        // If user click on anything
-                        // or the ray hits anything
-                        GameObject objHit = hit.transform.gameObject;
-
-                        // If user clicks on anything that is selectable
-                        if (Input.GetKey(KeyCode.LeftShift))
-                        {
-                            // holding left shift to add the unit to the current selection
-                            SelectionDictionary.addSelected(objHit);
-                        }
-                        else
-                        {
-                            // If not holding left shift, all current selected objects will be deselected
-                            // then add the object hit to the selection dictinoary
-
-
-                            SelectionDictionary.deselectAll();
-                            SelectionDictionary.addSelected(objHit);
-                        }
-                    }
-                    else
-                    {
-                        // If user does not click on any selectable object, every thing selected will be deselected
-
-                        SelectionDictionary.deselectAll();
-                    }
-                }
-                else
-                {
-                    // If user does not click on any selectable object, every thing selected will be deselected
-                    SelectionDictionary.deselectAll();
-                }
+                
             }
             else //marquee select
             {
