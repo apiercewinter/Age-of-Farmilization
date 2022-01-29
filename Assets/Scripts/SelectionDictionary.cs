@@ -30,8 +30,6 @@ public class SelectionDictionary : MonoBehaviour
     // Remove a certain GameObject (identify by its unique instance ID) from the selectionDictionary
     public static void deselect(int id)
     {
-        selectedDictionary[id].GetComponent<Transform>().Find("Canvas").gameObject.SetActive(false);
-
         selectedDictionary.Remove(id);
     }
 

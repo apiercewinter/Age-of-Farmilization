@@ -5,7 +5,7 @@ using UnityEngine;
 
 // This is just a simple class that makes the HealthBar also face the camera
 // rather than rotate with the player
-public class HealthBarBillboard : MonoBehaviour
+public class Billboard : MonoBehaviour
 {
     // Update is called once per frame
     void LateUpdate()

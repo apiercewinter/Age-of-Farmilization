@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
         if (m_CurrentHealth == 0)
         {
             //Death part
-            Destroy(gameObject);
+            GetComponent<UnitScript>().destroy();
         }
     }
 
@@ -42,6 +42,7 @@ public class Health : MonoBehaviour
         }
         m_CurrentHealth = Math.Max(m_CurrentHealth - d, 0);
 
+        // Notify the UIUnitCentralPublisher's subscribers
         UIPublisher.substractHealth(d);
     }
 }

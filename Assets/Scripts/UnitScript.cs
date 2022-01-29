@@ -162,4 +162,12 @@ public class UnitScript : MonoBehaviour
             setModelLayerToMine(child.gameObject);
         }
     }
+
+    // When an unit has 0 health, call this destroy() method to destroy the gameObject
+    // add code here to take care of some businesses before destroying the gameObject
+    public void destroy()
+    {
+        SelectionDictionary.deselect(gameObject.GetInstanceID());
+        Destroy(gameObject);
+    }
 }
