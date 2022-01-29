@@ -38,9 +38,7 @@ public class SelectionDictionary : MonoBehaviour
     // Remove all GameObject from the selectionDictionary
     public static void deselectAll()
     {
-        SelectionDictionary.disableIndicator();
         disableIndicator();
-        SelectionDictionary.disableIndicator();
 
         deselectCamera();
         selectedDictionary.Clear();
@@ -71,7 +69,7 @@ public class SelectionDictionary : MonoBehaviour
     {
         foreach (GameObject go in selectedDictionary.Values)
         {
-            go.GetComponent<Transform>().Find("Canvas").gameObject.SetActive(true);
+            go.GetComponent<UIUnitCentralPublisher>().enableSelectionIndicator();
         }
     }
 
@@ -81,7 +79,7 @@ public class SelectionDictionary : MonoBehaviour
     {
         foreach (GameObject go in selectedDictionary.Values)
         {
-            go.GetComponent<Transform>().Find("Canvas").gameObject.SetActive(false);
+            go.GetComponent<UIUnitCentralPublisher>().disableSelectionIndicator();
         }
     }
 }

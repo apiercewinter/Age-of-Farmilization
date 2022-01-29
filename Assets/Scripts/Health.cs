@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public delegate void myDel(float d);
-
 public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,12 +11,15 @@ public class Health : MonoBehaviour
     //Should be private in future
     public float m_CurrentHealth;
 
-    public myDel updateHealthDel;
+    private UIUnitCentralPublisher UIPublisher;
+
 
     void Start()
     {
         m_MaxHealth = gameObject.GetComponent<UnitScript>().unitData.maxHealth;
         m_CurrentHealth = m_MaxHealth;
+        UIPublisher = GetComponent<UIUnitCentralPublisher>();
+        UIPublisher.setMaxHealth(m_MaxHealth);
     }
 
     // Update is called once per frame
@@ -41,6 +42,6 @@ public class Health : MonoBehaviour
         }
         m_CurrentHealth = Math.Max(m_CurrentHealth - d, 0);
 
-        updateHealthDel(d);
+        UIPublisher.substractHealth(d);
     }
 }

@@ -93,7 +93,11 @@ public class SelectionAgent : MonoBehaviour
                         SelectionDictionary.deselectAll();
                     }
                 }
-                
+                else
+                {
+                    // If user does not click on any selectable object, every thing selected will be deselected
+                    SelectionDictionary.deselectAll();
+                }
             }
             else //marquee select
             {

@@ -14,7 +14,6 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        subscribe();
         SetMaxHealth(50);
     }
 
@@ -47,8 +46,4 @@ public class HealthBar : MonoBehaviour
     }
 
     // This method will subscribe to the Health class, which will notify when taking damage
-    void subscribe()
-    {
-        GetComponentInParent<Health>().updateHealthDel += substract;
-    }
 }
