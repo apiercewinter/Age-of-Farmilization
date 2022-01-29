@@ -2,19 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// This is just a simple class that makes the HealthBar also face the camera
+// rather than rotate with the player
 public class HealthBarBillboard : MonoBehaviour
 {
-
-    public Camera camera;
-
-    void Start()
-    {
-        camera = Camera.main;
-    }
-
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(transform.position + camera.transform.forward);
+        transform.LookAt(transform.position + Camera.main.transform.forward);
     }
 }
