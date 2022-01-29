@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 385473334}
   - component: {fileID: 385473336}
   - component: {fileID: 385473335}
+  - component: {fileID: 385473337}
   m_Layer: 5
   m_Name: FoodCounter
   m_TagString: Untagged
@@ -788,7 +789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -161, y: 250.14001}
+  m_AnchoredPosition: {x: -317, y: 156}
   m_SizeDelta: {x: 140.1611, y: 37.9775}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385473335
@@ -829,6 +830,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385473333}
   m_CullTransparentMesh: 1
+--- !u!114 &385473337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385473333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907ca8289331d7a47b0addf908fee88a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &482306555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1524,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
   m_PrefabInstance: {fileID: 908536541}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &850969106
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850969102}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25300002, y: 0.238, z: 0.24200001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.010000001, z: 0.021000002}
+  m_TimeToStationary: 0.5
 --- !u!114 &850969108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,8 +1552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0172045603124c4abb3dcc41af22755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gathervalue: 0
-  resourcetype: 
+  gathervalue: 1
+  resourcetype: Food
 --- !u!1001 &908536541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1542,15 +1571,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 11.5883665
+      value: 5.0224223
       objectReference: {fileID: 0}
     - target: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
       propertyPath: m_LocalScale.y
-      value: 12.064649
+      value: 5.2288437
       objectReference: {fileID: 0}
     - target: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
       propertyPath: m_LocalScale.z
-      value: 11.5883665
+      value: 5.0224223
       objectReference: {fileID: 0}
     - target: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1558,11 +1587,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6475829
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.892197
+      value: -6.7518
       objectReference: {fileID: 0}
     - target: {fileID: 4400008515522110, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
       propertyPath: m_LocalRotation.w

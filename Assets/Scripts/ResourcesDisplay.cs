@@ -20,6 +20,6 @@ public class ResourcesDisplay : MonoBehaviour
 
     private void UpdateResourceTextObject()
     {
-        transform.Find("FoodAmount").GetComponent<TextMeshProUGUI>().text = "Food: " + InventoryScript.GetFoodAmount();
+        transform.Find("FoodAmount").GetComponent<Text>().text = "" + InventoryScript.GetFoodAmount();
     }
 }
