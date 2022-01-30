@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// UIHealthBarSubscriber deals with the healthbar at the top of the unit
 public class UIHealthBarSubscriber : MonoBehaviour
 {
     private Slider slider;

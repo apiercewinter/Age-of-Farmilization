@@ -168,6 +168,7 @@ public class UnitScript : MonoBehaviour
     public void destroy()
     {
         SelectionDictionary.deselect(gameObject.GetInstanceID());
+        // deathEffect will destroy the gameObject when the "animation" is over
         StartCoroutine(deathEffect(2));
     }
 
