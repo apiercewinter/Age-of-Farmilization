@@ -11,6 +11,7 @@
 =======
 =======
 Assets/AssetStoreTools*
+Assets/Plugins*
 
 # Visual Studio cache directory
 .vs/
