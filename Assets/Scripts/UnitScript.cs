@@ -168,6 +168,26 @@ public class UnitScript : MonoBehaviour
     public void destroy()
     {
         SelectionDictionary.deselect(gameObject.GetInstanceID());
+        StartCoroutine(deathEffect(2));
+    }
+
+    // The gameObject that should die will rotate in z axis to the ground over
+    // "time" seconds, and then destroy. This creates a fall to ground effect
+    public IEnumerator deathEffect(float time)
+    {
+        Transform myTransform = gameObject.transform;
+        while (true)
+        {
+            Debug.Log("starting coroutine");
+            myTransform.rotation = new Quaternion(myTransform.rotation.x, myTransform.rotation.y,
+                myTransform.rotation.z + (Time.deltaTime / time), myTransform.rotation.w);
+            yield return null;
+            Debug.Log(myTransform.rotation.z);
+            if (myTransform.rotation.z >= 0.7f)
+            {
+                break;
+            }
+        }
         Destroy(gameObject);
     }
 }
