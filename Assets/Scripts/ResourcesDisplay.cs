@@ -11,7 +11,7 @@ public class ResourcesDisplay : MonoBehaviour
 
     private void Awake()
     {
-        InventoryScript.OnFoodAmountChanged += delegate (object sender, EventArgs e)
+        InventoryScript.OnResourceAmountChanged += delegate (object sender, EventArgs e)
         {
             UpdateResourceTextObject();
         };
@@ -20,6 +20,6 @@ public class ResourcesDisplay : MonoBehaviour
 
     private void UpdateResourceTextObject()
     {
-        transform.Find("FoodAmount").GetComponent<Text>().text = "" + InventoryScript.GetFoodAmount();
+        transform.Find("FoodAmount").GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Food");
     }
 }

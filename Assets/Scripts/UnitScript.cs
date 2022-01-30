@@ -106,11 +106,8 @@ public class UnitScript : MonoBehaviour
                 if (nextGatherTime < Time.time && myAgent.velocity.magnitude == 0)
                 {   // Gather !!!
                     nextGatherTime = Time.time + gatherCooldown;
-
-                    if (resourceToGather.GetComponent<ResourceScript>().resourcetype == "Food")
-                    {
-                        InventoryScript.AddFoodAmount(resourceToGather.GetComponent<ResourceScript>().gathervalue);
-                    }
+                    ResourceScript rs = resourceToGather.GetComponent<ResourceScript>();
+                    InventoryScript.AddResourceAmount(rs.resourcetype, rs.gathervalue);
 
                     //resourceToGather.GetComponent<ResourceScript>().resourcetype
                     //resourceToGather.GetComponent<ResourceScript>().gathervalue

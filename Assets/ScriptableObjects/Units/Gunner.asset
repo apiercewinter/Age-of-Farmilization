@@ -21,3 +21,8 @@ MonoBehaviour:
   speed: 7.47
   range: 10
   attackCooldown: 2.5
+  costFood: 4
+  costStone: 0
+  costWood: 0
+  costX: 0
+  costY: 0

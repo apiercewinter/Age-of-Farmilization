@@ -55,6 +55,7 @@ public class Spawner : MonoBehaviour
     {
         if (unitIndex >= spawnableUnits.Length) return null;
         if (!myPlayer) return null;
+        
 
         return spawnUnit(spawnableUnits[unitIndex], myPlayer.transform.position, myPlayer.transform.rotation);
     }

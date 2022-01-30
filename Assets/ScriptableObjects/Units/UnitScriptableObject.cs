@@ -18,4 +18,10 @@ public class UnitScriptableObject : ScriptableObject
     public float speed;
     public float range;
     public float attackCooldown;
+
+    public int costFood;
+    public int costStone;
+    public int costWood;
+    public int costX;
+    public int costY;
 }
