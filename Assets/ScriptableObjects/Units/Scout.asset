@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931a8ea63f24790429913699820bff89, type: 3}
+  m_Name: Scout
+  m_EditorClassIdentifier: 
+  modelPrefab: {fileID: 151702, guid: 68a45bf17ac566545b70a13c90a7ee65, type: 3}
+  unitName: Scout
+  unitType: Troop
+  maxHealth: 5
+  attack: 0.5
+  projectile: {fileID: 11400000, guid: 79d33792ce7a36343bb5836d4138310e, type: 2}
+  speed: 20
+  range: 10
+  attackCooldown: 3
+  costFood: 3
+  costStone: 0
+  costWood: 0
+  costX: 0
+  costY: 0
