@@ -178,7 +178,6 @@ public class UnitScript : MonoBehaviour
         Transform myTransform = gameObject.transform;
         while (true)
         {
-            Debug.Log("starting coroutine");
             myTransform.rotation = new Quaternion(myTransform.rotation.x, myTransform.rotation.y,
                 myTransform.rotation.z + (Time.deltaTime / time), myTransform.rotation.w);
             yield return null;

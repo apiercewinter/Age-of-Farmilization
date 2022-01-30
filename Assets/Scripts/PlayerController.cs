@@ -34,18 +34,19 @@ public class PlayerController : MonoBehaviour
                 {
                     GameObject objHit = hit.transform.gameObject;
 
-
                     // Iterate through all selected units and use NavMeshAgent's
                     // SetDestination() method to move all the units
                     foreach (GameObject go in SelectionDictionary.getDict().Values)
                     {
                         UnitScript myScript = go.GetComponent<UnitScript>();
+                        UIUnitCentralPublisher myPublisher = go.GetComponent<UIUnitCentralPublisher>();
 
                         if (!myScript.target(objHit))
                         {
                             if (!myScript.gather(objHit))
                             {
                                 myScript.moveTo(hit.point);
+                                myPublisher.setDestinationPath(hit.point);
                             }
                         }
                     }

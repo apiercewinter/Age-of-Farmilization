@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 public delegate void HealthBarDel(float amount);
+public delegate void PathDel(Vector3 destination);
 
 // UIUnitCentralPublisher is the central publisher that publishes information to its subscribers
 
@@ -35,10 +36,13 @@ public class UIUnitCentralPublisher : MonoBehaviour
     private Action EnableSelectionIndicatorDel;
     private Action DisableSelectionIndicatorDel;
 
-    // UI Delegate
+    // HealthBar Delegate
     private HealthBarDel AddHealthDel;
     private HealthBarDel SubstractHealthDel;
     private HealthBarDel SetMaxHealthDel;
+
+    // Path Delegate
+    private PathDel SetDestinationPathDel;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +75,11 @@ public class UIUnitCentralPublisher : MonoBehaviour
         SetMaxHealthDel(amount);
     }
 
+    public void setDestinationPath(Vector3 destination)
+    {
+        SetDestinationPathDel(destination);
+    }
+
     // ===============================================
     // Below are all subscribing method
     public void subscribeToEnable(Action action)
@@ -96,6 +105,11 @@ public class UIUnitCentralPublisher : MonoBehaviour
     public void subscribeToSetMaxHealth(HealthBarDel del)
     {
         SetMaxHealthDel += del;
+    }
+
+    public void subscribeToSetDestinationPath(PathDel del)
+    {
+        SetDestinationPathDel += del;
     }
 
     // As described in UIIndicatorSubscriber() -> manulSubscribe(), Start(), Awake() will never be called 
