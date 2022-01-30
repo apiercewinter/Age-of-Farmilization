@@ -65,6 +65,7 @@ public class UnitScript : MonoBehaviour
             if (Vector3.Distance(myTarget.transform.position, gameObject.transform.position) > myData.range)
             { //Keep following, out of range to attack
                 myAgent.SetDestination(myTarget.transform.position);
+                myAnimator.SetInteger("Animation_int", 0);
             }
             else
             { //Try to attack now (need to be fully stopped and have cooldown ready)
@@ -81,9 +82,16 @@ public class UnitScript : MonoBehaviour
                     pScript.target = myTarget;
                     pScript.damage = myData.attack;
 
+                    //Animation
+                    myAnimator.SetInteger("Animation_int", 10); //Attacking Animation (Grenade Throw)
+
                     Debug.Log(gameObject.name + " attacked " + myTarget.name);
                 }
             }
+        }
+        else
+        {
+            myAnimator.SetInteger("Animation_int", 0);
         }
 
         if (resourceToGather)
