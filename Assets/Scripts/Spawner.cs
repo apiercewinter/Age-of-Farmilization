@@ -46,6 +46,17 @@ public class Spawner : MonoBehaviour
         if (unitIndex >= spawnableUnits.Length) return null;
         if (!myPlayer) return null;
         if (Vector3.Distance(position, myPlayer.transform.position) > maxSpawnDistanceFromPlayer) return null;
+        UnitScriptableObject unitType = spawnableUnits[unitIndex];
+
+        //Not enough resources to spawn
+        if (InventoryScript.GetResourceAmount("Food") < unitType.costFood ||
+            InventoryScript.GetResourceAmount("Stone") < unitType.costStone ||
+            InventoryScript.GetResourceAmount("Wood") < unitType.costWood) return null;
+
+        //Take away resources
+        InventoryScript.AddResourceAmount("Food", -unitType.costFood);
+        InventoryScript.AddResourceAmount("Stone", -unitType.costStone);
+        InventoryScript.AddResourceAmount("Wood", -unitType.costWood);
 
         return spawnUnit(spawnableUnits[unitIndex], position, rotation);
     }
@@ -53,11 +64,7 @@ public class Spawner : MonoBehaviour
     //Spawn on player
     public GameObject spawnUnit(uint unitIndex)
     {
-        if (unitIndex >= spawnableUnits.Length) return null;
-        if (!myPlayer) return null;
-        
-
-        return spawnUnit(spawnableUnits[unitIndex], myPlayer.transform.position, myPlayer.transform.rotation);
+        return spawnUnit(unitIndex, myPlayer.transform.position, myPlayer.transform.rotation);
     }
 
     private GameObject spawnUnit(UnitScriptableObject unitType, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
