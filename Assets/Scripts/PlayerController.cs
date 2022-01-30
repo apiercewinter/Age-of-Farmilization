@@ -48,6 +48,14 @@ public class PlayerController : MonoBehaviour
                                 myScript.moveTo(hit.point);
                                 myPublisher.setDestinationPath(hit.point);
                             }
+                            else
+                            {
+                                myPublisher.setGatheringResourcePath(objHit);
+                            }
+                        }
+                        else
+                        {
+                            myPublisher.setAttackingEnemyPath(objHit);
                         }
                     }
                 }

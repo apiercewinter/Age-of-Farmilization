@@ -5,6 +5,7 @@ using System;
 
 public delegate void HealthBarDel(float amount);
 public delegate void PathDel(Vector3 destination);
+public delegate void GameObjectPathDel(GameObject go);
 
 // UIUnitCentralPublisher is the central publisher that publishes information to its subscribers
 
@@ -43,6 +44,8 @@ public class UIUnitCentralPublisher : MonoBehaviour
 
     // Path Delegate
     private PathDel SetDestinationPathDel;
+    private GameObjectPathDel AttackingEnemyPathDel;
+    private GameObjectPathDel GatheringResourcePathDel;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +83,16 @@ public class UIUnitCentralPublisher : MonoBehaviour
         SetDestinationPathDel(destination);
     }
 
+    public void setAttackingEnemyPath(GameObject go)
+    {
+        AttackingEnemyPathDel(go);
+    }
+
+    public void setGatheringResourcePath(GameObject go)
+    {
+        GatheringResourcePathDel(go);
+    }
+
     // ===============================================
     // Below are all subscribing method
     public void subscribeToEnable(Action action)
@@ -110,6 +123,16 @@ public class UIUnitCentralPublisher : MonoBehaviour
     public void subscribeToSetDestinationPath(PathDel del)
     {
         SetDestinationPathDel += del;
+    }
+
+    public void subscribeToAttackingEnemy(GameObjectPathDel del)
+    {
+        AttackingEnemyPathDel += del;
+    }
+
+    public void subscribeToGatheringResource(GameObjectPathDel del)
+    {
+        GatheringResourcePathDel += del;
     }
 
     // As described in UIIndicatorSubscriber() -> manulSubscribe(), Start(), Awake() will never be called 

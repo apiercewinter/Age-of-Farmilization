@@ -182,7 +182,6 @@ public class UnitScript : MonoBehaviour
             myTransform.rotation = new Quaternion(myTransform.rotation.x, myTransform.rotation.y,
                 myTransform.rotation.z + (Time.deltaTime / time), myTransform.rotation.w);
             yield return null;
-            Debug.Log(myTransform.rotation.z);
             if (myTransform.rotation.z >= 0.7f)
             {
                 break;
