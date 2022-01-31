@@ -240,6 +240,7 @@ public class SelectionAgent : MonoBehaviour
 
     void disableSelectionAgent()
     {
+        SelectionDictionary.deselectAll();
         GetComponent<SelectionAgent>().enabled = false;
     }
 }
