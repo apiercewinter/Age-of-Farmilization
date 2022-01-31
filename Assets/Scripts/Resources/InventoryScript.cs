@@ -6,7 +6,7 @@ using System;
 public class InventoryScript : MonoBehaviour
 {
     public static event EventHandler OnResourceAmountChanged;
-    private static int FoodAmount = 0;
+    //private static int FoodAmount = 0;
     private static Dictionary<string, int> ResourceTotals = new Dictionary<string, int>();
 
 
