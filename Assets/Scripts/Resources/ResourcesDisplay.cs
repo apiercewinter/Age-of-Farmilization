@@ -20,6 +20,8 @@ public class ResourcesDisplay : MonoBehaviour
 
     private void UpdateResourceTextObject()
     {
-        transform.Find("FoodAmount").GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Food");
+        transform.Find("FoodCounter").Find("FoodAmount").GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Food");
+        transform.Find("StoneCounter").Find("StoneAmount").GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Stone");
+        transform.Find("WoodCounter").Find("WoodAmount").GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Wood");
     }
 }
