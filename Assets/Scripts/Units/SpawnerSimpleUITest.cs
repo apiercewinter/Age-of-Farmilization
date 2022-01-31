@@ -8,7 +8,7 @@ using System;
 public class SpawnerSimpleUITest : MonoBehaviour
 {
     public GameObject buttonPrefab;
-    public GameObject canvas;
+    public GameObject content;
     public GameObject spawner;
 
     // Start is called before the first frame update
@@ -19,8 +19,8 @@ public class SpawnerSimpleUITest : MonoBehaviour
         for(uint i = 0; i < unitTypes.Length; ++i)
         {
             GameObject button = Instantiate(buttonPrefab);
-            button.transform.SetParent(canvas.transform);
-            button.GetComponent<RectTransform>().anchoredPosition = new Vector3(((int)i-4)*55, 0, 0);
+            button.transform.SetParent(content.transform);
+            //button.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
             button.GetComponentInChildren<TextMeshProUGUI>().text = unitTypes[i].name;
 
             uint localI = i;
