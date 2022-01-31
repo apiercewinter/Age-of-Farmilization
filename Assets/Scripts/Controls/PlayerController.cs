@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         // "ground" layer
         groundLayer = 1 << 6;
+        WinLoseManager.subscribeToDisableControl(disablePlayerController);
     }
 
     // Update is called once per frame
@@ -61,5 +62,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void disablePlayerController()
+    {
+        GetComponent<PlayerController>().enabled = false;
     }
 }

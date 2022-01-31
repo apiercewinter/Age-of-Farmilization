@@ -21,6 +21,11 @@ public class CameraMovement : MonoBehaviour
     public float maxHeight = 40f;
     public float minHeight = 4f;
 
+    private void Start()
+    {
+        WinLoseManager.subscribeToDisableControl(disableCameraMovement);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -93,5 +98,10 @@ public class CameraMovement : MonoBehaviour
         FindCenterPosition();
         Vector3 Overhead = new Vector3(10f, 15f, 10f);
         transform.position = Target + Overhead;
+    }
+
+    void disableCameraMovement()
+    {
+        GetComponent<CameraMovement>().enabled = false;
     }
 }

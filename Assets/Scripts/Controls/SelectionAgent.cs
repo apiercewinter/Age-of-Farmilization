@@ -36,6 +36,8 @@ public class SelectionAgent : MonoBehaviour
         dragSelect = false;
         // "Selectable" layer
         selectableLayer = 1 << 7;
+
+        WinLoseManager.subscribeToDisableControl(disableSelectionAgent);
     }
 
     // Update is called once per frame
@@ -236,4 +238,8 @@ public class SelectionAgent : MonoBehaviour
         
     }
 
+    void disableSelectionAgent()
+    {
+        GetComponent<SelectionAgent>().enabled = false;
+    }
 }
