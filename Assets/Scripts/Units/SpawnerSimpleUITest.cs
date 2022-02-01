@@ -21,7 +21,10 @@ public class SpawnerSimpleUITest : MonoBehaviour
             GameObject button = Instantiate(buttonPrefab);
             button.transform.SetParent(content.transform);
             //button.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = unitTypes[i].name;
+            button.transform.Find("UnitName").GetComponent<TextMeshProUGUI>().text = unitTypes[i].name;
+            button.transform.Find("FoodCost").GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].costFood;
+            button.transform.Find("StoneCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costStone;
+            button.transform.Find("WoodCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costWood;
 
             uint localI = i;
             button.GetComponent<Button>().onClick.AddListener(() => {

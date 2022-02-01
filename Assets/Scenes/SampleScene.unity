@@ -693,7 +693,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1351141081}
   m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 1
+  m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
@@ -3735,9 +3735,6 @@ MonoBehaviour:
   spawnableUnits:
   - {fileID: 11400000, guid: 2105c0ed3d0603646b0f9ed24be2b69a, type: 2}
   - {fileID: 11400000, guid: c3e44fecc37d43e4cb010e0b903005d5, type: 2}
-  - {fileID: 11400000, guid: c49008597cc5ee349bc0491dbc8ba52a, type: 2}
-  - {fileID: 11400000, guid: c49008597cc5ee349bc0491dbc8ba52a, type: 2}
-  - {fileID: 11400000, guid: c49008597cc5ee349bc0491dbc8ba52a, type: 2}
   - {fileID: 11400000, guid: c49008597cc5ee349bc0491dbc8ba52a, type: 2}
   team: Player1
   maxSpawnDistanceFromPlayer: 10
