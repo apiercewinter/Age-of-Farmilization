@@ -12,7 +12,9 @@ public class ResourcesDisplay : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject FoodDisplay;
     [SerializeField] private GameObject StoneDisplay;
-    [SerializeField] private GameObject WoodsDisplay;
+    [SerializeField] private GameObject WoodDisplay;
+    [SerializeField] private GameObject GoldDisplay;
+    [SerializeField] private GameObject SilverDisplay;
 
     private void Awake()
     {
@@ -29,6 +31,8 @@ public class ResourcesDisplay : MonoBehaviour
         //Updates all the resource displays
         FoodDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Food");
         StoneDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Stone");
-        WoodsDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Wood");
+        WoodDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Wood");
+        GoldDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Gold");
+        SilverDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Silver");
     }
 }
