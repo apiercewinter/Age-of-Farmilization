@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
 // CameraMovement class deals with the movement of the camera
 // Players can use WASD keys and scroll wheel to move the camera.
 //Player can toggle locked camera mode to follow their player character around using space

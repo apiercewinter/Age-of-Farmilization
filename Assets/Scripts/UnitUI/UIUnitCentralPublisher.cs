@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+// Writer: Boyuan Huang
+
 public delegate void HealthBarDel(float amount);
 public delegate void PathDel(Vector3 destination);
 public delegate void GameObjectPathDel(GameObject go);

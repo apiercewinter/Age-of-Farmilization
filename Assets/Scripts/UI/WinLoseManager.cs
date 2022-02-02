@@ -5,6 +5,9 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 
+// Writer: Boyuan Huang
+
+// WinLoseManager deals with the win scene, and button in the win scene
 public class WinLoseManager : MonoBehaviour
 {
     private static GameObject winCanvas;

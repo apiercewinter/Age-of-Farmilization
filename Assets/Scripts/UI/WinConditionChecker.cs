@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
+// WinConditionChecker checks when there is a winner and call the WinLoseManager to start the win scene
 public class WinConditionChecker : MonoBehaviour
 {
     private Transform firstTeam;

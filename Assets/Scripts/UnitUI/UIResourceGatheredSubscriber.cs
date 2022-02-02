@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Writer: Boyuan Huang
+
 // UIResourceGatheredSubscriber will indicate player that the player just gathered resource
 public class UIResourceGatheredSubscriber : MonoBehaviour
 {

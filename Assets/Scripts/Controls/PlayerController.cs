@@ -5,6 +5,9 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using System;
 
+// Writer: Boyuan Huang
+// Editor:
+
 // Movement class deals with the movement of the units currently selected by the players
 // This class depends on the SelectionDictionary, because this class needs to move all selected
 // units at the same time, it needs to know what units are currently selected, which is 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
 
 // This is just a simple class that makes the HealthBar also face the camera
 // rather than rotate with the player

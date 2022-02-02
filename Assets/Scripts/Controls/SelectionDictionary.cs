@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Writer: Boyuan Huang
+
 // SelectionDictionary is a static class and all of its methods are static
 // thus all other classes are able to access it 
 //

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// Writer: Boyuan Huang
+
 // Code heavily adapted from the YouTube tutorials: https://www.youtube.com/watch?v=OL1QgwaDsqo
 // This SelectionAgent uses the box collider to detect whether some GameObjects are selected
 // When some GameObjects collide with the Mesh Collider created by the drawing a box in the screen,

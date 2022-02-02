@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Writer: Boyuan Huang
+
 public class AITesting : MonoBehaviour
 {
 

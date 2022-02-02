@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Writer: Boyuan Huang
+
 // UIDamageTakenSubscriber deals with the damage a certain unit takes
 public class UIDamageTakenSubscriber : MonoBehaviour
 {

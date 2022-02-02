@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
 // This class is copied and pasted from the YouTube tutorial: https://www.youtube.com/watch?v=OL1QgwaDsqo
 // This class has utility functions that are useful for drawing a box in the user interface to group select
 
