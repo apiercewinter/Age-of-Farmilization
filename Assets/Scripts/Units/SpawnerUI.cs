@@ -1,4 +1,5 @@
-//Aaron Winter (Unused now)
+//Aaron Winter
+//Alec Kaxon-Rupp
 
 using System.Collections;
 using System.Collections.Generic;
@@ -7,16 +8,11 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class SpawnerSimpleUITest : MonoBehaviour
+public class SpawnerUI : MonoBehaviour
 {
     public GameObject buttonPrefab;
     public GameObject content;
     public GameObject spawner;
-
-    [SerializeField] private GameObject FoodCost;
-    [SerializeField] private GameObject StoneCost;
-    [SerializeField] private GameObject WoodCost;
-    [SerializeField] private GameObject UnitName;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +23,11 @@ public class SpawnerSimpleUITest : MonoBehaviour
         {
             GameObject button = Instantiate(buttonPrefab);
             button.transform.SetParent(content.transform);
-            //button.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+
             button.transform.Find("UnitName").GetComponent<TextMeshProUGUI>().text = unitTypes[i].name;
-            button.transform.Find("FoodCost").GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].GetFoodCost();
-            button.transform.Find("StoneCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].GetStoneCost();
-            button.transform.Find("WoodCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].GetWoodCost();
+            button.transform.Find("FoodCost").GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].costFood;
+            button.transform.Find("StoneCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costStone;
+            button.transform.Find("WoodCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costWood;
 
             uint localI = i;
             button.GetComponent<Button>().onClick.AddListener(() => {

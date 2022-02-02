@@ -1,3 +1,5 @@
+//Alec Kaxon-Rupp
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +17,7 @@ public class ResourcesDisplay : MonoBehaviour
     private void Awake()
     {
         //Checks for when a resource amount is changed and calls to update the resources
-        InventoryScript.OnResourceAmountChanged += delegate (object sender, EventArgs e)
+        ResourceScript.OnResourceAmountChanged += delegate (object sender, EventArgs e)
         {
             UpdateResourceTextObject();
         };
@@ -25,8 +27,8 @@ public class ResourcesDisplay : MonoBehaviour
     private void UpdateResourceTextObject()
     {
         //Updates all the resource displays
-        FoodDisplay.GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Food");
-        StoneDisplay.GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Stone");
-        WoodsDisplay.GetComponent<Text>().text = "" + InventoryScript.GetResourceAmount("Wood");
+        FoodDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Food");
+        StoneDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Stone");
+        WoodsDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Wood");
     }
 }

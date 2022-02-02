@@ -21,25 +21,10 @@ public class UnitScriptableObject : ScriptableObject
     public float range;
     public float attackCooldown;
 
-    [SerializeField] private int costFood;
-    [SerializeField] private int costStone;
-    [SerializeField] private int costWood;
-    [SerializeField] private int costX;
-    [SerializeField] private int costY;
-
-    public int GetFoodCost()
-    {
-        return costFood;
-    }
-
-    public int GetStoneCost()
-    {
-        return costStone;
-    }
-
-    public int GetWoodCost()
-    {
-        return costWood;
-    }
+    public int costFood;
+    public int costStone;
+    public int costWood;
+    public int costX;
+    public int costY;
 
 }

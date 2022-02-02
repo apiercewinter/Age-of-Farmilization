@@ -1,4 +1,5 @@
 //Aaron Winter
+//Alec Kaxon-Rupp (Only worked on code relating to gathering)
 
 using System.Collections;
 using System.Collections.Generic;
@@ -118,8 +119,8 @@ public class UnitScript : MonoBehaviour
                 if (nextGatherTime < Time.time && myAgent.velocity.magnitude == 0)
                 {   // Gather !!!
                     nextGatherTime = Time.time + gatherCooldown;
-                    ResourceScript rs = resourceToGather.GetComponent<ResourceScript>();
-                    InventoryScript.AddResourceAmount(rs.resourcetype, rs.gathervalue);
+                    ResourceObject rs = resourceToGather.GetComponent<ResourceObject>();
+                    ResourceScript.AddResourceAmount(rs.resourcetype, rs.gathervalue);
 
                 }
             }
@@ -151,7 +152,7 @@ public class UnitScript : MonoBehaviour
     public bool gather(GameObject resource)
     {//Returns whether its a valid resource :)
 
-        if (!resource.GetComponent<ResourceScript>()) return false; //Make sure this is a resource
+        if (!resource.GetComponent<ResourceObject>()) return false; //Make sure this is a resource
 
         myTarget = null;
         resourceToGather = resource;
