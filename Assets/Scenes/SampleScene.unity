@@ -795,10 +795,6 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
   content: {fileID: 85957287}
   spawner: {fileID: 1736080788}
-  FoodCost: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
-  StoneCost: {fileID: 0}
-  WoodCost: {fileID: 0}
-  UnitName: {fileID: 0}
 --- !u!114 &236252591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,7 +1351,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 479859218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0172045603124c4abb3dcc41af22755, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a0a1840eba8ee842a382a6b77bd7887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gathervalue: 1
@@ -2170,6 +2166,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1180137445707430, guid: 84cd279dfc9ea0a4b8564030182915fa, type: 3}
   m_PrefabInstance: {fileID: 908536541}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &850969103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850969102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0a1840eba8ee842a382a6b77bd7887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gathervalue: 1
+  resourcetype: Food
 --- !u!65 &850969104
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2204,20 +2214,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.010000001, z: 0.021000002}
   m_TimeToStationary: 0.5
---- !u!114 &850969108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850969102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0172045603124c4abb3dcc41af22755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gathervalue: 1
-  resourcetype: Food
 --- !u!1001 &908536541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3602,7 +3598,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666127319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0172045603124c4abb3dcc41af22755, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a0a1840eba8ee842a382a6b77bd7887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gathervalue: 1
@@ -4654,10 +4650,6 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
   content: {fileID: 0}
   spawner: {fileID: 1736080788}
-  FoodCost: {fileID: 0}
-  StoneCost: {fileID: 0}
-  WoodCost: {fileID: 0}
-  UnitName: {fileID: 0}
 --- !u!4 &2125218205
 Transform:
   m_ObjectHideFlags: 0
