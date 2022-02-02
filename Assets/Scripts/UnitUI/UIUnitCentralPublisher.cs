@@ -6,6 +6,7 @@ using System;
 public delegate void HealthBarDel(float amount);
 public delegate void PathDel(Vector3 destination);
 public delegate void GameObjectPathDel(GameObject go);
+public delegate void ResourceGatheredDel(string resource, int amount);
 
 // UIUnitCentralPublisher is the central publisher that publishes information to its subscribers
 
@@ -46,6 +47,9 @@ public class UIUnitCentralPublisher : MonoBehaviour
     private PathDel SetDestinationPathDel;
     private GameObjectPathDel AttackingEnemyPathDel;
     private GameObjectPathDel GatheringResourcePathDel;
+
+    // Resource Delegate
+    private ResourceGatheredDel GatheringResourceDel;
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +97,11 @@ public class UIUnitCentralPublisher : MonoBehaviour
         GatheringResourcePathDel(go);
     }
 
+    public void indicateGatheredResource(string resource, int amount)
+    {
+        GatheringResourceDel(resource, amount);
+    }
+
     // ===============================================
     // Below are all subscribing method
     public void subscribeToEnable(Action action)
@@ -125,14 +134,21 @@ public class UIUnitCentralPublisher : MonoBehaviour
         SetDestinationPathDel += del;
     }
 
-    public void subscribeToAttackingEnemy(GameObjectPathDel del)
+    public void subscribeToAttackingEnemyPath(GameObjectPathDel del)
     {
         AttackingEnemyPathDel += del;
     }
 
-    public void subscribeToGatheringResource(GameObjectPathDel del)
+    // This one is used for the path indicator that turns green when player clicks on a resource
+    public void subscribeToGatheringResourcePath(GameObjectPathDel del)
     {
         GatheringResourcePathDel += del;
+    }
+
+    // This one is used for the indicator that appears at the top of the healthbar when gathering resources
+    public void subscribeToGatheringResource(ResourceGatheredDel del)
+    {
+        GatheringResourceDel += del;
     }
 
     // As described in UIIndicatorSubscriber() -> manulSubscribe(), Start(), Awake() will never be called 

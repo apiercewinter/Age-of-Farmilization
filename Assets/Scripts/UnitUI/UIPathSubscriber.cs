@@ -21,8 +21,8 @@ public class UIPathSubscriber : MonoBehaviour
         // subscribe to enable and disable will all notify UIPathSubscriber when the unit is selected or deselected
         publisher.subscribeToEnable(enableDestinationPath);
         publisher.subscribeToDisable(disableDestinationPath);
-        publisher.subscribeToAttackingEnemy(setAttackingPath);
-        publisher.subscribeToGatheringResource(setGatheringPath);
+        publisher.subscribeToAttackingEnemyPath(setAttackingPath);
+        publisher.subscribeToGatheringResourcePath(setGatheringPath);
 
         Vector3 unitPos = transform.parent.parent.gameObject.transform.position;
         lineRenderer.SetPosition(0, unitPos);
