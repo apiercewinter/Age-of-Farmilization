@@ -6,14 +6,23 @@ using System;
 
 public class UnitScript : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    public string team;
+    [SerializeField] private GameObject projectilePrefab; //Different from the ScriptableObject
+    public string team
+    {
+        get { return myTeam; }
+        set
+        {
+            //Only set team if it is blank
+            if (myTeam == "") myTeam = value;
+        }
+    }
 
     public UnitScriptableObject unitData
     {
         get { return myData; }
         set
         {
+            //Set private variables
             myData = value;
             myAgent = gameObject.GetComponent<NavMeshAgent>();
             myAgent.speed = myData.speed;
@@ -29,11 +38,13 @@ public class UnitScript : MonoBehaviour
         }
     }
 
+    private string myTeam = "";
     private UnitScriptableObject myData;
     private NavMeshAgent myAgent;
     private GameObject myModel;
     private Animator myAnimator;
 
+    [SerializeField] private float movementStoppingDistance;
     [SerializeField] private GameObject myTarget;
     private float nextAttackTime;
     [SerializeField] private float gatherDistance = 4;
@@ -79,8 +90,7 @@ public class UnitScript : MonoBehaviour
                     GameObject projectile = Instantiate(projectilePrefab, projectileStart, Quaternion.identity);
                     ProjectileScript pScript = projectile.GetComponent<ProjectileScript>();
                     pScript.projectileData = myData.projectile;
-                    pScript.target = myTarget;
-                    pScript.damage = myData.attack;
+                    pScript.setTarget(myTarget, myData.attack);
 
                     //Animation
                     myAnimator.SetInteger("Animation_int", 10); //Attacking Animation (Grenade Throw)
@@ -119,7 +129,7 @@ public class UnitScript : MonoBehaviour
         //Stop attacking if doing so
         myTarget = null;
         resourceToGather = null;
-        myAgent.stoppingDistance = 1; //Some calculated constant idk
+        myAgent.stoppingDistance = movementStoppingDistance; //Some calculated constant
         myAgent.SetDestination(movementDestination);
     }
 
@@ -138,8 +148,8 @@ public class UnitScript : MonoBehaviour
 
     public bool gather(GameObject resource)
     {//Returns whether its a valid resource :)
-        //if (!resource.GetComponent<MonoBehaviour>()) return false; //Temp placeholder before ResourceScript type of class
-        if (!resource.GetComponent<ResourceScript>()) return false;
+
+        if (!resource.GetComponent<ResourceScript>()) return false; //Make sure this is a resource
 
         myTarget = null;
         resourceToGather = resource;
@@ -147,11 +157,6 @@ public class UnitScript : MonoBehaviour
         myAgent.SetDestination(resourceToGather.transform.position);
 
         return true;
-    }
-
-    private bool animatorHasParameter(string p)
-    {
-        return Array.IndexOf(myAnimator.parameters, p) >= 0;
     }
 
     private void setModelLayerToMine(GameObject m)
@@ -169,6 +174,7 @@ public class UnitScript : MonoBehaviour
     public void destroy()
     {
         SelectionDictionary.deselect(gameObject.GetInstanceID());
+        gameObject.layer = 0;
         // deathEffect will destroy the gameObject when the "animation" is over
         StartCoroutine(deathEffect(2));
     }

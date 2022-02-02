@@ -5,10 +5,8 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
 
-    public string projectileContainer = ""; //In heirarchy, for sorting
+    [SerializeField] private string projectileContainer = ""; //In heirarchy, for sorting
 
-    public GameObject target;
-    public float damage;
 
     public ProjectileScriptableObject projectileData
     {
@@ -27,6 +25,9 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
+    private GameObject target;
+    private float damage;
+
     private ProjectileScriptableObject myData;
     private GameObject myModel;
     private Animator myAnimator;
@@ -35,7 +36,7 @@ public class ProjectileScript : MonoBehaviour
     void Start()
     {
         if (projectileContainer != "")
-        {
+        { //Set the container for this projectile in the heirarchy (for sorting)
             GameObject container = GameObject.Find(projectileContainer);
             if (!container)
             {
@@ -55,6 +56,7 @@ public class ProjectileScript : MonoBehaviour
             BoxCollider movingTo = target.GetComponent<BoxCollider>();
             if (!movingTo) return;
 
+            //Track target
             Vector3 directionToMove = ((target.transform.position + movingTo.center) - gameObject.transform.position).normalized * myData.speed * Time.deltaTime;
             gameObject.transform.rotation = Quaternion.LookRotation(directionToMove);
             gameObject.transform.position += directionToMove;
@@ -65,8 +67,14 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void setTarget(GameObject t, float d)
     {
+        target = t;
+        damage = d;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {//Hit enemy (but only hit the enemy you are tracking)
         if(other.gameObject == target)
         { //Do damage
             Health enemyHP = target.GetComponent<Health>();

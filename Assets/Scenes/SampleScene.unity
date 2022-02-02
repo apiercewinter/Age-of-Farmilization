@@ -2854,6 +2854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleFarmer_Woman_02_White
       objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3743,6 +3747,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2105c0ed3d0603646b0f9ed24be2b69a, type: 2}
   - {fileID: 11400000, guid: c3e44fecc37d43e4cb010e0b903005d5, type: 2}
   - {fileID: 11400000, guid: c49008597cc5ee349bc0491dbc8ba52a, type: 2}
+  - {fileID: 11400000, guid: 378ee226f8d806146bf2f561d20a7d2c, type: 2}
+  - {fileID: 11400000, guid: 404acf5af7b33874d806d7db5047ec0e, type: 2}
   team: Player1
   maxSpawnDistanceFromPlayer: 10
 --- !u!4 &1736080790
