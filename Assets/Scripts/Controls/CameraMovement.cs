@@ -68,7 +68,7 @@ public class CameraMovement : MonoBehaviour
 
         transform.position += move;
 
-        //Camera is set to lock on player character
+        //Camera is set to lock on player character; Daniel Zhang
         if (Input.GetKeyDown(KeyCode.Space))
         {
             lockedTrue = !lockedTrue;

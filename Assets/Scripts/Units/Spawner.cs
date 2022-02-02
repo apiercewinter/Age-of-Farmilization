@@ -1,5 +1,6 @@
 //Aaron Winter
 //Alec Kaxon-Rupp
+//Daniel Zhang
 
 
 using System.Collections;
@@ -19,7 +20,7 @@ public class Spawner : MonoBehaviour
     public UnitScriptableObject playerUnit;
     public UnitScriptableObject[] spawnableUnits;
     public string team;
-    public uint maxSpawnDistanceFromPlayer = 10;
+    public uint maxSpawnDistanceFromPlayer = 150;
 
     private GameObject myTeamContainer;
     private GameObject myPlayer;
@@ -44,7 +45,7 @@ public class Spawner : MonoBehaviour
     }
 
     //Tries to spawn the unit specified by unitIndex from the Spawner's spawnableUnits[].
-    //  Fails (and returns null) if the unitIndex is invalid, or the position is out of range of the player.
+    //  Fails (and returns null) if the unitIndex is invalid
     public GameObject spawnUnit(uint unitIndex, Vector3 position, Quaternion rotation = new Quaternion())
     {
         if (unitIndex >= spawnableUnits.Length) return null;
@@ -65,10 +66,11 @@ public class Spawner : MonoBehaviour
         return spawnUnit(spawnableUnits[unitIndex], position, rotation);
     }
 
-    //Spawn on player
-    public GameObject spawnUnit(uint unitIndex)
+    //Spawn on mouse when accessed through unit menu
+    public GameObject spawnUnit(uint unitIndex, Transform spawnPos)
     {
-        return spawnUnit(unitIndex, myPlayer.transform.position, myPlayer.transform.rotation);
+        Debug.Log("Yes" + spawnPos.position);
+        return spawnUnit(unitIndex, spawnPos.position, spawnPos.rotation);
     }
 
     private GameObject spawnUnit(UnitScriptableObject unitType, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
