@@ -109,10 +109,6 @@ public class UnitScript : MonoBehaviour
                     ResourceScript rs = resourceToGather.GetComponent<ResourceScript>();
                     InventoryScript.AddResourceAmount(rs.resourcetype, rs.gathervalue);
 
-                    //resourceToGather.GetComponent<ResourceScript>().resourcetype
-                    //resourceToGather.GetComponent<ResourceScript>().gathervalue
-
-                    //Debug.Log(gameObject.name + " gathered " + InventoryScript.GetFoodAmount());
                 }
             }
         }

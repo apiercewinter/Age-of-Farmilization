@@ -49,14 +49,14 @@ public class Spawner : MonoBehaviour
         UnitScriptableObject unitType = spawnableUnits[unitIndex];
 
         //Not enough resources to spawn
-        if (InventoryScript.GetResourceAmount("Food") < unitType.costFood ||
-            InventoryScript.GetResourceAmount("Stone") < unitType.costStone ||
-            InventoryScript.GetResourceAmount("Wood") < unitType.costWood) return null;
+        if (InventoryScript.GetResourceAmount("Food") < unitType.GetFoodCost() ||
+            InventoryScript.GetResourceAmount("Stone") < unitType.GetStoneCost() ||
+            InventoryScript.GetResourceAmount("Wood") < unitType.GetWoodCost()) return null;
 
         //Take away resources
-        InventoryScript.AddResourceAmount("Food", -unitType.costFood);
-        InventoryScript.AddResourceAmount("Stone", -unitType.costStone);
-        InventoryScript.AddResourceAmount("Wood", -unitType.costWood);
+        InventoryScript.SubtractResourceAmount("Food", unitType.GetFoodCost());
+        InventoryScript.SubtractResourceAmount("Stone", unitType.GetStoneCost());
+        InventoryScript.SubtractResourceAmount("Wood", unitType.GetWoodCost());
 
         return spawnUnit(spawnableUnits[unitIndex], position, rotation);
     }

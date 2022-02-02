@@ -314,6 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907ca8289331d7a47b0addf908fee88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FoodDisplay: {fileID: 65635611}
+  StoneDisplay: {fileID: 482306555}
+  WoodsDisplay: {fileID: 1283366651}
 --- !u!1 &65635611
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +795,10 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
   content: {fileID: 85957287}
   spawner: {fileID: 1736080788}
+  FoodCost: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
+  StoneCost: {fileID: 0}
+  WoodCost: {fileID: 0}
+  UnitName: {fileID: 0}
 --- !u!114 &236252591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4641,6 +4648,10 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
   content: {fileID: 0}
   spawner: {fileID: 1736080788}
+  FoodCost: {fileID: 0}
+  StoneCost: {fileID: 0}
+  WoodCost: {fileID: 0}
+  UnitName: {fileID: 0}
 --- !u!4 &2125218205
 Transform:
   m_ObjectHideFlags: 0
