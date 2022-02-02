@@ -44,10 +44,10 @@ public class SpawnerUI : MonoBehaviour
             GameObject button = Instantiate(buttonPrefab);
             button.transform.SetParent(content.transform);
 
-            button.transform.Find("UnitName").GetComponent<TextMeshProUGUI>().text = unitTypes[i].name;
-            button.transform.Find("FoodCost").GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].costFood;
-            button.transform.Find("StoneCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costStone;
-            button.transform.Find("WoodCost").GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costWood;
+            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = unitTypes[i].name;
+            button.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].costFood;
+            button.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costStone;
+            button.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costWood;
 
             uint localI = i;
             button.GetComponent<Button>().onClick.AddListener(() => {
