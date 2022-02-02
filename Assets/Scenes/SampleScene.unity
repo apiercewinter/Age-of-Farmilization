@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -425,7 +425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93151714}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -10, y: 1, z: -10}
+  m_LocalPosition: {x: 8.5, y: 1, z: 18.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1212189157}
@@ -474,8 +474,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185620627}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.6415963, y: 1.6324171, z: -7.0478024}
+  m_LocalRotation: {x: -0, y: -0.4256024, z: -0, w: 0.90491027}
+  m_LocalPosition: {x: 25.02, y: 1.6324171, z: 24.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4400008886789347}
@@ -485,7 +485,7 @@ Transform:
   - {fileID: 2065678425}
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -50.378, z: 0}
 --- !u!4 &198192638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4012901715673092607, guid: 230939493bec6094baf2505e27e562a9, type: 3}
@@ -3518,7 +3518,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 378ee226f8d806146bf2f561d20a7d2c, type: 2}
   - {fileID: 11400000, guid: 404acf5af7b33874d806d7db5047ec0e, type: 2}
   team: Player1
-  maxSpawnDistanceFromPlayer: 10
+  maxSpawnDistanceFromPlayer: 20
 --- !u!4 &1736080790
 Transform:
   m_ObjectHideFlags: 0
@@ -3527,7 +3527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736080788}
   m_LocalRotation: {x: 0, y: -0.92387956, z: 0, w: 0.38268343}
-  m_LocalPosition: {x: 10, y: 1, z: 10}
+  m_LocalPosition: {x: 28.6, y: 1, z: 34.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1212189157}
