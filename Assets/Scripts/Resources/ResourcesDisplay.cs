@@ -24,6 +24,7 @@ public class ResourcesDisplay : MonoBehaviour
             UpdateResourceTextObject();
         };
         UpdateResourceTextObject();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void UpdateResourceTextObject()

@@ -61,4 +61,9 @@ public class ResourceScript : MonoBehaviour
         return ResourceTotals[resource];
     }
 
+    public static void ClearDict()
+    {
+        ResourceTotals.Clear();
+    }
+
 }
