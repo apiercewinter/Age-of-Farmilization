@@ -24,7 +24,7 @@ public class UnitScriptableObject : ScriptableObject
     public int costFood;
     public int costStone;
     public int costWood;
-    public int costX;
-    public int costY;
+    public int costSilver;
+    public int costGold;
 
 }

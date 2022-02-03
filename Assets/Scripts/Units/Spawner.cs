@@ -56,12 +56,16 @@ public class Spawner : MonoBehaviour
         //Not enough resources to spawn
         if (ResourceScript.GetResourceAmount("Food") < unitType.costFood ||
             ResourceScript.GetResourceAmount("Stone") < unitType.costStone ||
-            ResourceScript.GetResourceAmount("Wood") < unitType.costWood) return null;
+            ResourceScript.GetResourceAmount("Wood") < unitType.costWood ||
+            ResourceScript.GetResourceAmount("Silver") < unitType.costSilver ||
+            ResourceScript.GetResourceAmount("Gold") < unitType.costGold) return null;
 
         //Take away resources
         ResourceScript.SubtractResourceAmount("Food", unitType.costFood);
         ResourceScript.SubtractResourceAmount("Stone", unitType.costStone);
         ResourceScript.SubtractResourceAmount("Wood", unitType.costWood);
+        ResourceScript.SubtractResourceAmount("Silver", unitType.costSilver);
+        ResourceScript.SubtractResourceAmount("Gold", unitType.costGold);
 
         return spawnUnit(spawnableUnits[unitIndex], position, rotation);
     }
