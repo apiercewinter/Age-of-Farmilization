@@ -48,6 +48,8 @@ public class SpawnerUI : MonoBehaviour
             button.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].costFood;
             button.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costStone;
             button.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costWood;
+            button.transform.GetChild(8).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costGold;
+            button.transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costSilver;
 
             uint localI = i;
             button.GetComponent<Button>().onClick.AddListener(() => {
