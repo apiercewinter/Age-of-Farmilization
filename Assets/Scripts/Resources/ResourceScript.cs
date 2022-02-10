@@ -7,13 +7,12 @@ using System;
 
 public class ResourceScript : MonoBehaviour
 {
-    public static event EventHandler OnResourceAmountChanged;
-    private static Dictionary<string, int> ResourceTotals = new Dictionary<string, int>();
-
-
+    private Dictionary<string, int> ResourceTotals = new Dictionary<string, int>();
+    public int cow = 0;
+    public ResourcesDisplay Display;
 
     //Adds
-    public static void AddResourceAmount(string resource, int amount)
+    public void AddResourceAmount(string resource, int amount)
     {
 
         if (!(ResourceTotals.ContainsKey(resource)))
@@ -25,15 +24,11 @@ public class ResourceScript : MonoBehaviour
             ResourceTotals[resource] = ResourceTotals[resource]+amount;
         }
 
-        //Add event for listeners
-        if (OnResourceAmountChanged != null)
-        {
-            OnResourceAmountChanged(null, EventArgs.Empty);
-        }
+        Display.UpdateResourceTextObject();
     }
 
 
-    public static void SubtractResourceAmount(string resource, int amount)
+    public void SubtractResourceAmount(string resource, int amount)
     {
         if (!(ResourceTotals.ContainsKey(resource)))
         {
@@ -44,15 +39,11 @@ public class ResourceScript : MonoBehaviour
             ResourceTotals[resource] = ResourceTotals[resource] - amount;
         }
 
-        if(OnResourceAmountChanged != null)
-        {
-            OnResourceAmountChanged(null, EventArgs.Empty);
-        }
-
+        Display.UpdateResourceTextObject();
     }
 
 
-    public static int GetResourceAmount(string resource)
+    public int GetResourceAmount(string resource)
     {
         if (!(ResourceTotals.ContainsKey(resource)))
         {
@@ -60,10 +51,4 @@ public class ResourceScript : MonoBehaviour
         }
         return ResourceTotals[resource];
     }
-
-    public static void ClearDict()
-    {
-        ResourceTotals.Clear();
-    }
-
 }

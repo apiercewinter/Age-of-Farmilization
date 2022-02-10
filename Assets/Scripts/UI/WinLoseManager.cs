@@ -38,7 +38,6 @@ public class WinLoseManager : MonoBehaviour
     public void OnBackToHomeMenuButtonClick()
     {
         Debug.Log("BackToHomeMenu");
-        ResourceScript.ClearDict();
         SceneManager.LoadScene("Menu");
     }
 

@@ -54,6 +54,8 @@ public class UnitScript : MonoBehaviour
     [SerializeField] private float gatherCooldown = 4;
     [SerializeField] private GameObject resourceToGather;
     private float nextGatherTime;
+    public ResourceScript Inventory;
+    public ResourcesDisplay InventoryDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -120,7 +122,7 @@ public class UnitScript : MonoBehaviour
                 {   // Gather !!!
                     nextGatherTime = Time.time + gatherCooldown;
                     ResourceObject rs = resourceToGather.GetComponent<ResourceObject>();
-                    ResourceScript.AddResourceAmount(rs.resourcetype, rs.gathervalue);
+                    Inventory.AddResourceAmount(rs.resourcetype, rs.gathervalue);
 
                 }
             }

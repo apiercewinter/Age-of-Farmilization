@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -321,6 +321,7 @@ MonoBehaviour:
   WoodDisplay: {fileID: 1283366651}
   GoldDisplay: {fileID: 665778748}
   SilverDisplay: {fileID: 370312013}
+  Inventory: {fileID: 0}
 --- !u!1 &65635611
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +392,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '###'
+  m_Text: 0
 --- !u!222 &65635614
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -451,6 +452,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3e44fecc37d43e4cb010e0b903005d5, type: 2}
   team: Player2
   maxSpawnDistanceFromPlayer: 10
+  InventoryDisplayObject: {fileID: 0}
 --- !u!1 &185620627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1065,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '###'
+  m_Text: 0
 --- !u!222 &370312016
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1310,7 +1312,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '###'
+  m_Text: 0
 --- !u!222 &482306558
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1432,7 +1434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '###'
+  m_Text: 0
 --- !u!222 &665778751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2767,7 +2769,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '###'
+  m_Text: 0
 --- !u!222 &1283366654
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3519,6 +3521,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 404acf5af7b33874d806d7db5047ec0e, type: 2}
   team: Player1
   maxSpawnDistanceFromPlayer: 20
+  InventoryDisplayObject: {fileID: 28209642}
 --- !u!4 &1736080790
 Transform:
   m_ObjectHideFlags: 0

@@ -15,25 +15,15 @@ public class ResourcesDisplay : MonoBehaviour
     [SerializeField] private GameObject WoodDisplay;
     [SerializeField] private GameObject GoldDisplay;
     [SerializeField] private GameObject SilverDisplay;
+    public ResourceScript Inventory;
 
-    private void Awake()
-    {
-        //Checks for when a resource amount is changed and calls to update the resources
-        ResourceScript.OnResourceAmountChanged += delegate (object sender, EventArgs e)
-        {
-            UpdateResourceTextObject();
-        };
-        UpdateResourceTextObject();
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    private void UpdateResourceTextObject()
+    public void UpdateResourceTextObject()
     {
         //Updates all the resource displays
-        FoodDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Food");
-        StoneDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Stone");
-        WoodDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Wood");
-        GoldDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Gold");
-        SilverDisplay.GetComponent<Text>().text = "" + ResourceScript.GetResourceAmount("Silver");
+        FoodDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Food");
+        StoneDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Stone");
+        WoodDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Wood");
+        GoldDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Gold");
+        SilverDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Silver");
     }
 }

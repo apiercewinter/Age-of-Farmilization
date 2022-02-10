@@ -24,6 +24,9 @@ public class Spawner : MonoBehaviour
 
     private GameObject myTeamContainer;
     private GameObject myPlayer;
+    private ResourceScript Inventory;
+    public GameObject InventoryDisplayObject;
+    private ResourcesDisplay Display;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,15 @@ public class Spawner : MonoBehaviour
         { //Put the teamContainer under this general Unit container
             myTeamContainer.transform.SetParent(unitContainer.transform, true);
         }
+
+        Inventory = myTeamContainer.AddComponent<ResourceScript>();
+        try
+        {
+            Display = InventoryDisplayObject.GetComponent<ResourcesDisplay>();
+            Display.Inventory = Inventory;
+            Inventory.Display = Display;
+        }
+        catch { }
 
         myPlayer = spawnUnit(playerUnit, gameObject.transform.position, gameObject.transform.rotation);
         
@@ -54,19 +66,18 @@ public class Spawner : MonoBehaviour
         UnitScriptableObject unitType = spawnableUnits[unitIndex];
 
         //Not enough resources to spawn
-        if (ResourceScript.GetResourceAmount("Food") < unitType.costFood ||
-            ResourceScript.GetResourceAmount("Stone") < unitType.costStone ||
-            ResourceScript.GetResourceAmount("Wood") < unitType.costWood ||
-            ResourceScript.GetResourceAmount("Silver") < unitType.costSilver ||
-            ResourceScript.GetResourceAmount("Gold") < unitType.costGold) return null;
+        if (Inventory.GetResourceAmount("Food") < unitType.costFood ||
+            Inventory.GetResourceAmount("Stone") < unitType.costStone ||
+            Inventory.GetResourceAmount("Wood") < unitType.costWood ||
+            Inventory.GetResourceAmount("Silver") < unitType.costSilver ||
+            Inventory.GetResourceAmount("Gold") < unitType.costGold) return null;
 
         //Take away resources
-        ResourceScript.SubtractResourceAmount("Food", unitType.costFood);
-        ResourceScript.SubtractResourceAmount("Stone", unitType.costStone);
-        ResourceScript.SubtractResourceAmount("Wood", unitType.costWood);
-        ResourceScript.SubtractResourceAmount("Silver", unitType.costSilver);
-        ResourceScript.SubtractResourceAmount("Gold", unitType.costGold);
-
+        Inventory.SubtractResourceAmount("Food", unitType.costFood);
+        Inventory.SubtractResourceAmount("Stone", unitType.costStone);
+        Inventory.SubtractResourceAmount("Wood", unitType.costWood);
+        Inventory.SubtractResourceAmount("Silver", unitType.costSilver);
+        Inventory.SubtractResourceAmount("Gold", unitType.costGold);
         return spawnUnit(spawnableUnits[unitIndex], position, rotation);
     }
 
@@ -87,7 +98,8 @@ public class Spawner : MonoBehaviour
         //Add UnitScriptableObject (raw data) & team to the Unit
         script.unitData = unitType;
         script.team = team;
-
+        script.Inventory = Inventory;
         return spawnedUnit;
     }
+
 }
