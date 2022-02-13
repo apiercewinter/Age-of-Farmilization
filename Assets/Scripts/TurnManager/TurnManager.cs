@@ -4,18 +4,28 @@ using UnityEngine;
 
 // Writer: Boyuan Huang
 
+public delegate void LookAtPlayerDel(GameObject mainPlayer);
+
 public class TurnManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject unitsHolder;
     private List<GameObject> currentPlayerUnits = new List<GameObject>();
     private List<GameObject> nextPlayerUnits = new List<GameObject>();
+    private GameObject currentMainPlayer;
+    private GameObject nextMainPlayer;
+
+    private LookAtPlayerDel lookAtPlayerDel;
 
     // Start is called before the first frame update
     void Start()
     {
         readAllUnits();
         switchSelectableLayer();
+        currentMainPlayer = currentPlayerUnits[0];
+        Debug.Log("Current Player is:");
+        Debug.Log(currentMainPlayer.name);
+        nextMainPlayer = nextPlayerUnits[0];
     }
 
     // Update is called once per frame
@@ -24,6 +34,9 @@ public class TurnManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             switchSelectableLayer();
+            Debug.Log("Calling Look at current player");
+            lookAtCurrentPlayer();
+            Debug.Log("finish Calling Look at current player");
         }
     }
 
@@ -48,16 +61,31 @@ public class TurnManager : MonoBehaviour
     // to "Unselectable", and change the layer of all the gameObjects of the next player to "Selectable"
     void switchSelectableLayer()
     {
-        foreach (GameObject go in currentPlayerUnits)
+        Debug.Log("Switching player control");
+        foreach (GameObject go in nextPlayerUnits)
         {
             go.layer = LayerMask.NameToLayer("Selectable");
         }
-        foreach (GameObject go in nextPlayerUnits)
+        foreach (GameObject go in currentPlayerUnits)
         {
             go.layer = LayerMask.NameToLayer("Unselectable");
         }
         List<GameObject> tmpList = currentPlayerUnits;
         currentPlayerUnits = nextPlayerUnits;
         nextPlayerUnits = tmpList;
+    }
+
+    public void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
+    {
+        lookAtPlayerDel += del;
+    }
+
+    void lookAtCurrentPlayer()
+    {
+        GameObject tmpGO = currentMainPlayer;
+        currentMainPlayer = nextMainPlayer;
+        nextMainPlayer = tmpGO;
+
+        lookAtPlayerDel(currentMainPlayer);
     }
 }

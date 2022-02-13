@@ -6,7 +6,8 @@ using UnityEngine;
 
 // CameraMovement class deals with the movement of the camera
 // Players can use WASD keys and scroll wheel to move the camera.
-//Player can toggle locked camera mode to follow their player character around using space
+// Player can toggle locked camera mode to follow their player character around using space
+
 public class CameraMovement : MonoBehaviour
 {
 
@@ -14,18 +15,21 @@ public class CameraMovement : MonoBehaviour
     private float verticalInput;
     private float scrollInput;
     
-    public bool lockedTrue = false;
-    public Vector3 Target;
+    private bool lockedTrue = false;
+    private Vector3 Target;
 
-    public float movementSpeed = 0.06f;
-    public float zoomSpeed = 10.0f;
+    private float movementSpeed = 0.06f;
+    private float zoomSpeed = 10.0f;
 
-    public float maxHeight = 40f;
-    public float minHeight = 4f;
+    private float maxHeight = 40f;
+    private float minHeight = 4f;
+    [SerializeField]
+    GameObject turnManager;
 
-    private void Start()
+    void Start()
     {
         WinLoseManager.subscribeToDisableControl(disableCameraMovement);
+        turnManager.GetComponent<TurnManager>().subscribeToLookAtPlayerDel(lookAt);
     }
 
     // Update is called once per frame
@@ -105,5 +109,11 @@ public class CameraMovement : MonoBehaviour
     void disableCameraMovement()
     {
         GetComponent<CameraMovement>().enabled = false;
+    }
+
+    void lookAt(GameObject go)
+    {
+        Vector3 Overhead = new Vector3(10f, 15f, 10f);
+        transform.position = go.transform.position + Overhead;
     }
 }
