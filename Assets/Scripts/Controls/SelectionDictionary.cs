@@ -73,7 +73,7 @@ public class SelectionDictionary : MonoBehaviour
         }
     }
 
-    // This method will disable canvas (indicates that the objects are selected) of 
+    // This method will disable canvas (indicates that the objects are deselected) of 
     // all the GameObjects stored in the selectionDictionary
     public static void disableIndicator()
     {
