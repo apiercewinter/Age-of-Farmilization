@@ -79,6 +79,7 @@ public class CameraMovement : MonoBehaviour
         }
         if (lockedTrue)
         {
+            FindCenterPosition();
             LockPosition();
         }
     }
@@ -101,7 +102,6 @@ public class CameraMovement : MonoBehaviour
 
     public void LockPosition()
     {
-        FindCenterPosition();
         Vector3 Overhead = new Vector3(10f, 15f, 10f);
         transform.position = Target + Overhead;
     }
@@ -113,7 +113,7 @@ public class CameraMovement : MonoBehaviour
 
     void lookAt(GameObject go)
     {
-        Vector3 Overhead = new Vector3(10f, 15f, 10f);
-        transform.position = go.transform.position + Overhead;
+        Target = go.transform.position;
+        LockPosition();
     }
 }
