@@ -12,8 +12,8 @@ public class TurnManager : MonoBehaviour
     private GameObject unitsHolder;
     private List<GameObject> currentPlayerUnits = new List<GameObject>();
     private List<GameObject> nextPlayerUnits = new List<GameObject>();
-    private GameObject currentMainPlayer;
-    private GameObject nextMainPlayer;
+    public GameObject currentMainPlayer;
+    public GameObject nextMainPlayer;
 
     private LookAtPlayerDel lookAtPlayerDel;
 
@@ -23,8 +23,6 @@ public class TurnManager : MonoBehaviour
         readAllUnits();
         switchSelectableLayer();
         currentMainPlayer = currentPlayerUnits[0];
-        Debug.Log("Current Player is:");
-        Debug.Log(currentMainPlayer.name);
         nextMainPlayer = nextPlayerUnits[0];
     }
 
@@ -33,10 +31,7 @@ public class TurnManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            switchSelectableLayer();
-            Debug.Log("Calling Look at current player");
-            lookAtCurrentPlayer();
-            Debug.Log("finish Calling Look at current player");
+            switchControl();
         }
     }
 
@@ -75,11 +70,6 @@ public class TurnManager : MonoBehaviour
         nextPlayerUnits = tmpList;
     }
 
-    public void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
-    {
-        lookAtPlayerDel += del;
-    }
-
     void lookAtCurrentPlayer()
     {
         GameObject tmpGO = currentMainPlayer;
@@ -87,5 +77,18 @@ public class TurnManager : MonoBehaviour
         nextMainPlayer = tmpGO;
 
         lookAtPlayerDel(currentMainPlayer);
+    }
+
+    void switchControl()
+    {
+        GetComponent<TransitionManager>().showTransitionCanvas(nextMainPlayer.name);
+        // This two methods will switch current to next, next to current
+        switchSelectableLayer();
+        lookAtCurrentPlayer();
+    }
+
+    public void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
+    {
+        lookAtPlayerDel += del;
     }
 }
