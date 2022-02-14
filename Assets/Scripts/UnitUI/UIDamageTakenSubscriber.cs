@@ -6,7 +6,7 @@ using TMPro;
 // Writer: Boyuan Huang
 
 // UIDamageTakenSubscriber deals with the damage a certain unit takes
-public class UIDamageTakenSubscriber : MonoBehaviour
+public class UIDamageTakenSubscriber : MonoBehaviour, ISubscriber
 {
     private TextMeshProUGUI textField;
     private Color fullAlphaColor;
@@ -14,15 +14,20 @@ public class UIDamageTakenSubscriber : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        subscribe();
+
+        textField = GetComponent<TextMeshProUGUI>();
+        textField.text = "";
+        fullAlphaColor = textField.color;
+    }
+
+    public void subscribe()
+    {
         // In order to keep the TakenDamageIndicator in the end of the HealthBar, I put the Indicator under 
         // HealthBar as a child of HealthBar, so, here it needs an extra parent to get to the UIUnitCentralPublisher
         UIUnitCentralPublisher publisher = transform.parent.parent.parent.GetComponent<UIUnitCentralPublisher>();
         // subscribing to the publisher
         publisher.subscribeToSubstractHealth(setDamageTaken);
-
-        textField = GetComponent<TextMeshProUGUI>();
-        textField.text = "";
-        fullAlphaColor = textField.color;
     }
 
     // Set how many damage does the character takes and transform it into a text format

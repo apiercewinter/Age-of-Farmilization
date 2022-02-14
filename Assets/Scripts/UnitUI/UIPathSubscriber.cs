@@ -5,7 +5,7 @@ using UnityEngine;
 // Writer: Boyuan Huang
 
 // UIPathSubscriber deals with the line indicator that shows the path that units is walking
-public class UIPathSubscriber : MonoBehaviour
+public class UIPathSubscriber : MonoBehaviour, ISubscriber
 {
     private LineRenderer lineRenderer;
     private Color walkingToDestinationColor;
@@ -16,15 +16,7 @@ public class UIPathSubscriber : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lineRenderer = GetComponent<LineRenderer>();
-        UIUnitCentralPublisher publisher = transform.parent.parent.GetComponent<UIUnitCentralPublisher>();
-        // subscribing to the publisher
-        publisher.subscribeToSetDestinationPath(setDestinationPath);
-        // subscribe to enable and disable will all notify UIPathSubscriber when the unit is selected or deselected
-        publisher.subscribeToEnable(enableDestinationPath);
-        publisher.subscribeToDisable(disableDestinationPath);
-        publisher.subscribeToAttackingEnemyPath(setAttackingPath);
-        publisher.subscribeToGatheringResourcePath(setGatheringPath);
+        subscribe();
 
         Vector3 unitPos = transform.parent.parent.gameObject.transform.position;
         lineRenderer.SetPosition(0, unitPos);
@@ -38,6 +30,19 @@ public class UIPathSubscriber : MonoBehaviour
         gatheringResourcesColor = Color.green;
 
         target = null;
+    }
+
+    public void subscribe()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        UIUnitCentralPublisher publisher = transform.parent.parent.GetComponent<UIUnitCentralPublisher>();
+        // subscribing to the publisher
+        publisher.subscribeToSetDestinationPath(setDestinationPath);
+        // subscribe to enable and disable will all notify UIPathSubscriber when the unit is selected or deselected
+        publisher.subscribeToEnable(enableDestinationPath);
+        publisher.subscribeToDisable(disableDestinationPath);
+        publisher.subscribeToAttackingEnemyPath(setAttackingPath);
+        publisher.subscribeToGatheringResourcePath(setGatheringPath);
     }
 
     // Update is called once per frame

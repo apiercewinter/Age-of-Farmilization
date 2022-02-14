@@ -5,6 +5,12 @@ using System;
 
 // Writer: Boyuan Huang
 
+interface ISubscriber
+{
+    // All subscriber class must have a subscribe() method that deals with the subscribing business
+    void subscribe();
+}
+
 public delegate void HealthBarDel(float amount);
 public delegate void PathDel(Vector3 destination);
 public delegate void GameObjectPathDel(GameObject go);
@@ -52,12 +58,6 @@ public class UIUnitCentralPublisher : MonoBehaviour
 
     // Resource Delegate
     private ResourceGatheredDel GatheringResourceDel;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        helpIndicatorSubscribe();
-    }
 
     public void enableSelectionIndicator()
     {
@@ -151,12 +151,5 @@ public class UIUnitCentralPublisher : MonoBehaviour
     public void subscribeToGatheringResource(ResourceGatheredDel del)
     {
         GatheringResourceDel += del;
-    }
-
-    // As described in UIIndicatorSubscriber() -> manulSubscribe(), Start(), Awake() will never be called 
-    // unless the gameObject is enabled, this method is used to manully subscribe to this publisher.
-    public void helpIndicatorSubscribe()
-    {
-        transform.GetChild(0).GetChild(0).GetComponent<UIIndicatorSubscriber>().manulSubscribe();
     }
 }

@@ -6,7 +6,7 @@ using TMPro;
 // Writer: Boyuan Huang
 
 // UIResourceGatheredSubscriber will indicate player that the player just gathered resource
-public class UIResourceGatheredSubscriber : MonoBehaviour
+public class UIResourceGatheredSubscriber : MonoBehaviour, ISubscriber
 {
     private TextMeshProUGUI textField;
     private Color fullAlphaColor;
@@ -14,13 +14,18 @@ public class UIResourceGatheredSubscriber : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIUnitCentralPublisher publisher = transform.parent.parent.parent.GetComponent<UIUnitCentralPublisher>();
-        // subscribing to the publisher
-        publisher.subscribeToGatheringResource(indicateGatheredResource);
+        subscribe();
 
         textField = GetComponent<TextMeshProUGUI>();
         textField.text = "";
         fullAlphaColor = textField.color;
+    }
+
+    public void subscribe()
+    {
+        UIUnitCentralPublisher publisher = transform.parent.parent.parent.GetComponent<UIUnitCentralPublisher>();
+        // subscribing to the publisher
+        publisher.subscribeToGatheringResource(indicateGatheredResource);
     }
 
     public void indicateGatheredResource(string resource, int amount)

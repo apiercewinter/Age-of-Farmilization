@@ -6,19 +6,24 @@ using UnityEngine.UI;
 // Writer: Boyuan Huang
 
 // UIHealthBarSubscriber deals with the healthbar at the top of the unit
-public class UIHealthBarSubscriber : MonoBehaviour
+public class UIHealthBarSubscriber : MonoBehaviour, ISubscriber
 {
     private Slider slider;
 
     void Awake()
+    {
+        subscribe();
+
+        slider = GetComponent<Slider>();
+    }
+
+    public void subscribe()
     {
         UIUnitCentralPublisher publisher = transform.parent.parent.GetComponent<UIUnitCentralPublisher>();
         // subscribing to the publisher
         publisher.subscribeToAddHealth(addHealth);
         publisher.subscribeToSubstractHealth(substractHealth);
         publisher.subscribeToSetMaxHealth(setMaxHealth);
-
-        slider = GetComponent<Slider>();
     }
 
     public void addHealth(float amount)
