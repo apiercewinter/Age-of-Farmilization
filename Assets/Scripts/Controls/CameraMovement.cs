@@ -18,8 +18,8 @@ public class CameraMovement : MonoBehaviour
     private bool lockedTrue = false;
     private Vector3 Target;
 
-    private float movementSpeed = 0.06f;
-    private float zoomSpeed = 10.0f;
+    [SerializeField] private float movementSpeed = 0.06f;
+    [SerializeField] private float zoomSpeed = 10.0f;
 
     private float maxHeight = 40f;
     private float minHeight = 4f;
@@ -115,5 +115,14 @@ public class CameraMovement : MonoBehaviour
     {
         Target = go.transform.position;
         LockPosition();
+    }
+
+    public void changeMovementSpeed(float ms)
+    {
+        movementSpeed = ms;
+    }
+    public void changeZoomSpeed(float zs)
+    {
+        zoomSpeed = zs;
     }
 }
