@@ -5,15 +5,17 @@
 //  Created by Chris Nolet on 3/30/18.
 //  Copyright © 2018 Chris Nolet. All rights reserved.
 //
+// Quick Outline Unity free assets
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [DisallowMultipleComponent]
 
-public class Outline : MonoBehaviour {
+public class Outline : MonoBehaviour  {
   private static HashSet<Mesh> registeredMeshes = new HashSet<Mesh>();
 
   public enum Mode {
@@ -94,6 +96,9 @@ public class Outline : MonoBehaviour {
 
     // Retrieve or generate smooth normals
     LoadSmoothNormals();
+
+    // Set color to be tranparent at start to fit our purposes
+    outlineColor.a = 0;
 
     // Apply material properties immediately
     needsUpdate = true;
@@ -274,4 +279,16 @@ public class Outline : MonoBehaviour {
         break;
     }
   }
+
+    private void OnMouseOver()
+    {
+        outlineColor = Color.white;
+        needsUpdate = true;
+    }
+
+    private void OnMouseExit()
+    {
+        outlineColor.a = 0;
+        needsUpdate = true;
+    }
 }
