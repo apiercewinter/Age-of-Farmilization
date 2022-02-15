@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Writer: Boyuan Huang
+
+// We probably not gonna need this if we are using movement range
+
 public class TransitionManager : MonoBehaviour
 {
     [SerializeField]
@@ -11,10 +15,6 @@ public class TransitionManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("this is called");
-        // Child "Message" in the TransitionCanvas
-        Debug.Log("canvas name: " + transitionCanvas.name);
-        Debug.Log("third child name: " + transitionCanvas.transform.GetChild(2).gameObject.name);
         transitionCanvas.SetActive(false);
         textField = transitionCanvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         textField.text = "";

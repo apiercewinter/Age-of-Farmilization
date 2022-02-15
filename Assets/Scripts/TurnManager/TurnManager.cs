@@ -8,22 +8,17 @@ public delegate void LookAtPlayerDel(GameObject mainPlayer);
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject unitsHolder;
-    private List<GameObject> currentPlayerUnits = new List<GameObject>();
-    private List<GameObject> nextPlayerUnits = new List<GameObject>();
-    public GameObject currentMainPlayer;
-    public GameObject nextMainPlayer;
+    private List<Team> TeamOrderList = new List<Team>(); 
+
+    private int currentIndex = 0;
 
     private LookAtPlayerDel lookAtPlayerDel;
 
     // Start is called before the first frame update
     void Start()
     {
-        readAllUnits();
+        TeamOrderList = TeamManager.getAllTeams();
         switchSelectableLayer();
-        currentMainPlayer = currentPlayerUnits[0];
-        nextMainPlayer = nextPlayerUnits[0];
     }
 
     // Update is called once per frame
@@ -34,57 +29,45 @@ public class TurnManager : MonoBehaviour
             switchControl();
         }
     }
+    
 
-    // This method will read all the units in the two players' units holder and stored them into 
-    // the currentPlayerUnits and nextPlayerUnits lists. And this should be called right after the 
-    // base player units are spawned
-    void readAllUnits()
+    void moveToNextIndex()
     {
-        Transform onePlayerUnits = unitsHolder.transform.GetChild(0);
-        Transform anotherPlayerUnits = unitsHolder.transform.GetChild(1);
-        foreach (Transform go in onePlayerUnits)
+        currentIndex++;
+        if (currentIndex >= TeamOrderList.Count)
         {
-            currentPlayerUnits.Add(go.gameObject);
+            currentIndex = 0;
         }
-        foreach (Transform go in anotherPlayerUnits)
-        {
-            nextPlayerUnits.Add(go.gameObject);
-        }
-    }
+    }    
 
     // This method will change the layer of all the gameObjects of the current player that is playing 
     // to "Unselectable", and change the layer of all the gameObjects of the next player to "Selectable"
     void switchSelectableLayer()
     {
-        Debug.Log("Switching player control");
-        foreach (GameObject go in nextPlayerUnits)
-        {
-            go.layer = LayerMask.NameToLayer("Selectable");
-        }
-        foreach (GameObject go in currentPlayerUnits)
+        foreach (GameObject go in TeamOrderList[currentIndex].getAllUnitsInList())
         {
             go.layer = LayerMask.NameToLayer("Unselectable");
         }
-        List<GameObject> tmpList = currentPlayerUnits;
-        currentPlayerUnits = nextPlayerUnits;
-        nextPlayerUnits = tmpList;
+        TeamOrderList[currentIndex].getMainPlayer().layer = LayerMask.NameToLayer("Unselectable");
+        moveToNextIndex();
+        foreach (GameObject go in TeamOrderList[currentIndex].getAllUnitsInList())
+        {
+            go.layer = LayerMask.NameToLayer("Selectable");
+        }
+        TeamOrderList[currentIndex].getMainPlayer().layer = LayerMask.NameToLayer("Selectable");
     }
 
     void lookAtCurrentPlayer()
     {
-        GameObject tmpGO = currentMainPlayer;
-        currentMainPlayer = nextMainPlayer;
-        nextMainPlayer = tmpGO;
-
-        lookAtPlayerDel(currentMainPlayer);
+        lookAtPlayerDel(TeamOrderList[currentIndex].getMainPlayer());
     }
 
     void switchControl()
     {
-        GetComponent<TransitionManager>().showTransitionCanvas(nextMainPlayer.name);
         // This two methods will switch current to next, next to current
         switchSelectableLayer();
         lookAtCurrentPlayer();
+        GetComponent<TransitionManager>().showTransitionCanvas(TeamOrderList[currentIndex].getMainPlayer().name);
     }
 
     public void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
