@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
 public class Team
 {
     private GameObject mainPlayer;
+    // unitDict is a dictionary that stores all the units (game objects) that belong to
+    // the mainPlayer. The reason why to use dictionary with game object's instance ID
+    // as key is that it is easier to remove game objects when they die in this way.
     private Dictionary<int, GameObject> unitDict = new Dictionary<int, GameObject>();
-    private List<GameObject> unitList = new List<GameObject>();
 
     public Team(GameObject mainPlayer, List<GameObject> units)
     {
@@ -15,7 +19,6 @@ public class Team
         {
             unitDict.Add(go.GetInstanceID(), go);
         }
-        unitList = units;
     }
 
     public void setMainPlayerToNull()
@@ -53,12 +56,8 @@ public class Team
         return newList;
     }
 
-    public void switchLayer(string layerName)
+    public bool contain(GameObject go)
     {
-        foreach (GameObject go in unitList)
-        {
-            go.layer = LayerMask.NameToLayer(layerName);
-        }
-        mainPlayer.layer = LayerMask.NameToLayer(layerName);
+        return unitDict.ContainsValue(go);
     }
 }

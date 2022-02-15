@@ -8,9 +8,6 @@ public delegate void LookAtPlayerDel(GameObject mainPlayer);
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject unitsHolder;
-
     private List<Team> TeamOrderList = new List<Team>(); 
 
     private int currentIndex = 0;
@@ -20,7 +17,7 @@ public class TurnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instantiateTeam();
+        TeamOrderList = TeamManager.getAllTeams();
         switchSelectableLayer();
     }
 
@@ -32,21 +29,7 @@ public class TurnManager : MonoBehaviour
             switchControl();
         }
     }
-
-    // This method will read all the units in the two players' units holder and stored them into 
-    // the currentPlayerUnits and nextPlayerUnits lists. And this should be called right after the 
-    // base player units are spawned
-    void instantiateTeam()
-    {
-        Transform unitsParent = unitsHolder.transform;
-        for (int i = 0; i < unitsParent.childCount; i++)
-        {
-            List<GameObject> newList = new List<GameObject>();
-            Transform child = unitsParent.GetChild(i);
-            Team newTeam = new Team(child.GetChild(0).gameObject, newList);
-            TeamOrderList.Add(newTeam);
-        }
-    }
+    
 
     void moveToNextIndex()
     {
@@ -76,7 +59,6 @@ public class TurnManager : MonoBehaviour
 
     void lookAtCurrentPlayer()
     {
-
         lookAtPlayerDel(TeamOrderList[currentIndex].getMainPlayer());
     }
 
