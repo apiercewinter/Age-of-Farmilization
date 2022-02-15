@@ -78,7 +78,10 @@ public class Spawner : MonoBehaviour
         Inventory.SubtractResourceAmount("Wood", unitType.costWood);
         Inventory.SubtractResourceAmount("Silver", unitType.costSilver);
         Inventory.SubtractResourceAmount("Gold", unitType.costGold);
-        return spawnUnit(spawnableUnits[unitIndex], position, rotation);
+        GameObject spawnedUnit = spawnUnit(spawnableUnits[unitIndex], position, rotation);
+        spawnedUnit.tag = TeamManager.getCurrentTeamTag();
+        TeamManager.addNewUnit(spawnedUnit);
+        return spawnedUnit;
     }
 
     //Spawn on mouse when accessed through unit menu

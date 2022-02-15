@@ -11,14 +11,16 @@ public class Team
     // the mainPlayer. The reason why to use dictionary with game object's instance ID
     // as key is that it is easier to remove game objects when they die in this way.
     private Dictionary<int, GameObject> unitDict = new Dictionary<int, GameObject>();
+    private string tag;
 
-    public Team(GameObject mainPlayer, List<GameObject> units)
+    public Team(GameObject mainPlayer, List<GameObject> units, string tag)
     {
         this.mainPlayer = mainPlayer;
         foreach (GameObject go in units)
         {
             unitDict.Add(go.GetInstanceID(), go);
         }
+        this.tag = tag;
     }
 
     public void setMainPlayerToNull()
@@ -33,12 +35,19 @@ public class Team
 
     public void addNewUnit(GameObject newUnit)
     {
-        unitDict.Add(newUnit.GetInstanceID(), newUnit);
+        if (!unitDict.ContainsKey(newUnit.GetInstanceID()))
+        {
+            unitDict.Add(newUnit.GetInstanceID(), newUnit);
+        }
     }
 
     public void removeUnit(GameObject unit)
     {
-        unitDict.Remove(unit.GetInstanceID());
+        if (unitDict.ContainsKey(unit.GetInstanceID()))
+        {
+            unitDict.Remove(unit.GetInstanceID());
+        }
+        Debug.Log("Calling from Team class: now team has " + unitDict.Count + " in the dict");
     }
 
     public GameObject getMainPlayer()
@@ -54,6 +63,11 @@ public class Team
             newList.Add(go);
         }
         return newList;
+    }
+
+    public string getTag()
+    {
+        return tag;
     }
 
     public bool contain(GameObject go)

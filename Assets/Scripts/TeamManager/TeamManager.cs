@@ -4,18 +4,27 @@ using UnityEngine;
 
 // Writer: Boyuan Huang
 
+public delegate void TeamListUpdateDel();
+
 // This is a Singleton class that deals with the team
 public class TeamManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject unitsHolder;
 
+    [SerializeField]
+    private GameObject TurnManager;
+
     private static List<Team> teamList = new List<Team>();
+    private static int currentIndex;
+
+    private static TeamListUpdateDel teamListUpdateDel;
 
     // Start is called before the first frame update
     void Start()
     {
         instantiateTeam();
+        TurnManager.GetComponent<TurnManager>().subscribeToCurrentTeamUpdateDel(setCurrentTeamIndex);
     }
 
     // Update is called once per frame
@@ -39,21 +48,46 @@ public class TeamManager : MonoBehaviour
         {
             List<GameObject> newList = new List<GameObject>();
             Transform child = unitsParent.GetChild(i);
-            Team newTeam = new Team(child.GetChild(0).gameObject, newList);
+            GameObject mainPlayer = child.GetChild(0).gameObject;
+            Team newTeam = new Team(mainPlayer, newList, mainPlayer.tag);
             teamList.Add(newTeam);
         }
     }
 
-    // This method will determine whether the unit belongs to a mainPlayer
-    public bool inSameTeam(GameObject mainPlayer, GameObject unit)
+    // This method will determine whether the unit belongs to a team of the current turn
+    public static bool inSameTeam(GameObject unit)
     {
-        foreach (Team team in teamList)
-        {
-            if (team.getMainPlayer() == mainPlayer)
-            {
-                return team.contain(unit);
-            }
-        }
-        return false;
+        return unit.tag == teamList[currentIndex].getTag();
+    }
+
+    public static string getCurrentTeamTag()
+    {
+        return teamList[currentIndex].getTag();
+    }
+
+    public static void subscribeToTeamListUpdateDel(TeamListUpdateDel del)
+    {
+        teamListUpdateDel += del;
+    }
+
+    public static void addNewUnit(GameObject go)
+    {
+        // adding new unit to the current mainPlayer's list
+        teamList[currentIndex].addNewUnit(go);
+        Debug.Log("just add one unit, calling team list update");
+        teamListUpdateDel();
+    }
+
+    public static void removeUnit(GameObject go)
+    {
+        // removing unit from the current mainPlayer's list
+        teamList[currentIndex].removeUnit(go);
+        Debug.Log("just remove one unit, calling team list update");
+        teamListUpdateDel();
+    }
+
+    public static void setCurrentTeamIndex(int index)
+    {
+        currentIndex = index;
     }
 }

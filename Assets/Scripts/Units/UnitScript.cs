@@ -180,6 +180,7 @@ public class UnitScript : MonoBehaviour
     {
         SelectionDictionary.deselect(gameObject.GetInstanceID());
         gameObject.layer = 0;
+        TeamManager.removeUnit(gameObject);
         // deathEffect will destroy the gameObject when the "animation" is over
         StartCoroutine(deathEffect(2));
     }

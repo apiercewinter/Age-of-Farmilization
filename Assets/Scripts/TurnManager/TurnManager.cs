@@ -5,19 +5,22 @@ using UnityEngine;
 // Writer: Boyuan Huang
 
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
+public delegate void CurrentTeamUpdateDel(int currentIndex);
 
 public class TurnManager : MonoBehaviour
 {
     private List<Team> TeamOrderList = new List<Team>(); 
 
-    private int currentIndex = 0;
+    public int currentIndex = 0;
 
     private LookAtPlayerDel lookAtPlayerDel;
+    private CurrentTeamUpdateDel currentTeamUpdateDel;
 
     // Start is called before the first frame update
     void Start()
     {
-        TeamOrderList = TeamManager.getAllTeams();
+        getTeamList();
+        TeamManager.subscribeToTeamListUpdateDel(getTeamList);
         switchSelectableLayer();
     }
 
@@ -29,6 +32,17 @@ public class TurnManager : MonoBehaviour
             switchControl();
         }
     }
+
+    // Refresh the teamOrderList when there is update
+    void getTeamList()
+    {
+        TeamOrderList = TeamManager.getAllTeams();
+        Debug.Log("just refresh teamOrderList:");
+        foreach (GameObject go in TeamOrderList[1].getAllUnitsInList())
+        {
+            Debug.Log(go.name);
+        }
+    }
     
 
     void moveToNextIndex()
@@ -38,6 +52,7 @@ public class TurnManager : MonoBehaviour
         {
             currentIndex = 0;
         }
+        currentTeamUpdateDel(currentIndex);
     }    
 
     // This method will change the layer of all the gameObjects of the current player that is playing 
@@ -55,7 +70,7 @@ public class TurnManager : MonoBehaviour
             go.layer = LayerMask.NameToLayer("Selectable");
         }
         TeamOrderList[currentIndex].getMainPlayer().layer = LayerMask.NameToLayer("Selectable");
-    }
+    }   
 
     void lookAtCurrentPlayer()
     {
@@ -73,5 +88,10 @@ public class TurnManager : MonoBehaviour
     public void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
     {
         lookAtPlayerDel += del;
+    }
+
+    public void subscribeToCurrentTeamUpdateDel(CurrentTeamUpdateDel del)
+    {
+        currentTeamUpdateDel += del;
     }
 }
