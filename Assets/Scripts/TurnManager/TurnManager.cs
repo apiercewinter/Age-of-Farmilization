@@ -27,10 +27,6 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            switchControl();
-        }
     }
 
     // Refresh the teamOrderList when there is update
@@ -72,6 +68,11 @@ public class TurnManager : MonoBehaviour
         }
         TeamOrderList[currentIndex].getMainPlayer().layer = LayerMask.NameToLayer("Selectable");
     }   
+
+    public void onNextTurnButtonClick()
+    {
+        switchControl();
+    }
 
     void lookAtCurrentPlayer()
     {
