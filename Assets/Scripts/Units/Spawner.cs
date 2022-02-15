@@ -93,6 +93,7 @@ public class Spawner : MonoBehaviour
         //Instantiate Unit, get UnitScript & Health
         GameObject spawnedUnit = Instantiate(unitPrefab, position, rotation, myTeamContainer.transform);
         spawnedUnit.name = unitType.unitName;
+        spawnedUnit.tag = team;
         UnitScript script = spawnedUnit.GetComponent<UnitScript>();
 
         //Add UnitScriptableObject (raw data) & team to the Unit
