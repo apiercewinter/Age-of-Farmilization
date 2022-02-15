@@ -24,7 +24,7 @@ public class SelectionDictionary : MonoBehaviour
 
         if (!(selectedDictionary.ContainsKey(id)))
         {
-            go.gameObject.tag = "Player";
+            // go.gameObject.tag = "Player";
             selectedDictionary.Add(id, go);
         }
     }
@@ -40,7 +40,7 @@ public class SelectionDictionary : MonoBehaviour
     {
         disableIndicator();
 
-        deselectCamera();
+        // deselectCamera();
         selectedDictionary.Clear();
     }
 

@@ -70,6 +70,7 @@ public class TeamManager : MonoBehaviour
         teamListUpdateDel += del;
     }
 
+    // This method will add new unit into the current team
     public static void addNewUnit(GameObject go)
     {
         // adding new unit to the current mainPlayer's list
@@ -78,11 +79,22 @@ public class TeamManager : MonoBehaviour
         teamListUpdateDel();
     }
 
-    public static void removeUnit(GameObject go)
+    // This method will remove the unit from the team with the specific teamTag
+    public static void removeUnit(GameObject go, string teamTag)
     {
-        // removing unit from the current mainPlayer's list
-        teamList[currentIndex].removeUnit(go);
+        for (int i = 0; i < teamList.Count; i++)
+        {
+            if (teamList[i].getTag() == teamTag)
+            {
+                teamList[i].removeUnit(go);
+            }
+        }
         Debug.Log("just remove one unit, calling team list update");
+        Debug.Log("team list from Team manager:");
+        foreach (GameObject u in teamList[1].getAllUnitsInList())
+        {
+            Debug.Log(u.name);
+        }
         teamListUpdateDel();
     }
 

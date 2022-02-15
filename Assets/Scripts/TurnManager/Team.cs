@@ -35,19 +35,35 @@ public class Team
 
     public void addNewUnit(GameObject newUnit)
     {
+        Debug.Log("***call from the Team Class to add, the name the GameObject is:");
+        Debug.Log(newUnit.name);
+        Debug.Log("it's instance id: " + newUnit.GetInstanceID());
         if (!unitDict.ContainsKey(newUnit.GetInstanceID()))
         {
+            Debug.Log("newunit is not in the dict, and can be added");
             unitDict.Add(newUnit.GetInstanceID(), newUnit);
         }
+        else
+        {
+            Debug.Log("newunit is in the dict, and cannot be added");
+        }
+        Debug.Log("count of the unit dict after adding: " + unitDict.Count);
     }
 
     public void removeUnit(GameObject unit)
     {
+        Debug.Log("***call from the Team Class to remove, the name the GameObject is:");
+        Debug.Log(unit.name);
+        Debug.Log("it's instance id: " + unit.GetInstanceID());
         if (unitDict.ContainsKey(unit.GetInstanceID()))
         {
+            Debug.Log("and it is in the dict");
             unitDict.Remove(unit.GetInstanceID());
         }
-        Debug.Log("Calling from Team class: now team has " + unitDict.Count + " in the dict");
+        else
+        {
+            Debug.Log("it is not in the dict?");
+        }
     }
 
     public GameObject getMainPlayer()

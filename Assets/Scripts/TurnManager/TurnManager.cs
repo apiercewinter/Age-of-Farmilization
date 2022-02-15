@@ -38,6 +38,7 @@ public class TurnManager : MonoBehaviour
     {
         TeamOrderList = TeamManager.getAllTeams();
         Debug.Log("just refresh teamOrderList:");
+        Debug.Log("team list from Turn Manager");
         foreach (GameObject go in TeamOrderList[1].getAllUnitsInList())
         {
             Debug.Log(go.name);
