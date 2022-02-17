@@ -16,7 +16,10 @@ public class Fleeing : State
     public override void update()
     {
         base.update();
-        Vector3 direction = (target.transform.position - gameObject.transform.position).normalized;
-        gameObject.GetComponent<UnitScript>().moveTo(direction * 10);
+        if (target != null)
+        {
+            Vector3 direction = (gameObject.transform.position - target.transform.position).normalized;
+            gameObject.GetComponent<UnitScript>().moveTo(direction * 10);
+        }
     }
 }

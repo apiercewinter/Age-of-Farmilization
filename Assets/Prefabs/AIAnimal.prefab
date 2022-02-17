@@ -308,8 +308,8 @@ GameObject:
   - component: {fileID: 6649955703414555083}
   - component: {fileID: 6180275022902652153}
   - component: {fileID: 5774661493198084013}
-  - component: {fileID: 115768469}
   - component: {fileID: 336578173}
+  - component: {fileID: -6857534870132082734}
   m_Layer: 8
   m_Name: AIAnimal
   m_TagString: Untagged
@@ -417,20 +417,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &115768469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2484104620310744933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13f246f29f51a8e4aaa9e07d0b3b7d27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  performed: 0
 --- !u!114 &336578173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +427,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e0b453f0f7cc140b9237d78baa1c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6857534870132082734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484104620310744933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12ee88786289204dbd1fa3f0b3ca99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6180275022747501868
