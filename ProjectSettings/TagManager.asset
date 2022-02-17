@@ -10,6 +10,8 @@ TagManager:
   - Player2
   - Player3
   - Player4
+  - AI
+  - AIAnimal
   layers:
   - Default
   - TransparentFX

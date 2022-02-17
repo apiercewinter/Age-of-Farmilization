@@ -3591,6 +3591,7 @@ Transform:
   - {fileID: 1736080790}
   - {fileID: 93151715}
   - {fileID: 2050661722}
+  - {fileID: 1605300413}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4564,6 +4565,58 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00000059605, y: -0.000011444092}
   m_SizeDelta: {x: 188.2861, y: 85.5461}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1605300412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605300413}
+  - component: {fileID: 1605300414}
+  m_Layer: 0
+  m_Name: AISpawner
+  m_TagString: Spawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1605300413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605300412}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -19.4, y: 1, z: 23.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1212189157}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!114 &1605300414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605300412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e16852c13ecfe14fa0f5261bc6fa0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitContainer: {fileID: 254034730}
+  unitPrefab: {fileID: 2484104620310744933, guid: 6101056bdd3890b4ab1838acd54b3625, type: 3}
+  playerUnit: {fileID: 11400000, guid: 0026e2c569b3a894fbbdb2533d7f18f3, type: 2}
+  spawnableUnits:
+  - {fileID: 11400000, guid: 2105c0ed3d0603646b0f9ed24be2b69a, type: 2}
+  - {fileID: 11400000, guid: c3e44fecc37d43e4cb010e0b903005d5, type: 2}
+  team: AI
+  maxSpawnDistanceFromPlayer: 10
+  InventoryDisplayObject: {fileID: 0}
 --- !u!1 &1621694983
 GameObject:
   m_ObjectHideFlags: 0
@@ -6854,7 +6907,7 @@ Transform:
   m_Children:
   - {fileID: 2073194128}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4400008886789347 stripped
 Transform:
