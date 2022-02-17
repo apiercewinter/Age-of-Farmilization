@@ -16,6 +16,9 @@ public class Attacking : State
     public override void update()
     {
         base.update();
-        gameObject.GetComponent<UnitScript>().target(target);
+        if (target != null)
+        {
+            gameObject.GetComponent<UnitScript>().target(target);
+        }
     }
 }

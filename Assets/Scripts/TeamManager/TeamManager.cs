@@ -75,7 +75,6 @@ public class TeamManager : MonoBehaviour
     {
         // adding new unit to the current mainPlayer's list
         teamList[currentIndex].addNewUnit(go);
-        Debug.Log("just add one unit, calling team list update");
         teamListUpdateDel();
     }
 
@@ -89,8 +88,6 @@ public class TeamManager : MonoBehaviour
                 teamList[i].removeUnit(go);
             }
         }
-        Debug.Log("just remove one unit, calling team list update");
-        Debug.Log("team list from Team manager:");
         foreach (GameObject u in teamList[1].getAllUnitsInList())
         {
             Debug.Log(u.name);
