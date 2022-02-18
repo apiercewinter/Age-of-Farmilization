@@ -123,6 +123,7 @@ public class UnitScript : MonoBehaviour
                     nextGatherTime = Time.time + gatherCooldown;
                     ResourceObject rs = resourceToGather.GetComponent<ResourceObject>();
                     Inventory.AddResourceAmount(rs.resourcetype, rs.gathervalue);
+                    rs.DepleteResource();
 
                 }
             }

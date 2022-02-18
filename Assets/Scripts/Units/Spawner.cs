@@ -38,13 +38,12 @@ public class Spawner : MonoBehaviour
         }
 
         Inventory = myTeamContainer.AddComponent<ResourceScript>();
-        try
+        if(InventoryDisplayObject!=null)
         {
             Display = InventoryDisplayObject.GetComponent<ResourcesDisplay>();
             Display.Inventory = Inventory;
             Inventory.Display = Display;
-        }
-        catch { }
+        };
 
         myPlayer = spawnUnit(playerUnit, gameObject.transform.position, gameObject.transform.rotation);
         

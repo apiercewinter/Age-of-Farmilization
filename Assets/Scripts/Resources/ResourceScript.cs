@@ -11,6 +11,7 @@ public class ResourceScript : MonoBehaviour
     public int cow = 0;
     public ResourcesDisplay Display;
 
+
     //Adds
     public void AddResourceAmount(string resource, int amount)
     {
@@ -23,8 +24,10 @@ public class ResourceScript : MonoBehaviour
         {
             ResourceTotals[resource] = ResourceTotals[resource]+amount;
         }
-
-        Display.UpdateResourceTextObject();
+        if (Display != null)
+        {
+            Display.UpdateResourceTextObject();
+        } 
     }
 
 
