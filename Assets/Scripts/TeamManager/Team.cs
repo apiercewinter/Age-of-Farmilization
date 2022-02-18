@@ -11,6 +11,7 @@ public class Team
     // the mainPlayer. The reason why to use dictionary with game object's instance ID
     // as key is that it is easier to remove game objects when they die in this way.
     private Dictionary<int, GameObject> unitDict = new Dictionary<int, GameObject>();
+    private Dictionary<string, int> resourceInventory = new Dictionary<string, int>();
     private string tag;
 
     public Team(GameObject mainPlayer, List<GameObject> units, string tag)
@@ -72,5 +73,38 @@ public class Team
     public bool contain(GameObject go)
     {
         return unitDict.ContainsValue(go);
+    }
+
+    public void addToInventory(string resourceType, int amount)
+    {
+        if (!(resourceInventory.ContainsKey(resourceType)))
+        {
+            resourceInventory.Add(resourceType, amount);
+        }
+        else
+        {
+            resourceInventory[resourceType] = resourceInventory[resourceType] + amount;
+        }
+    }
+
+    public void subtractFromInventory(string resourceType, int amount)
+    {
+        if (!(resourceInventory.ContainsKey(resourceType)))
+        {
+            resourceInventory.Add(resourceType, 0);
+        }
+        else
+        {
+            resourceInventory[resourceType] = resourceInventory[resourceType] - amount;
+        }
+    }
+
+    public int getResourceAmount(string resourceType)
+    {
+        if (!(resourceInventory.ContainsKey(resourceType)))
+        {
+            resourceInventory.Add(resourceType, 0);
+        }
+        return resourceInventory[resourceType];
     }
 }

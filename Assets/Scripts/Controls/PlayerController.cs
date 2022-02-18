@@ -39,26 +39,28 @@ public class PlayerController : MonoBehaviour
                     GameObject objHit = hit.transform.gameObject;
                     GameObject go = SelectedObject.getSelected();
 
-                    UnitScript myScript = go.GetComponent<UnitScript>();
-                    UIUnitCentralPublisher myPublisher = go.GetComponent<UIUnitCentralPublisher>();
-
-                    if (!myScript.target(objHit))
+                    if (go != null)
                     {
-                        if (!myScript.gather(objHit))
+                        UnitScript myScript = go.GetComponent<UnitScript>();
+                        UIUnitCentralPublisher myPublisher = go.GetComponent<UIUnitCentralPublisher>();
+
+                        if (!myScript.target(objHit))
                         {
-                            myScript.moveTo(hit.point);
-                            myPublisher.setDestinationPath(hit.point);
+                            if (!myScript.gather(objHit))
+                            {
+                                myScript.moveTo(hit.point);
+                                myPublisher.setDestinationPath(hit.point);
+                            }
+                            else
+                            {
+                                myPublisher.setGatheringResourcePath(objHit);
+                            }
                         }
                         else
                         {
-                            myPublisher.setGatheringResourcePath(objHit);
+                            myPublisher.setAttackingEnemyPath(objHit);
                         }
                     }
-                    else
-                    {
-                        myPublisher.setAttackingEnemyPath(objHit);
-                    }
-
                 }
             }
         }

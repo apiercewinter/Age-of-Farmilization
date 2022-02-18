@@ -18,6 +18,7 @@ public class TeamManager : MonoBehaviour
 
     private static List<Team> teamList = new List<Team>();
     private static int currentIndex;
+    private static Team currentTeam;
 
     private static TeamListUpdateDel teamListUpdateDel;
 
@@ -53,17 +54,18 @@ public class TeamManager : MonoBehaviour
             Team newTeam = new Team(mainPlayer, newList, mainPlayer.tag);
             teamList.Add(newTeam);
         }
+        currentTeam = teamList[currentIndex];
     }
 
     // This method will determine whether the unit belongs to a team of the current turn
     public static bool inSameTeam(GameObject unit)
     {
-        return unit.tag == teamList[currentIndex].getTag();
+        return unit.tag == currentTeam.getTag();
     }
 
     public static string getCurrentTeamTag()
     {
-        return teamList[currentIndex].getTag();
+        return currentTeam.getTag();
     }
 
     public static void subscribeToTeamListUpdateDel(TeamListUpdateDel del)
@@ -75,7 +77,7 @@ public class TeamManager : MonoBehaviour
     public static void addNewUnit(GameObject go)
     {
         // adding new unit to the current mainPlayer's list
-        teamList[currentIndex].addNewUnit(go);
+        currentTeam.addNewUnit(go);
         teamListUpdateDel();
     }
 
@@ -89,16 +91,28 @@ public class TeamManager : MonoBehaviour
                 teamList[i].removeUnit(go);
             }
         }
-        foreach (GameObject u in teamList[1].getAllUnitsInList())
-        {
-            Debug.Log(u.name);
-        }
         teamListUpdateDel();
+    }
+
+    public static void addResource(string resourceType, int amount)
+    {
+        currentTeam.addToInventory(resourceType, amount);
+    }
+
+    public static void subtractResource(string resourceType, int amount)
+    {
+        currentTeam.subtractFromInventory(resourceType, amount);
+    }
+
+    public static int getResourceAmount(string resourceType, int amount)
+    {
+        return currentTeam.getResourceAmount(resourceType);
     }
 
     public static void setCurrentTeamIndex(int index)
     {
         currentIndex = index;
+        currentTeam = teamList[currentIndex];
     }
 }
 
