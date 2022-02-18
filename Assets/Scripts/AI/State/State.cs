@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class State
 {
-    public enum STATE { WANDERING, SEEKING, FLEEING, ATTACKING, CHASING, GATHERING};
+    public enum STATE { WANDERING, SEEKING, FLEEING, ATTACKING, CHASING, HARVESTING};
 
     public enum EVENT { ENTER, UPDATE, EXIT};
 

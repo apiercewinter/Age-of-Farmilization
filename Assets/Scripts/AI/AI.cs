@@ -12,7 +12,7 @@ public abstract class AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.tag = "AI";
+        this.gameObject.tag = "PlayerAI";
     }
 
     // Base class AI's performAction simply just calls the state to 
