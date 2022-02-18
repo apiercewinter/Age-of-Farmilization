@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
 public class Attacking : State
 {
     private GameObject target;

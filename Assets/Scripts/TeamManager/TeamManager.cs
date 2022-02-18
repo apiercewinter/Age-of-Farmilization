@@ -6,7 +6,8 @@ using UnityEngine;
 
 public delegate void TeamListUpdateDel();
 
-// This is a Singleton class that deals with the team
+// This is a Singleton class that deals with the team, it has all the information of
+// all the Teams, including its mainPlayer gameObject, units that belong to this team, etc.
 public class TeamManager : MonoBehaviour
 {
     [SerializeField]
@@ -100,3 +101,4 @@ public class TeamManager : MonoBehaviour
         currentIndex = index;
     }
 }
+

@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Writer: Boyuan Huang
+
+// AIBarbarian will start as Seeking() state which allows barbarians to walk all around the world
+// As soon as AIBarbarian find a unit (doesn't matter whether it belongs to AI team or player team)
+// Barbarian will chase and attack the target until it is dead and start Seeking() again.
 public class AIBarbarian : AI
 {
-    [SerializeField]
-    private GameObject target;
-    public Transform unitsContainer;
-
+    private GameObject target = null;
 
     // Start is called before the first frame update
     void Start()
     {
         this.tag = "AIAnimal";
-        // "Units" object in the Hierarchy
-        unitsContainer = this.transform.parent.parent;
-        target = findTarget();
-        currentState = new Attacking(this.gameObject, target);
+        currentState = new Seeking(this.gameObject, 10); // I put 10 here because I still do not have movement range implemented
+        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+        boxCollider.center = gameObject.transform.position;
+        boxCollider.size = new Vector3(30, 30, 30);
     }
 
     // Update is called once per frame
@@ -26,9 +28,7 @@ public class AIBarbarian : AI
         performAction();
     }
 
-    // This method should only be used inside this class and varies between differnt AI classes
-    // Barbarians will find the cloeset main player as its target
-    private GameObject findTarget()
+    /*private GameObject findTarget()
     {
         GameObject possibleTarget = null;
         float minDist = Mathf.Infinity;
@@ -48,15 +48,24 @@ public class AIBarbarian : AI
             }
         }
         return possibleTarget;
-    }
+    }*/
 
     public override void performAction()
     {
-        if (GetComponent<NavMeshAgent>().remainingDistance < 2 && target == null)
+        if (target == null && currentState.ToString() == "Attacking")
         {
-            target = findTarget();
-            currentState = new Attacking(this.gameObject, target);
+            currentState = new Seeking(this.gameObject, 10);
         }
         base.performAction();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject otherGO = other.gameObject;
+        if (otherGO.gameObject.tag != "AIAnimal")
+        {
+            target = otherGO;
+            currentState = new Attacking(this.gameObject, target);
+        }
     }
 }
