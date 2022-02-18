@@ -19,6 +19,7 @@ public abstract class UnitAttacker : UnitMover
         //Use action and attack
         if(attack(hit))
         {
+            stop();
             actionAvailable = false;
             return true;
         }
@@ -29,6 +30,11 @@ public abstract class UnitAttacker : UnitMover
     }
 
     public abstract bool attack(RaycastHit hit);
+
+    public virtual bool inRange(GameObject target)
+    {
+        return inRange(target, getRange());
+    }
 
     public void setDamage(float d)
     {

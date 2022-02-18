@@ -17,6 +17,7 @@ public class UnitCollector : UnitMover
         //Use action and collect
         if (collect(hit))
         {
+            stop();
             actionAvailable = false;
             return true;
         }
@@ -35,11 +36,10 @@ public class UnitCollector : UnitMover
         if (!ro) return false;
 
         //Check if in range
-        //Replace this distance with like a bounding box or something !!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (Vector3.Distance(go.transform.position, transform.position) > getRange()) return false;
+        if (!inRange(go, getRange())) return false;
 
         //Collect !
-
+        //      -----NEED TO IMPLEMENT-----
         return true;
     }
 
