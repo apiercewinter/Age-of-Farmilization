@@ -7,6 +7,10 @@ using UnityEngine;
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
 public delegate void CurrentTeamUpdateDel(int currentIndex);
 
+// TurnManager manages the control of each team's unit
+// Simply put, the turn manager changes the units of the currently controlling team to
+// "Selectable" layer, and changes units of other teams to "Unselectable" layer, so the 
+// player can only control units that belong to that player's team
 public class TurnManager : MonoBehaviour
 {
     private List<Team> TeamOrderList = new List<Team>(); 

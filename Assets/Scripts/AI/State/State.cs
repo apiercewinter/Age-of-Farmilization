@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
 public class State
 {
-    public enum STATE { WANDERING, SEEKING, FLEEING, ATTACKING, CHASING};
+    public enum STATE { WANDERING, SEEKING, FLEEING, ATTACKING, CHASING, GATHERING};
 
     public enum EVENT { ENTER, UPDATE, EXIT};
 

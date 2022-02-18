@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
 public class Seeking : State
 {
     private GameObject target;
+    private float range;
 
-    public Seeking(GameObject _gameObject, GameObject target)
+    public Seeking(GameObject _gameObject, float _range)
         : base(_gameObject)
     {
         currentState = STATE.SEEKING;
-        this.target = target;
+        this.range = _range;
     }
 
     public override void update()
     {
         base.update();
-        gameObject.GetComponent<UnitScript>().moveTo(target.transform.position);
+        gameObject.GetComponent<UnitScript>().moveTo(new Vector3(Random.Range(-range, range), Random.Range(-range, range), 0));
     }
 }

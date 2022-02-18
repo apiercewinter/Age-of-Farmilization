@@ -6925,6 +6925,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldResource
       objectReference: {fileID: 0}
+    - target: {fileID: 90465516352278639, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
+      propertyPath: m_TagString
+      value: Resource
+      objectReference: {fileID: 0}
+    - target: {fileID: 90465516352379150, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 90465516352466451, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7026,6 +7034,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SilverResource
       objectReference: {fileID: 0}
+    - target: {fileID: 2528249142638955141, guid: a9c7b15fec65550458c58d36b72b3227, type: 3}
+      propertyPath: m_TagString
+      value: Resource
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528249142639044199, guid: a9c7b15fec65550458c58d36b72b3227, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c7b15fec65550458c58d36b72b3227, type: 3}
 --- !u!1001 &4012901715829341185
@@ -7083,6 +7099,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoneResource
       objectReference: {fileID: 0}
+    - target: {fileID: 4012901715673530577, guid: 230939493bec6094baf2505e27e562a9, type: 3}
+      propertyPath: m_TagString
+      value: Resource
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012901715673573384, guid: 230939493bec6094baf2505e27e562a9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 230939493bec6094baf2505e27e562a9, type: 3}
 --- !u!1001 &7381098319252321409
@@ -7139,6 +7163,10 @@ PrefabInstance:
     - target: {fileID: 7379953401383063802, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_Name
       value: FoodResource
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379953401383063802, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
+      propertyPath: m_TagString
+      value: Resource
       objectReference: {fileID: 0}
     - target: {fileID: 7381098320036148881, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_IsTrigger
@@ -7200,6 +7228,14 @@ PrefabInstance:
     - target: {fileID: 7682202350431554779, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_Name
       value: WoodResource
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682202350431554779, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
+      propertyPath: m_TagString
+      value: Resource
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682202350431643646, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
