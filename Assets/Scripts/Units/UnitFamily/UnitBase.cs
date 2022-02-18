@@ -1,3 +1,5 @@
+//Aaron Winter
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,9 +48,7 @@ public abstract class UnitBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        //By default, cannot take action.
-        actionAvailable = false;
-
+        //Blank implementation in case want to implement in future
     }
 
     protected virtual void Update()

@@ -1,3 +1,5 @@
+//Aaron Winter
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +31,11 @@ public class UnitRangedAtk : UnitAttacker
         pScript.setTarget(target, getDamage());
 
         return true;
+    }
+
+    public void setProjectilePrefab(GameObject pPrefab)
+    {
+        projectilePrefab = pPrefab;
     }
 
     public void setProjectileInfo(ProjectileScriptableObject pInfo)
