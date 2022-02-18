@@ -77,15 +77,14 @@ public class CameraMovement : MonoBehaviour
         {
             lockedTrue = !lockedTrue;
         }
-        if (lockedTrue)
+        if (lockedTrue && SelectedObject.getSelected() != null)
         {
-            FindCenterPosition();
-            LockPosition();
+            LockPositionToCurrentSelected();
         }
     }
 
     
-    public void FindCenterPosition()
+    /*public void FindCenterPosition()
     {
         GameObject[] controlledUnits = GameObject.FindGameObjectsWithTag("Player");
 
@@ -98,6 +97,13 @@ public class CameraMovement : MonoBehaviour
         }
 
         Target = center / total;
+    }*/
+
+    public void LockPositionToCurrentSelected()
+    {
+        Vector3 Overhead = new Vector3(10f, 15f, 10f);
+        Target = SelectedObject.getSelected().transform.position;
+        transform.position = Target + Overhead;
     }
 
     public void LockPosition()

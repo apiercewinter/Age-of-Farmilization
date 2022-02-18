@@ -37,31 +37,28 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)) //Only when user click on ground layer
                 {
                     GameObject objHit = hit.transform.gameObject;
+                    GameObject go = SelectedObject.getSelected();
 
-                    // Iterate through all selected units and use NavMeshAgent's
-                    // SetDestination() method to move all the units
-                    foreach (GameObject go in SelectionDictionary.getDict().Values)
+                    UnitScript myScript = go.GetComponent<UnitScript>();
+                    UIUnitCentralPublisher myPublisher = go.GetComponent<UIUnitCentralPublisher>();
+
+                    if (!myScript.target(objHit))
                     {
-                        UnitScript myScript = go.GetComponent<UnitScript>();
-                        UIUnitCentralPublisher myPublisher = go.GetComponent<UIUnitCentralPublisher>();
-
-                        if (!myScript.target(objHit))
+                        if (!myScript.gather(objHit))
                         {
-                            if (!myScript.gather(objHit))
-                            {
-                                myScript.moveTo(hit.point);
-                                myPublisher.setDestinationPath(hit.point);
-                            }
-                            else
-                            {
-                                myPublisher.setGatheringResourcePath(objHit);
-                            }
+                            myScript.moveTo(hit.point);
+                            myPublisher.setDestinationPath(hit.point);
                         }
                         else
                         {
-                            myPublisher.setAttackingEnemyPath(objHit);
+                            myPublisher.setGatheringResourcePath(objHit);
                         }
                     }
+                    else
+                    {
+                        myPublisher.setAttackingEnemyPath(objHit);
+                    }
+
                 }
             }
         }

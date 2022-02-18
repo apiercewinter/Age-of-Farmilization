@@ -179,7 +179,6 @@ public class UnitScript : MonoBehaviour
     // add code here to take care of some businesses before destroying the gameObject
     public void destroy()
     {
-        SelectionDictionary.deselect(gameObject.GetInstanceID());
         gameObject.layer = 0;
         TeamManager.removeUnit(gameObject, gameObject.tag);
         // deathEffect will destroy the gameObject when the "animation" is over
