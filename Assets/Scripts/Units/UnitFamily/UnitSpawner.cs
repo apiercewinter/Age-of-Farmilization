@@ -24,9 +24,6 @@ public class UnitSpawner : MonoBehaviour
 
     private GameObject myTeamContainer;
     private GameObject myPlayer;
-    private ResourceScript Inventory;
-    public GameObject InventoryDisplayObject; //MAKE PRIVATE SOMEHOW (GETTER) IDK OR SERIALIZEFILED IDK HOW THIS ONE WORKS
-    private ResourcesDisplay Display;
 
     // Start is called before the first frame update
     void Start()
@@ -36,14 +33,6 @@ public class UnitSpawner : MonoBehaviour
         { //Put the teamContainer under this general Unit container
             myTeamContainer.transform.SetParent(unitContainer.transform, true);
         }
-
-        Inventory = myTeamContainer.AddComponent<ResourceScript>();
-        if (InventoryDisplayObject != null)
-        {
-            Display = InventoryDisplayObject.GetComponent<ResourcesDisplay>();
-            Display.Inventory = Inventory;
-            Inventory.Display = Display;
-        };
 
         myPlayer = spawnUnit(playerUnit, gameObject.transform.position, gameObject.transform.rotation);
 
@@ -69,7 +58,7 @@ public class UnitSpawner : MonoBehaviour
         {
             string rName = resources[i];
             //Not enough resources to spawn
-            if (Inventory.GetResourceAmount(rName) < unitType.getCost(rName)) return null;
+            if (TeamManager.getResourceAmount(rName) < unitType.getCost(rName)) return null;
         }
 
         //Take away resources
@@ -77,7 +66,7 @@ public class UnitSpawner : MonoBehaviour
         {
             string rName = resources[i];
             //Not enough resources to spawn
-            Inventory.SubtractResourceAmount(rName, unitType.getCost(rName));
+            TeamManager.subtractResource(rName, unitType.getCost(rName));
         }
 
         GameObject spawnedUnit = spawnUnit(spawnableUnits[unitIndex], position, rotation);

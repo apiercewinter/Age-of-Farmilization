@@ -15,15 +15,14 @@ public class ResourcesDisplay : MonoBehaviour
     [SerializeField] private GameObject WoodDisplay;
     [SerializeField] private GameObject GoldDisplay;
     [SerializeField] private GameObject SilverDisplay;
-    public ResourceScript Inventory;
 
-    public void UpdateResourceTextObject()
+    public void Update()
     {
         //Updates all the resource displays
-        FoodDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Food");
-        StoneDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Stone");
-        WoodDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Wood");
-        GoldDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Gold");
-        SilverDisplay.GetComponent<Text>().text = "" + Inventory.GetResourceAmount("Silver");
+        FoodDisplay.GetComponent<Text>().text = "" + TeamManager.getResourceAmount("Food");
+        StoneDisplay.GetComponent<Text>().text = "" + TeamManager.getResourceAmount("Stone");
+        WoodDisplay.GetComponent<Text>().text = "" + TeamManager.getResourceAmount("Wood");
+        GoldDisplay.GetComponent<Text>().text = "" + TeamManager.getResourceAmount("Gold");
+        SilverDisplay.GetComponent<Text>().text = "" + TeamManager.getResourceAmount("Silver");
     }
 }

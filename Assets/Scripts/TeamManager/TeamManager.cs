@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Writer: Boyuan Huang
+// Alec Kaxon-Rupp - Resources/Inventory
 
 public delegate void TeamListUpdateDel();
 
@@ -104,7 +105,7 @@ public class TeamManager : MonoBehaviour
         currentTeam.subtractFromInventory(resourceType, amount);
     }
 
-    public static int getResourceAmount(string resourceType, int amount)
+    public static int getResourceAmount(string resourceType)
     {
         return currentTeam.getResourceAmount(resourceType);
     }
