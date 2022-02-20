@@ -37,31 +37,39 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)) 
                 {
                     GameObject objHit = hit.transform.gameObject;
-                    Debug.Log("hitting ground?: objHit.pos as follows:");
-                    Debug.Log("hit.point is: " + hit.point);
-                    Debug.Log("objHit.point is: " + objHit.transform.position);
                     GameObject go = SelectedObject.getSelected();
+                    
 
                     if (go != null)
                     {
-                        UnitScript myScript = go.GetComponent<UnitScript>();
+                        UnitBase myBase = go.GetComponent<UnitBase>();
+                        UnitMover myMover = go.GetComponent<UnitMover>();
                         UIUnitCentralPublisher myPublisher = go.GetComponent<UIUnitCentralPublisher>();
                         // If player clicks on the ground
                         if (objHit.tag == "Ground")
                         {
-                            myScript.moveTo(hit.point);
+                            if (myMover)
+                            {
+                                myMover.move(hit.point);
+                            }
                             myPublisher.setDestinationPath(hit.point);
                         }
                         // If player clicks on the resource
                         else if (objHit.tag == "Resource")
                         {
-                            myScript.gather(objHit);
+                            if (myBase)
+                            {
+                                myBase.takeAction(hit);
+                            }
                             myPublisher.setGatheringResourcePath(objHit);
                         }
                         // If player clicks on other team's units
                         else if (objHit.tag.StartsWith("Player"))
                         {
-                            myScript.target(objHit);
+                            if (myBase)
+                            {
+                                myBase.takeAction(hit);
+                            }
                             myPublisher.setAttackingEnemyPath(objHit);
                         }
                         // If players click on some AIAnimal
@@ -82,12 +90,18 @@ public class PlayerController : MonoBehaviour
                             hitPointV.y = 0;
                             if (Vector3.Distance(objHitV, hitPointV) < 2)
                             {
-                                myScript.target(objHit);
+                                if (myBase)
+                                {
+                                    myBase.takeAction(hit);
+                                }
                                 myPublisher.setAttackingEnemyPath(objHit);
                             }
                             else
                             {
-                                myScript.moveTo(hit.point);
+                                if (myMover)
+                                {
+                                    myMover.move(hit.point);
+                                }
                                 myPublisher.setDestinationPath(hit.point);
                             }
                         }

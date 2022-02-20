@@ -18,10 +18,10 @@ public class AIHarvesting : AI
     {
         this.tag = "AIAnimal";
         currentState = new Seeking(this.gameObject, 10);
-        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+        /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(30, 30, 30);
-        boxCollider.isTrigger = true;
+        boxCollider.isTrigger = true;*/
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class AIHarvesting : AI
         performAction();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         GameObject otherGO = other.gameObject;
         if (otherGO.tag == "Resource")
@@ -53,7 +53,7 @@ public class AIHarvesting : AI
                 targetSet.Remove(otherGO);
             }
         }
-    }
+    }*/
 
     private bool isSafe()
     {
@@ -73,7 +73,24 @@ public class AIHarvesting : AI
     }
 
     protected override void decideState()
-    { 
+    {
+        targetSet.Clear();
+        resourceSet.Clear();
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, 15);
+
+        foreach (Collider collider in colliders)
+        {
+            GameObject collidedGO = collider.gameObject;
+            if (collidedGO.tag == "Resource")
+            {
+                resourceSet.Add(collidedGO);
+            }
+            else if (collidedGO.tag.StartsWith("Player"))
+            {
+                targetSet.Add(collidedGO);
+            }
+        }
+
         // Transition from Seeking State to Harvesting State
         // Seeking & Fleeing -> Harvesting
         if (isSafe() && currentState.ToString() != "Harvesting" && hasResourceTarget())

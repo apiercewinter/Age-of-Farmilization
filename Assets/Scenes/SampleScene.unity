@@ -556,7 +556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitsHolder: {fileID: 254034730}
-  TurnManager: {fileID: 0}
 --- !u!4 &210803138
 Transform:
   m_ObjectHideFlags: 0
