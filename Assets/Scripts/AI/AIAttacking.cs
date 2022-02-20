@@ -25,8 +25,9 @@ public class AIAttacking : AI
         // Attacking animal will start as wandering when the game first starts
         currentState = new Wandering(gameObject, 10);
         BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.center = gameObject.transform.position;
+        boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(attackingRange, attackingRange, attackingRange);
+        boxCollider.isTrigger = true;
         startingPos = gameObject.transform.position;
     }
 
@@ -78,11 +79,16 @@ public class AIAttacking : AI
         }
     }
 
-    public void decideState()
+    protected override void removeNULL()
     {
         targetSet.Remove(null);
         chasingSet.Remove(null);
         removeOutsideChasingRangeTarget();
+        base.removeNULL();
+    }
+
+    protected override void decideState()
+    {
         // Transition from Wandering State to Attacking State
         // Wandering -> Attacking
         if (hasInRangeTarget())
@@ -131,7 +137,6 @@ public class AIAttacking : AI
 
     public override void performAction()
     {
-        decideState();
         base.performAction();
     }
 }

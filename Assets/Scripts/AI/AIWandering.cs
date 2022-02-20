@@ -14,9 +14,14 @@ public class AIWandering : AI
         currentState = new Wandering(this.gameObject, 10);
     }
 
-    public void decideState()
+    protected override void removeNULL()
     {
-        return;
+        base.removeNULL();
+    }
+
+    protected override void decideState()
+    {
+        base.decideState();
     }
 
     // Update is called once per frame
@@ -27,7 +32,6 @@ public class AIWandering : AI
 
     public override void performAction()
     {
-        decideState();
         base.performAction();
     }
 }

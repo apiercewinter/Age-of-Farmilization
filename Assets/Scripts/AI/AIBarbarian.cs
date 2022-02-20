@@ -11,15 +11,17 @@ using UnityEngine.AI;
 public class AIBarbarian : AI
 {
     private GameObject target = null;
+    private HashSet<GameObject> targetSet = new HashSet<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         this.tag = "AIAnimal";
-        currentState = new Seeking(this.gameObject, 10); // I put 10 here because I still do not have movement range implemented
+        currentState = new Seeking(this.gameObject, 10); // I put 10 here because we still do not have movement range implemented
         BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.center = gameObject.transform.position;
+        boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(30, 30, 30);
+        boxCollider.isTrigger = true;
     }
 
     // Update is called once per frame
@@ -28,44 +30,66 @@ public class AIBarbarian : AI
         performAction();
     }
 
-    /*private GameObject findTarget()
-    {
-        GameObject possibleTarget = null;
-        float minDist = Mathf.Infinity;
-        foreach (Transform teamContainer in unitsContainer)
-        {
-            if (teamContainer.childCount > 0)
-            {
-                Transform childMainPlayer = teamContainer.transform.GetChild(0);
-                string childMainPlayerTag = childMainPlayer.tag;
-                float distance = Vector3.Distance(this.gameObject.transform.position, childMainPlayer.position);
-                // Barbarian will find the closest main player and set it as its target
-                if (childMainPlayerTag != "AI" && childMainPlayerTag != "AIAnimal" && distance < minDist)
-                {
-                    minDist = distance;
-                    possibleTarget = childMainPlayer.gameObject;
-                }
-            }
-        }
-        return possibleTarget;
-    }*/
-
-    public override void performAction()
-    {
-        if (target == null && currentState.ToString() == "Attacking")
-        {
-            currentState = new Seeking(this.gameObject, 10);
-        }
-        base.performAction();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         GameObject otherGO = other.gameObject;
-        if (otherGO.gameObject.tag != "AIAnimal")
+        if (otherGO.tag.StartsWith("Player"))
         {
-            target = otherGO;
+            targetSet.Add(otherGO);
+        }
+    }
+
+    private bool hasTarget()
+    {
+        return target != null;
+    }
+
+    private bool hasTargetInSet()
+    {
+        return targetSet.Count != 0;
+    }
+
+    protected override void removeNULL()
+    {
+        targetSet.Remove(null);
+        base.removeNULL();
+    }
+
+    protected override void decideState()
+    {
+        // Transition from Attacking State to Attacking State (This actually seems a bit redundant)
+        // Attacking -> Attacking
+        if (hasTarget())
+        {
             currentState = new Attacking(this.gameObject, target);
         }
+        // Transition from any states to Attacking State
+        // Attacking (last target is null) & Seeking -> Attacking
+        else if (hasTargetInSet())
+        {
+            // Find the closet threat
+            float closetDist = Mathf.Infinity;
+            foreach (GameObject threat in targetSet)
+            {
+                float thisDist = Vector3.Distance(gameObject.transform.position, threat.transform.position);
+                if (thisDist < closetDist)
+                {
+                    closetDist = thisDist;
+                    target = threat;
+                }
+            }
+            currentState = new Attacking(this.gameObject, target);
+        }
+        // Transition from any states to Seeking State
+        // Attacking (no matter whether last unit is null or not) -> Seeking
+        else
+        {
+            currentState = new Seeking(this.gameObject, 10);
+        }
+    }
+
+    public override void performAction()
+    {
+        base.performAction();
     }
 }

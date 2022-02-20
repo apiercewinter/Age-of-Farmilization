@@ -4,12 +4,13 @@ using UnityEngine;
 
 // Writer: Boyuan Huang
 
+// AIHarvesting animal will start as Seeking() for resource. When it encounters any unit from player,
+// it will flee away from that unit. When there is no unit that is within its alert range, it will start
+// its last action again. Upon finding resource, it will remember them, and collect them one by one.
 public class AIHarvesting : AI
 {
     private GameObject resourceToGather = null;
     private GameObject target = null;
-    private State lastState;
-    private bool lastTargetStillInRange = false;
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
     private HashSet<GameObject> resourceSet = new HashSet<GameObject>();
 
@@ -19,9 +20,8 @@ public class AIHarvesting : AI
         currentState = new Seeking(this.gameObject, 10);
         BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
-        boxCollider.size = new Vector3(30, 5, 30);
+        boxCollider.size = new Vector3(30, 30, 30);
         boxCollider.isTrigger = true;
-        lastState = null;
     }
 
     // Update is called once per frame
@@ -65,10 +65,15 @@ public class AIHarvesting : AI
         return resourceSet.Count != 0;
     }
 
-    public void decideState()
+    protected override void removeNULL()
     {
         targetSet.Remove(null);
         resourceSet.Remove(null);
+        base.removeNULL();
+    }
+
+    protected override void decideState()
+    { 
         // Transition from Seeking State to Harvesting State
         // Seeking & Fleeing -> Harvesting
         if (isSafe() && currentState.ToString() != "Harvesting" && hasResourceTarget())
@@ -120,7 +125,6 @@ public class AIHarvesting : AI
 
     public override void performAction()
     {
-        decideState();
         base.performAction();
         //Debug.Log(currentState.ToString());
     }
