@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 6180275022902652153}
   - component: {fileID: 5774661493198084013}
   - component: {fileID: 336578173}
-  - component: {fileID: -4594386698269198134}
+  - component: {fileID: 3931856493334500120}
   m_Layer: 8
   m_Name: AIAnimal
   m_TagString: Untagged
@@ -364,8 +364,6 @@ MonoBehaviour:
   gatherDistance: 4
   gatherCooldown: 4
   resourceToGather: {fileID: 0}
-  Inventory: {fileID: 0}
-  InventoryDisplay: {fileID: 0}
 --- !u!195 &6649955703414555083
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -429,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e0b453f0f7cc140b9237d78baa1c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4594386698269198134
+--- !u!114 &3931856493334500120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

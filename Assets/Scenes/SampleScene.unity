@@ -4377,7 +4377,7 @@ GameObject:
   - component: {fileID: 1399328835}
   m_Layer: 6
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4646,7 +4646,7 @@ MonoBehaviour:
   spawnableUnits:
   - {fileID: 11400000, guid: 2105c0ed3d0603646b0f9ed24be2b69a, type: 2}
   - {fileID: 11400000, guid: c3e44fecc37d43e4cb010e0b903005d5, type: 2}
-  team: AI
+  team: PlayerAI
   maxSpawnDistanceFromPlayer: 10
 --- !u!1 &1621694983
 GameObject:

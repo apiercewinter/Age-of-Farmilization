@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Writer: Boyuan Huang
+
+// Harvesting is a state that the gameObject will just go and harvest the resource;
 public class Harvesting : State
 {
     private GameObject resourceToGather;

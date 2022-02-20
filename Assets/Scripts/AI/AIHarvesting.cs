@@ -15,8 +15,8 @@ public class AIHarvesting : AI
         currentState = new Seeking(this.gameObject, 10);
         BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
-        
-        boxCollider.size = new Vector3(30, 30, 30);
+        boxCollider.size = new Vector3(30, 5, 30);
+        boxCollider.isTrigger = true;
     }
 
     // Update is called once per frame
@@ -78,6 +78,16 @@ public class AIHarvesting : AI
             currentState = new Seeking(this.gameObject, 10);
         }
         base.performAction();
-        Debug.Log(currentState.ToString());
+        //Debug.Log(currentState.ToString());
+    }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("hovering over");
+    }
+
+    private void OnMouseExit()
+    {
+        Debug.Log("hovering out");
     }
 }

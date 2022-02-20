@@ -12,7 +12,8 @@ TagManager:
   - Player4
   - AIAnimal
   - Resource
-  - AI
+  - PlayerAI
+  - Ground
   layers:
   - Default
   - TransparentFX
