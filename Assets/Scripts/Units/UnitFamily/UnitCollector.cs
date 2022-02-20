@@ -41,7 +41,10 @@ public class UnitCollector : UnitMover
         if (!inRange(go, getRange())) return false;
 
         //Collect !
-        //      -----NEED TO IMPLEMENT-----
+
+        TeamManager.addResource(ro.resourcetype, ro.gathervalue);
+        ro.DepleteResource();
+
         return true;
     }
 
