@@ -304,7 +304,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5127281308203733263}
   - component: {fileID: 7292105437925918711}
-  - component: {fileID: 6738518007704487351}
   - component: {fileID: 6649955703414555083}
   - component: {fileID: 6180275022902652153}
   - component: {fileID: 5774661493198084013}
@@ -346,24 +345,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxHealth: 100
   m_CurrentHealth: 100
---- !u!114 &6738518007704487351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2484104620310744933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed44861495074b4890a771a1da61182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8376868587035279634, guid: 90d94604b273ebe40973ee513515a618, type: 3}
-  movementStoppingDistance: 1
-  myTarget: {fileID: 0}
-  gatherDistance: 4
-  gatherCooldown: 4
-  resourceToGather: {fileID: 0}
 --- !u!195 &6649955703414555083
 NavMeshAgent:
   m_ObjectHideFlags: 0

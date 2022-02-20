@@ -19,6 +19,6 @@ public class Seeking : State
     public override void update()
     {
         base.update();
-        gameObject.GetComponent<UnitScript>().moveTo(new Vector3(Random.Range(-range, range), Random.Range(-range, range), 0));
+        gameObject.GetComponent<UnitMover>().move(new Vector3(Random.Range(-range, range), Random.Range(-range, range), 0));
     }
 }
