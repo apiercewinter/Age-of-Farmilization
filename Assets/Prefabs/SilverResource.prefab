@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2528249142639044198}
   - component: {fileID: 2528249142639044192}
   - component: {fileID: 2528249142639044199}
+  - component: {fileID: 405753367}
   m_Layer: 0
   m_Name: SilverResource
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2528249142638955141}
-  m_LocalRotation: {x: 0.0000000218557, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.46, y: -0.8724171, z: -5.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gathervalue: 1
   resourcetype: Silver
+  ResourceSupply: 5
 --- !u!208 &2528249142639044192
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -122,8 +124,26 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2528249142638955141}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.3988388, y: 1.9738545, z: 1.9086243}
   m_Center: {x: -0.19001558, y: 0.72593933, z: -0.07948917}
+--- !u!114 &405753367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528249142638955141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

@@ -14,9 +14,20 @@ public class AIWandering : AI
         currentState = new Wandering(this.gameObject, 10);
     }
 
+    public void decideState()
+    {
+        return;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        performAction();
+    }
+
+    public override void performAction()
+    {
+        decideState();
         base.performAction();
     }
 }

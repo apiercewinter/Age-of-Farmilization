@@ -15,6 +15,8 @@ public class AIAttacking : AI
     [SerializeField]
     private float chasingRange = 30;
     private Vector3 startingPos;
+    private HashSet<GameObject> targetSet = new HashSet<GameObject>();
+    private HashSet<GameObject> chasingSet = new HashSet<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -31,27 +33,105 @@ public class AIAttacking : AI
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("current state is: " + currentState.ToString());
         performAction();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         GameObject otherGO = other.gameObject;
-        if (otherGO.gameObject.tag != "AIAnimal")
+        if (otherGO.tag.StartsWith("Player"))
+        { 
+            targetSet.Add(otherGO);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GameObject otherGO = other.gameObject;
+        if (targetSet.Contains(otherGO))
         {
-            target = otherGO;
-            currentState = new Attacking(gameObject, target);
+            targetSet.Remove(otherGO);
+            // Add this game object to the chasing set first, and we will come around
+            // later and determine whether it is within chasing range in decideState()
+            chasingSet.Add(otherGO);
+        }
+    }
+
+    private bool hasInRangeTarget()
+    {
+        return targetSet.Count != 0;
+    }
+
+    private bool hasInChasingRangeTarget()
+    {
+        return chasingSet.Count != 0;
+    }
+
+    private void removeOutsideChasingRangeTarget()
+    {
+        foreach (GameObject target in chasingSet)
+        {
+            if (Vector3.Distance(startingPos, target.transform.position) > chasingRange)
+            {
+                chasingSet.Remove(target);
+            }
+        }
+    }
+
+    public void decideState()
+    {
+        targetSet.Remove(null);
+        chasingSet.Remove(null);
+        removeOutsideChasingRangeTarget();
+        // Transition from Wandering State to Attacking State
+        // Wandering -> Attacking
+        if (hasInRangeTarget())
+        {
+            // Find the closet threat
+            float closetDist = Mathf.Infinity;
+            foreach (GameObject threat in targetSet)
+            {
+                float thisDist = Vector3.Distance(gameObject.transform.position, threat.transform.position);
+                if (thisDist < closetDist)
+                {
+                    closetDist = thisDist;
+                    target = threat;
+                }
+            }
+            currentState = new Attacking(this.gameObject, target);
+        }
+        // Transition from Attacking State to (Chasing State)
+        // Attacking -> (Chasing)
+        else if (!hasInRangeTarget() && hasInChasingRangeTarget())
+        {
+            // Find the closet threat
+            float closetDist = Mathf.Infinity;
+            foreach (GameObject threat in chasingSet)
+            {
+                float thisDist = Vector3.Distance(gameObject.transform.position, threat.transform.position);
+                if (thisDist < closetDist)
+                {
+                    closetDist = thisDist;
+                    target = threat;
+                }
+            }
+            currentState = new Attacking(this.gameObject, target);
+        }
+        // Transition from Attacking State (and Chasing State) to Wandering State
+        // Attacking (& Chasing) -> Wandering
+        else
+        {
+            if (currentState.ToString() == "Wandering")
+            {
+                return;
+            }
+            currentState = new Wandering(this.gameObject, 10);
         }
     }
 
     public override void performAction()
     {
-        // The Attacking animal will go back to wander after the target is out of its chasing range
-        if (target != null && Vector3.Distance(target.transform.position, startingPos) > chasingRange)
-        {
-            currentState = new Wandering(gameObject, 10);
-        }
+        decideState();
         base.performAction();
     }
 }

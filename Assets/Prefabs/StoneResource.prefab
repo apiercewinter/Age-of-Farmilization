@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4012901715673573382}
   - component: {fileID: 4012901715673573384}
   - component: {fileID: 4012901715673573385}
+  - component: {fileID: 1830619728}
   m_Layer: 0
   m_Name: StoneResource
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4012901715673530577}
-  m_LocalRotation: {x: 0.0000000218557, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.71, y: -0.8349654, z: -6.9921975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gathervalue: 1
   resourcetype: Stone
+  ResourceSupply: 5
 --- !u!65 &4012901715673573384
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106,7 +108,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4012901715673530577}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.689558, y: 1.8855693, z: 2.6228259}
@@ -127,3 +129,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.062000003, y: 0.64500004, z: 0.23700002}
   m_TimeToStationary: 0.5
+--- !u!114 &1830619728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012901715673530577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
