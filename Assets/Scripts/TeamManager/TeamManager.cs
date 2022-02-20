@@ -70,8 +70,11 @@ public class TeamManager : MonoBehaviour
         foreach (GameObject go in currentTeam.getAllUnitsInList())
         {
             go.layer = LayerMask.NameToLayer("Selectable");
+            go.GetComponent<UnitBase>().readyAction();
         }
-        currentTeam.getMainPlayer().layer = LayerMask.NameToLayer("Selectable");
+        GameObject mainPlayer = currentTeam.getMainPlayer();
+        mainPlayer.layer = LayerMask.NameToLayer("Selectable");
+        mainPlayer.GetComponent<UnitBase>().readyAction();
     }
 
     private void removeCurrentTeamControl()
@@ -79,8 +82,11 @@ public class TeamManager : MonoBehaviour
         foreach (GameObject go in currentTeam.getAllUnitsInList())
         {
             go.layer = LayerMask.NameToLayer("Unselectable");
+            go.GetComponent<UnitBase>().endTurn();
         }
-        currentTeam.getMainPlayer().layer = LayerMask.NameToLayer("Unselectable");
+        GameObject mainPlayer = currentTeam.getMainPlayer();
+        mainPlayer.layer = LayerMask.NameToLayer("Unselectable");
+        mainPlayer.GetComponent<UnitBase>().endTurn();
     }
 
     private void moveToNextIndex()
