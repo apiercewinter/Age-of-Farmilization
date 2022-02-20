@@ -68,7 +68,7 @@ public class AIAttacking : AI
         return chasingSet.Count != 0;
     }
 
-    private void removeOutsideChasingRangeTarget()
+    private void removeOutsideOfChasingRangeTarget()
     {
         foreach (GameObject target in chasingSet)
         {
@@ -83,7 +83,7 @@ public class AIAttacking : AI
     {
         targetSet.Remove(null);
         chasingSet.Remove(null);
-        removeOutsideChasingRangeTarget();
+        removeOutsideOfChasingRangeTarget();
         base.removeNULL();
     }
 

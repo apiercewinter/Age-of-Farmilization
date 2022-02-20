@@ -5,29 +5,32 @@ using UnityEngine;
 // Writer: Boyuan Huang
 // Alec Kaxon-Rupp - Resources/Inventory
 
-public delegate void TeamListUpdateDel();
+public delegate void LookAtPlayerDel(GameObject mainPlayer);
 
 // This is a Singleton class that deals with the team, it has all the information of
 // all the Teams, including its mainPlayer gameObject, units that belong to this team, etc.
+//
+// 2/20 UPDATE: Merged the TurnManager into the TeamManager due to the interdependency 
+// between these two classes, below are the class description for the TurnManager:
+// TurnManager manages the control of each team's unit
+// Simply put, the turn manager changes the units of the currently controlling team to
+// "Selectable" layer, and changes units of other teams to "Unselectable" layer, so the 
+// player can only control units that belong to that player's team
 public class TeamManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject unitsHolder;
 
-    [SerializeField]
-    private GameObject TurnManager;
-
     private static List<Team> teamList = new List<Team>();
     private static int currentIndex;
     private static Team currentTeam;
 
-    private static TeamListUpdateDel teamListUpdateDel;
+    private LookAtPlayerDel lookAtPlayerDel;
 
     // Start is called before the first frame update
     void Start()
     {
         instantiateTeam();
-        TurnManager.GetComponent<TurnManager>().subscribeToCurrentTeamUpdateDel(setCurrentTeamIndex);
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class TeamManager : MonoBehaviour
     {
         
     }
+
 
     public static List<Team> getAllTeams()
     {
@@ -56,6 +60,46 @@ public class TeamManager : MonoBehaviour
             teamList.Add(newTeam);
         }
         currentTeam = teamList[currentIndex];
+        // After merging TurnManager into TeamManager, this method will take care
+        // of giving the first player control.
+        giveCurrentTeamControl();
+    }
+
+    private void giveCurrentTeamControl()
+    {
+        foreach (GameObject go in currentTeam.getAllUnitsInList())
+        {
+            go.layer = LayerMask.NameToLayer("Selectable");
+        }
+        currentTeam.getMainPlayer().layer = LayerMask.NameToLayer("Selectable");
+    }
+
+    private void removeCurrentTeamControl()
+    {
+        foreach (GameObject go in currentTeam.getAllUnitsInList())
+        {
+            go.layer = LayerMask.NameToLayer("Unselectable");
+        }
+        currentTeam.getMainPlayer().layer = LayerMask.NameToLayer("Unselectable");
+    }
+
+    private void moveToNextIndex()
+    {
+        currentIndex++;
+        if (currentIndex >= teamList.Count)
+        {
+            currentIndex = 0;
+        }
+        currentTeam = teamList[currentIndex];
+    }
+
+    public void OnNextTurnButtonClick()
+    {
+        removeCurrentTeamControl();
+        moveToNextIndex();
+        giveCurrentTeamControl();
+        GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getMainPlayer().name);
+        lookAtPlayerDel(currentTeam.getMainPlayer());
     }
 
     // This method will determine whether the unit belongs to a team of the current turn
@@ -69,17 +113,11 @@ public class TeamManager : MonoBehaviour
         return currentTeam.getTag();
     }
 
-    public static void subscribeToTeamListUpdateDel(TeamListUpdateDel del)
-    {
-        teamListUpdateDel += del;
-    }
-
     // This method will add new unit into the current team
     public static void addNewUnit(GameObject go)
     {
         // adding new unit to the current mainPlayer's list
         currentTeam.addNewUnit(go);
-        teamListUpdateDel();
     }
 
     // This method will remove the unit from the team with the specific teamTag
@@ -92,7 +130,6 @@ public class TeamManager : MonoBehaviour
                 teamList[i].removeUnit(go);
             }
         }
-        teamListUpdateDel();
     }
 
     public static void addResource(string resourceType, int amount)
@@ -114,6 +151,11 @@ public class TeamManager : MonoBehaviour
     {
         currentIndex = index;
         currentTeam = teamList[currentIndex];
+    }
+
+    public void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
+    {
+        lookAtPlayerDel += del;
     }
 }
 

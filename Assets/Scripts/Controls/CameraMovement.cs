@@ -24,12 +24,12 @@ public class CameraMovement : MonoBehaviour
     private float maxHeight = 40f;
     private float minHeight = 4f;
     [SerializeField]
-    GameObject turnManager;
+    GameObject teamManager;
 
     void Start()
     {
         WinLoseManager.subscribeToDisableControl(disableCameraMovement);
-        turnManager.GetComponent<TurnManager>().subscribeToLookAtPlayerDel(lookAt);
+        teamManager.GetComponent<TeamManager>().subscribeToLookAtPlayerDel(lookAt);
     }
 
     // Update is called once per frame
