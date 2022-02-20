@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
                         {
                             if (myBase)
                             {
-                                myBase.takeAction(hit);
+                                myBase.takeAction(hit.transform.gameObject, hit.point);
                             }
                             myPublisher.setGatheringResourcePath(objHit);
                         }
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
                         {
                             if (myBase)
                             {
-                                myBase.takeAction(hit);
+                                myBase.takeAction(hit.transform.gameObject, hit.point);
                             }
                             myPublisher.setAttackingEnemyPath(objHit);
                         }
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 if (myBase)
                                 {
-                                    myBase.takeAction(hit);
+                                    myBase.takeAction(hit.transform.gameObject, hit.point);
                                 }
                                 myPublisher.setAttackingEnemyPath(objHit);
                             }

@@ -16,7 +16,7 @@ public class ProjectileAOE : ProjectileBase
         base.Start();
 
         //Make it move upwards basically
-        curVelocity = getTarget().point/getTimeInAir();
+        curVelocity = getTargetPos()/getTimeInAir();
         float yChange = gravity * getTimeInAir() / 2;
         curVelocity.y += yChange;
     }

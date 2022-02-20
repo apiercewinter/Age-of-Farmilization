@@ -9,19 +9,17 @@ public class UnitAOEAtk : UnitAttacker
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private ProjectileSOAOE projectileInfo;
 
-    public override bool attack(RaycastHit hit)
+    public override bool attack(GameObject go, Vector3 pos = new Vector3())
     {
-        Vector3 point = hit.point;
-
         //Check if point in range
-        if (Vector3.Distance(point, transform.position) > getRange()) return false;
+        if (Vector3.Distance(pos, transform.position) > getRange()) return false;
 
         //Since in range, shoot (aoe) projectile
         Vector3 projectileStart = gameObject.GetComponent<BoxCollider>().center + gameObject.transform.position;
         GameObject projectile = projectileInfo.spawnProjectile(projectilePrefab, projectileStart, Quaternion.identity);
         ProjectileAOE p = projectile.GetComponent<ProjectileAOE>();
         p.setDamage(getDamage());
-        p.setTarget(hit);
+        p.setTarget(go, pos);
         projectile.tag = gameObject.tag;
 
         return true;

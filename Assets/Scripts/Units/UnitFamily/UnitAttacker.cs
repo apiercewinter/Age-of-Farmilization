@@ -13,13 +13,13 @@ public abstract class UnitAttacker : UnitMover
     private float damage;
     private float range;
 
-    public override bool takeAction(RaycastHit hit)
+    public override bool takeAction(GameObject go, Vector3 pos = new Vector3())
     {
         //Check if have an action
         if (!actionAvailable) return false;
 
         //Use action and attack
-        if(attack(hit))
+        if(attack(go, pos))
         {
             stop();
             actionAvailable = false;
@@ -31,7 +31,7 @@ public abstract class UnitAttacker : UnitMover
         }
     }
 
-    public abstract bool attack(RaycastHit hit);
+    public abstract bool attack(GameObject go, Vector3 pos = new Vector3());
 
     public virtual bool inRange(GameObject target)
     {

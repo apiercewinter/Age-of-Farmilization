@@ -8,7 +8,7 @@ public class ProjectileTargeted : ProjectileBase
 {
     protected override Vector3 move(float time)
     {
-        Vector3 movingTo = getTarget().point;
+        Vector3 movingTo = getTargetPos();
         float speed = time/getTimeInAir();
 
         //Track target

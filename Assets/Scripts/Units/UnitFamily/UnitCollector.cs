@@ -11,13 +11,13 @@ public class UnitCollector : UnitMover
     private float collectionMult;
     private float range;
 
-    public override bool takeAction(RaycastHit hit)
+    public override bool takeAction(GameObject go, Vector3 pos = new Vector3())
     {
         //Check if have an action
         if (!actionAvailable) return false;
 
         //Use action and collect
-        if (collect(hit))
+        if (collect(go))
         {
             stop();
             actionAvailable = false;
@@ -29,10 +29,8 @@ public class UnitCollector : UnitMover
         }
     }
 
-    public virtual bool collect(RaycastHit hit)
+    public virtual bool collect(GameObject go)
     {
-        GameObject go = hit.transform.gameObject;
-
         //Check if they have a resource script (if not, can't be collected).
         ResourceObject ro = go.GetComponent<ResourceObject>();
         if (!ro) return false;

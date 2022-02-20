@@ -9,7 +9,7 @@ public abstract class UnitBase : MonoBehaviour
     protected bool actionAvailable = false;
 
     //Returns whether the action went through.
-    public abstract bool takeAction(RaycastHit hit);
+    public abstract bool takeAction(GameObject go, Vector3 pos = new Vector3());
 
     public bool canTakeAction()
     {

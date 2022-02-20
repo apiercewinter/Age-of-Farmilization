@@ -6,18 +6,16 @@ using UnityEngine;
 
 public class UnitMeleeAtk : UnitAttacker
 {
-    public override bool attack(RaycastHit hit)
+    public override bool attack(GameObject go, Vector3 pos = new Vector3())
     {
-        GameObject target = hit.transform.gameObject;
-
         //Check if they have a health script (if not, can't be damaged/attacked).
-        Health hp = target.GetComponent<Health>();
+        Health hp = go.GetComponent<Health>();
         if (!hp) return false;
 
         //Check if both attacking someone not on same team
         //  and if they are actually in range.
-        if (gameObject.tag == target.tag) return false;
-        if (!inRange(target)) return false;
+        if (gameObject.tag == go.tag) return false;
+        if (!inRange(go)) return false;
 
 
         //Since in range, just do damage (no projectiles)

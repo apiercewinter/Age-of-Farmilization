@@ -9,7 +9,8 @@ public abstract class ProjectileBase : MonoBehaviour
     public readonly string projectileContainer = "Projectiles"; //In heirarchy, for sorting
     public readonly float maxTimeInWorldAdd = 1f;
 
-    private RaycastHit target;
+    private GameObject target;
+    private Vector3 targetPos;
     private float damage;
     private float timeInAir;
 
@@ -60,13 +61,18 @@ public abstract class ProjectileBase : MonoBehaviour
         }
     }
 
-    public RaycastHit getTarget()
+    public GameObject getTarget()
     {
         return target;
     }
-    public void setTarget(RaycastHit t)
+    public Vector3 getTargetPos()
     {
-        target = t;
+        return targetPos;
+    }
+    public void setTarget(GameObject go, Vector3 pos)
+    {
+        target = go;
+        targetPos = pos;
     }
     public float getDamage()
     {
