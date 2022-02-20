@@ -32,6 +32,8 @@ public abstract class UnitSOBase : ScriptableObject
             spawnedUnit = Instantiate(unitPrefab, position, rotation);
 
         spawnedUnit.name = unitName;
+        Health health = spawnedUnit.GetComponent<Health>();
+        if (health) health.setMaxHealth(maxHealth);
 
         //Set Model
         GameObject model = Instantiate(modelPrefab);

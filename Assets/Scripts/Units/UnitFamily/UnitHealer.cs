@@ -45,7 +45,7 @@ public class UnitHealer : UnitMover
         if (!inRange(target)) return false;
 
         //Since in range, heal
-        hp.Damage(-getHealAmt());
+        hp.Heal(getHealAmt());
         return true;
     }
 

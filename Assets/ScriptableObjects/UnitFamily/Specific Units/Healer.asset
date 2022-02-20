@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34595e8173f0c14b863efb6d94106cd, type: 3}
+  m_Name: Healer
+  m_EditorClassIdentifier: 
+  modelPrefab: {fileID: 187040, guid: 05554c72f25b7364caea91a88803135d, type: 3}
+  unitName: Healer
+  unitType: Medic
+  maxHealth: 10
+  costFood: 1
+  costStone: 0
+  costWood: 0
+  costSilver: 0
+  costGold: 0
+  moveDistance: 10
+  healAmt: 1
+  range: 10

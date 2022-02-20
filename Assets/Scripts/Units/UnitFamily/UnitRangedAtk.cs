@@ -7,7 +7,7 @@ using UnityEngine;
 public class UnitRangedAtk : UnitAttacker
 {
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private ProjectileScriptableObject projectileInfo;
+    [SerializeField] private ProjectileSOTargeted projectileInfo;
 
     public override bool attack(RaycastHit hit)
     {
@@ -25,10 +25,12 @@ public class UnitRangedAtk : UnitAttacker
 
         //Since in range, shoot a projectile out :)
         Vector3 projectileStart = gameObject.GetComponent<BoxCollider>().center + gameObject.transform.position;
-        GameObject projectile = Instantiate(projectilePrefab, projectileStart, Quaternion.identity);
-        ProjectileScript pScript = projectile.GetComponent<ProjectileScript>();
-        pScript.projectileData = projectileInfo;
-        pScript.setTarget(target, getDamage());
+        GameObject projectile = projectileInfo.spawnProjectile(projectilePrefab, projectileStart, Quaternion.identity);
+        ProjectileTargeted p = projectile.GetComponent<ProjectileTargeted>();
+        p.setDamage(getDamage());
+        p.setTarget(hit);
+        projectile.tag = gameObject.tag;
+
 
         return true;
     }
@@ -38,7 +40,7 @@ public class UnitRangedAtk : UnitAttacker
         projectilePrefab = pPrefab;
     }
 
-    public void setProjectileInfo(ProjectileScriptableObject pInfo)
+    public void setProjectileInfo(ProjectileSOTargeted pInfo)
     {
         projectileInfo = pInfo;
     }

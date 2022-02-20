@@ -9,7 +9,7 @@ public class UnitSORangedAtk : UnitSOAttacker
 {
     //Handles all the ranged attacker parameter setting
     [SerializeField] protected GameObject projectilePrefab;
-    [SerializeField] protected ProjectileScriptableObject projectileInfo;
+    [SerializeField] protected ProjectileSOTargeted projectileInfo;
 
     //To be called after creating the UnitRangedAttacker component
     public void setupRangedAttacker(GameObject go)

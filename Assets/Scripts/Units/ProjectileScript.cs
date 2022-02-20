@@ -83,7 +83,7 @@ public class ProjectileScript : MonoBehaviour
             if (!enemyHP) return;
 
             enemyHP.Damage(damage);
-            Debug.Log("Hit " + target.name + " for " + damage + " damage. Enemy now has " + enemyHP.m_CurrentHealth + " HP.");
+            Debug.Log("Hit " + target.name + " for " + damage + " damage. Enemy now has " + enemyHP.getHealth() + " HP.");
 
             Destroy(gameObject);
         }

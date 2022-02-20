@@ -5,11 +5,9 @@ using System;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float m_MaxHealth;
+    [SerializeField] private float m_MaxHealth;
 
-    //Should be private in future
-    public float m_CurrentHealth;
+    [SerializeField] private float m_CurrentHealth;
 
     private UIUnitCentralPublisher UIPublisher;
 
@@ -35,14 +33,28 @@ public class Health : MonoBehaviour
 
     public void Damage(float d)
     {
-        if (gameObject.GetComponent<UnitScript>().unitData.maxHealth != m_MaxHealth)
-        {//Check if the Scriptable Object has been changed for whatever reason
-            m_MaxHealth = gameObject.GetComponent<UnitScript>().unitData.maxHealth;
-            m_CurrentHealth = m_MaxHealth;
-        }
         m_CurrentHealth = Math.Max(m_CurrentHealth - d, 0);
 
         // Notify the UIUnitCentralPublisher's subscribers
         UIPublisher.substractHealth(d);
+    }
+
+    public void Heal(float d)
+    {
+        m_CurrentHealth = Math.Max(m_CurrentHealth + d, m_MaxHealth);
+
+        // Notify the UIUnitCentralPublisher's subscribers
+        UIPublisher.addHealth(d);
+    }
+
+    public float getHealth()
+    {
+        return m_CurrentHealth;
+    }
+
+    public void setMaxHealth(float h)
+    {
+        m_MaxHealth = h;
+        m_CurrentHealth = h;
     }
 }

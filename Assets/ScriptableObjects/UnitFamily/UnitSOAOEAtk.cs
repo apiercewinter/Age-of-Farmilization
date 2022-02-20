@@ -9,8 +9,8 @@ using UnityEngine;
 public class UnitSOAOEAtk : UnitSOAttacker
 {
     //Handles all the aoe attacker parameter setting
-    //[SerializeField] protected GameObject projectilePrefab;
-    //[SerializeField] protected ProjectileScriptableObject projectileInfo;
+    [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] protected ProjectileSOAOE projectileInfo;
 
     //To be called after creating the UnitaoeAttacker component
     public void setupAOEAttacker(GameObject go)
@@ -19,8 +19,8 @@ public class UnitSOAOEAtk : UnitSOAttacker
         UnitAOEAtk us = go.GetComponent<UnitAOEAtk>();
         if (!us) return; //Check to make sure it actually has the script
 
-        //us.setProjectilePrefab(projectilePrefab);
-        //us.setProjectileInfo(projectileInfo);
+        us.setProjectilePrefab(projectilePrefab);
+        us.setProjectileInfo(projectileInfo);
     }
 
     public override GameObject spawnUnit(GameObject unitPrefab, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion(), Transform teamContainer = null)

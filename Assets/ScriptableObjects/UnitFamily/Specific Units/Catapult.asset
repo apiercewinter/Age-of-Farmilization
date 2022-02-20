@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1967beb840fe641958bb94788820f6, type: 3}
+  m_Name: Catapult
+  m_EditorClassIdentifier: 
+  modelPrefab: {fileID: 148086, guid: 72d1e1ec46e639c47a81658b0d9e230e, type: 3}
+  unitName: Catapult
+  unitType: Vehicle
+  maxHealth: 10
+  costFood: 1
+  costStone: 0
+  costWood: 0
+  costSilver: 0
+  costGold: 0
+  moveDistance: 10
+  damage: 1
+  range: 10
+  projectilePrefab: {fileID: 8376868587035279634, guid: ff77cf7f09a3cc24ea2698c9a5e26f35, type: 3}
+  projectileInfo: {fileID: 11400000, guid: 4d1f829108aab5641a41b630572a3234, type: 2}

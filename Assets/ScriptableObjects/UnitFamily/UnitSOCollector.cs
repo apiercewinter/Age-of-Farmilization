@@ -11,7 +11,7 @@ public class UnitSOCollector : UnitSOMover
     [SerializeField] protected float collectionMultiplier;
     [SerializeField] protected float range;
 
-    //To be called after creating the healer component
+    //To be called after creating the collector component
     public void setupCollector(GameObject go)
     {
         setupMovement(go);
