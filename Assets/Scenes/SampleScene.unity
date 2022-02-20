@@ -408,7 +408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 93151715}
-  - component: {fileID: 93151716}
+  - component: {fileID: 93151717}
   m_Layer: 0
   m_Name: Player2Spawner
   m_TagString: Spawner
@@ -430,7 +430,7 @@ Transform:
   m_Father: {fileID: 1212189157}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
---- !u!114 &93151716
+--- !u!114 &93151717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -439,17 +439,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 93151714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e16852c13ecfe14fa0f5261bc6fa0aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 8327d3f4d90582d428ab04354f98f782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitContainer: {fileID: 254034730}
-  unitPrefab: {fileID: 8628317023276000461, guid: 0b904c5f6a208824f99ae5fbed1368ce, type: 3}
-  playerUnit: {fileID: 11400000, guid: 0026e2c569b3a894fbbdb2533d7f18f3, type: 2}
+  unitPrefab: {fileID: 8628317023276000461, guid: 4c85e302ff9d20542a87caf139173b45, type: 3}
+  playerUnit: {fileID: 11400000, guid: 0c24edd8f7c488740ae6bc0809baabf8, type: 2}
   spawnableUnits:
-  - {fileID: 11400000, guid: 2105c0ed3d0603646b0f9ed24be2b69a, type: 2}
-  - {fileID: 11400000, guid: c3e44fecc37d43e4cb010e0b903005d5, type: 2}
+  - {fileID: 11400000, guid: 13656fd3084937742bbbd5f2e412879f, type: 2}
+  - {fileID: 11400000, guid: 420a87a072fe75646b6ff6b76318dca3, type: 2}
+  - {fileID: 11400000, guid: 61ebe3f5de39447409022002d1944dcb, type: 2}
+  - {fileID: 11400000, guid: fb052a82d346a5e438ea85fb847c27e8, type: 2}
+  - {fileID: 11400000, guid: f0276eed37ef6b14caf3c66391f872b7, type: 2}
   team: Player2
-  maxSpawnDistanceFromPlayer: 10
+  maxSpawnDistanceFromPlayer: 150
 --- !u!1 &109577440
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,20 +5171,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736080788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e16852c13ecfe14fa0f5261bc6fa0aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 8327d3f4d90582d428ab04354f98f782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitContainer: {fileID: 254034730}
-  unitPrefab: {fileID: 8628317023276000461, guid: 0b904c5f6a208824f99ae5fbed1368ce, type: 3}
-  playerUnit: {fileID: 11400000, guid: d290f33de61e2384eb8390e1f9ef7a37, type: 2}
+  unitPrefab: {fileID: 8628317023276000461, guid: 4c85e302ff9d20542a87caf139173b45, type: 3}
+  playerUnit: {fileID: 11400000, guid: 7298628c041998144b0d24a8a5dab72f, type: 2}
   spawnableUnits:
-  - {fileID: 11400000, guid: 2105c0ed3d0603646b0f9ed24be2b69a, type: 2}
-  - {fileID: 11400000, guid: c3e44fecc37d43e4cb010e0b903005d5, type: 2}
-  - {fileID: 11400000, guid: c49008597cc5ee349bc0491dbc8ba52a, type: 2}
-  - {fileID: 11400000, guid: 378ee226f8d806146bf2f561d20a7d2c, type: 2}
-  - {fileID: 11400000, guid: 404acf5af7b33874d806d7db5047ec0e, type: 2}
+  - {fileID: 11400000, guid: 13656fd3084937742bbbd5f2e412879f, type: 2}
+  - {fileID: 11400000, guid: 420a87a072fe75646b6ff6b76318dca3, type: 2}
+  - {fileID: 11400000, guid: 61ebe3f5de39447409022002d1944dcb, type: 2}
+  - {fileID: 11400000, guid: fb052a82d346a5e438ea85fb847c27e8, type: 2}
+  - {fileID: 11400000, guid: f0276eed37ef6b14caf3c66391f872b7, type: 2}
   team: Player1
-  maxSpawnDistanceFromPlayer: 10
+  maxSpawnDistanceFromPlayer: 150
 --- !u!4 &1736080790
 Transform:
   m_ObjectHideFlags: 0

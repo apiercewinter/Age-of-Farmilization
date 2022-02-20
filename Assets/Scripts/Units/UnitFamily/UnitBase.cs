@@ -55,4 +55,32 @@ public abstract class UnitBase : MonoBehaviour
     {
         //Blank implementation in case want to implement in future
     }
+
+    // When an unit has 0 health, call this destroy() method to destroy the gameObject
+    // add code here to take care of some businesses before destroying the gameObject
+    public void destroy()
+    {
+        gameObject.layer = 0;
+        TeamManager.removeUnit(gameObject, gameObject.tag);
+        // deathEffect will destroy the gameObject when the "animation" is over
+        Destroy(gameObject);
+    }
+
+    // The gameObject that should die will rotate in z axis to the ground over
+    // "time" seconds, and then destroy. This creates a fall to ground effect
+    public IEnumerator deathEffect(float time)
+    {
+        Transform myTransform = gameObject.transform;
+        while (true)
+        {
+            myTransform.rotation = new Quaternion(myTransform.rotation.x, myTransform.rotation.y,
+                myTransform.rotation.z + (Time.deltaTime / time), myTransform.rotation.w);
+            yield return null;
+            if (myTransform.rotation.z >= 0.7f)
+            {
+                break;
+            }
+        }
+        Destroy(gameObject);
+    }
 }
