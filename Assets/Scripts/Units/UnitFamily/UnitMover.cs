@@ -54,6 +54,11 @@ public abstract class UnitMover : UnitBase
         return moveDistance;
     }
 
+    public Vector3 getRoundStartLocation()
+    {
+        return roundStartLocation;
+    }
+
 
     protected override void Start()
     {
