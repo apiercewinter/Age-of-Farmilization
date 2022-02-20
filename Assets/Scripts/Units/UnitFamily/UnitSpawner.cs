@@ -90,4 +90,9 @@ public class UnitSpawner : MonoBehaviour
         return spawnedUnit;
     }
 
+    public UnitSOBase[] getSpawnableUnits()
+    {
+        return spawnableUnits;
+    }
+
 }
