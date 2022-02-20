@@ -14,7 +14,6 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        m_MaxHealth = gameObject.GetComponent<UnitScript>().unitData.maxHealth;
         m_CurrentHealth = m_MaxHealth;
         UIPublisher = GetComponent<UIUnitCentralPublisher>();
         UIPublisher.setMaxHealth(m_MaxHealth);
@@ -27,7 +26,7 @@ public class Health : MonoBehaviour
         if (m_CurrentHealth == 0)
         {
             //Death part
-            GetComponent<UnitScript>().destroy();
+            GetComponent<UnitBase>().destroy();
         }
     }
 
