@@ -37,7 +37,7 @@ public class SpawnerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        UnitScriptableObject[] unitTypes = spawner.GetComponent<Spawner>().spawnableUnits;
+        UnitSOBase[] unitTypes = spawner.GetComponent<UnitSpawner>().getSpawnableUnits();
 
         for(uint i = 0; i < unitTypes.Length; ++i)
         {
@@ -45,16 +45,16 @@ public class SpawnerUI : MonoBehaviour
             button.transform.SetParent(content.transform);
 
             button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = unitTypes[i].name;
-            button.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].costFood;
-            button.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costStone;
-            button.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costWood;
-            button.transform.GetChild(8).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costGold;
-            button.transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].costSilver;
+            button.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ""+ unitTypes[i].getCost("Food");
+            button.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].getCost("Stone");
+            button.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].getCost("Wood");
+            button.transform.GetChild(8).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].getCost("Gold");
+            button.transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].getCost("Silver");
 
             uint localI = i;
             button.GetComponent<Button>().onClick.AddListener(() => {
                 StartCoroutine("Confirm"); //Waits for the player to click again
-                spawner.GetComponent<Spawner>().spawnUnit(localI, spawnLoc);
+                spawner.GetComponent<UnitSpawner>().spawnUnit(localI, spawnLoc);
             });
         }
     }
