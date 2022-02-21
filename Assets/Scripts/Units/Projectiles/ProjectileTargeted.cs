@@ -9,7 +9,8 @@ public class ProjectileTargeted : ProjectileBase
     protected override Vector3 move(float time)
     {
         Vector3 movingTo = getTargetPos();
-        float speed = time/getTimeInAir();
+        float distance = Vector3.Distance(movingTo, transform.position);
+        float speed = time*distance/timeRemaining;
 
         //Track target
         Vector3 directionToMove = (movingTo - gameObject.transform.position).normalized * speed;

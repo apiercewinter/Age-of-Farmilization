@@ -8,6 +8,7 @@ public class ProjectileAOE : ProjectileBase
 {
     private float blastRadius;
     private float gravity; //Positive
+    private bool hitSomething;
 
     protected Vector3 curVelocity;
 
@@ -16,9 +17,10 @@ public class ProjectileAOE : ProjectileBase
         base.Start();
 
         //Make it move upwards basically
-        curVelocity = getTargetPos()/getTimeInAir();
+        curVelocity = (getTargetPos()-transform.position)/getTimeInAir();
         float yChange = gravity * getTimeInAir() / 2;
         curVelocity.y += yChange;
+        hitSomething = false;
     }
 
     protected override Vector3 move(float time)
@@ -54,8 +56,9 @@ public class ProjectileAOE : ProjectileBase
     protected override void OnTriggerEnter(Collider other)
     {
         //Dont explode on hitting allied gameobject
-        if (other.gameObject.tag != gameObject.tag)
+        if (other.gameObject.tag != gameObject.tag && !hitSomething)
         {
+            hitSomething = true;
             hit(other.gameObject);
         }
     }

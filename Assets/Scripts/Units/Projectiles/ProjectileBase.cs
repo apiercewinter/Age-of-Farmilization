@@ -13,6 +13,7 @@ public abstract class ProjectileBase : MonoBehaviour
     private Vector3 targetPos;
     private float damage;
     private float timeInAir;
+    protected float timeRemaining;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -27,6 +28,7 @@ public abstract class ProjectileBase : MonoBehaviour
             }
             gameObject.transform.SetParent(container.transform);
         }
+        timeRemaining = timeInAir;
 
         Destroy(gameObject, timeInAir + maxTimeInWorldAdd); //Try to hit enemy for X seconds
     }
@@ -36,6 +38,7 @@ public abstract class ProjectileBase : MonoBehaviour
         if (target.transform.gameObject)
         {
             //Track target
+            timeRemaining -= Time.deltaTime;
             Vector3 directionMoved = move(Time.deltaTime);
             gameObject.transform.rotation = Quaternion.LookRotation(directionMoved);
         }
