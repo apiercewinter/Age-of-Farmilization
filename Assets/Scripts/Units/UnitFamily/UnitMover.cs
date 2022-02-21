@@ -37,6 +37,11 @@ public abstract class UnitMover : UnitBase
         return true;
     }
 
+    public virtual bool moveRel(Vector3 locRel)
+    {
+        return move(locRel + roundStartLocation);
+    }
+
     public virtual void stop()
     { //Full stops. No smooth acceleration. To be used when an action is taken, for instance.
         myAgent.ResetPath();
