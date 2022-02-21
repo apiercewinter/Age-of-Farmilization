@@ -76,9 +76,9 @@ public class UnitSpawner : MonoBehaviour
     }
 
     //Spawn on mouse when accessed through unit menu
-    public GameObject spawnUnit(uint unitIndex, Transform spawnPos)
+    public GameObject spawnUnit(uint unitIndex)
     {
-        return spawnUnit(unitIndex, spawnPos.position, spawnPos.rotation);
+        return spawnUnit(unitIndex, gameObject.transform.position, gameObject.transform.rotation);
     }
 
     private GameObject spawnUnit(UnitSOBase unitType, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion())
