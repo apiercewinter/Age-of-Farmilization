@@ -17,7 +17,7 @@ MonoBehaviour:
   unitType: Infantry
   maxHealth: 10
   costFood: 1
-  costStone: 0
+  costStone: 2
   costWood: 0
   costSilver: 0
   costGold: 0

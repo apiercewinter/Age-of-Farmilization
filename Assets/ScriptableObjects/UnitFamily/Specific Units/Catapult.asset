@@ -16,9 +16,9 @@ MonoBehaviour:
   unitName: Catapult
   unitType: Vehicle
   maxHealth: 10
-  costFood: 1
-  costStone: 0
-  costWood: 0
+  costFood: 0
+  costStone: 1
+  costWood: 2
   costSilver: 0
   costGold: 0
   moveDistance: 10

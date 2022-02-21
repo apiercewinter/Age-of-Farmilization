@@ -18,7 +18,7 @@ MonoBehaviour:
   maxHealth: 10
   costFood: 1
   costStone: 0
-  costWood: 0
+  costWood: 1
   costSilver: 0
   costGold: 0
   moveDistance: 10

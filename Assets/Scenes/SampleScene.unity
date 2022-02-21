@@ -649,7 +649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d4fbd6533fcf1b5479b89f5fbdc30c6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a96c9bebc395de46b77552f9846bdbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -971,12 +971,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1736080788}
     - target: {fileID: 2073117445695512344, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
+      propertyPath: FoodIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: feb7cd148e5560b4b848377952625f91, type: 3}
+    - target: {fileID: 2073117445695512344, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
+      propertyPath: GoldIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: d4fbd6533fcf1b5479b89f5fbdc30c6d, type: 3}
+    - target: {fileID: 2073117445695512344, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
+      propertyPath: WoodIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 84098ff6fc529e14bb2198ae36541c2c, type: 3}
+    - target: {fileID: 2073117445695512344, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
       propertyPath: spawnLoc
       value: 
       objectReference: {fileID: 2050661722}
+    - target: {fileID: 2073117445695512344, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
+      propertyPath: StoneIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: a78a6090315346a43abf28aef70ec37b, type: 3}
+    - target: {fileID: 2073117445695512344, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
+      propertyPath: SilverIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1a96c9bebc395de46b77552f9846bdbd, type: 3}
     - target: {fileID: 2073117445695512345, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
       propertyPath: m_ShowMaskGraphic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073117445695512347, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -42.2182
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073117445695512347, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -18.2233
       objectReference: {fileID: 0}
     - target: {fileID: 2073117445695512347, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
       propertyPath: m_LocalScale.x
@@ -992,11 +1020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2073117445695512347, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 24.1
+      value: 6.8273926
       objectReference: {fileID: 0}
     - target: {fileID: 2073117445695512347, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.5747
+      value: -6.1353
       objectReference: {fileID: 0}
     - target: {fileID: 2073117445735341218, guid: c258a29bdc8176c42b1e7f9ff699cecc, type: 3}
       propertyPath: m_Pivot.x
@@ -6875,7 +6903,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
   content: {fileID: 0}
-  spawner: {fileID: 1736080788}
+  spawner: {fileID: 0}
+  FoodIcon: {fileID: 0}
+  StoneIcon: {fileID: 0}
+  WoodIcon: {fileID: 0}
+  GoldIcon: {fileID: 0}
+  SilverIcon: {fileID: 0}
 --- !u!4 &2125218205
 Transform:
   m_ObjectHideFlags: 0
