@@ -39,7 +39,12 @@ public abstract class UnitMover : UnitBase
 
     public virtual bool moveRel(Vector3 locRel)
     {
-        return move(locRel + roundStartLocation);
+        if (!actionAvailable) return false;
+        if (locRel.magnitude > moveDistance) return false;
+        //Movement code here :)
+        myAgent.SetDestination(locRel+roundStartLocation);
+
+        return true;
     }
 
     public virtual void stop()
