@@ -7,11 +7,9 @@ using UnityEngine;
 // AIAttacking will first starts as Wandering() within a specfic range
 // As soon as there is a unit that enters its attacking range, it will chase and attack that unit
 // If the unit runs out of its chasing range, AIAttacking will go to back Wandering() again.
-public class AIAttacking : AI
+public class AIAttacking : AIAnimal
 {
     private GameObject target = null;
-    [SerializeField]
-    private float attackingRange = 15;
     [SerializeField]
     private float chasingRange = 30;
     private Vector3 startingPos;
@@ -22,7 +20,6 @@ public class AIAttacking : AI
     // Start is called before the first frame update
     void Start()
     {
-        this.tag = "AIAnimal";
         moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
         // Attacking animal will start as wandering when the game first starts
         currentState = new Wandering(gameObject, moveDistance);
@@ -70,22 +67,41 @@ public class AIAttacking : AI
         return chasingSet.Count != 0;
     }
 
-    private void removeOutsideOfChasingRangeTarget()
+    // AIAttacking will remember all the targets that are still in chasing range
+    // Due to Unity's issue, HashSet.Remove(null) doesn't work, so I have to create this method below
+    // to sort of remove null from the resourceSet, for more information, refer to the link below:
+    // https://issuetracker.unity3d.com/issues/hashset-dot-removewhere-does-not-correctly-evaluate-null-for-gameobjects-in-builds
+    // Thanks to Alec for finding this issue
+    private void clearChasingSet()
     {
-        foreach (GameObject target in chasingSet)
+        HashSet<GameObject> newSet = new HashSet<GameObject>();
+        foreach (GameObject go in chasingSet)
         {
-            if (Vector3.Distance(startingPos, target.transform.position) > chasingRange)
+            if (go != null && Vector3.Distance(startingPos, go.transform.position) > chasingRange)
             {
-                chasingSet.Remove(target);
+                newSet.Add(go);
             }
         }
+        chasingSet = newSet;
+    }
+
+    private void clearTargetSet()
+    {
+        foreach (GameObject go in targetSet)
+        {
+            if (go != null && Vector3.Distance(startingPos, go.transform.position) < chasingRange &&
+                Vector3.Distance(gameObject.transform.position, go.transform.position) > moveDistance)
+            {
+                chasingSet.Add(go);
+            }
+        }
+        targetSet.Clear();
     }
 
     protected override void refreshSet()
     {
-        chasingSet.Remove(null);
-        removeOutsideOfChasingRangeTarget();
-        targetSet.Clear();
+        clearTargetSet();
+        clearChasingSet();
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, moveDistance);
 
         foreach (Collider collider in colliders)
@@ -138,11 +154,10 @@ public class AIAttacking : AI
         // Attacking (& Chasing) -> Wandering
         else
         {
-            if (currentState.ToString() == "Wandering")
+            if (currentState.ToString() != "Wandering")
             {
-                return;
+                currentState = new Wandering(this.gameObject, moveDistance);
             }
-            currentState = new Wandering(this.gameObject, moveDistance);
         }
     }
 

@@ -8,7 +8,7 @@ using UnityEngine.AI;
 // AIBarbarian will start as Seeking() state which allows barbarians to walk all around the world
 // As soon as AIBarbarian find a unit (doesn't matter whether it belongs to AI team or player team)
 // Barbarian will chase and attack the target until it is dead and start Seeking() again.
-public class AIBarbarian : AI
+public class AIBarbarian : AIAnimal
 {
     private GameObject target = null;
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
@@ -17,19 +17,12 @@ public class AIBarbarian : AI
     // Start is called before the first frame update
     void Start()
     {
-        this.tag = "AIAnimal";
         moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
         currentState = new Seeking(this.gameObject, moveDistance);
         /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(30, 30, 30);
         boxCollider.isTrigger = true;*/
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        performAction();
     }
 
     /*private void OnTriggerEnter(Collider other)

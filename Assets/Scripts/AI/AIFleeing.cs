@@ -7,7 +7,7 @@ using UnityEngine;
 // AIFleeing will first starts as Wandering() within a specfic range
 // As soon as there is a unit that enters its range, the AIFleeing will flee away from that unit
 // After the AIFleeing is 15 distance away from that unit, AIFleeing will go back to Wandering()
-public class AIFleeing : AI
+public class AIFleeing : AIAnimal
 {
     private GameObject target = null;
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
@@ -16,7 +16,6 @@ public class AIFleeing : AI
     // Start is called before the first frame update
     void Start()
     {
-        this.tag = "AIAnimal";
         moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
         // Fleeing animal will start as wandering when the game first starts
         currentState = new Wandering(this.gameObject, moveDistance);
@@ -58,7 +57,6 @@ public class AIFleeing : AI
 
     protected override void refreshSet()
     {
-        targetSet.Remove(null);
         targetSet.Clear();
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, moveDistance);
 

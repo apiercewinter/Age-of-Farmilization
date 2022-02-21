@@ -9,13 +9,7 @@ public abstract class AI : MonoBehaviour
 {
     protected State currentState;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        this.gameObject.tag = "PlayerAI";
-    }
-
-    // Refresh the set every turn and get all new units that is within range in the new turn
+    /*// Refresh the set every turn and get all new units that is within range in the new turn
     protected virtual void refreshSet()
     {
         return;
@@ -27,15 +21,13 @@ public abstract class AI : MonoBehaviour
     protected virtual void decideState()
     {
         return;
-    }
+    }*/
 
     // Base class AI's performAction simply just calls removeNULL(), decideState()
     // method. The child class should decide what currentState is when it is this
     // AIAnimal's turn.
     public virtual void performAction()
     {
-        refreshSet();
-        decideState();
         currentState.update();
     }
 }

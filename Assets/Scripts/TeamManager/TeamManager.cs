@@ -56,7 +56,7 @@ public class TeamManager : MonoBehaviour
             List<GameObject> newList = new List<GameObject>();
             Transform child = unitsParent.GetChild(i);
             GameObject mainPlayer = child.GetChild(0).gameObject;
-            if (mainPlayer.tag == "PlayerAI")
+            if (mainPlayer.tag == "AIAnimal")
             {
                 newList.Add(mainPlayer);
                 Team aiTeam = new Team(null, newList, mainPlayer.tag);
@@ -106,7 +106,7 @@ public class TeamManager : MonoBehaviour
             currentIndex = 0;
         }
         currentTeam = teamList[currentIndex];
-        if (currentTeam.getTag() == "PlayerAI")
+        if (currentTeam.getTag() == "AIAnimal")
         {
             AITurn();
             currentIndex++;
@@ -129,11 +129,10 @@ public class TeamManager : MonoBehaviour
 
     public void AITurn()
     {
-        Debug.Log("AI'turn");
         foreach (GameObject ai in currentTeam.getAllUnitsInList())
         {
             ai.GetComponent<UnitBase>().readyAction();
-            ai.GetComponent<AI>().performAction();
+            ai.GetComponent<AIAnimal>().performAction();
         }
     }
 
@@ -163,6 +162,7 @@ public class TeamManager : MonoBehaviour
             if (teamList[i].getTag() == teamTag)
             {
                 teamList[i].removeUnit(go);
+                return;
             }
         }
     }

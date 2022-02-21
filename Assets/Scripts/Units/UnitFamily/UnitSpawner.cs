@@ -86,6 +86,10 @@ public class UnitSpawner : MonoBehaviour
         //Spawn the unit
         GameObject spawnedUnit = unitType.spawnUnit(unitPrefab, position, rotation, myTeamContainer.transform);
         spawnedUnit.tag = team;
+        if (spawnedUnit.gameObject.GetComponent<AIAnimal>())
+        {
+            spawnedUnit.tag = "AIAnimal";
+        }
 
         return spawnedUnit;
     }
