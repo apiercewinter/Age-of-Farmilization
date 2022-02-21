@@ -11,17 +11,19 @@ public class AIFleeing : AI
 {
     private GameObject target = null;
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
+    private float moveDistance;
 
     // Start is called before the first frame update
     void Start()
     {
         this.tag = "AIAnimal";
+        moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
         // Fleeing animal will start as wandering when the game first starts
-        currentState = new Wandering(this.gameObject, 10);
-        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+        currentState = new Wandering(this.gameObject, moveDistance);
+        /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(30, 30, 30);
-        boxCollider.isTrigger = true;
+        boxCollider.isTrigger = true;*/
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class AIFleeing : AI
         performAction();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         GameObject otherGO = other.gameObject;
         if (otherGO.tag.StartsWith("Player"))
@@ -47,17 +49,27 @@ public class AIFleeing : AI
         {
             targetSet.Remove(otherGO);
         }
-    }
+    }*/
 
     private bool isSafe()
     {
         return targetSet.Count == 0;
     }
 
-    protected override void removeNULL()
+    protected override void refreshSet()
     {
         targetSet.Remove(null);
-        base.removeNULL();
+        targetSet.Clear();
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, moveDistance);
+
+        foreach (Collider collider in colliders)
+        {
+            GameObject collidedGO = collider.gameObject;
+            if (collidedGO.tag.StartsWith("Player"))
+            {
+                targetSet.Add(collidedGO);
+            }
+        }
     }
 
     protected override void decideState()
@@ -68,7 +80,7 @@ public class AIFleeing : AI
         {
             if (currentState.ToString() != "Wandering")
             {
-                currentState = new Wandering(this.gameObject, 10);
+                currentState = new Wandering(this.gameObject, moveDistance);
             }
         }
         // Trasition from Wandering State to Fleeing State

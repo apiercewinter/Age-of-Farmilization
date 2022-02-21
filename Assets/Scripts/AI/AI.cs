@@ -15,8 +15,8 @@ public abstract class AI : MonoBehaviour
         this.gameObject.tag = "PlayerAI";
     }
 
-    // Remove any null object inthe set in the child's variable
-    protected virtual void removeNULL()
+    // Refresh the set every turn and get all new units that is within range in the new turn
+    protected virtual void refreshSet()
     {
         return;
     }
@@ -34,7 +34,7 @@ public abstract class AI : MonoBehaviour
     // AIAnimal's turn.
     public virtual void performAction()
     {
-        removeNULL();
+        refreshSet();
         decideState();
         currentState.update();
     }

@@ -12,16 +12,18 @@ public class AIBarbarian : AI
 {
     private GameObject target = null;
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
+    private float moveDistance;
 
     // Start is called before the first frame update
     void Start()
     {
         this.tag = "AIAnimal";
-        currentState = new Seeking(this.gameObject, 10); // I put 10 here because we still do not have movement range implemented
-        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+        moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
+        currentState = new Seeking(this.gameObject, moveDistance);
+        /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(30, 30, 30);
-        boxCollider.isTrigger = true;
+        boxCollider.isTrigger = true;*/
     }
 
     // Update is called once per frame
@@ -30,14 +32,14 @@ public class AIBarbarian : AI
         performAction();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         GameObject otherGO = other.gameObject;
         if (otherGO.tag.StartsWith("Player"))
         {
             targetSet.Add(otherGO);
         }
-    }
+    }*/
 
     private bool hasTarget()
     {
@@ -49,10 +51,20 @@ public class AIBarbarian : AI
         return targetSet.Count != 0;
     }
 
-    protected override void removeNULL()
+    protected override void refreshSet()
     {
+        // AIBarbarian will remember all the units it meets
         targetSet.Remove(null);
-        base.removeNULL();
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, moveDistance);
+
+        foreach (Collider collider in colliders)
+        {
+            GameObject collidedGO = collider.gameObject;
+            if (collidedGO.tag.StartsWith("Player"))
+            {
+                targetSet.Add(collidedGO);
+            }
+        }
     }
 
     protected override void decideState()
@@ -84,7 +96,7 @@ public class AIBarbarian : AI
         // Attacking (no matter whether last unit is null or not) -> Seeking
         else
         {
-            currentState = new Seeking(this.gameObject, 10);
+            currentState = new Seeking(this.gameObject, moveDistance);
         }
     }
 

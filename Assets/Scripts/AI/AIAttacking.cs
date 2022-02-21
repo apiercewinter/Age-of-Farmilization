@@ -17,17 +17,19 @@ public class AIAttacking : AI
     private Vector3 startingPos;
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
     private HashSet<GameObject> chasingSet = new HashSet<GameObject>();
+    private float moveDistance;
 
     // Start is called before the first frame update
     void Start()
     {
         this.tag = "AIAnimal";
+        moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
         // Attacking animal will start as wandering when the game first starts
-        currentState = new Wandering(gameObject, 10);
-        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+        currentState = new Wandering(gameObject, moveDistance);
+        /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(attackingRange, attackingRange, attackingRange);
-        boxCollider.isTrigger = true;
+        boxCollider.isTrigger = true;*/
         startingPos = gameObject.transform.position;
     }
 
@@ -37,7 +39,7 @@ public class AIAttacking : AI
         performAction();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         GameObject otherGO = other.gameObject;
         if (otherGO.tag.StartsWith("Player"))
@@ -56,7 +58,7 @@ public class AIAttacking : AI
             // later and determine whether it is within chasing range in decideState()
             chasingSet.Add(otherGO);
         }
-    }
+    }*/
 
     private bool hasInRangeTarget()
     {
@@ -79,12 +81,21 @@ public class AIAttacking : AI
         }
     }
 
-    protected override void removeNULL()
+    protected override void refreshSet()
     {
-        targetSet.Remove(null);
         chasingSet.Remove(null);
         removeOutsideOfChasingRangeTarget();
-        base.removeNULL();
+        targetSet.Clear();
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, moveDistance);
+
+        foreach (Collider collider in colliders)
+        {
+            GameObject collidedGO = collider.gameObject;
+            if (collidedGO.tag.StartsWith("Player"))
+            {
+                targetSet.Add(collidedGO);
+            }
+        }
     }
 
     protected override void decideState()
@@ -131,7 +142,7 @@ public class AIAttacking : AI
             {
                 return;
             }
-            currentState = new Wandering(this.gameObject, 10);
+            currentState = new Wandering(this.gameObject, moveDistance);
         }
     }
 

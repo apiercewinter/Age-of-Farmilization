@@ -7,27 +7,23 @@ using UnityEngine;
 // AIWandering is just a simple AI animal that will just wander around
 public class AIWandering : AI
 {
+    private float moveDistance;
     // Start is called before the first frame update
     void Start()
     {
         this.tag = "AIAnimal";
-        currentState = new Wandering(this.gameObject, 10);
+        moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
+        currentState = new Wandering(this.gameObject, moveDistance);
     }
 
-    protected override void removeNULL()
+    protected override void refreshSet()
     {
-        base.removeNULL();
+        base.refreshSet();
     }
 
     protected override void decideState()
     {
         base.decideState();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        performAction();
     }
 
     public override void performAction()
