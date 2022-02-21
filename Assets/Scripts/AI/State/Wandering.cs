@@ -15,7 +15,6 @@ public class Wandering : State
         currentState = STATE.WANDERING;
         this.activityRange = activityRange;
         startingPos = gameObject.transform.position;
-        Debug.Log("starting Position is: " + startingPos);
     }
 
     public override void enter()
