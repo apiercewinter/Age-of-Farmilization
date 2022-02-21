@@ -56,8 +56,17 @@ public class TeamManager : MonoBehaviour
             List<GameObject> newList = new List<GameObject>();
             Transform child = unitsParent.GetChild(i);
             GameObject mainPlayer = child.GetChild(0).gameObject;
-            Team newTeam = new Team(mainPlayer, newList, mainPlayer.tag);
-            teamList.Add(newTeam);
+            if (mainPlayer.tag == "PlayerAI")
+            {
+                newList.Add(mainPlayer);
+                Team aiTeam = new Team(null, newList, mainPlayer.tag);
+                teamList.Add(aiTeam);
+            }
+            else
+            {
+                Team newTeam = new Team(mainPlayer, newList, mainPlayer.tag);
+                teamList.Add(newTeam);
+            }
         }
         currentTeam = teamList[currentIndex];
         // After merging TurnManager into TeamManager, this method will take care
@@ -97,6 +106,16 @@ public class TeamManager : MonoBehaviour
             currentIndex = 0;
         }
         currentTeam = teamList[currentIndex];
+        if (currentTeam.getTag() == "PlayerAI")
+        {
+            AITurn();
+            currentIndex++;
+            if (currentIndex >= teamList.Count)
+            {
+                currentIndex = 0;
+            }
+            currentTeam = teamList[currentIndex];
+        }
     }
 
     public void OnNextTurnButtonClick()
@@ -106,6 +125,16 @@ public class TeamManager : MonoBehaviour
         giveCurrentTeamControl();
         GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getMainPlayer().name);
         lookAtPlayerDel(currentTeam.getMainPlayer());
+    }
+
+    public void AITurn()
+    {
+        Debug.Log("AI'turn");
+        foreach (GameObject ai in currentTeam.getAllUnitsInList())
+        {
+            ai.GetComponent<UnitBase>().readyAction();
+            ai.GetComponent<AI>().performAction();
+        }
     }
 
     // This method will determine whether the unit belongs to a team of the current turn

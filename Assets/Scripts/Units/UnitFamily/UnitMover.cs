@@ -29,9 +29,12 @@ public abstract class UnitMover : UnitBase
     //Returns whether you can move there (in case out of range or don't have action).
     public virtual bool move(Vector3 loc)
     {
+        Debug.Log("movement distance: " + moveDistance);
+        Debug.Log("unitMover is called");
         if (!actionAvailable) return false;
+        Debug.Log("action available");
         if (Vector3.Distance(roundStartLocation, loc) > moveDistance) return false;
-
+        Debug.Log("distacne too far");
         //Movement code here :)
         myAgent.SetDestination(loc);
 

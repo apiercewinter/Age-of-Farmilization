@@ -27,7 +27,7 @@ public class AIHarvesting : AI
     // Update is called once per frame
     void Update()
     {
-        performAction();
+
     }
 
     /*private void OnTriggerEnter(Collider other)
@@ -142,6 +142,7 @@ public class AIHarvesting : AI
 
     public override void performAction()
     {
+        Debug.Log("AIHarvesting's state: " + currentState.ToString());
         base.performAction();
         //Debug.Log(currentState.ToString());
     }

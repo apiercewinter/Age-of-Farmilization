@@ -21,7 +21,7 @@ public class Harvesting : State
         base.update();
         if (resourceToGather != null)
         {
-            gameObject.GetComponent<UnitScript>().gather(resourceToGather);
+            gameObject.GetComponent<UnitCollector>().takeAction(resourceToGather);
         }
     }
 }

@@ -7,8 +7,6 @@ using UnityEngine.AI;
 public class Wandering : State
 {
     private float activityRange;
-    private float randomX;
-    private float randomY;
     private Vector3 startingPos;
 
     public Wandering(GameObject _gameObject, float activityRange)
@@ -29,27 +27,10 @@ public class Wandering : State
     public override void update()
     {
         base.update();
-        wander();
-    }
+        Vector3 movement = new Vector3(Random.Range(-activityRange, activityRange), 0, Random.Range(-activityRange, activityRange)).normalized *
+            gameObject.GetComponent<UnitMover>().getMoveDistance() + gameObject.transform.position;
 
-    void wander()
-    {
-        if (gameObject.GetComponent<NavMeshAgent>().remainingDistance < 2)
-        {
-            Debug.Log(gameObject.GetComponent<NavMeshAgent>().remainingDistance);
-            randomX = Random.Range(-activityRange, activityRange);
-            randomY = Random.Range(-activityRange, activityRange);
-            Vector3 currentPos = gameObject.transform.position;
-            if (currentPos.x + randomX > startingPos.x + activityRange)
-            {
-                randomX = activityRange + startingPos.x - currentPos.x;
-            }
-            if (currentPos.y + randomY > startingPos.y + activityRange)
-            {
-                randomY = activityRange + startingPos.y - currentPos.y;
-            }
-            gameObject.GetComponent<UnitScript>().moveTo(new Vector3(randomX, randomY, 0) + currentPos);
-            Debug.Log("magnitude to the current Postion: " + Vector3.Distance(startingPos, gameObject.transform.position));
-        }
+        gameObject.GetComponent<UnitMover>().move(movement);
+
     }
 }

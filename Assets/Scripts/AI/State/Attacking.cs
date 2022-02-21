@@ -20,7 +20,7 @@ public class Attacking : State
         base.update();
         if (target != null)
         {
-            gameObject.GetComponent<UnitScript>().target(target);
+            gameObject.GetComponent<UnitAttacker>().takeAction(target);
         }
     }
 }

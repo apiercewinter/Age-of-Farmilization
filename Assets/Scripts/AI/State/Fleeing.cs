@@ -20,8 +20,9 @@ public class Fleeing : State
         base.update();
         if (target != null)
         {
-            Vector3 direction = (gameObject.transform.position - target.transform.position).normalized;
-            gameObject.GetComponent<UnitScript>().moveTo(direction * 10);
+            Vector3 movement = (gameObject.transform.position - target.transform.position).normalized *
+                gameObject.GetComponent<UnitMover>().getMoveDistance() + gameObject.transform.position;
+            gameObject.GetComponent<UnitMover>().move(movement);
         }
     }
 }
