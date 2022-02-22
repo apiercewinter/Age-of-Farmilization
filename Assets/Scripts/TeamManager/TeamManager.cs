@@ -36,6 +36,7 @@ public class TeamManager : MonoBehaviour
     void Start()
     {
         instantiateTeam();
+        SwapSpawnMenus();
     }
 
     public static List<Team> getAllTeams()
@@ -129,15 +130,15 @@ public class TeamManager : MonoBehaviour
 
     public void SwapSpawnMenus()
     {
-        if (spawnerP1.activeSelf)
+        if (currentTeam.getTag()=="Player1")
         {
-            spawnerP1.SetActive(false);
-            spawnerP2.SetActive(true);
-        }
-        else if (spawnerP2.activeSelf)
-        {
-            spawnerP2.SetActive(false);
             spawnerP1.SetActive(true);
+            spawnerP2.SetActive(false);
+        }
+        else if (currentTeam.getTag()=="Player2")
+        {
+            spawnerP2.SetActive(true);
+            spawnerP1.SetActive(false);
         }
     }
 
