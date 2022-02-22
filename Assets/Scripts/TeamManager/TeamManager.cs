@@ -27,6 +27,11 @@ public class TeamManager : MonoBehaviour
 
     private LookAtPlayerDel lookAtPlayerDel;
 
+    [SerializeField]
+    private GameObject spawnerP1;
+    [SerializeField]
+    private GameObject spawnerP2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +124,21 @@ public class TeamManager : MonoBehaviour
         giveCurrentTeamControl();
         GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getMainPlayer().name);
         lookAtPlayerDel(currentTeam.getMainPlayer());
+        
+    }
+
+    public void SwapSpawnMenus()
+    {
+        if (spawnerP1.activeSelf)
+        {
+            spawnerP1.SetActive(false);
+            spawnerP2.SetActive(true);
+        }
+        else if (spawnerP2.activeSelf)
+        {
+            spawnerP2.SetActive(false);
+            spawnerP1.SetActive(true);
+        }
     }
 
     public void AITurn()
