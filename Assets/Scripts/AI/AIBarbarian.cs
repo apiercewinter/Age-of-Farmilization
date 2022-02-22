@@ -39,15 +39,33 @@ public class AIBarbarian : AIAnimal
         return target != null;
     }
 
+    private bool targetIsInRange()
+    {
+        return gameObject.GetComponent<UnitPlayer>().inRange(target);
+    }
+
     private bool hasTargetInSet()
     {
         return targetSet.Count != 0;
     }
 
+    private void clearTargetSet()
+    {
+        HashSet<GameObject> newSet = new HashSet<GameObject>();
+        foreach (GameObject go in targetSet)
+        {
+            if (go != null)
+            {
+                newSet.Add(go);
+            }
+        }
+        targetSet = newSet;
+    }
+
     protected override void refreshSet()
     {
         // AIBarbarian will remember all the units it meets
-        targetSet.Remove(null);
+        clearTargetSet();
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, moveDistance);
 
         foreach (Collider collider in colliders)
@@ -66,7 +84,14 @@ public class AIBarbarian : AIAnimal
         // Attacking -> Attacking
         if (hasTarget())
         {
-            currentState = new Attacking(this.gameObject, target);
+            if (targetIsInRange())
+            {
+                currentState = new Attacking(this.gameObject, target);
+            }
+            else
+            {
+                currentState = new Chasing(this.gameObject, target);
+            }
         }
         // Transition from any states to Attacking State
         // Attacking (last target is null) & Seeking -> Attacking
@@ -83,7 +108,14 @@ public class AIBarbarian : AIAnimal
                     target = threat;
                 }
             }
-            currentState = new Attacking(this.gameObject, target);
+            if (targetIsInRange())
+            {
+                currentState = new Attacking(this.gameObject, target);
+            }
+            else
+            {
+                currentState = new Chasing(this.gameObject, target);
+            }    
         }
         // Transition from any states to Seeking State
         // Attacking (no matter whether last unit is null or not) -> Seeking
@@ -96,5 +128,6 @@ public class AIBarbarian : AIAnimal
     public override void performAction()
     {
         base.performAction();
+        Debug.Log(currentState.ToString());
     }
 }

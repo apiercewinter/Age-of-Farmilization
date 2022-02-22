@@ -12,24 +12,19 @@ public class AIFleeing : AIAnimal
     private GameObject target = null;
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
     private float moveDistance;
+    private Vector3 startingPos;
 
     // Start is called before the first frame update
     void Start()
     {
         moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
+        startingPos = gameObject.transform.position;
         // Fleeing animal will start as wandering when the game first starts
-        currentState = new Wandering(this.gameObject, moveDistance);
+        currentState = new Wandering(this.gameObject, moveDistance, startingPos);
         /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(30, 30, 30);
         boxCollider.isTrigger = true;*/
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Debug.Log("current state is: " + currentState.ToString());
-        performAction();
     }
 
     /*private void OnTriggerEnter(Collider other)
@@ -78,7 +73,7 @@ public class AIFleeing : AIAnimal
         {
             if (currentState.ToString() != "Wandering")
             {
-                currentState = new Wandering(this.gameObject, moveDistance);
+                currentState = new Wandering(this.gameObject, moveDistance, startingPos);
             }
         }
         // Trasition from Wandering State to Fleeing State
@@ -103,5 +98,6 @@ public class AIFleeing : AIAnimal
     public override void performAction()
     {
         base.performAction();
+        // Debug.Log("AIFleeing's current state: " + currentState.ToString());
     }
 }

@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 6180275022902652153}
   - component: {fileID: 5774661493198084013}
   - component: {fileID: 336578173}
-  - component: {fileID: 3931856493334500120}
+  - component: {fileID: 7787479787597074848}
   m_Layer: 8
   m_Name: AIAnimal
   m_TagString: Untagged
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e0b453f0f7cc140b9237d78baa1c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3931856493334500120
+--- !u!114 &7787479787597074848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2484104620310744933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c98dd19ed8f124e88d1f6f376e289c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c1cd1f04a8361847bf1b1dc0365107c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6180275022747501868

@@ -33,13 +33,6 @@ public class TeamManager : MonoBehaviour
         instantiateTeam();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public static List<Team> getAllTeams()
     {
         return teamList;
@@ -72,6 +65,7 @@ public class TeamManager : MonoBehaviour
         // After merging TurnManager into TeamManager, this method will take care
         // of giving the first player control.
         giveCurrentTeamControl();
+        lookAtPlayerDel(currentTeam.getMainPlayer());
     }
 
     private void giveCurrentTeamControl()

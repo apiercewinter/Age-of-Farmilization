@@ -8,11 +8,14 @@ using UnityEngine;
 public class AIWandering : AIAnimal
 {
     private float moveDistance;
+    private Vector3 startingPos;
+
     // Start is called before the first frame update
     void Start()
     {
         moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
-        currentState = new Wandering(this.gameObject, moveDistance);
+        startingPos = gameObject.transform.position;
+        currentState = new Wandering(this.gameObject, moveDistance, startingPos);
     }
 
     protected override void refreshSet()
@@ -28,5 +31,8 @@ public class AIWandering : AIAnimal
     public override void performAction()
     {
         base.performAction();
+        Debug.Log("AIWandering's current state: " + currentState.ToString());
     }
+
+
 }

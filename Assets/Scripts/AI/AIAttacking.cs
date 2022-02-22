@@ -21,19 +21,13 @@ public class AIAttacking : AIAnimal
     void Start()
     {
         moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
+        startingPos = gameObject.transform.position;
         // Attacking animal will start as wandering when the game first starts
-        currentState = new Wandering(gameObject, moveDistance);
+        currentState = new Wandering(gameObject, moveDistance, startingPos);
         /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.transform.parent = gameObject.transform;
         boxCollider.size = new Vector3(attackingRange, attackingRange, attackingRange);
         boxCollider.isTrigger = true;*/
-        startingPos = gameObject.transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        performAction();
     }
 
     /*private void OnTriggerEnter(Collider other)
@@ -77,7 +71,7 @@ public class AIAttacking : AIAnimal
         HashSet<GameObject> newSet = new HashSet<GameObject>();
         foreach (GameObject go in chasingSet)
         {
-            if (go != null && Vector3.Distance(startingPos, go.transform.position) > chasingRange)
+            if (go != null && Vector3.Distance(startingPos, go.transform.position) < chasingRange)
             {
                 newSet.Add(go);
             }
@@ -92,6 +86,7 @@ public class AIAttacking : AIAnimal
             if (go != null && Vector3.Distance(startingPos, go.transform.position) < chasingRange &&
                 Vector3.Distance(gameObject.transform.position, go.transform.position) > moveDistance)
             {
+                Debug.Log(go.name);
                 chasingSet.Add(go);
             }
         }
@@ -133,8 +128,8 @@ public class AIAttacking : AIAnimal
             }
             currentState = new Attacking(this.gameObject, target);
         }
-        // Transition from Attacking State to (Chasing State)
-        // Attacking -> (Chasing)
+        // Transition from Attacking State to Chasing State
+        // Attacking -> Chasing
         else if (!hasInRangeTarget() && hasInChasingRangeTarget())
         {
             // Find the closet threat
@@ -148,15 +143,15 @@ public class AIAttacking : AIAnimal
                     target = threat;
                 }
             }
-            currentState = new Attacking(this.gameObject, target);
+            currentState = new Chasing(this.gameObject, target);
         }
-        // Transition from Attacking State (and Chasing State) to Wandering State
-        // Attacking (& Chasing) -> Wandering
+        // Transition from Attacking State and Chasing State to Wandering State
+        // Attacking & Chasing -> Wandering
         else
         {
             if (currentState.ToString() != "Wandering")
             {
-                currentState = new Wandering(this.gameObject, moveDistance);
+                currentState = new Wandering(this.gameObject, moveDistance, startingPos);
             }
         }
     }
@@ -164,5 +159,6 @@ public class AIAttacking : AIAnimal
     public override void performAction()
     {
         base.performAction();
+        // Debug.Log("AIAttacking current state: " + currentState.ToString());
     }
 }

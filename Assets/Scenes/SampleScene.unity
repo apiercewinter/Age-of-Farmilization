@@ -4546,7 +4546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitContainer: {fileID: 254034730}
-  unitPrefab: {fileID: 2484104620310744933, guid: 6101056bdd3890b4ab1838acd54b3625, type: 3}
+  unitPrefab: {fileID: 8628317023276000461, guid: 72e01b5939dd8d34f899afc5f8ab466a, type: 3}
   playerUnit: {fileID: 11400000, guid: 0c24edd8f7c488740ae6bc0809baabf8, type: 2}
   spawnableUnits:
   - {fileID: 11400000, guid: f0276eed37ef6b14caf3c66391f872b7, type: 2}
