@@ -29,10 +29,5 @@ public class ResourceObject : MonoBehaviour
         return ResourceSupply;
     }
 
-    public string getResourceName()
-    {
-        return resourcetype;
-    }
-
 
 }

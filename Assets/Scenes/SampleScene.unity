@@ -546,10 +546,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 4067296087139153257, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1659,10 +1655,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SilverResource (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5833747151284060087, guid: a9c7b15fec65550458c58d36b72b3227, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.000092
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c7b15fec65550458c58d36b72b3227, type: 3}
 --- !u!4 &504357812 stripped
@@ -1934,10 +1926,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 4067296087139153257, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -3550,10 +3538,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2134326367306296070, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -15.000092
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
 --- !u!4 &1112661090 stripped
@@ -3836,10 +3820,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 917181145908269226, guid: 230939493bec6094baf2505e27e562a9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -15.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 4012901715673092607, guid: 230939493bec6094baf2505e27e562a9, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -4011,10 +3991,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 4067296087139153257, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4576,10 +4552,6 @@ PrefabInstance:
     - target: {fileID: 7379953401383063802, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_Name
       value: FoodResource (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7791765442371211072, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -17.000092
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
@@ -6862,10 +6834,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FoodResource (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7791765442371211072, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -17.000092
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
 --- !u!4 &1993020287 stripped
@@ -6880,10 +6848,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 4067296087139153257, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -7732,10 +7696,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FoodResource (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 7791765442371211072, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -17.000092
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
 --- !u!4 &2104652531 stripped
@@ -7999,10 +7959,6 @@ PrefabInstance:
     - target: {fileID: 90465516352466451, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134326367306296070, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -15.000092
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7153886d0f60dc1409694cf6f8997b6e, type: 3}
@@ -11847,10 +11803,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SilverResource
       objectReference: {fileID: 0}
-    - target: {fileID: 5833747151284060087, guid: a9c7b15fec65550458c58d36b72b3227, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.000092
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c7b15fec65550458c58d36b72b3227, type: 3}
 --- !u!114 &2638830480184111645
@@ -12014,10 +11966,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 917181145908269226, guid: 230939493bec6094baf2505e27e562a9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -15.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 4012901715673092607, guid: 230939493bec6094baf2505e27e562a9, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -12308,14 +12256,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 2549683728129544201, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2549683728129544201, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7377261332417007714, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -12364,10 +12304,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FoodResource
       objectReference: {fileID: 0}
-    - target: {fileID: 7791765442371211072, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -17.000092
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
 --- !u!224 &7626342573731604433
@@ -12396,10 +12332,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 185620628}
     m_Modifications:
-    - target: {fileID: 4067296087139153257, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_RootOrder
       value: 4
