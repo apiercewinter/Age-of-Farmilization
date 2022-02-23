@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 7381098320036148883}
   - component: {fileID: 7381098320036148878}
   - component: {fileID: 5981115789045092003}
+  - component: {fileID: 4814358155605976921}
   m_Layer: 0
   m_Name: FoodResource
   m_TagString: Resource
@@ -577,3 +578,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e257d2d3c5f14947a6bc4da28a4e368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4814358155605976921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379953401383063802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

@@ -6,8 +6,8 @@ public class UIHoverover : MonoBehaviour
 {
     private LineRenderer lineRenderer;
 
-    public float ThetaScale = 0.01f;
-    public float radius;
+    private float ThetaScale = 0.01f;
+    private float radius;
     private int Size;
     private float Theta = 0f;
 
