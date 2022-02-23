@@ -273,7 +273,8 @@ public class TeamManager : MonoBehaviour
         currentIndex = 0;
         currentTeam = null;
         hasWinner = false;
-        //winLoseManager = null;
+        lookAtPlayerDel = null;
+        winDel = null;
     }
 }
 

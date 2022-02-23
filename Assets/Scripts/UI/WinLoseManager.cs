@@ -43,6 +43,7 @@ public class WinLoseManager : MonoBehaviour
 
     public void OnBackToHomeMenuButtonClick()
     {
+        TeamManager.resetAll();
         Debug.Log("BackToHomeMenu");
         SceneManager.LoadScene("Menu");
     }
