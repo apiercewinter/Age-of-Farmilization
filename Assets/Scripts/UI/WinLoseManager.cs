@@ -10,7 +10,10 @@ using UnityEngine.SceneManagement;
 // WinLoseManager deals with the win scene, and button in the win scene
 public class WinLoseManager : MonoBehaviour
 {
+    [SerializeField]
     private static GameObject winCanvas;
+
+    [SerializeField]
     private static TextMeshProUGUI textField;
 
     private static Action disableControlDel;
@@ -18,8 +21,8 @@ public class WinLoseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        winCanvas = this.gameObject;
-        textField = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        //winCanvas = this.gameObject;
+        //textField = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         winCanvas.SetActive(false);
     }
 

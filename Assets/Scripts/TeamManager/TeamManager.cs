@@ -279,5 +279,14 @@ public class TeamManager : MonoBehaviour
     {
         lookAtPlayerDel += del;
     }
+
+    public static void resetAll()
+    {
+
+        teamList.Clear();
+        currentIndex = 0;
+        currentTeam = null;
+        winLoseManager = null;
+    }
 }
 
