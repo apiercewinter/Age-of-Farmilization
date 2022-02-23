@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 90465516352379148}
   - component: {fileID: 90465516352379150}
   - component: {fileID: 90465516352379151}
-  - component: {fileID: 43038153}
   - component: {fileID: 7953586436016561709}
   m_Layer: 0
   m_Name: GoldResource
@@ -131,24 +130,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.026, y: 0.81200004, z: -0.053000003}
   m_TimeToStationary: 0.5
---- !u!114 &43038153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90465516352278639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &7953586436016561709
 MonoBehaviour:
   m_ObjectHideFlags: 0

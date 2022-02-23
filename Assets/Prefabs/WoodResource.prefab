@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 7682202350431643644}
   - component: {fileID: 7682202350431643646}
   - component: {fileID: 7682202350431643645}
-  - component: {fileID: 1505134689}
   - component: {fileID: 567616585547972227}
   m_Layer: 0
   m_Name: WoodResource
@@ -528,24 +527,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.042000003, y: 2.647, z: 0.096}
   m_TimeToStationary: 0.5
---- !u!114 &1505134689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7682202350431554779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &567616585547972227
 MonoBehaviour:
   m_ObjectHideFlags: 0
