@@ -14,7 +14,7 @@ public class Team : MonoBehaviour
     // as key is that it is easier to remove game objects when they die in this way.
     private Dictionary<int, GameObject> unitDict = new Dictionary<int, GameObject>();
     private Dictionary<string, int> resourceInventory = new Dictionary<string, int>();
-    private string tag;
+    private string teamtag;
 
     public Team(GameObject mainPlayer, GameObject playerBase, List<GameObject> units, string tag)
     {
@@ -24,7 +24,7 @@ public class Team : MonoBehaviour
         {
             unitDict.Add(go.GetInstanceID(), go);
         }
-        this.tag = tag;
+        this.teamtag = tag;
     }
 
     // This method will be called when the base of the player is destroyed
@@ -40,7 +40,7 @@ public class Team : MonoBehaviour
             Destroy(playerBase);
         }
         Debug.Log("not stuck by base");
-        tag = "";
+        teamtag = "";
         foreach (GameObject go in unitDict.Values)
         {
             if (go != null)
@@ -99,7 +99,7 @@ public class Team : MonoBehaviour
 
     public string getTag()
     {
-        return tag;
+        return teamtag;
     }
 
     public bool contain(GameObject go)

@@ -5,6 +5,9 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 
+//Alec Kaxon-Rupp
+
+
 public class WinLoseTemp : MonoBehaviour
 {
 
