@@ -635,7 +635,6 @@ MonoBehaviour:
   spawnerP1: {fileID: 1693423267}
   spawnerP2: {fileID: 1903817140}
   bases: {fileID: 1886545542}
-  winLoseManager: {fileID: 0}
 --- !u!4 &210803138
 Transform:
   m_ObjectHideFlags: 0

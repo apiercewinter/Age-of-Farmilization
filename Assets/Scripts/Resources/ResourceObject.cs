@@ -24,7 +24,10 @@ public class ResourceObject : MonoBehaviour
         ResourceSupply -= gathervalue;
     }
 
-
+    public int getResourceSupply()
+    {
+        return ResourceSupply;
+    }
 
 
 }

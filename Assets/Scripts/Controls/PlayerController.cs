@@ -75,35 +75,11 @@ public class PlayerController : MonoBehaviour
                         // If players click on some AIAnimal
                         else if (objHit.tag == "AIAnimal")
                         {
-                            // This is the most troublesome case, because some AIAnimal has two collider
-                            // one works for detecting enemy in range, another works for raycasting.
-                            // The detecting enemy collider is much larger collider than the model itself, so even if 
-                            // player just clicks on the area near some AIAnimal, the system will think player
-                            // is trying to click on the AIAnimal, becasue player click on the much larger
-                            // detecting enemy collider, so we need to know whether player is trully clicking
-                            // on an AIAnimal by calculating the distance between the point player clicks on
-                            // and the objHit's position
-                            Vector3 objHitV = objHit.transform.position;
-                            Vector3 hitPointV = hit.point;
-                            // We only care about the horizontal distance between two points
-                            objHitV.y = 0;
-                            hitPointV.y = 0;
-                            if (Vector3.Distance(objHitV, hitPointV) < 2)
+                            if (myBase)
                             {
-                                if (myBase)
-                                {
-                                    myBase.takeAction(hit.transform.gameObject, hit.point);
-                                }
-                                myPublisher.setAttackingEnemyPath(objHit);
+                                myBase.takeAction(hit.transform.gameObject, hit.point);
                             }
-                            else
-                            {
-                                if (myMover)
-                                {
-                                    myMover.move(hit.point);
-                                }
-                                myPublisher.setDestinationPath(hit.point);
-                            }
+                            myPublisher.setAttackingEnemyPath(objHit);
                         }
 
                         /*if (!myScript.target(objHit))
