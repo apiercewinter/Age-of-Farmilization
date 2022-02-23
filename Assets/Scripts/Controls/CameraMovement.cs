@@ -29,7 +29,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         WinLoseManager.subscribeToDisableControl(disableCameraMovement);
-        teamManager.GetComponent<TeamManager>().subscribeToLookAtPlayerDel(lookAt);
+        TeamManager.subscribeToLookAtPlayerDel(lookAt);
     }
 
     // Update is called once per frame

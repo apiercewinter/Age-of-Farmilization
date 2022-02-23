@@ -7,8 +7,23 @@ using UnityEngine;
 // This is a class that will handle the destroy of the base
 public class BaseOnDestroy : MonoBehaviour
 {
+    /*void Start()
+    {
+        WinLoseManager.subscribeToDisableControl(disableOnDestroy);
+    }*/
+
     private void OnDestroy()
     {
-        TeamManager.removeBase(gameObject.tag);
+        if (!TeamManager.getHasWinner())
+        {
+            Debug.Log(gameObject.tag + " team just called onDestroy");
+            TeamManager.removeBase(gameObject.tag);
+        }
     }
+
+    /*private void disableOnDestroy()
+    {
+        Debug.Log(gameObject.tag + " team jsut called diableonDestroy");
+        GetComponent<BaseOnDestroy>().enabled = false;
+    }*/
 }

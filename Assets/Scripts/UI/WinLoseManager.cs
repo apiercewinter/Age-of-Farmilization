@@ -10,24 +10,27 @@ using UnityEngine.SceneManagement;
 // WinLoseManager deals with the win scene, and button in the win scene
 public class WinLoseManager : MonoBehaviour
 {
-    [SerializeField]
-    private static GameObject winCanvas;
 
     [SerializeField]
-    private static TextMeshProUGUI textField;
+    private GameObject winCanvas;
+
+    [SerializeField]
+    private TextMeshProUGUI textField;
 
     private static Action disableControlDel;
 
     // Start is called before the first frame update
     void Start()
     {
-        //winCanvas = this.gameObject;
-        //textField = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        winCanvas = this.gameObject;
+        textField = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        TeamManager.subscribeToWinDel(win);
         winCanvas.SetActive(false);
     }
 
     public void win(string playerName)
     {
+        Debug.Log("win is called in winLoseMananger");
         textField.text = playerName + " wins!!!";
         winCanvas.SetActive(true);
         disableControlDel();

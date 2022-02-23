@@ -6,6 +6,7 @@ using UnityEngine;
 // Alec Kaxon-Rupp - Resources/Inventory/Spawning
 
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
+public delegate void WinDel(string winnerTag);
 
 // This is a Singleton class that deals with the team, it has all the information of
 // all the Teams, including its mainPlayer gameObject, units that belong to this team, etc.
@@ -25,7 +26,8 @@ public class TeamManager : MonoBehaviour
     private static int currentIndex;
     private static Team currentTeam;
 
-    private LookAtPlayerDel lookAtPlayerDel;
+    private static LookAtPlayerDel lookAtPlayerDel;
+    private static WinDel winDel;
 
     [SerializeField]
     private GameObject spawnerP1;
@@ -35,8 +37,7 @@ public class TeamManager : MonoBehaviour
     [SerializeField]
     private GameObject bases;
 
-    [SerializeField]
-    private static GameObject winLoseManager;
+    private static bool hasWinner = false;
 
     // Start is called before the first frame update
     void Start()
@@ -171,6 +172,11 @@ public class TeamManager : MonoBehaviour
         return unit.tag == currentTeam.getTag();
     }
 
+    public static bool getHasWinner()
+    {
+        return hasWinner;
+    }
+
     public static string getCurrentTeamTag()
     {
         return currentTeam.getTag();
@@ -198,59 +204,34 @@ public class TeamManager : MonoBehaviour
 
     public static void removeBase(string teamTag)
     {
-        string s = "before destroy all team list: ";
-        foreach (Team team in teamList)
+        for (int i = 0; i < teamList.Count; i++)
         {
-            if (team.getBase() != null)
-            {
-                s += team.getTag() + ",";
-            }
-            else
-            {
-                s += "null,";
-            }
-        }
-        Debug.Log(s);
-        foreach (Team team in teamList)
-        {
+            Team team = teamList[i];
             if (team.getTag() == teamTag)
             {
-                teamList.Remove(team);
+                teamList.RemoveAt(i);
                 team.destroyAll();
                 break;
             }
         }
-        s = "after destroy all team list: ";
-        foreach (Team team in teamList)
-        {
-            if (team.getBase() != null)
-            {
-                s += team.getTag() + ",";
-            }
-            else
-            {
-                s += "null,";
-            }
-        }
-        Debug.Log(s);
-        Debug.Log("not stuck by destroy all");
+     
         int teamLeft = 0;
         Team leftTeam = null;
         foreach (Team team in teamList)
         {
             if (team.getBase() != null && team.getTag().StartsWith("Player"))
             {
-                Debug.Log(team.getTag());
                 leftTeam = team;
                 teamLeft++;
             }
         }
-        Debug.Log("not stuck by finding the team left");
-        Debug.Log("team left: " + teamLeft);
+        string winnerTag = leftTeam.getTag();
         if (teamLeft == 1)
         {
             Debug.Log("has winner");
-            winLoseManager.GetComponent<WinLoseManager>().win(leftTeam.getTag());
+            hasWinner = true;
+            lookAtPlayerDel(leftTeam.getMainPlayer());
+            winDel(winnerTag);
         }
     }
 
@@ -275,9 +256,14 @@ public class TeamManager : MonoBehaviour
         currentTeam = teamList[currentIndex];
     }
 
-    public void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
+    public static void subscribeToLookAtPlayerDel(LookAtPlayerDel del)
     {
         lookAtPlayerDel += del;
+    }
+
+    public static void subscribeToWinDel(WinDel del)
+    {
+        winDel += del;
     }
 
     public static void resetAll()
@@ -286,7 +272,8 @@ public class TeamManager : MonoBehaviour
         teamList.Clear();
         currentIndex = 0;
         currentTeam = null;
-        winLoseManager = null;
+        hasWinner = false;
+        //winLoseManager = null;
     }
 }
 

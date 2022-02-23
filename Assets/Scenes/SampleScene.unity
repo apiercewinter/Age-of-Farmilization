@@ -635,6 +635,7 @@ MonoBehaviour:
   spawnerP1: {fileID: 1693423267}
   spawnerP2: {fileID: 1903817140}
   bases: {fileID: 1886545542}
+  winLoseManager: {fileID: 0}
 --- !u!4 &210803138
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,8 +2144,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886545544}
-        m_TargetAssemblyTypeName: WinLoseTemp, Assembly-CSharp
+      - m_Target: {fileID: 1748929087}
+        m_TargetAssemblyTypeName: WinLoseManager, Assembly-CSharp
         m_MethodName: OnQuitButtonClick
         m_Mode: 1
         m_Arguments:
@@ -5858,13 +5859,28 @@ GameObject:
   - component: {fileID: 1748929090}
   - component: {fileID: 1748929089}
   - component: {fileID: 1748929088}
+  - component: {fileID: 1748929087}
   m_Layer: 5
   m_Name: WinLoseManager(Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &1748929087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748929086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b9e023398c5c74486e3366132fe419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winCanvas: {fileID: 0}
+  textField: {fileID: 0}
 --- !u!114 &1748929088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6272,7 +6288,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886545543}
-  - component: {fileID: 1886545544}
   m_Layer: 0
   m_Name: Bases
   m_TagString: Untagged
@@ -6296,22 +6311,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1886545544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886545542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2797ee7b77057d54580329beea91d1ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 1502126635}
-  player2: {fileID: 1875529338}
-  winCanvas: {fileID: 1748929086}
-  textField: {fileID: 1121565451}
 --- !u!1 &1903817140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,8 +6569,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886545544}
-        m_TargetAssemblyTypeName: WinLoseTemp, Assembly-CSharp
+      - m_Target: {fileID: 1748929087}
+        m_TargetAssemblyTypeName: WinLoseManager, Assembly-CSharp
         m_MethodName: OnBackToHomeMenuButtonClick
         m_Mode: 1
         m_Arguments:
