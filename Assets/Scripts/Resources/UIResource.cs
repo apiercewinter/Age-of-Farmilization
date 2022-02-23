@@ -5,26 +5,33 @@ using TMPro;
 
 public class UIResource : MonoBehaviour
 {
-    TextMeshProUGUI textField;
-    GameObject ui;
+    [SerializeField]
+    private GameObject Highlight;
+    [SerializeField]
+    private GameObject Display;
+    [SerializeField]
+    private GameObject Text;
+
+    private ResourceObject resourceObj;
 
     // Start is called before the first frame update
     void Start()
     {
-        textField = gameObject.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>();
-        ui = gameObject.transform.GetChild(0).gameObject;
-        ui.SetActive(false);
+        resourceObj = gameObject.GetComponent<ResourceObject>();
     }
 
     private void OnMouseOver()
     {
-        int resourceSupply = gameObject.GetComponent<ResourceObject>().getResourceSupply();
-        textField.text = "You are looking at this, it has " + resourceSupply + " left.";
-        ui.SetActive(true);
+        int resourceSupply = resourceObj.getResourceSupply();
+        string name = resourceObj.getResourcename();
+        Text.GetComponent<TextMeshProUGUI>().text = "You are looking at " + name + ", it has " + resourceSupply + " left.";
+        Highlight.SetActive(true);
+        Display.SetActive(true);
     }
 
     private void OnMouseExit()
     {
-        ui.SetActive(false);
+        Highlight.SetActive(false);
+        Display.SetActive(false);
     }
 }
