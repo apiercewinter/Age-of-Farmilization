@@ -26,7 +26,17 @@ public class Health : MonoBehaviour
         if (m_CurrentHealth == 0)
         {
             //Death part
-            GetComponent<UnitBase>().destroy();
+            UnitBase unit = GetComponent<UnitBase>();
+
+            if(unit)
+            {
+                GetComponent<UnitBase>().destroy();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
         }
     }
 
