@@ -23,7 +23,7 @@ public class WinLoseManager : MonoBehaviour
         winCanvas.SetActive(false);
     }
 
-    public static void win(string playerName)
+    public void win(string playerName)
     {
         textField.text = playerName + " wins!!!";
         winCanvas.SetActive(true);

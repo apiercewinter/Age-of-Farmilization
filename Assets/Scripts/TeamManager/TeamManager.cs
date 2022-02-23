@@ -32,6 +32,12 @@ public class TeamManager : MonoBehaviour
     [SerializeField]
     private GameObject spawnerP2;
 
+    [SerializeField]
+    private GameObject bases;
+
+    [SerializeField]
+    private static GameObject winLoseManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,15 +61,23 @@ public class TeamManager : MonoBehaviour
             List<GameObject> newList = new List<GameObject>();
             Transform child = unitsParent.GetChild(i);
             GameObject mainPlayer = child.GetChild(0).gameObject;
+            GameObject playerBase = null;
             if (mainPlayer.tag == "AIAnimal")
             {
                 newList.Add(mainPlayer);
-                Team aiTeam = new Team(null, newList, mainPlayer.tag);
+                Team aiTeam = new Team(null, playerBase, newList, mainPlayer.tag);
                 teamList.Add(aiTeam);
             }
             else
             {
-                Team newTeam = new Team(mainPlayer, newList, mainPlayer.tag);
+                foreach (Transform baseContainer in bases.transform)
+                {
+                    if (baseContainer.name == mainPlayer.tag)
+                    {
+                        playerBase = baseContainer.GetChild(0).gameObject;
+                    }
+                }
+                Team newTeam = new Team(mainPlayer, playerBase, newList, mainPlayer.tag);
                 teamList.Add(newTeam);
             }
         }
@@ -179,6 +193,64 @@ public class TeamManager : MonoBehaviour
                 teamList[i].removeUnit(go);
                 return;
             }
+        }
+    }
+
+    public static void removeBase(string teamTag)
+    {
+        string s = "before destroy all team list: ";
+        foreach (Team team in teamList)
+        {
+            if (team.getBase() != null)
+            {
+                s += team.getTag() + ",";
+            }
+            else
+            {
+                s += "null,";
+            }
+        }
+        Debug.Log(s);
+        foreach (Team team in teamList)
+        {
+            if (team.getTag() == teamTag)
+            {
+                teamList.Remove(team);
+                team.destroyAll();
+                break;
+            }
+        }
+        s = "after destroy all team list: ";
+        foreach (Team team in teamList)
+        {
+            if (team.getBase() != null)
+            {
+                s += team.getTag() + ",";
+            }
+            else
+            {
+                s += "null,";
+            }
+        }
+        Debug.Log(s);
+        Debug.Log("not stuck by destroy all");
+        int teamLeft = 0;
+        Team leftTeam = null;
+        foreach (Team team in teamList)
+        {
+            if (team.getBase() != null && team.getTag().StartsWith("Player"))
+            {
+                Debug.Log(team.getTag());
+                leftTeam = team;
+                teamLeft++;
+            }
+        }
+        Debug.Log("not stuck by finding the team left");
+        Debug.Log("team left: " + teamLeft);
+        if (teamLeft == 1)
+        {
+            Debug.Log("has winner");
+            winLoseManager.GetComponent<WinLoseManager>().win(leftTeam.getTag());
         }
     }
 

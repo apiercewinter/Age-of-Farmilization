@@ -5,9 +5,10 @@ using UnityEngine;
 // Writer: Boyuan Huang
 // Alec Kaxon-Rupp - Resources/Inventory
 
-public class Team
+public class Team : MonoBehaviour
 {
     private GameObject mainPlayer;
+    private GameObject playerBase;
     // unitDict is a dictionary that stores all the units (game objects) that belong to
     // the mainPlayer. The reason why to use dictionary with game object's instance ID
     // as key is that it is easier to remove game objects when they die in this way.
@@ -15,14 +16,39 @@ public class Team
     private Dictionary<string, int> resourceInventory = new Dictionary<string, int>();
     private string tag;
 
-    public Team(GameObject mainPlayer, List<GameObject> units, string tag)
+    public Team(GameObject mainPlayer, GameObject playerBase, List<GameObject> units, string tag)
     {
         this.mainPlayer = mainPlayer;
+        this.playerBase = playerBase;
         foreach (GameObject go in units)
         {
             unitDict.Add(go.GetInstanceID(), go);
         }
         this.tag = tag;
+    }
+
+    // This method will be called when the base of the player is destroyed
+    public void destroyAll()
+    {
+        if (mainPlayer != null)
+        {
+            Destroy(mainPlayer);
+        }
+        Debug.Log("not stuck by player");
+        if (playerBase != null)
+        {
+            Destroy(playerBase);
+        }
+        Debug.Log("not stuck by base");
+        tag = "";
+        foreach (GameObject go in unitDict.Values)
+        {
+            if (go != null)
+            {
+                Destroy(go);
+            }
+        }
+        Debug.Log("not stuck by units");
     }
 
     public void setMainPlayerToNull()
@@ -54,6 +80,11 @@ public class Team
     public GameObject getMainPlayer()
     {
         return mainPlayer;
+    }
+
+    public GameObject getBase()
+    {
+        return playerBase;
     }
 
     public List<GameObject> getAllUnitsInList()
