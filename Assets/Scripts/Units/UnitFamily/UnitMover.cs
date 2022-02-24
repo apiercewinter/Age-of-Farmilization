@@ -68,6 +68,15 @@ public abstract class UnitMover : UnitBase
         return roundStartLocation;
     }
 
+    protected override void animate()
+    {
+        base.animate();
+        float curSpeed = myAgent.velocity.magnitude;
+
+        myAnimator.SetFloat("Speed_f", curSpeed);
+        myAnimator.SetBool("Static_b", curSpeed < .01f);
+    }
+
 
     protected override void Start()
     {

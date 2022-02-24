@@ -38,8 +38,6 @@ public abstract class UnitSOBase : ScriptableObject
         //Set Model
         GameObject model = Instantiate(modelPrefab);
         model.transform.SetParent(spawnedUnit.transform, false);
-        //Animator animator = model.GetComponent<Animator>();
-        //if (animator) animator.logWarnings = false;
 
         return spawnedUnit;
     }
