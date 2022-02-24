@@ -28,10 +28,27 @@ public class UnitSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myTeamContainer = new GameObject(teamUnitContainerPrefix + team);
+        string teamContainerName = teamUnitContainerPrefix + team;
         if (unitContainer != null)
         { //Put the teamContainer under this general Unit container
-            myTeamContainer.transform.SetParent(unitContainer.transform, true);
+            Transform teamContainer = unitContainer.transform.Find(teamContainerName);
+            if (teamContainer == null)
+            {
+                myTeamContainer = new GameObject(teamContainerName);
+                myTeamContainer.transform.SetParent(unitContainer.transform, true);
+            }
+            else
+            {
+                myTeamContainer = teamContainer.gameObject;
+            }
+        }
+        else
+        {
+            myTeamContainer = GameObject.Find(teamContainerName);
+            if(myTeamContainer == null)
+            {
+                myTeamContainer = new GameObject(teamContainerName);
+            }
         }
 
         myPlayer = spawnUnit(playerUnit, gameObject.transform.position, gameObject.transform.rotation);
