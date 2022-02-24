@@ -1,9 +1,11 @@
+// Writer: Boyuan Huang
+// Alec Kaxon-Rupp - Resources/Inventory/Spawning/Debugging
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Writer: Boyuan Huang
-// Alec Kaxon-Rupp - Resources/Inventory/Spawning
+
 
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
 public delegate void WinDel(string winnerTag);

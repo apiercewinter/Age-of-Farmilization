@@ -1,9 +1,9 @@
+// Writer: Boyuan Huang
+// Alec Kaxon-Rupp - Resources/Inventory/Debugging
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Writer: Boyuan Huang
-// Alec Kaxon-Rupp - Resources/Inventory
 
 public class Team : MonoBehaviour
 {

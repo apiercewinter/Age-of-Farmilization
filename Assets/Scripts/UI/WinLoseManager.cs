@@ -1,3 +1,6 @@
+// Writer: Boyuan Huang
+// Alec Kaxon-Rupp - Debugging and Implementation
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +8,7 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 
-// Writer: Boyuan Huang
+
 
 // WinLoseManager deals with the win scene, and button in the win scene
 public class WinLoseManager : MonoBehaviour
