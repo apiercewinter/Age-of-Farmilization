@@ -67,7 +67,10 @@ public class TeamManager : MonoBehaviour
             GameObject playerBase = null;
             if (mainPlayer.tag == "AIAnimal")
             {
-                newList.Add(mainPlayer);
+                for (int j = 0; j < child.childCount; j++)
+                {
+                    newList.Add(child.GetChild(j).gameObject);
+                }
                 Team aiTeam = new Team(null, playerBase, newList, mainPlayer.tag);
                 teamList.Add(aiTeam);
             }
@@ -85,6 +88,10 @@ public class TeamManager : MonoBehaviour
             }
         }
         currentTeam = teamList[currentIndex];
+        if (currentTeam.getTag() == "AIAnimal")
+        {
+            moveToNextIndex();
+        }
         // After merging TurnManager into TeamManager, this method will take care
         // of giving the first player control.
         giveCurrentTeamControl();
@@ -161,7 +168,9 @@ public class TeamManager : MonoBehaviour
 
     public void AITurn()
     {
-        foreach (GameObject ai in currentTeam.getAllUnitsInList())
+        List<GameObject> units = currentTeam.getAllUnitsInList();
+        Debug.Log(units.Count);
+        foreach (GameObject ai in units)
         {
             ai.GetComponent<UnitBase>().readyAction();
             ai.GetComponent<AIAnimal>().performAction();

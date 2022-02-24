@@ -41,7 +41,7 @@ public class Wandering : State
             destination *= (activityRange - 1);
         }
 
-        Debug.Log("Distacne between destination and starting location: " + Vector3.Distance(destination, startingPos));
+        // Debug.Log("Distacne between destination and starting location: " + Vector3.Distance(destination, startingPos));
 
         gameObject.GetComponent<UnitMover>().move(destination);
         //gameObject.GetComponent<UnitMover>().moveRel(movement);
