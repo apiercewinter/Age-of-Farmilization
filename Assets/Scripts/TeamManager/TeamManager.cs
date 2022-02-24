@@ -151,7 +151,7 @@ public class TeamManager : MonoBehaviour
         removeCurrentTeamControl();
         moveToNextIndex();
         giveCurrentTeamControl();
-        GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getMainPlayer().name);
+        GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getTag());
         lookAtPlayerDel(currentTeam.getMainPlayer());
         
     }
