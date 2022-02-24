@@ -9,7 +9,7 @@ public class UnitPlayer : UnitCollector
     //The player unit, can collect and (melee) attack.
     //  Uses same range for attacking and collecting
 
-    private float damage;
+    [SerializeField] private float damage;
 
     public override bool takeAction(GameObject go, Vector3 pos = new Vector3())
     {

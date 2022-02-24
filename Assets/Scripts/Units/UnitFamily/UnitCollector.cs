@@ -8,8 +8,8 @@ public class UnitCollector : UnitMover
 {
     //This class implements some general data for collecting resources
 
-    private float collectionMult;
-    private float range;
+    [SerializeField] private float collectionMult;
+    [SerializeField] private float range;
 
     public override bool takeAction(GameObject go, Vector3 pos = new Vector3())
     {

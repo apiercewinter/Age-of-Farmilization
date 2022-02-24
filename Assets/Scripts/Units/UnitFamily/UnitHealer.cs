@@ -8,8 +8,8 @@ public class UnitHealer : UnitMover
 {
     //The opposite of an attacker.
 
-    private float healAmt;
-    private float range;
+    [SerializeField] private float healAmt;
+    [SerializeField] private float range;
 
     public override bool takeAction(GameObject go, Vector3 pos = new Vector3())
     {

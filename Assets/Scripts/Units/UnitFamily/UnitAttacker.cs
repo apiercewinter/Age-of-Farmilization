@@ -10,8 +10,8 @@ public abstract class UnitAttacker : UnitMover
     //This class implements some general data for attacking units, does not have an implemented,
     //  attack, and thus cannot be used alone.
 
-    private float damage;
-    private float range;
+    [SerializeField] private float damage;
+    [SerializeField] private float range;
 
     public override bool takeAction(GameObject go, Vector3 pos = new Vector3())
     {

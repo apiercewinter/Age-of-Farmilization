@@ -11,7 +11,7 @@ public abstract class UnitMover : UnitBase
     //  and thus cannot be used alone.
 
     //Can move a maximum of moveDistance each round
-    private float moveDistance;
+    [SerializeField] private float moveDistance;
     protected Vector3 roundStartLocation;
 
     private NavMeshAgent myAgent;
