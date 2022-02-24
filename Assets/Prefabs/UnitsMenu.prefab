@@ -163,8 +163,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 23.805908, y: -11.019897}
-  m_SizeDelta: {x: -58.6308, y: -19.591}
+  m_AnchoredPosition: {x: 23.805908, y: -11.041353}
+  m_SizeDelta: {x: -58.6308, y: -19.612478}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2073117445695512327
 CanvasRenderer:
@@ -232,6 +232,11 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1453560233724983625, guid: fdc1ea498a7f8c94ea23b05f618d9932, type: 3}
   content: {fileID: 2073117445879752721}
   spawner: {fileID: 0}
+  FoodIcon: {fileID: 0}
+  StoneIcon: {fileID: 0}
+  WoodIcon: {fileID: 0}
+  GoldIcon: {fileID: 0}
+  SilverIcon: {fileID: 0}
 --- !u!1 &2073117445735341221
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +400,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 6
+  m_Spacing: 2
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

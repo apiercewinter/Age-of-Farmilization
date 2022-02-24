@@ -30,7 +30,7 @@ public class SpawnerUI : MonoBehaviour
         for (uint i = 0; i < unitTypes.Length; ++i)
         {
             GameObject button = Instantiate(buttonPrefab);
-            button.transform.SetParent(content.transform);
+            button.transform.SetParent(content.transform,false);
             int resource = 1;
 
             button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].name;
