@@ -153,6 +153,7 @@ public class TeamManager : MonoBehaviour
         giveCurrentTeamControl();
         GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getTag());
         GameObject mainPlayer = currentTeam.getMainPlayer();
+        if (mainPlayer != null)
         {
             lookAtPlayerDel(currentTeam.getMainPlayer());
         }
