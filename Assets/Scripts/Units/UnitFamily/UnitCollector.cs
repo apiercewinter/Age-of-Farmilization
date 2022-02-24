@@ -42,7 +42,7 @@ public class UnitCollector : UnitMover
 
         //Collect !
 
-        TeamManager.addResource(ro.resourcetype, ro.gathervalue);
+        TeamManager.addResource(ro.getResourcename(), ro.getGatherValue());
         ro.DepleteResource();
 
         return true;

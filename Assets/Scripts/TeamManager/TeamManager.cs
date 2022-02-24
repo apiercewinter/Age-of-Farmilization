@@ -5,8 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
 public delegate void WinDel(string winnerTag);
 
