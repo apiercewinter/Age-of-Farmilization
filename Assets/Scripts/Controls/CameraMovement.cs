@@ -1,8 +1,7 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Writer: Boyuan Huang
 
 // CameraMovement class deals with the movement of the camera
 // Players can use WASD keys and scroll wheel to move the camera.

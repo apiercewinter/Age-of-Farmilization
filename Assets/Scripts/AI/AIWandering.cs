@@ -1,8 +1,7 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Writer: Boyuan Huang
 
 // AIWandering is just a simple AI animal that will just wander around
 public class AIWandering : AIAnimal

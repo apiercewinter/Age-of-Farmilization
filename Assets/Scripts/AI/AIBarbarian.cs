@@ -1,9 +1,8 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-// Writer: Boyuan Huang
 
 // AIBarbarian will start as Seeking() state which allows barbarians to walk all around the world
 // As soon as AIBarbarian find a unit (doesn't matter whether it belongs to AI team or player team)

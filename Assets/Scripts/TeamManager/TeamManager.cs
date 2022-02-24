@@ -1,4 +1,4 @@
-// Writer: Boyuan Huang
+// Boyuan Huang
 // Alec Kaxon-Rupp - Resources/Inventory/Spawning/Debugging
 
 using System.Collections;

@@ -1,4 +1,4 @@
-// Writer: Boyuan Huang
+// Boyuan Huang
 // Alec Kaxon-Rupp - Debugging and Implementation
 
 using System.Collections;

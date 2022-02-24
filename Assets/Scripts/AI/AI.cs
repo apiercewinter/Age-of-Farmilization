@@ -1,8 +1,7 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Writer: Boyuan Huang
 
 // Base class for all AI behavior children
 public abstract class AI : MonoBehaviour

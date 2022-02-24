@@ -1,12 +1,8 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.EventSystems;
-using System;
-
-// Writer: Boyuan Huang
-// Editor:
 
 // Movement class deals with the movement of the units currently selected by the players
 // This class depends on the SelectionDictionary, because this class needs to move all selected
@@ -81,23 +77,6 @@ public class PlayerController : MonoBehaviour
                             }
                             myPublisher.setAttackingEnemyPath(objHit);
                         }
-
-                        /*if (!myScript.target(objHit))
-                        {
-                            if (!myScript.gather(objHit))
-                            {
-                                myScript.moveTo(hit.point);
-                                myPublisher.setDestinationPath(hit.point);
-                            }
-                            else
-                            {
-                                myPublisher.setGatheringResourcePath(objHit);
-                            }
-                        }
-                        else
-                        {
-                            myPublisher.setAttackingEnemyPath(objHit);
-                        }*/
                     }
                 }
             }

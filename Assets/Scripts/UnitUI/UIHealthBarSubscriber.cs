@@ -1,9 +1,8 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-// Writer: Boyuan Huang
 
 // UIHealthBarSubscriber deals with the healthbar at the top of the unit
 public class UIHealthBarSubscriber : MonoBehaviour, ISubscriber

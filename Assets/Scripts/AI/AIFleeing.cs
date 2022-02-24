@@ -1,8 +1,7 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Writer: Boyuan Huang
 
 // AIFleeing will first starts as Wandering() within a specfic range
 // As soon as there is a unit that enters its range, the AIFleeing will flee away from that unit

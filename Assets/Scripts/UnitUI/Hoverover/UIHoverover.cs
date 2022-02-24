@@ -1,3 +1,4 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,12 +19,6 @@ public class UIHoverover : MonoBehaviour
         lineRenderer.SetPosition(0, gameObject.transform.position);
         lineRenderer.SetPosition(1, gameObject.transform.position);
         lineRenderer.useWorldSpace = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnMouseOver()

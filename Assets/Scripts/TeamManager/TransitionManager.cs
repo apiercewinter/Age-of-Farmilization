@@ -1,9 +1,8 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
-// Writer: Boyuan Huang
 
 // We probably not gonna need this if we are using movement range
 

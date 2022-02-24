@@ -1,8 +1,7 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Writer: Boyuan Huang
 
 // UIPathSubscriber deals with the line indicator that shows the path that units is walking
 public class UIPathSubscriber : MonoBehaviour, ISubscriber

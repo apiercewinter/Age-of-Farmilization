@@ -1,8 +1,7 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Writer: Boyuan Huang
 
 // AIHarvesting animal will start as Seeking() for resource. When it encounters any unit from player,
 // it will flee away from that unit. When there is no unit that is within its alert range, it will start
