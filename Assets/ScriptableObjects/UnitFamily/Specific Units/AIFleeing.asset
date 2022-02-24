@@ -15,7 +15,7 @@ MonoBehaviour:
   modelPrefab: {fileID: 179218, guid: 7e327461e79cb2a479e055d455c9a2fd, type: 3}
   unitName: AIFleeing
   unitType: AIAnimal
-  maxHealth: 10
+  maxHealth: 5
   costFood: 0
   costStone: 0
   costWood: 0

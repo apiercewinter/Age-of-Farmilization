@@ -15,12 +15,12 @@ MonoBehaviour:
   modelPrefab: {fileID: 110416, guid: d08ba223a91fb3440afcbed27fafa936, type: 3}
   unitName: Swordsman
   unitType: Infantry
-  maxHealth: 10
+  maxHealth: 15
   costFood: 1
-  costStone: 2
+  costStone: 1
   costWood: 0
-  costSilver: 0
+  costSilver: 1
   costGold: 0
   moveDistance: 10
-  damage: 1
-  range: 10
+  damage: 3
+  range: 5

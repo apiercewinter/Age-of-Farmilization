@@ -15,13 +15,13 @@ MonoBehaviour:
   modelPrefab: {fileID: 100046, guid: 7b6675de545141649953fd8adec4561b, type: 3}
   unitName: Player2
   unitType: Player
-  maxHealth: 10
+  maxHealth: 15
   costFood: 0
   costStone: 0
   costWood: 0
   costSilver: 0
   costGold: 0
-  moveDistance: 10
+  moveDistance: 20
   collectionMultiplier: 1
-  range: 10
-  damage: 1
+  range: 5
+  damage: 5
