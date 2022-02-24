@@ -152,8 +152,10 @@ public class TeamManager : MonoBehaviour
         moveToNextIndex();
         giveCurrentTeamControl();
         GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getTag());
-        lookAtPlayerDel(currentTeam.getMainPlayer());
-        
+        GameObject mainPlayer = currentTeam.getMainPlayer();
+        {
+            lookAtPlayerDel(currentTeam.getMainPlayer());
+        }
     }
 
     public void SwapSpawnMenus()
