@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // CameraMovement class deals with the movement of the camera
 // Players can use WASD keys and scroll wheel to move the camera.
@@ -19,6 +20,8 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 0.06f;
     [SerializeField] private float zoomSpeed = 10.0f;
+
+    [SerializeField] private float heldSpeed;
 
     private float maxHeight = 40f;
     private float minHeight = 4f;
@@ -80,9 +83,20 @@ public class CameraMovement : MonoBehaviour
         {
             LockPositionToCurrentSelected();
         }
+
+        if (EventSystem.current.IsPointerOverGameObject() && checkIsMenu())
+        {
+            zoomSpeed = 0.0f;
+        }
+        else
+        {
+            if (zoomSpeed != 0)
+                holdZoomSpeed();
+            else
+                zoomSpeed = heldSpeed;
+        }
     }
 
-    
     /*public void FindCenterPosition()
     {
         GameObject[] controlledUnits = GameObject.FindGameObjectsWithTag("Player");
@@ -111,6 +125,11 @@ public class CameraMovement : MonoBehaviour
         transform.position = Target + Overhead;
     }
 
+    public void holdZoomSpeed()
+    {
+        heldSpeed = zoomSpeed;
+    }
+
     void disableCameraMovement()
     {
         GetComponent<CameraMovement>().enabled = false;
@@ -129,5 +148,25 @@ public class CameraMovement : MonoBehaviour
     public void changeZoomSpeed(float zs)
     {
         zoomSpeed = zs;
+    }
+
+    //Helps determined if the mouse is currently interacting with a menu; prevents overlap of controls (Daniel Zhang)
+    private bool checkIsMenu()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition; //Set PointerEventData to the Mouse Position so that Mouse Position is examined for objects below using rays
+
+        List<RaycastResult> list = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, list);
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i].gameObject.tag != "Menu")
+            {
+                list.RemoveAt(i);
+                i--;
+            }
+        }
+
+        return list.Count > 0;
     }
 }
