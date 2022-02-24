@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelPrefab: {fileID: 100000, guid: 06cdf427476835b42837c1ca7f8cdbd1, type: 3}
   projectileName: Targeted
-  timeInAir: 3
+  timeInAir: 1
