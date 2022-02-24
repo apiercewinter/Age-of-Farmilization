@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     private bool lockedTrue = false;
     private Vector3 Target;
 
-    [SerializeField] private float movementSpeed = 0.06f;
+    [SerializeField] private float movementSpeed = 0.15f;
     [SerializeField] private float zoomSpeed = 10.0f;
 
     private float maxHeight = 40f;
