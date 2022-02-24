@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class UnitBase : MonoBehaviour
 {
     protected bool actionAvailable = false;
+    protected Animator myAnimator;
 
     //Returns whether the action went through.
     public abstract bool takeAction(GameObject go, Vector3 pos = new Vector3());
@@ -48,12 +49,28 @@ public abstract class UnitBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        //Blank implementation in case want to implement in future
+        //Set animator
+        myAnimator = gameObject.GetComponentInChildren<Animator>();
+        if (myAnimator)
+        {
+            myAnimator.logWarnings = false;
+        }
     }
 
     protected virtual void Update()
     {
-        //Blank implementation in case want to implement in future
+        //Do animations
+        if(myAnimator)
+        {
+            animate();
+        }
+    }
+
+    //Can assume myAnimator is set
+    protected virtual void animate()
+    {
+        //Blank implementation so can be added to update without needing
+        // to implement
     }
 
     // When an unit has 0 health, call this destroy() method to destroy the gameObject
