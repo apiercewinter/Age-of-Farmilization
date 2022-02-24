@@ -9,18 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 612925cf6933867489a06dfc98998201, type: 3}
-  m_Name: Collector
+  m_Script: {fileID: 11500000, guid: 4e31d4d774da84e46ad456ffc8f8277e, type: 3}
+  m_Name: AIHarvestingAnimal
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 134694, guid: 50f1d192ccb21a24b95a7e4e403a9bb5, type: 3}
-  unitName: Collector
-  unitType: Harvestor
+  modelPrefab: {fileID: 197258, guid: 782ffceb74ed3aa47a2a09261607aeb2, type: 3}
+  unitName: AIHarvesting
+  unitType: AIAnimal
   maxHealth: 10
-  costFood: 1
+  costFood: 0
   costStone: 0
-  costWood: 1
+  costWood: 0
   costSilver: 0
   costGold: 0
-  moveDistance: 20
-  collectionMultiplier: 1
-  range: 5
+  moveDistance: 10
+  collectionMultiplier: 0
+  range: 10
+  damage: 1

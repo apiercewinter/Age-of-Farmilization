@@ -1,4 +1,6 @@
-
+//Aaron Winter
+//Alec Kaxon-Rupp
+//Daniel Zhang
 
 using System.Collections;
 using System.Collections.Generic;
@@ -40,7 +42,7 @@ public class UnitCollector : UnitMover
 
         //Collect !
 
-        TeamManager.addResource(ro.resourcetype, ro.gathervalue);
+        TeamManager.addResource(ro.getResourcename(), ro.getGatherValue());
         ro.DepleteResource();
 
         return true;

@@ -15,14 +15,14 @@ MonoBehaviour:
   modelPrefab: {fileID: 120214, guid: 9bf484c5ec3d3bf43b2034c829f1abbe, type: 3}
   unitName: Bowman
   unitType: Infantry
-  maxHealth: 10
+  maxHealth: 6
   costFood: 1
   costStone: 1
   costWood: 1
   costSilver: 0
   costGold: 0
-  moveDistance: 10
-  damage: 1
+  moveDistance: 20
+  damage: 4
   range: 10
   projectilePrefab: {fileID: 8376868587035279634, guid: ff77cf7f09a3cc24ea2698c9a5e26f35, type: 3}
   projectileInfo: {fileID: 11400000, guid: dbaa042302b89204c976e20699b0e11a, type: 2}

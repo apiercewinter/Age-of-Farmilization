@@ -63,7 +63,7 @@ public class SpawnerUI : MonoBehaviour
                 resource += 2;
             }
 
-            if (unitTypes[i].getCost("Gold") != 0 && resource < 7)
+            if (unitTypes[i].getCost("Silver") != 0 && resource < 7)
             {
                 button.transform.GetChild(resource).GetComponent<Image>().sprite = SilverIcon;
                 button.transform.GetChild(resource + 1).GetComponent<TextMeshProUGUI>().text = "" + unitTypes[i].getCost("Silver");

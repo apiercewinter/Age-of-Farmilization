@@ -7,8 +7,8 @@ using UnityEngine;
 public class ResourceObject : MonoBehaviour
 {
     
-    public int gathervalue = 0;
-    public string resourcetype;
+    [SerializeField] private int gathervalue = 0;
+    [SerializeField] private string resourcetype;
     [SerializeField] private int ResourceSupply = 1;
 
     private void Update()
@@ -32,6 +32,11 @@ public class ResourceObject : MonoBehaviour
     public string getResourcename()
     {
         return resourcetype;
+    }
+
+    public int getGatherValue()
+    {
+        return gathervalue;
     }
 
 

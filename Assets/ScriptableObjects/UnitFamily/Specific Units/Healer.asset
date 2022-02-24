@@ -15,12 +15,12 @@ MonoBehaviour:
   modelPrefab: {fileID: 187040, guid: 05554c72f25b7364caea91a88803135d, type: 3}
   unitName: Healer
   unitType: Medic
-  maxHealth: 10
+  maxHealth: 15
   costFood: 1
   costStone: 0
   costWood: 1
   costSilver: 0
-  costGold: 1
-  moveDistance: 10
-  healAmt: 1
+  costGold: 3
+  moveDistance: 15
+  healAmt: 3
   range: 10

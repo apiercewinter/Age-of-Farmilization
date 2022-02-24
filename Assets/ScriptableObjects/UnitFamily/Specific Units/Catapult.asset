@@ -15,14 +15,14 @@ MonoBehaviour:
   modelPrefab: {fileID: 148086, guid: 72d1e1ec46e639c47a81658b0d9e230e, type: 3}
   unitName: Catapult
   unitType: Vehicle
-  maxHealth: 10
+  maxHealth: 15
   costFood: 0
-  costStone: 1
-  costWood: 2
+  costStone: 4
+  costWood: 4
   costSilver: 0
   costGold: 0
   moveDistance: 10
-  damage: 1
-  range: 10
+  damage: 5
+  range: 15
   projectilePrefab: {fileID: 8376868587035279634, guid: ff77cf7f09a3cc24ea2698c9a5e26f35, type: 3}
   projectileInfo: {fileID: 11400000, guid: 4d1f829108aab5641a41b630572a3234, type: 2}
