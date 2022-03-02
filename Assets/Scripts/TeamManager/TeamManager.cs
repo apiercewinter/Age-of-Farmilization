@@ -137,12 +137,12 @@ public class TeamManager : MonoBehaviour
         if (currentTeam.getTag() == "AIAnimal")
         {
             AITurn();
-            currentIndex++;
-            if (currentIndex >= teamList.Count)
-            {
-                currentIndex = 0;
-            }
-            currentTeam = teamList[currentIndex];
+            moveToNextIndex();
+        }
+        if (currentTeam.getTag() == "PlayerAI")
+        {
+            PlayerAITurn();
+            Invoke("moveToNextIndex", 5);
         }
     }
 
@@ -173,15 +173,26 @@ public class TeamManager : MonoBehaviour
         }
     }
 
-    public void AITurn()
+    private void AITurn()
     {
         List<GameObject> units = currentTeam.getAllUnitsInList();
-        Debug.Log(units.Count);
         foreach (GameObject ai in units)
         {
             ai.GetComponent<UnitBase>().readyAction();
             ai.GetComponent<AIAnimal>().performAction();
         }
+    }
+
+    private void PlayerAITurn()
+    {
+        List<GameObject> units = currentTeam.getAllUnitsInList();
+        GameObject mainPlayer = currentTeam.getMainPlayer();
+        foreach (GameObject unit in units)
+        {
+            unit.GetComponent<UnitBase>().readyAction();
+        }
+        mainPlayer.GetComponent<UnitBase>().readyAction();
+        mainPlayer.GetComponent<AIMainPlayer>().performAction();
     }
 
     // This method will determine whether the unit belongs to a team of the current turn
@@ -293,6 +304,30 @@ public class TeamManager : MonoBehaviour
         hasWinner = false;
         lookAtPlayerDel = null;
         winDel = null;
+    }
+
+    public static List<GameObject> getUnitsByTeamTag(string teamTag)
+    {
+        foreach (Team team in teamList)
+        {
+            if (team.getTag() == teamTag)
+            {
+                return team.getAllUnitsInList();
+            }
+        }
+        return null;
+    }
+
+    public static GameObject getBaseByTeamTag(string teamTag)
+    {
+        foreach (Team team in teamList)
+        {
+            if (team.getTag() == teamTag)
+            {
+                return team.getBase();
+            }
+        }
+        return null;
     }
 }
 
