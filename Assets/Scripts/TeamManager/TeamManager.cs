@@ -239,7 +239,7 @@ public class TeamManager : MonoBehaviour
             if (team.getTag() == teamTag)
             {
                 teamList.RemoveAt(i);
-                team.destroyAll();
+                team.destroyAll(Destroy);
                 break;
             }
         }

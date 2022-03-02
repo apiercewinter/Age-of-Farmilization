@@ -5,7 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Team : MonoBehaviour
+public delegate void forDestroy(GameObject go);
+
+public class Team
 {
     private GameObject mainPlayer;
     private GameObject playerBase;
@@ -28,27 +30,23 @@ public class Team : MonoBehaviour
     }
 
     // This method will be called when the base of the player is destroyed
-    public void destroyAll()
+    public void destroyAll(forDestroy destroyDel)
     {
         if (mainPlayer != null)
         {
-            Destroy(mainPlayer);
+            destroyDel(mainPlayer);
         }
-        Debug.Log("not stuck by player");
         if (playerBase != null)
         {
-            Destroy(playerBase);
+            destroyDel(playerBase);
         }
-        Debug.Log("not stuck by base");
-        teamtag = "";
         foreach (GameObject go in unitDict.Values)
         {
             if (go != null)
             {
-                Destroy(go);
+                destroyDel(go);
             }
         }
-        Debug.Log("not stuck by units");
     }
 
     public void setMainPlayerToNull()
