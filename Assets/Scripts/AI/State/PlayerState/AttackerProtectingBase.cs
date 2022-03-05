@@ -19,10 +19,20 @@ public class AttackerProtectingBase : State
         base.update();
         foreach (GameObject go in attackerList)
         {
-            float moveDist = go.GetComponent<UnitMover>().getMoveDistance();
+            UnitMover myMover = go.GetComponent<UnitMover>();
+            float moveDist = myMover.getMoveDistance();
             Vector3 randomPos = Random.insideUnitSphere * (moveDist - 2);
             randomPos.y = 0;
-            go.GetComponent<UnitMover>().moveRel(randomPos);
+            randomPos += basePos;
+            if (Vector3.Distance(go.transform.position, randomPos) > myMover.getMoveDistance())
+            {
+                Vector3 direction = randomPos.normalized;
+                myMover.moveRel(direction * (moveDist - 2));
+            }
+            else
+            {
+                go.GetComponent<UnitMover>().move(randomPos);
+            }
         }
     }
 }

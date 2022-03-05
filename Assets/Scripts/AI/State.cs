@@ -19,7 +19,6 @@ public class State
     {
         this.gameObject = gameObject;
         currentEvent = EVENT.ENTER;
-        startingPosition = gameObject.transform.position;
     }
 
     public virtual void enter() {currentEvent = EVENT.UPDATE;}

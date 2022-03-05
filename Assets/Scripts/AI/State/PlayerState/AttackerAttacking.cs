@@ -34,14 +34,14 @@ public class AttackerAttacking : State
             {
                 UnitMover myMover = attackerGO.GetComponent<UnitMover>();
                 float moveDist = myMover.getMoveDistance();
-                Vector3 directionToTarget = attackerGO.transform.position - target.transform.position;
+                Vector3 directionToTarget = - (attackerGO.transform.position - target.transform.position).normalized;
                 if (distBetween > moveDist)
                 {
                     myMover.moveRel(directionToTarget * (moveDist - 1));
                 }
                 else
                 {
-                    myMover.moveRel(directionToTarget * (moveDist - attackRange - 1));
+                    myMover.moveRel(directionToTarget * (distBetween + 1 - attackRange));
                     myAttacker.attack(target);
                 }
             }

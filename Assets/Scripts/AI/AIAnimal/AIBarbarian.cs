@@ -127,6 +127,5 @@ public class AIBarbarian : AIAnimal
     public override void performAction()
     {
         base.performAction();
-        Debug.Log(currentState.ToString());
     }
 }

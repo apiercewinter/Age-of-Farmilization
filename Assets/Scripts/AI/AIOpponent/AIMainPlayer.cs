@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIMainPlayer : AI
 {
-    [SerializeField] private GameObject spawner;
+    private GameObject spawner;
     private List<GameObject> unitList = new List<GameObject>();
     private List<GameObject> collectorList = new List<GameObject>();
     private List<GameObject> attackerList = new List<GameObject>();
@@ -18,11 +18,13 @@ public class AIMainPlayer : AI
     private GameObject resourceToGather;
     private GameObject threat;
 
-    private State mainPlayerState;
-
     void Start()
     {
         this.gameObject.tag = "PlayerAI";
+        // I don't want to use Find() here, but I can't think of any other ways to 
+        // get a reference to the spawner
+        spawner = GameObject.Find("PlayerAISpawner");
+        collectorList.Add(this.gameObject);
     }
 
     public List<GameObject> getAttackerList()
@@ -37,17 +39,20 @@ public class AIMainPlayer : AI
 
     private void differentiateUnits()
     {
+        attackerList.Clear();
+        collectorList.Clear();
         foreach (GameObject go in unitList)
         {
             if (go.GetComponent<UnitAttacker>())
             {
                 attackerList.Add(go);
             }
-            else
+            else if (go.GetComponent<UnitCollector>())
             {
                 collectorList.Add(go);
             }
         }
+        collectorList.Add(this.gameObject);
     }
 
     private bool hasTarget()
@@ -100,6 +105,7 @@ public class AIMainPlayer : AI
 
     private void refreshSet()
     {
+        string s = "attacker collided: ";
         foreach (GameObject attackerGO in attackerList)
         {
             Collider[] colliders = Physics.OverlapSphere(attackerGO.transform.position, attackerGO.GetComponent<UnitAttacker>().getRange());
@@ -110,11 +116,13 @@ public class AIMainPlayer : AI
                 {
                     targetSet.Add(collidedGO.gameObject);
                 }
+                s += collidedGO.name;
             }
         }
+        Debug.Log(s);
         foreach (GameObject collectorGO in collectorList)
         {
-            Collider[] colliders = Physics.OverlapSphere(collectorGO.transform.position, collectorGO.GetComponent<UnitCollector>().getRange());
+            Collider[] colliders = Physics.OverlapSphere(collectorGO.transform.position, collectorGO.GetComponent<UnitMover>().getMoveDistance());
             foreach (Collider collidedGO in colliders)
             {
                 string tag = collidedGO.tag;
@@ -128,6 +136,12 @@ public class AIMainPlayer : AI
                 }
             }
         }
+        string thrt = "threat set: ";
+        foreach (GameObject  go in threatSet)
+        {
+            thrt += go.name + ", ";
+        }
+        Debug.Log(thrt);
     }
 
     private void decideState()
@@ -144,11 +158,12 @@ public class AIMainPlayer : AI
 
         // ========== Start of Attacker behavior ==========
         // AIPlayer will start finding targets when it has more than 5 attacking unit
+        Debug.Log("number of attakerList: " + attackerList.Count);
         if (!has5Attacker())
         {
             currentState = new AttackerProtectingBase(attackerList, playerBase.transform.position);
         }
-        else if (!hasTarget())
+        else if (!hasTarget() && has5Attacker())
         {
             currentState = new AttackerSeeking(attackerList);
         }
@@ -167,6 +182,7 @@ public class AIMainPlayer : AI
             currentState = new AttackerAttacking(attackerList, target);
         }
         base.performAction();
+        Debug.Log("attackers' state: " + currentState.ToString());
         // ========== End of Attacker behavior ==========
 
         // ========== Start of Collector behavior ==========
@@ -184,12 +200,10 @@ public class AIMainPlayer : AI
                 }
             }
             currentState = new CollectorFleeing(collectorList, threat);
-            mainPlayerState = new Fleeing(this.gameObject, threat);
         }
         else if (!hasResourceTarget())
         {
             currentState = new AttackerSeeking(collectorList);
-            mainPlayerState = new Seeking(this.gameObject, this.gameObject.GetComponent<UnitMover>().getMoveDistance());
         }
         else
         {
@@ -204,9 +218,7 @@ public class AIMainPlayer : AI
                 }
             }
             currentState = new CollectorHarvesting(collectorList, resourceToGather);
-            mainPlayerState = new Harvesting(this.gameObject, resourceToGather);
         }
-        mainPlayerState.update();
         base.performAction();
         // ========== End of Collector behavior ==========
     }
@@ -214,7 +226,8 @@ public class AIMainPlayer : AI
     private void trySpawnUnits()
     {
         // PlayerAI will spawn units randomly
-        List<uint> unitIndexList = new List<uint>() { 0, 1, 2, 3, 4 };
+        // AI does not spawn healer, this is intentionally
+        List<uint> unitIndexList = new List<uint>() { 0, 1, 2, 4 };
         while (true)
         {
             int randomIndex = Random.Range(0, unitIndexList.Count);

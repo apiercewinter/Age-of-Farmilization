@@ -21,7 +21,6 @@ public class Fleeing : State
         {
             Vector3 movement = (gameObject.transform.position - target.transform.position).normalized *
                 gameObject.GetComponent<UnitMover>().getMoveDistance() + gameObject.transform.position;
-            Debug.Log("fleeing is called, and the vector is: " + movement);
             gameObject.GetComponent<UnitMover>().move(movement);
         }
     }

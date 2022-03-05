@@ -30,7 +30,6 @@ public class AIWandering : AIAnimal
     public override void performAction()
     {
         base.performAction();
-        Debug.Log("AIWandering's current state: " + currentState.ToString());
     }
 
 

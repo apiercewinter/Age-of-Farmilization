@@ -24,7 +24,19 @@ public class CollectorHarvesting : State
                 break;
             }
             UnitCollector myCollector = collectorGO.GetComponent<UnitCollector>();
+            /*float collectRange = new float();
+            // for some reason I don't know, somehow myCollector will be null
+            // this if statement is here in case this issue happens, and prevent
+            // game from stopping because of this issue
+            if (myCollector == null)
+            {
+                collectRange = 5;
+            }
+            else*/
+            // {
             float collectRange = myCollector.getRange();
+            // }
+
             if (Vector3.Distance(target.transform.position, collectorGO.transform.position) < collectRange)
             {
                 myCollector.collect(target);
@@ -33,7 +45,7 @@ public class CollectorHarvesting : State
             {
                 UnitMover myMover = collectorGO.GetComponent<UnitMover>();
                 float moveDist = myMover.getMoveDistance();
-                Vector3 directionToTarget = collectorGO.transform.position - target.transform.position;
+                Vector3 directionToTarget = - (collectorGO.transform.position - target.transform.position).normalized;
                 float distBetween = Vector3.Distance(target.transform.position, collectorGO.transform.position);
                 if (distBetween > moveDist)
                 {
@@ -41,7 +53,7 @@ public class CollectorHarvesting : State
                 }
                 else
                 {
-                    myMover.moveRel(directionToTarget * (moveDist - collectRange - 1));
+                    myMover.moveRel(directionToTarget * (distBetween + 1 - collectRange));
                     myCollector.collect(target);
                 }
             }

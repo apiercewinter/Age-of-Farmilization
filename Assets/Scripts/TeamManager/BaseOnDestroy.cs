@@ -15,7 +15,6 @@ public class BaseOnDestroy : MonoBehaviour
     {
         if (!TeamManager.getHasWinner())
         {
-            Debug.Log(gameObject.tag + " team just called onDestroy");
             TeamManager.removeBase(gameObject.tag);
         }
     }

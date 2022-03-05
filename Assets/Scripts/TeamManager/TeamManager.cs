@@ -142,7 +142,7 @@ public class TeamManager : MonoBehaviour
         if (currentTeam.getTag() == "PlayerAI")
         {
             PlayerAITurn();
-            Invoke("moveToNextIndex", 5);
+            moveToNextIndex();
         }
     }
 

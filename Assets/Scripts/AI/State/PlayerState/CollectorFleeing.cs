@@ -20,8 +20,8 @@ public class CollectorFleeing : State
         Vector3 threatPos = threat.transform.position;
         foreach (GameObject go in collectorsList)
         {
-            Vector3 direction = threatPos - gameObject.transform.position;
-            UnitMover myMover = gameObject.GetComponent<UnitMover>();
+            Vector3 direction = - (threatPos - go.transform.position).normalized;
+            UnitMover myMover = go.GetComponent<UnitMover>();
             myMover.moveRel(direction * (myMover.getMoveDistance() - 1));
         }
     }
