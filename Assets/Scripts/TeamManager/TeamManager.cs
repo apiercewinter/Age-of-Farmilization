@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
 public delegate void WinDel(string winnerTag);
@@ -37,6 +38,13 @@ public class TeamManager : MonoBehaviour
     [SerializeField]
     private GameObject bases;
 
+    [SerializeField]
+    private GameObject ActionUI;
+
+    private static GameObject CollectionUI;
+    private static Transform CollectionText;
+
+
     private static bool hasWinner = false;
 
     // Start is called before the first frame update
@@ -44,6 +52,7 @@ public class TeamManager : MonoBehaviour
     {
         instantiateTeam();
         SwapSpawnMenus();
+        CollectionText = ActionUI.transform.GetChild(0).GetChild(0);
     }
 
     public static List<Team> getAllTeams()
@@ -157,6 +166,7 @@ public class TeamManager : MonoBehaviour
         {
             lookAtPlayerDel(currentTeam.getMainPlayer());
         }
+        CollectionText.GetComponent<TextMeshProUGUI>().text = "";
     }
 
     public void SwapSpawnMenus()
@@ -267,6 +277,7 @@ public class TeamManager : MonoBehaviour
     public static void addResource(string resourceType, int amount)
     {
         currentTeam.addToInventory(resourceType, amount);
+        CollectionText.GetComponent<TextMeshProUGUI>().text = "You collected " + amount + " " + resourceType;
     }
 
     public static void subtractResource(string resourceType, int amount)
@@ -304,6 +315,8 @@ public class TeamManager : MonoBehaviour
         hasWinner = false;
         lookAtPlayerDel = null;
         winDel = null;
+        CollectionText = null;
+        
     }
 
     public static List<GameObject> getUnitsByTeamTag(string teamTag)
