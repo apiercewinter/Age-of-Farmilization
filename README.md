@@ -17,7 +17,7 @@ If you collect enough resources, you can spawn units, consuming the prompted amo
 These units can take action on the next turn.
 
  
-Use the arrow keys or WASD to move the camera
+Use the arrow keys or WASD to move the camera. Pressing space will lock the camera on the selected unit and will force the camera to follow that unit. You can press space again to regain free camera control.
 Left click on a specific unit to select that unit.
 With a unit selected, right click on the ground to move the selected unit.
 With a unit selected, right click on the enemy to order the selected unit to attack the enemy.
