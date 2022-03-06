@@ -85,7 +85,7 @@ public class TeamManager : MonoBehaviour
                 teamList.Add(newTeam);
             }
         }
-        currentTeam = teamList[currentIndex];
+        currentTeam = teamList[teamList.Count -1];
         if (currentTeam.getTag() == "AIAnimal")
         {
             moveToNextIndex();
