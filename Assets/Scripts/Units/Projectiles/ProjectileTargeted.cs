@@ -14,6 +14,11 @@ public class ProjectileTargeted : ProjectileBase
 
         //Track target
         Vector3 directionToMove = (movingTo - gameObject.transform.position).normalized * speed;
+        if(directionToMove.magnitude < speed)
+        { //On the target but hasnt "hit"
+            //Try to move to the gameobject target center now
+            directionToMove = (getTarget().transform.position - gameObject.transform.position).normalized * speed;
+        }
         gameObject.transform.position += directionToMove;
         return directionToMove;
     }
