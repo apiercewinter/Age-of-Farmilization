@@ -227,15 +227,26 @@ public class AIMainPlayer : AI
     {
         // PlayerAI will spawn units randomly
         // AI does not spawn healer, this is intentionally
-        List<uint> unitIndexList = new List<uint>() { 0, 1, 2, 4 };
+        List<uint> unitIndexList = new List<uint>() { 0, 1, 4 };
+        if (collectorList.Count < 4)
+        {
+            unitIndexList.Add(2);
+        }
+         
         while (true)
         {
             int randomIndex = Random.Range(0, unitIndexList.Count);
             GameObject spawnedUnit = spawner.GetComponent<UnitSpawner>().spawnUnit(unitIndexList[randomIndex]);
+ 
             if (spawnedUnit == null)
             {
                 unitIndexList.RemoveAt(randomIndex);
             }
+            else
+            {
+                break;
+            }
+
             if (unitIndexList.Count == 0)
             {
                 break;
