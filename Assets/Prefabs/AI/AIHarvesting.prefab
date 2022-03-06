@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3969966698456686634}
   - component: {fileID: 3674691857843100542}
   - component: {fileID: 3969966698310032560}
-  - component: {fileID: 7751673639091162751}
   - component: {fileID: 6753731085834793340}
   m_Layer: 8
   m_Name: AIHarvesting
@@ -115,20 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e0b453f0f7cc140b9237d78baa1c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7751673639091162751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4658366005833597878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b60be71285460d43ad6f660fe528f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: 0
-  isHovering: 0
 --- !u!114 &6753731085834793340
 MonoBehaviour:
   m_ObjectHideFlags: 0

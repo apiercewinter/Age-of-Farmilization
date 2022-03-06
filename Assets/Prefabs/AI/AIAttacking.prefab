@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2111700590833700478}
   - component: {fileID: 1777025281534866730}
   - component: {fileID: 2111700590989046500}
-  - component: {fileID: 4739222532409647147}
   - component: {fileID: 5511208051568219181}
   m_Layer: 8
   m_Name: AIAttacking
@@ -115,20 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e0b453f0f7cc140b9237d78baa1c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4739222532409647147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7706702269721587170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b60be71285460d43ad6f660fe528f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: 0
-  isHovering: 0
 --- !u!114 &5511208051568219181
 MonoBehaviour:
   m_ObjectHideFlags: 0
