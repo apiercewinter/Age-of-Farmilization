@@ -8,10 +8,15 @@ public class UIHoverover : MonoBehaviour
 {
     private LineRenderer lineRenderer;
 
-    private float ThetaScale = 0.01f;
     private float radius;
-    private int Size;
-    private float Theta = 0f;
+
+    private UnitMover myMover;
+    private UnitCollector myCollector;
+    private UnitAttacker myAttacker;
+    private UnitBase myBase;
+
+    private int segments = 50;
+    private float angle = 20f;
 
     [SerializeField] private bool selected = false;
     [SerializeField] private bool isHovering = false;
@@ -22,6 +27,11 @@ public class UIHoverover : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 0;
         lineRenderer.useWorldSpace = true;
+
+        myMover = GetComponent<UnitMover>();
+        myCollector = GetComponent<UnitCollector>();
+        myAttacker = GetComponent<UnitAttacker>();
+        myBase = GetComponent<UnitBase>();
     }
 
     void Update()
@@ -30,6 +40,45 @@ public class UIHoverover : MonoBehaviour
         {
             selected = false;
             lineRenderer.positionCount = 0;
+        }
+        else if (selected)
+        {
+            if (myBase.canTakeAction())
+            {
+                if (myCollector)
+                {
+                    float angle = 20f;
+                    radius = myCollector.getRange();
+                    for (int i = segments + 1; i < (segments + 1) * 2; i++)
+                    {
+                        float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+                        float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+
+                        lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
+
+                        angle += (360f / segments);
+                    }
+                }
+
+                if (myAttacker)
+                {
+                    angle = 20f;
+                    radius = myAttacker.getRange();
+                    for (int i = (segments + 1) * 2; i < (segments + 1) * 3; i++)
+                    {
+                        float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+                        float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+
+                        lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
+
+                        angle += (360f / segments);
+                    }
+                }
+            }
+            else
+            {
+                lineRenderer.positionCount = segments + 1;
+            }
         }
     }
 
@@ -61,44 +110,69 @@ public class UIHoverover : MonoBehaviour
 
     private void RenderRadii()
     {
-        UnitMover myMover = GetComponent<UnitMover>();
         Vector3 roundStartLocation = myMover.getRoundStartLocation();
         Vector3 currentPos = transform.position;
         currentPos.y = roundStartLocation.y;
         radius = myMover.getMoveDistance();
-        int segments = 50;
-        float x;
-        float z;
 
-        float angle = 20f;
-        lineRenderer.positionCount = segments * 2 + 1;
+        angle = 20f;
+
+        int ptCount = segments + 1;
+        if (myCollector)
+        {
+            ptCount += segments + 1;
+        }
+        if (myAttacker)
+        {
+            ptCount += segments + 1;
+        }
+        lineRenderer.positionCount = ptCount;
 
         for (int i = 0; i < (segments + 1); i++)
         {
-            x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-            z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+            float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 
             lineRenderer.SetPosition(i, new Vector3(x, 0, z) + roundStartLocation);
 
             angle += (360f / segments);
         }
-
-        UnitCollector myCollector = GetComponent<UnitCollector>();
-        if (myCollector)
+        if (myBase.canTakeAction())
         {
-            angle = 20f;
-            radius = myCollector.getRange();
-            for (int i = segments + 1; i < segments * 2 + 1; i++)
+            if (myCollector)
             {
-                x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-                z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+                angle = 20f;
+                radius = myCollector.getRange();
+                for (int i = segments + 1; i < (segments + 1) * 2; i++)
+                {
+                    float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+                    float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 
-                lineRenderer.SetPosition(i, new Vector3(x, 0, z) + roundStartLocation);
+                    lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
 
-                angle += (360f / segments);
+                    angle += (360f / segments);
+                }
+            }
+
+            if (myAttacker)
+            {
+                angle = 20f;
+                radius = myAttacker.getRange();
+                for (int i = (segments + 1) * 2; i < (segments + 1) * 3; i++)
+                {
+                    float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+                    float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+
+                    lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
+
+                    angle += (360f / segments);
+                }
             }
         }
-        lineRenderer.startColor = Color.white;
-        lineRenderer.endColor = Color.white;
+        else
+        {
+            lineRenderer.positionCount = segments + 1;
+        }
+
     }
 }
