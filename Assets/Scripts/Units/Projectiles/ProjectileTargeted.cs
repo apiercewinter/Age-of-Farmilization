@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ProjectileTargeted : ProjectileBase
 {
+    protected bool hitTarget = false;
+
     protected override Vector3 move(float time)
     {
         Vector3 movingTo = getTargetPos();
@@ -25,6 +27,9 @@ public class ProjectileTargeted : ProjectileBase
 
     protected override void hit(GameObject go)
     {
+        if (hitTarget) return;
+        hitTarget = true;
+
         Health enemyHP = go.GetComponent<Health>();
         if (!enemyHP) return;
 
@@ -32,5 +37,11 @@ public class ProjectileTargeted : ProjectileBase
         Debug.Log("Hit " + go.name + " for " + getDamage() + " damage. Enemy now has " + enemyHP.getHealth() + " HP.");
 
         Destroy(gameObject);
+    }
+
+    protected virtual void OnDisable()
+    {
+        //Failsafe - hit the target one way or another
+        hit(getTarget());
     }
 }
