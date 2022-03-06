@@ -17,7 +17,7 @@ public abstract class UnitMover : UnitBase
     private NavMeshAgent myAgent;
     public const float AGENT_SPEED = 10f;
     public const float AGENT_ACC = 100f;
-    public const float AGENT_TURN = 100f;
+    public const float AGENT_TURN = 1000000f;
     public const float AGENT_STOP_DIST = .5f;
 
     public override void readyAction()
