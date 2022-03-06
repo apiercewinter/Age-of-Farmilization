@@ -20,8 +20,7 @@ public class UIHoverover : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.SetPosition(0, gameObject.transform.position);
-        lineRenderer.SetPosition(1, gameObject.transform.position);
+        lineRenderer.positionCount = 0;
         lineRenderer.useWorldSpace = true;
     }
 
@@ -67,15 +66,39 @@ public class UIHoverover : MonoBehaviour
         Vector3 currentPos = transform.position;
         currentPos.y = roundStartLocation.y;
         radius = myMover.getMoveDistance();
-        Theta = 0f;
-        Size = (int)((1f / ThetaScale) + 1f);
-        lineRenderer.positionCount = Size;
-        for (int i = 0; i < Size; i++)
+        int segments = 50;
+        float x;
+        float z;
+
+        float angle = 20f;
+        lineRenderer.positionCount = segments * 2 + 1;
+
+        for (int i = 0; i < (segments + 1); i++)
         {
-            Theta += (2.0f * Mathf.PI * ThetaScale);
-            float x = radius * Mathf.Cos(Theta);
-            float z = radius * Mathf.Sin(Theta);
+            x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+            z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+
             lineRenderer.SetPosition(i, new Vector3(x, 0, z) + roundStartLocation);
+
+            angle += (360f / segments);
         }
+
+        UnitCollector myCollector = GetComponent<UnitCollector>();
+        if (myCollector)
+        {
+            angle = 20f;
+            radius = myCollector.getRange();
+            for (int i = segments + 1; i < segments * 2 + 1; i++)
+            {
+                x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+                z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+
+                lineRenderer.SetPosition(i, new Vector3(x, 0, z) + roundStartLocation);
+
+                angle += (360f / segments);
+            }
+        }
+        lineRenderer.startColor = Color.white;
+        lineRenderer.endColor = Color.white;
     }
 }

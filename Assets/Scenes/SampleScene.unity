@@ -7883,7 +7883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitContainer: {fileID: 254034730}
-  unitPrefab: {fileID: 9175202088563868142, guid: 5557f1f8bbc83bd449e4c610b2746787, type: 3}
+  unitPrefab: {fileID: 4658366005833597878, guid: 376368cc0f6622945965e574dada5996, type: 3}
   playerUnit: {fileID: 11400000, guid: 42b3e345bb3e5e541a35019ea8dab58b, type: 2}
   spawnableUnits: []
   team: AIAnimal
