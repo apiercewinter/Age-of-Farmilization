@@ -108,7 +108,7 @@ public class AIMainPlayer : AI
         string s = "attacker collided: ";
         foreach (GameObject attackerGO in attackerList)
         {
-            Collider[] colliders = Physics.OverlapSphere(attackerGO.transform.position, attackerGO.GetComponent<UnitAttacker>().getRange());
+            Collider[] colliders = Physics.OverlapSphere(attackerGO.transform.position, attackerGO.GetComponent<UnitMover>().getMoveDistance());
             foreach (Collider collidedGO in colliders)
             {
                 string tag = collidedGO.tag;
