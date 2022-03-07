@@ -23,4 +23,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void ReturnMainMenu()
+    {
+        TeamManager.resetAll();
+        SceneManager.LoadScene("Menu");
+    }
+
 }

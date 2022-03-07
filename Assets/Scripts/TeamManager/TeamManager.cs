@@ -43,7 +43,6 @@ public class TeamManager : MonoBehaviour
     [SerializeField]
     private GameObject ActionUI;
 
-    private static GameObject CollectionUI;
     private static Transform CollectionText;
 
 
@@ -321,7 +320,6 @@ public class TeamManager : MonoBehaviour
 
     public static void resetAll()
     {
-
         teamList.Clear();
         currentIndex = 0;
         currentTeam = null;
@@ -329,7 +327,7 @@ public class TeamManager : MonoBehaviour
         lookAtPlayerDel = null;
         winDel = null;
         CollectionText = null;
-        
+        godViewDel = null;
     }
 
     public static List<GameObject> getUnitsByTeamTag(string teamTag)
