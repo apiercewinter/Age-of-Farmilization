@@ -29,7 +29,7 @@ public class UIResourceGatheredSubscriber : MonoBehaviour, ISubscriber
 
     public void indicateGatheredResource(string resource, int amount)
     {
-        textField.text = "Gathered " + amount + " " + resource;
+        textField.text = "Collected " + amount + " " + resource;
         // Set the color to the not transparent one before starting animation
         textField.color = fullAlphaColor;
         StartCoroutine(fadeTextToZeroAlpha(2));

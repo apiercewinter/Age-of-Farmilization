@@ -45,6 +45,8 @@ public class UnitCollector : UnitMover
         TeamManager.addResource(ro.getResourcename(), ro.getGatherValue());
         ro.DepleteResource();
 
+        GetComponent<UIUnitCentralPublisher>().indicateGatheredResource(ro.getResourcename(), ro.getGatherValue());
+
         return true;
     }
 
