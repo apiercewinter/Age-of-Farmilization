@@ -5961,7 +5961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.7725491, b: 0.56078434, a: 1}
+  m_Color: {r: 0.5019608, g: 0.7725491, b: 0.56078434, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10963,7 +10963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7377261332417007714, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -31.6
+      value: 47.9
       objectReference: {fileID: 0}
     - target: {fileID: 7377261332417007714, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10971,7 +10971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7377261332417007714, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.4
+      value: 20.9
       objectReference: {fileID: 0}
     - target: {fileID: 7377261332417007714, guid: c5413af8ee1653742988cca3ac9f1d07, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11222,7 +11222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.28
+      value: 45.1
       objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11230,7 +11230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.28
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 7682202350431242481, guid: 28a8ec7037e2de44d9eb13c9440a25dd, type: 3}
       propertyPath: m_LocalRotation.w

@@ -9484,14 +9484,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875529338}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -134.1, y: 0, z: -123.3}
+  m_LocalRotation: {x: -0, y: 0.39681518, z: -0, w: 0.91789854}
+  m_LocalPosition: {x: -76.95, y: 0.42, z: -56.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 812796461786945752}
   m_Father: {fileID: 1886545543}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 46.758, z: 0}
 --- !u!1 &1881283767
 GameObject:
   m_ObjectHideFlags: 0
@@ -12629,8 +12629,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816240268922785900}
-  m_LocalRotation: {x: -0, y: 0.36674005, z: -0, w: 0.9303235}
-  m_LocalPosition: {x: 52.11551, y: 0, z: 58.08137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 812610131861958974}
@@ -12648,7 +12648,7 @@ Transform:
   - {fileID: 8493348179432403541}
   m_Father: {fileID: 1875529339}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 43.029, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &812891303270390346
 Transform:
   m_ObjectHideFlags: 0
@@ -13578,6 +13578,7 @@ GameObject:
   - component: {fileID: 8681133853459843955}
   - component: {fileID: 5770515761270422382}
   - component: {fileID: 816240268922785901}
+  - component: {fileID: 816240268922785902}
   m_Layer: 8
   m_Name: ForestCastle_Red
   m_TagString: Player2
@@ -13597,6 +13598,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554bc6f72b4b32342973384263891d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &816240268922785902
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816240268922785900}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &816242016290056770
 GameObject:
   m_ObjectHideFlags: 0
@@ -17875,8 +17892,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8643904251342903495}
-  m_LocalRotation: {x: 0, y: -0.93093795, z: 0, w: 0.36517742}
-  m_LocalPosition: {x: 37.1, y: 0, z: 40}
+  m_LocalRotation: {x: -0, y: -0.94847924, z: -0, w: 0.31683928}
+  m_LocalPosition: {x: 33.3, y: 0, z: 38.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8638035690607131029}
@@ -17894,7 +17911,7 @@ Transform:
   - {fileID: 1900222946203305312}
   m_Father: {fileID: 1502126636}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -137.163, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -143.056, z: 0}
 --- !u!4 &8638316921464607457
 Transform:
   m_ObjectHideFlags: 0
@@ -18559,6 +18576,7 @@ GameObject:
   - component: {fileID: 3987644083354234349}
   - component: {fileID: 6102780865107111831}
   - component: {fileID: 8643904251342903496}
+  - component: {fileID: 8643904251342903497}
   m_Layer: 8
   m_Name: ForestCastle_Blue
   m_TagString: Player1
@@ -18578,6 +18596,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554bc6f72b4b32342973384263891d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &8643904251342903497
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643904251342903495}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8643941576965853601
 GameObject:
   m_ObjectHideFlags: 0
