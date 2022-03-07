@@ -32,6 +32,7 @@ public class CameraMovement : MonoBehaviour
     {
         WinLoseManager.subscribeToDisableControl(disableCameraMovement);
         TeamManager.subscribeToLookAtPlayerDel(lookAt);
+        TeamManager.subscribeToGodViewDel(godView);
     }
 
     // Update is called once per frame
@@ -97,21 +98,6 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    /*public void FindCenterPosition()
-    {
-        GameObject[] controlledUnits = GameObject.FindGameObjectsWithTag("Player");
-
-        Vector3 center = new Vector3();
-        int total = controlledUnits.Length;
-
-        foreach(GameObject units in controlledUnits)
-        {
-            center += units.transform.position;
-        }
-
-        Target = center / total;
-    }*/
-
     public void LockPositionToCurrentSelected()
     {
         Vector3 Overhead = new Vector3(10f, 15f, 10f);
@@ -139,6 +125,11 @@ public class CameraMovement : MonoBehaviour
     {
         Target = go.transform.position;
         LockPosition();
+    }
+
+    void godView()
+    {
+        transform.position = new Vector3(18.72092f, 40, 33.28321f);
     }
 
     public void changeMovementSpeed(float ms)

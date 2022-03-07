@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 // We probably not gonna need this if we are using movement range
 
@@ -11,6 +12,7 @@ public class TransitionManager : MonoBehaviour
     [SerializeField]
     private GameObject transitionCanvas;
     private TextMeshProUGUI textField;
+    private Action lookAtPlayerDel;
 
     void Start()
     {
@@ -28,5 +30,11 @@ public class TransitionManager : MonoBehaviour
     public void onImReadyButtonClick()
     {
         transitionCanvas.SetActive(false);
+        lookAtPlayerDel();
+    }
+
+    public void subscribeToLookAtPlayerDel(Action del)
+    {
+        lookAtPlayerDel += del;
     }
 }

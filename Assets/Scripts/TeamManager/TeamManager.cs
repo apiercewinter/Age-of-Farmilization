@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
 public delegate void WinDel(string winnerTag);
@@ -27,6 +28,7 @@ public class TeamManager : MonoBehaviour
     private static int currentIndex;
     private static Team currentTeam;
 
+    private static Action godViewDel;
     private static LookAtPlayerDel lookAtPlayerDel;
     private static WinDel winDel;
 
@@ -53,6 +55,7 @@ public class TeamManager : MonoBehaviour
         instantiateTeam();
         SwapSpawnMenus();
         CollectionText = ActionUI.transform.GetChild(0).GetChild(0);
+        GetComponent<TransitionManager>().subscribeToLookAtPlayerDel(lookAtCurrentPlayer);
     }
 
     public static List<Team> getAllTeams()
@@ -161,12 +164,17 @@ public class TeamManager : MonoBehaviour
         moveToNextIndex();
         giveCurrentTeamControl();
         GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getTag());
+        godViewDel();
+        CollectionText.GetComponent<TextMeshProUGUI>().text = "";
+    }
+
+    public void lookAtCurrentPlayer()
+    {
         GameObject mainPlayer = currentTeam.getMainPlayer();
         if (mainPlayer != null)
         {
             lookAtPlayerDel(currentTeam.getMainPlayer());
         }
-        CollectionText.GetComponent<TextMeshProUGUI>().text = "";
     }
 
     public void SwapSpawnMenus()
@@ -304,6 +312,11 @@ public class TeamManager : MonoBehaviour
     public static void subscribeToWinDel(WinDel del)
     {
         winDel += del;
+    }
+
+    public static void subscribeToGodViewDel(Action del)
+    {
+        godViewDel += del;
     }
 
     public static void resetAll()
