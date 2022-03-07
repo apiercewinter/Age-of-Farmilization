@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitContainer: {fileID: 0}
-  unitPrefab: {fileID: 8628317023276000461, guid: 4c85e302ff9d20542a87caf139173b45, type: 3}
+  unitPrefab: {fileID: 8628317023276000461, guid: 7aa65d7a692a7c6418bd336200450c91, type: 3}
   playerUnit: {fileID: 11400000, guid: 53f56eb7e6e8ada4690663186b6736cf, type: 2}
   spawnableUnits:
   - {fileID: 11400000, guid: 13656fd3084937742bbbd5f2e412879f, type: 2}

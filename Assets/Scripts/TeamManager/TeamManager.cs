@@ -159,6 +159,8 @@ public class TeamManager : MonoBehaviour
 
     public void OnNextTurnButtonClick()
     {
+        // a failsafe
+        SelectedObject.deselect();
         removeCurrentTeamControl();
         moveToNextIndex();
         giveCurrentTeamControl();
@@ -208,8 +210,22 @@ public class TeamManager : MonoBehaviour
         {
             unit.GetComponent<UnitBase>().readyAction();
         }
-        mainPlayer.GetComponent<UnitBase>().readyAction();
-        mainPlayer.GetComponent<AIMainPlayer>().performAction();
+        // if main player is still alive, it will give orders to its units
+        if (mainPlayer)
+        {
+            mainPlayer.GetComponent<UnitBase>().readyAction();
+            mainPlayer.GetComponent<AIMainPlayer>().performAction();
+        }
+        // if main player is already dead, all of its units will just start wandering
+        else
+        {
+            foreach (GameObject unit in units)
+            {
+                UnitMover myMover = unit.GetComponent<UnitMover>();
+                Vector3 randomDir = UnityEngine.Random.insideUnitCircle.normalized;
+                myMover.moveRel(randomDir * (myMover.getMoveDistance() - 1));
+            }
+        }
     }
 
     // This method will determine whether the unit belongs to a team of the current turn

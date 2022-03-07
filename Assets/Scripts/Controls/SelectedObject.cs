@@ -9,11 +9,13 @@ public class SelectedObject : MonoBehaviour
 
     public static void select(GameObject go)
     {
+        disableIndicator();
         currentSelected = go;
     }
 
     public static void deselect()
     {
+        disableIndicator();
         currentSelected = null;
     }
 

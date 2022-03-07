@@ -13,6 +13,7 @@ public class UIHoverover : MonoBehaviour
     private UnitMover myMover;
     private UnitCollector myCollector;
     private UnitAttacker myAttacker;
+    private UnitHealer myHealer;
     private UnitBase myBase;
 
     private int segments = 50;
@@ -20,6 +21,10 @@ public class UIHoverover : MonoBehaviour
 
     [SerializeField] private bool selected = false;
     [SerializeField] private bool isHovering = false;
+
+    private UICollectorRender collectorRender;
+    private UIAttackerRender attackerRender;
+    private UIHealerRender healerRender;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +36,13 @@ public class UIHoverover : MonoBehaviour
         myMover = GetComponent<UnitMover>();
         myCollector = GetComponent<UnitCollector>();
         myAttacker = GetComponent<UnitAttacker>();
+        myHealer = GetComponent<UnitHealer>();
+        
         myBase = GetComponent<UnitBase>();
+
+        collectorRender = transform.GetChild(1).gameObject.GetComponent<UICollectorRender>();
+        attackerRender = transform.GetChild(2).gameObject.GetComponent<UIAttackerRender>();
+        healerRender = transform.GetChild(3).gameObject.GetComponent<UIHealerRender>();
     }
 
     void Update()
@@ -40,6 +51,9 @@ public class UIHoverover : MonoBehaviour
         {
             selected = false;
             lineRenderer.positionCount = 0;
+            collectorRender.cancelRender();
+            attackerRender.cancelRender();
+            healerRender.cancelRender();
         }
         else if (selected)
         {
@@ -47,49 +61,23 @@ public class UIHoverover : MonoBehaviour
             {
                 if (myCollector)
                 {
-                    float angle = 20f;
-                    radius = myCollector.getRange();
-                    for (int i = segments + 1; i < (segments + 1) * 2; i++)
-                    {
-                        float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-                        float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
-
-                        lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
-
-                        angle += (360f / segments);
-                    }
+                    collectorRender.renderRange(myCollector.getRange(), transform.position);
                 }
 
                 if (myAttacker)
                 {
-                    int startIndex, endIndex;
-                    if (myCollector)
-                    {
-                        startIndex = (segments + 1) * 2;
-                        endIndex = (segments + 1) * 3;
-                    }
-                    else
-                    {
-                        startIndex = segments + 1;
-                        endIndex = (segments + 1) * 2;
-                    }
-                    angle = 20f;
-                    radius = myAttacker.getRange();
-                    
-                    for (int i = startIndex; i < endIndex; i++)
-                    {
-                        float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-                        float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
-
-                        lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
-
-                        angle += (360f / segments);
-                    }
+                    attackerRender.renderRange(myAttacker.getRange(), transform.position);
+                }
+                if (myHealer)
+                {
+                    healerRender.renderRange(myHealer.getRange(), transform.position);
                 }
             }
             else
             {
-                lineRenderer.positionCount = segments + 1;
+                collectorRender.cancelRender();
+                attackerRender.cancelRender();
+                healerRender.cancelRender();
             }
         }
     }
@@ -118,6 +106,9 @@ public class UIHoverover : MonoBehaviour
         isHovering = false;
         if(selected != true)
             lineRenderer.positionCount = 0;
+        collectorRender.cancelRender();
+        attackerRender.cancelRender();
+        healerRender.cancelRender();
     }
 
     private void RenderRadii()
@@ -129,16 +120,8 @@ public class UIHoverover : MonoBehaviour
 
         angle = 20f;
 
-        int ptCount = segments + 1;
-        if (myCollector)
-        {
-            ptCount += segments + 1;
-        }
-        if (myAttacker)
-        {
-            ptCount += segments + 1;
-        }
-        lineRenderer.positionCount = ptCount;
+        
+        lineRenderer.positionCount = segments + 1;
 
         for (int i = 0; i < (segments + 1); i++)
         {
@@ -153,48 +136,16 @@ public class UIHoverover : MonoBehaviour
         {
             if (myCollector)
             {
-                angle = 20f;
-                radius = myCollector.getRange();
-                for (int i = segments + 1; i < (segments + 1) * 2; i++)
-                {
-                    float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-                    float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
-
-                    lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
-
-                    angle += (360f / segments);
-                }
+                collectorRender.renderRange(myCollector.getRange(), transform.position);
             }
-
             if (myAttacker)
             {
-                int startIndex, endIndex;
-                if (myCollector)
-                {
-                    startIndex = (segments + 1) * 2;
-                    endIndex = (segments + 1) * 3;
-                }
-                else
-                {
-                    startIndex = segments + 1;
-                    endIndex = (segments + 1) * 2;
-                }
-                angle = 20f;
-                radius = myAttacker.getRange();
-                for (int i = startIndex; i < endIndex; i++)
-                {
-                    float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-                    float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
-
-                    lineRenderer.SetPosition(i, new Vector3(x, 0, z) + transform.position);
-
-                    angle += (360f / segments);
-                }
+                attackerRender.renderRange(myAttacker.getRange(), transform.position);
             }
-        }
-        else
-        {
-            lineRenderer.positionCount = segments + 1;
+            if (myHealer)
+            {
+                healerRender.renderRange(myHealer.getRange(), transform.position);
+            }
         }
 
     }

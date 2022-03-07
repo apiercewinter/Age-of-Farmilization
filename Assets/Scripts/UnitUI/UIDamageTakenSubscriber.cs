@@ -27,6 +27,7 @@ public class UIDamageTakenSubscriber : MonoBehaviour, ISubscriber
         UIUnitCentralPublisher publisher = transform.parent.parent.parent.GetComponent<UIUnitCentralPublisher>();
         // subscribing to the publisher
         publisher.subscribeToSubstractHealth(setDamageTaken);
+        publisher.subscribeToAddHealth(setDamageAdded);
     }
 
     // Set how many damage does the character takes and transform it into a text format
@@ -38,6 +39,14 @@ public class UIDamageTakenSubscriber : MonoBehaviour, ISubscriber
         textField.color = fullAlphaColor;
         StartCoroutine(fadeTextToZeroAlpha(2));
 
+    }
+
+    public void setDamageAdded(float amount)
+    {
+        textField.text = "+" + amount;
+        // Set the color to the not transparent one before starting animation
+        textField.color = fullAlphaColor;
+        StartCoroutine(fadeTextToZeroAlpha(2));
     }
 
     // This method will make the text to be transparent over "time" seconds, this is used to create
