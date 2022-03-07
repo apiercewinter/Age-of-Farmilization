@@ -62,9 +62,21 @@ public class UIHoverover : MonoBehaviour
 
                 if (myAttacker)
                 {
+                    int startIndex, endIndex;
+                    if (myCollector)
+                    {
+                        startIndex = (segments + 1) * 2;
+                        endIndex = (segments + 1) * 3;
+                    }
+                    else
+                    {
+                        startIndex = segments + 1;
+                        endIndex = (segments + 1) * 2;
+                    }
                     angle = 20f;
                     radius = myAttacker.getRange();
-                    for (int i = (segments + 1) * 2; i < (segments + 1) * 3; i++)
+                    
+                    for (int i = startIndex; i < endIndex; i++)
                     {
                         float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
                         float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
@@ -156,9 +168,20 @@ public class UIHoverover : MonoBehaviour
 
             if (myAttacker)
             {
+                int startIndex, endIndex;
+                if (myCollector)
+                {
+                    startIndex = (segments + 1) * 2;
+                    endIndex = (segments + 1) * 3;
+                }
+                else
+                {
+                    startIndex = segments + 1;
+                    endIndex = (segments + 1) * 2;
+                }
                 angle = 20f;
                 radius = myAttacker.getRange();
-                for (int i = (segments + 1) * 2; i < (segments + 1) * 3; i++)
+                for (int i = startIndex; i < endIndex; i++)
                 {
                     float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
                     float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
