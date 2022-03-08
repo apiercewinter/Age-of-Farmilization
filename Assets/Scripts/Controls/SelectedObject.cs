@@ -24,7 +24,8 @@ public class SelectedObject : MonoBehaviour
         currentSelected = go;
         if(CollectionText!=null)
         {
-            CollectionText.GetComponent<TextMeshProUGUI>().text = currentSelected.name;
+            CollectionText.GetComponent<TextMeshProUGUI>().text = "Name: " + currentSelected.name +"\n" + "Health: "+ currentSelected.GetComponent<Health>().getHealth()+ "/" 
+            + currentSelected.GetComponent<Health>().getMaxHealth();
         }
         
     }
