@@ -123,8 +123,11 @@ public class CameraMovement : MonoBehaviour
 
     void lookAt(GameObject go)
     {
-        Target = go.transform.position;
-        LockPosition();
+        if(go!=null)
+        {
+            Target = go.transform.position;
+            LockPosition();
+        }   
     }
 
     void godView()

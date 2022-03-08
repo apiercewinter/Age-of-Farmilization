@@ -4,7 +4,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using System;
 
 public delegate void LookAtPlayerDel(GameObject mainPlayer);
@@ -40,12 +39,6 @@ public class TeamManager : MonoBehaviour
     [SerializeField]
     private GameObject bases;
 
-    [SerializeField]
-    private GameObject ActionUI;
-
-    private static Transform CollectionText;
-
-
     private static bool hasWinner = false;
 
     // Start is called before the first frame update
@@ -53,7 +46,6 @@ public class TeamManager : MonoBehaviour
     {
         instantiateTeam();
         SwapSpawnMenus();
-        CollectionText = ActionUI.transform.GetChild(0).GetChild(0);
         GetComponent<TransitionManager>().subscribeToLookAtPlayerDel(lookAtCurrentPlayer);
     }
 
@@ -166,7 +158,6 @@ public class TeamManager : MonoBehaviour
         giveCurrentTeamControl();
         GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getTag());
         godViewDel();
-        CollectionText.GetComponent<TextMeshProUGUI>().text = "";
     }
 
     public void lookAtCurrentPlayer()
@@ -287,20 +278,27 @@ public class TeamManager : MonoBehaviour
                 teamLeft++;
             }
         }
-        string winnerTag = leftTeam.getTag();
-        if (teamLeft == 1)
+
+        if (leftTeam != null)
         {
-            Debug.Log("has winner");
-            hasWinner = true;
-            lookAtPlayerDel(leftTeam.getMainPlayer());
-            winDel(winnerTag);
+            string winnerTag = leftTeam.getTag();
+
+            if (teamLeft == 1)
+            {
+                Debug.Log("has winner");
+                hasWinner = true;
+                lookAtPlayerDel(leftTeam.getMainPlayer());
+                winDel(winnerTag);
+            }
+
         }
+
+        
     }
 
     public static void addResource(string resourceType, int amount)
     {
         currentTeam.addToInventory(resourceType, amount);
-        CollectionText.GetComponent<TextMeshProUGUI>().text = "You collected " + amount + " " + resourceType;
     }
 
     public static void subtractResource(string resourceType, int amount)
@@ -310,7 +308,12 @@ public class TeamManager : MonoBehaviour
 
     public static int getResourceAmount(string resourceType)
     {
-        return currentTeam.getResourceAmount(resourceType);
+        if(currentTeam!=null)
+        {
+            return currentTeam.getResourceAmount(resourceType);
+        }
+
+        return 0;
     }
 
     public static void setCurrentTeamIndex(int index)
@@ -342,8 +345,8 @@ public class TeamManager : MonoBehaviour
         hasWinner = false;
         lookAtPlayerDel = null;
         winDel = null;
-        CollectionText = null;
         godViewDel = null;
+        SelectedObject.resetAll();
     }
 
     public static List<GameObject> getUnitsByTeamTag(string teamTag)

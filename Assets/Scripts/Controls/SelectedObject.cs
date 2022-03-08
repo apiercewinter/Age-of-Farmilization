@@ -2,21 +2,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SelectedObject : MonoBehaviour
 {
     private static GameObject currentSelected = null;
 
+    [SerializeField]
+    private GameObject ActionUI;
+
+    private static Transform CollectionText;
+
+    private void Start()
+    {
+        CollectionText = ActionUI.transform.GetChild(0).GetChild(0); ;
+    }
+
     public static void select(GameObject go)
     {
         disableIndicator();
         currentSelected = go;
+        if(CollectionText!=null)
+        {
+            CollectionText.GetComponent<TextMeshProUGUI>().text = currentSelected.name;
+        }
+        
     }
 
     public static void deselect()
     {
         disableIndicator();
         currentSelected = null;
+        if(CollectionText!=null)
+        {
+            CollectionText.GetComponent<TextMeshProUGUI>().text = "";
+        }
     }
 
     public static void enableIndicator()
@@ -38,5 +58,10 @@ public class SelectedObject : MonoBehaviour
     public static GameObject getSelected()
     {
         return currentSelected;
+    }
+
+    public static void resetAll()
+    {
+        CollectionText = null;
     }
 }

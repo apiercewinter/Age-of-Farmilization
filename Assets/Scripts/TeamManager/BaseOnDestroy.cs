@@ -15,7 +15,11 @@ public class BaseOnDestroy : MonoBehaviour
     {
         if (!TeamManager.getHasWinner())
         {
-            TeamManager.removeBase(gameObject.tag);
+            if(gameObject != null)
+            {
+                TeamManager.removeBase(gameObject.tag);
+            }
+            
         }
     }
 
