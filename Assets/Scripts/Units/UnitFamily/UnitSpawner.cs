@@ -65,8 +65,7 @@ public class UnitSpawner : MonoBehaviour
     public GameObject spawnUnit(uint unitIndex, Vector3 position, Quaternion rotation = new Quaternion())
     {
         if (unitIndex >= spawnableUnits.Length) return null;
-        //if (!myPlayer) return null;
-        //if (Vector3.Distance(position, myPlayer.transform.position) > maxSpawnDistanceFromPlayer) return null;
+        
         UnitSOBase unitType = spawnableUnits[unitIndex];
 
         //Check have enough resources
