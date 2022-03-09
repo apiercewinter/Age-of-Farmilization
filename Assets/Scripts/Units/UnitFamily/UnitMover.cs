@@ -22,15 +22,15 @@ public abstract class UnitMover : UnitBase
 
     public override void readyAction()
     {
-        base.readyAction();
         stop();
+        base.readyAction();
         roundStartLocation = transform.position;
     }
 
     public override void endTurn()
     {
-        base.endTurn();
         stop();
+        base.endTurn();
     }
 
     //Returns whether you can move there (in case out of range or don't have action).
@@ -56,8 +56,11 @@ public abstract class UnitMover : UnitBase
 
     public virtual void stop()
     { //Full stops. No smooth acceleration. To be used when an action is taken, for instance.
-        myAgent.ResetPath();
-        myAgent.velocity = Vector3.zero;
+        if (myAgent)
+        {
+            myAgent.ResetPath();
+            myAgent.velocity = Vector3.zero;
+        }
     }
 
     public void setMoveDistance(float m)
