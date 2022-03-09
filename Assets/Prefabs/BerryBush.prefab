@@ -11,6 +11,11 @@ GameObject:
   - component: {fileID: 413218}
   - component: {fileID: 3367454}
   - component: {fileID: 2393902}
+  - component: {fileID: -6539813677340244025}
+  - component: {fileID: 5774446085915555824}
+  - component: {fileID: -2579648538092807713}
+  - component: {fileID: 5559430197543118529}
+  - component: {fileID: -5699382344554968679}
   m_Layer: 0
   m_Name: BerryBush
   m_TagString: Untagged
@@ -26,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137650}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.296, z: -0}
-  m_LocalScale: {x: 0.19576, y: 0.19576, z: 0.19576}
+  m_LocalPosition: {x: 0, y: -1.188, z: -0}
+  m_LocalScale: {x: 0.6152213, y: 0.4368881, z: 0.6152213}
   m_Children:
   - {fileID: 3528896195527767336}
   - {fileID: 4208876256154692566}
@@ -104,6 +109,83 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &-6539813677340244025
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137650}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.3470001, y: 2.91, z: 1.4810001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.038000003, y: 2.9020002, z: -0.0050000004}
+  m_TimeToStationary: 0.5
+--- !u!65 &5774446085915555824
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6940606, y: 5.819626, z: 2.962908}
+  m_Center: {x: 0.03783649, y: 2.9017282, z: -0.00477761}
+--- !u!114 &-2579648538092807713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e257d2d3c5f14947a6bc4da28a4e368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Highlight: {fileID: 0}
+  Display: {fileID: 0}
+  Text: {fileID: 0}
+--- !u!114 &5559430197543118529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0a1840eba8ee842a382a6b77bd7887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gathervalue: 1
+  resourcetype: Food
+  ResourceSupply: 5
+--- !u!114 &-5699382344554968679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &56497013774405327
 GameObject:
   m_ObjectHideFlags: 0
