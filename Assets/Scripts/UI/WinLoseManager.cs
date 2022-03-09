@@ -33,7 +33,6 @@ public class WinLoseManager : MonoBehaviour
 
     public void win(string playerName)
     {
-        Debug.Log("win is called in winLoseMananger");
         textField.text = playerName + " wins!!!";
         winCanvas.SetActive(true);
         disableControlDel();
@@ -47,13 +46,11 @@ public class WinLoseManager : MonoBehaviour
     public void OnBackToHomeMenuButtonClick()
     {
         TeamManager.resetAll();
-        Debug.Log("BackToHomeMenu");
         SceneManager.LoadScene("Menu");
     }
 
     public void OnQuitButtonClick()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
 }

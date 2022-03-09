@@ -23,32 +23,7 @@ public class AIAttacking : AIAnimal
         startingPos = gameObject.transform.position;
         // Attacking animal will start as wandering when the game first starts
         currentState = new Wandering(gameObject, moveDistance, startingPos);
-        /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.transform.parent = gameObject.transform;
-        boxCollider.size = new Vector3(attackingRange, attackingRange, attackingRange);
-        boxCollider.isTrigger = true;*/
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        GameObject otherGO = other.gameObject;
-        if (otherGO.tag.StartsWith("Player"))
-        { 
-            targetSet.Add(otherGO);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        GameObject otherGO = other.gameObject;
-        if (targetSet.Contains(otherGO))
-        {
-            targetSet.Remove(otherGO);
-            // Add this game object to the chasing set first, and we will come around
-            // later and determine whether it is within chasing range in decideState()
-            chasingSet.Add(otherGO);
-        }
-    }*/
 
     private bool hasInRangeTarget()
     {

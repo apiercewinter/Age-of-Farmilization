@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// Code heavily adapted from the YouTube tutorials: https://www.youtube.com/watch?v=OL1QgwaDsqo
-// This SelectionAgent uses the box collider to detect whether some GameObjects are selected
-// When some GameObjects collide with the Mesh Collider created by the drawing a box in the screen,
-// OnTriggerEnter() method will be called and add all GameObjects that collide with to the SelectionDictionary
+// SelectionAgent deals with what player is trying to do according to player's input and the game state
 
 public class SelectionAgent : MonoBehaviour
 {

@@ -1,7 +1,10 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// UICollectorRender renders the collector unit's collecting range indicator
+// this ring is rendered in green color.
 public class UICollectorRender : MonoBehaviour
 {
     LineRenderer lineRenderer;

@@ -13,7 +13,8 @@ public delegate void WinDel(string winnerTag);
 // all the Teams, including its mainPlayer gameObject, units that belong to this team, etc.
 //
 // 2/20 UPDATE: Merged the TurnManager into the TeamManager due to the interdependency 
-// between these two classes, below are the class description for the TurnManager:
+// between these two classes, below are the old class description for the TurnManager:
+//
 // TurnManager manages the control of each team's unit
 // Simply put, the turn manager changes the units of the currently controlling team to
 // "Selectable" layer, and changes units of other teams to "Unselectable" layer, so the 

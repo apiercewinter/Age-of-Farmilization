@@ -1,6 +1,23 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// AIMainPlayer is the class that the AI opponent's main player should have.
+//
+// AIMainPlayer it self acts the same its collector:
+// they will start Seeking for resource in the world
+// as soon as any collector unit finds a resource, all collector unit will go to that resource and
+// collect it. If collector units meets any enemy unit, all collector units will start Fleeing from
+// that unit.
+// 
+// Attacker unit:
+// When there are at least 5 attacker units, all attacker units will start Seeking enemies.
+// If there are less than 5 attacker units, all attacker units will just ProtectingBase.
+//
+// Unit spawning logic:
+// AIMainPlayer will try to spawn a random unit every turn, and only one unit per turn, if it
+// has enough resource to spawn any unit, it will spawn it
 
 public class AIMainPlayer : AI
 {
@@ -21,8 +38,8 @@ public class AIMainPlayer : AI
     void Start()
     {
         this.gameObject.tag = "PlayerAI";
-        // I don't want to use Find() here, but I can't think of any other ways to 
-        // get a reference to the spawner
+        // I don't want to use Find() here, but I can't think of any other 
+        // better ways to get a reference to the spawner
         spawner = GameObject.Find("PlayerAISpawner");
         collectorList.Add(this.gameObject);
     }
@@ -226,7 +243,7 @@ public class AIMainPlayer : AI
     private void trySpawnUnits()
     {
         // PlayerAI will spawn units randomly
-        // AI does not spawn healer, this is intentionally
+        // AI does not spawn healer, this is intentional
         List<uint> unitIndexList = new List<uint>() { 0, 1, 4 };
         if (collectorList.Count < 4)
         {

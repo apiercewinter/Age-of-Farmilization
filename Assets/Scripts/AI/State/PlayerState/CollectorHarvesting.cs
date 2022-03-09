@@ -1,3 +1,4 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,18 +25,7 @@ public class CollectorHarvesting : State
                 break;
             }
             UnitCollector myCollector = collectorGO.GetComponent<UnitCollector>();
-            /*float collectRange = new float();
-            // for some reason I don't know, somehow myCollector will be null
-            // this if statement is here in case this issue happens, and prevent
-            // game from stopping because of this issue
-            if (myCollector == null)
-            {
-                collectRange = 5;
-            }
-            else*/
-            // {
             float collectRange = myCollector.getRange();
-            // }
 
             if (Vector3.Distance(target.transform.position, collectorGO.transform.position) < collectRange)
             {

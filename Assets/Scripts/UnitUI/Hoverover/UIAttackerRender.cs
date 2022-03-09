@@ -1,6 +1,10 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// UIAttackerRender renders the attacker unit's attacking range indicator
+// this ring is rendered in red color.
 
 public class UIAttackerRender : MonoBehaviour
 {

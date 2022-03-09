@@ -20,29 +20,7 @@ public class AIFleeing : AIAnimal
         startingPos = gameObject.transform.position;
         // Fleeing animal will start as wandering when the game first starts
         currentState = new Wandering(this.gameObject, moveDistance, startingPos);
-        /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.transform.parent = gameObject.transform;
-        boxCollider.size = new Vector3(30, 30, 30);
-        boxCollider.isTrigger = true;*/
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        GameObject otherGO = other.gameObject;
-        if (otherGO.tag.StartsWith("Player"))
-        {
-            targetSet.Add(otherGO);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        GameObject otherGO = other.gameObject;
-        if (targetSet.Contains(otherGO))
-        {
-            targetSet.Remove(otherGO);
-        }
-    }*/
 
     private bool isSafe()
     {

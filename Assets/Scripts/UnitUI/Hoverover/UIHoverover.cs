@@ -1,5 +1,5 @@
 // Boyuan Huang
-//Daniel Zhang (only the OnMouseDown & related variables)
+// Daniel Zhang (only the OnMouseDown & related variables)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
