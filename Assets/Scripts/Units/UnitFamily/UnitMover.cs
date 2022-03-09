@@ -23,7 +23,14 @@ public abstract class UnitMover : UnitBase
     public override void readyAction()
     {
         base.readyAction();
+        stop();
         roundStartLocation = transform.position;
+    }
+
+    public override void endTurn()
+    {
+        base.endTurn();
+        stop();
     }
 
     //Returns whether you can move there (in case out of range or don't have action).
