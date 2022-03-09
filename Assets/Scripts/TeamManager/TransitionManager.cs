@@ -23,8 +23,11 @@ public class TransitionManager : MonoBehaviour
 
     public void showTransitionCanvas(string nextPlayerName)
     {
-        textField.text = "Now it is " + nextPlayerName + "'s turn, get ready!";
-        transitionCanvas.SetActive(true);
+        if (!TeamManager.getHasWinner())
+        {
+            textField.text = "Now it is " + nextPlayerName + "'s turn, get ready!";
+            transitionCanvas.SetActive(true);
+        }
     }
 
     public void onImReadyButtonClick()

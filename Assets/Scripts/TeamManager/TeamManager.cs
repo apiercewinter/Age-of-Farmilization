@@ -286,7 +286,6 @@ public class TeamManager : MonoBehaviour
 
             if (teamLeft == 1)
             {
-                Debug.Log("has winner");
                 hasWinner = true;
                 lookAtPlayerDel(leftTeam.getMainPlayer());
                 winDel(winnerTag);

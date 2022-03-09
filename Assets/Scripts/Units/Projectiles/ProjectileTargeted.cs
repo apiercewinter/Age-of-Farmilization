@@ -34,7 +34,6 @@ public class ProjectileTargeted : ProjectileBase
         if (!enemyHP) return;
 
         enemyHP.Damage(getDamage());
-        Debug.Log("Hit " + go.name + " for " + getDamage() + " damage. Enemy now has " + enemyHP.getHealth() + " HP.");
 
         Destroy(gameObject);
     }

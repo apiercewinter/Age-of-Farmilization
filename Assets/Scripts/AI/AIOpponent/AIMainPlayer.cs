@@ -29,6 +29,7 @@ public class AIMainPlayer : AI
     private HashSet<GameObject> targetSet = new HashSet<GameObject>();
     private HashSet<GameObject> resourceSet = new HashSet<GameObject>();
     private HashSet<GameObject> threatSet = new HashSet<GameObject>();
+    private HashSet<GameObject> threatToBaseSet = new HashSet<GameObject>();
 
     private GameObject playerBase;
     private GameObject target;
@@ -81,6 +82,11 @@ public class AIMainPlayer : AI
     {
         return threatSet.Count != 0;
     }
+    
+    private bool hasThreatToBase()
+    {
+        return threatToBaseSet.Count != 0;
+    }
 
     private bool has5Attacker()
     {
@@ -122,7 +128,6 @@ public class AIMainPlayer : AI
 
     private void refreshSet()
     {
-        string s = "attacker collided: ";
         foreach (GameObject attackerGO in attackerList)
         {
             Collider[] colliders = Physics.OverlapSphere(attackerGO.transform.position, attackerGO.GetComponent<UnitMover>().getMoveDistance());
@@ -133,10 +138,8 @@ public class AIMainPlayer : AI
                 {
                     targetSet.Add(collidedGO.gameObject);
                 }
-                s += collidedGO.name;
             }
         }
-        Debug.Log(s);
         foreach (GameObject collectorGO in collectorList)
         {
             Collider[] colliders = Physics.OverlapSphere(collectorGO.transform.position, collectorGO.GetComponent<UnitMover>().getMoveDistance());
@@ -153,12 +156,19 @@ public class AIMainPlayer : AI
                 }
             }
         }
-        string thrt = "threat set: ";
-        foreach (GameObject  go in threatSet)
+
+        threatToBaseSet.Clear();
+        Collider[] collidersToBase = Physics.OverlapSphere(playerBase.transform.position, 10);
         {
-            thrt += go.name + ", ";
+            foreach (Collider collidedGO in collidersToBase)
+            {
+                string tag = collidedGO.tag;
+                if (tag.StartsWith("Player") && tag != "PlayerAI")
+                {
+                    threatToBaseSet.Add(collidedGO.gameObject);
+                }
+            }
         }
-        Debug.Log(thrt);
     }
 
     private void decideState()
@@ -175,10 +185,23 @@ public class AIMainPlayer : AI
 
         // ========== Start of Attacker behavior ==========
         // AIPlayer will start finding targets when it has more than 5 attacking unit
-        Debug.Log("number of attakerList: " + attackerList.Count);
-        if (!has5Attacker())
+        if (!has5Attacker() && !hasThreatToBase())
         {
             currentState = new AttackerProtectingBase(attackerList, playerBase.transform.position);
+        }
+        else if (!has5Attacker() && hasThreatToBase())
+        {
+            float closetDist = Mathf.Infinity;
+            foreach (GameObject go in threatToBaseSet)
+            {
+                float thisDist = Vector3.Distance(go.transform.position, playerBase.transform.position);
+                if (thisDist < closetDist)
+                {
+                    closetDist = thisDist;
+                    target = go;
+                }
+            }
+            currentState = new AttackerAttacking(attackerList, target);
         }
         else if (!hasTarget() && has5Attacker())
         {
@@ -199,7 +222,7 @@ public class AIMainPlayer : AI
             currentState = new AttackerAttacking(attackerList, target);
         }
         base.performAction();
-        Debug.Log("attackers' state: " + currentState.ToString());
+
         // ========== End of Attacker behavior ==========
 
         // ========== Start of Collector behavior ==========

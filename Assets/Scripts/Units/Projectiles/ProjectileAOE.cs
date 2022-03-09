@@ -46,7 +46,6 @@ public class ProjectileAOE : ProjectileBase
                 if (!enemyHP) continue;
 
                 enemyHP.Damage(getDamage());
-                //Debug.Log("Hit " + thingHit.name + " for " + getDamage() + " damage. Enemy now has " + enemyHP.m_CurrentHealth + " HP.");
             }
         }
 
