@@ -42,6 +42,7 @@ public class ProjectileTargeted : ProjectileBase
     protected virtual void OnDisable()
     {
         //Failsafe - hit the target one way or another
+        if (!getTarget()) return; //Check target exists
         hit(getTarget());
     }
 }

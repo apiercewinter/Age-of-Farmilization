@@ -35,7 +35,7 @@ public abstract class ProjectileBase : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (target.transform.gameObject)
+        if (target)
         {
             //Track target
             timeRemaining -= Time.deltaTime;
