@@ -9,7 +9,7 @@ public class UnitAOEAtk : UnitAttacker
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private ProjectileSOAOE projectileInfo;
 
-    public override bool attack(GameObject go, Vector3 pos = new Vector3())
+    public override bool attack(GameObject go, Vector3 pos)
     {
         //Check if point in range
         if (Vector3.Distance(pos, transform.position) > getRange()) return false;

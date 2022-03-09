@@ -31,7 +31,12 @@ public abstract class UnitAttacker : UnitMover
         }
     }
 
-    public abstract bool attack(GameObject go, Vector3 pos = new Vector3());
+    public abstract bool attack(GameObject go, Vector3 pos);
+
+    public virtual bool attack(GameObject go)
+    {
+        return attack(go, go.transform.position);
+    }
 
     public virtual bool inRange(GameObject target)
     {

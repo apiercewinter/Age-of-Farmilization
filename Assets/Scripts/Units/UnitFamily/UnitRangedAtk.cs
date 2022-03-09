@@ -9,7 +9,7 @@ public class UnitRangedAtk : UnitAttacker
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private ProjectileSOTargeted projectileInfo;
 
-    public override bool attack(GameObject go, Vector3 pos = new Vector3())
+    public override bool attack(GameObject go, Vector3 pos)
     {
         //Check if they have a health script (if not, can't be damaged/attacked).
         Health hp = go.GetComponent<Health>();
