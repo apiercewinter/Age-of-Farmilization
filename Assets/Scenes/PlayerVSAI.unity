@@ -9812,6 +9812,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 0}
   textField: {fileID: 0}
+  nextTurnButton: {fileID: 2109428647}
+  spawnUI1: {fileID: 1693423267}
+  spawnUI2: {fileID: 1903817140}
+  transitionCanvas: {fileID: 1296551884}
 --- !u!114 &1748929088
 MonoBehaviour:
   m_ObjectHideFlags: 0
