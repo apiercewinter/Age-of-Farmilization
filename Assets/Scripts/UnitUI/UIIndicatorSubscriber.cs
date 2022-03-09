@@ -30,12 +30,4 @@ public class UIIndicatorSubscriber : MonoBehaviour, ISubscriber
     {
         gameObject.SetActive(false);
     }
-
-    // Since the indicator UI is set to be disabled when the game starts, neither Start()
-    // nor Awake() will be called when the game starts. So this method is made to maunlly
-    // subscribe to the Publisher, and will be called in Publisher's Start() method.
-    public void manulSubscribe()
-    {
-     
-    }
 }

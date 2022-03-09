@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This is just a simple class that makes the HealthBar also face the camera
+// This is just a simple class that makes the UI face the camera
 // rather than rotate with the player
 public class Billboard : MonoBehaviour
 {

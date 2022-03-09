@@ -1,7 +1,10 @@
+// Boyuan Huang
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// UIHealerRender renders the healer unit's attacking range indicator
+// this ring is rendered in orange color.
 public class UIHealerRender : MonoBehaviour
 {
     LineRenderer lineRenderer;

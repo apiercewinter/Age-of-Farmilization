@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-// We probably not gonna need this if we are using movement range
+// TransitionManager deals with the transition screen that will pop up when switching turns
 
 public class TransitionManager : MonoBehaviour
 {

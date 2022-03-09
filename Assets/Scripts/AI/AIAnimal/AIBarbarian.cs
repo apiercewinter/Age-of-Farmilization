@@ -18,20 +18,7 @@ public class AIBarbarian : AIAnimal
     {
         moveDistance = gameObject.GetComponent<UnitMover>().getMoveDistance();
         currentState = new Seeking(this.gameObject, moveDistance);
-        /*BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.transform.parent = gameObject.transform;
-        boxCollider.size = new Vector3(30, 30, 30);
-        boxCollider.isTrigger = true;*/
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        GameObject otherGO = other.gameObject;
-        if (otherGO.tag.StartsWith("Player"))
-        {
-            targetSet.Add(otherGO);
-        }
-    }*/
 
     private bool hasTarget()
     {
