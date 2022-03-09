@@ -258,6 +258,7 @@ public class TeamManager : MonoBehaviour
 
     public static void removeBase(string teamTag)
     {
+        // Removes the Units of the team that had their base destroyed
         for (int i = 0; i < teamList.Count; i++)
         {
             Team team = teamList[i];
@@ -280,6 +281,7 @@ public class TeamManager : MonoBehaviour
             }
         }
 
+        //Declares the winning team
         if (leftTeam != null)
         {
             string winnerTag = leftTeam.getTag();
@@ -298,16 +300,19 @@ public class TeamManager : MonoBehaviour
 
     public static void addResource(string resourceType, int amount)
     {
+        //Adds resources to the teams inventory
         currentTeam.addToInventory(resourceType, amount);
     }
 
     public static void subtractResource(string resourceType, int amount)
     {
+        //Removes resources from the teams inventory
         currentTeam.subtractFromInventory(resourceType, amount);
     }
 
     public static int getResourceAmount(string resourceType)
     {
+        //Returns the amount of a resource that a team has
         if(currentTeam!=null)
         {
             return currentTeam.getResourceAmount(resourceType);
@@ -339,6 +344,7 @@ public class TeamManager : MonoBehaviour
 
     public static void resetAll()
     {
+        //Resets all static variables when player restarts match or returns to main menu.  Needs to be done so these variables aren't pointing to null references
         teamList.Clear();
         currentIndex = 0;
         currentTeam = null;

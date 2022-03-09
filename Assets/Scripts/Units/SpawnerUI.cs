@@ -22,7 +22,10 @@ public class SpawnerUI : MonoBehaviour
     [SerializeField] private Sprite GoldIcon;
     [SerializeField] private Sprite SilverIcon;
 
-    // Start is called before the first frame update
+    // At the begining of the game this script sets up the player spawn menus. This Menu will display to the players the types of units they can create.
+    // This will also display the cost of the units.
+    // This method makes it easy to add new units to the game, simply creating a unit prefab with a name and costs will allow it to be displayed in this menu.
+    // Units can have a max of 3 different resources making up their cost. If more then 3 resources are assigned, Gold or Silver might not be displayed to the player.
     void Start()
     {
         UnitSOBase[] unitTypes = spawner.GetComponent<UnitSpawner>().getSpawnableUnits();

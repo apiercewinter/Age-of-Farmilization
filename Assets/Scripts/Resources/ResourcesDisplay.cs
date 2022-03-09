@@ -9,7 +9,6 @@ using TMPro;
 
 public class ResourcesDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private GameObject FoodDisplay;
     [SerializeField] private GameObject StoneDisplay;
     [SerializeField] private GameObject WoodDisplay;
