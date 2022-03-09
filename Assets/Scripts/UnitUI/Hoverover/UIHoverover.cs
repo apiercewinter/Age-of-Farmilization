@@ -47,9 +47,17 @@ public class UIHoverover : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isHovering == false && selected == true)
+        GameObject selectedObj = SelectedObject.getSelected();
+        if (selectedObj != null && selectedObj.GetInstanceID() == this.gameObject.GetInstanceID())
+        {
+            selected = true;
+        }
+        else
         {
             selected = false;
+        }
+        if (selected == false)
+        {
             lineRenderer.positionCount = 0;
             collectorRender.cancelRender();
             attackerRender.cancelRender();
