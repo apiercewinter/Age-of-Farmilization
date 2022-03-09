@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//This Script is used to allow the user to mouse over a resouce object and see what the resouce is.
+//Will also display to the user how much of that resource is remaining.
+
 public class UIResource : MonoBehaviour
 {
     [SerializeField]
