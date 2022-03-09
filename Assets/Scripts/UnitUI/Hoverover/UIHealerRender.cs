@@ -36,6 +36,9 @@ public class UIHealerRender : MonoBehaviour
 
     public void cancelRender()
     {
-        lineRenderer.positionCount = 0;
+        if (lineRenderer)
+        {
+            lineRenderer.positionCount = 0;
+        }
     }
 }

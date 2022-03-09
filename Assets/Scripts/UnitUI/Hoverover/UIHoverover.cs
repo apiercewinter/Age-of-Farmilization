@@ -121,6 +121,7 @@ public class UIHoverover : MonoBehaviour
 
     private void RenderRadii()
     {
+        if (!myMover) return;
         Vector3 roundStartLocation = myMover.getRoundStartLocation();
         Vector3 currentPos = transform.position;
         currentPos.y = roundStartLocation.y;
