@@ -52,7 +52,7 @@ public class Health : MonoBehaviour
 
     public void Heal(float d)
     {
-        m_CurrentHealth = Math.Max(m_CurrentHealth + d, m_MaxHealth);
+        m_CurrentHealth = Math.Min(m_CurrentHealth + d, m_MaxHealth);
 
         // Notify the UIUnitCentralPublisher's subscribers
         UIPublisher.addHealth(d);
