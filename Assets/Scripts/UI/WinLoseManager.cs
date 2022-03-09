@@ -22,6 +22,11 @@ public class WinLoseManager : MonoBehaviour
 
     private static Action disableControlDel;
 
+    [SerializeField] private GameObject nextTurnButton;
+    [SerializeField] private GameObject spawnUI1;
+    [SerializeField] private GameObject spawnUI2;
+    [SerializeField] private GameObject transitionCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +41,10 @@ public class WinLoseManager : MonoBehaviour
         textField.text = playerName + " wins!!!";
         winCanvas.SetActive(true);
         disableControlDel();
+        nextTurnButton.SetActive(false);
+        spawnUI1.SetActive(false);
+        spawnUI2.SetActive(false);
+        transitionCanvas.SetActive(false);
     }
 
     public static void subscribeToDisableControl(Action action)
