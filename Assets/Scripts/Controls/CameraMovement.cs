@@ -23,6 +23,9 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float heldSpeed;
 
+    [SerializeField] private GameObject CameraFree;
+    [SerializeField] private GameObject CameraLock;
+
     private float maxHeight = 40f;
     private float minHeight = 4f;
     [SerializeField]
@@ -79,6 +82,16 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             lockedTrue = !lockedTrue;
+            if (lockedTrue)
+            {
+                CameraLock.SetActive(true);
+                CameraFree.SetActive(false);
+            }
+            else
+            {
+                CameraLock.SetActive(false);
+                CameraFree.SetActive(true);
+            }
         }
         if (lockedTrue && SelectedObject.getSelected() != null)
         {
