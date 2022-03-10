@@ -19,7 +19,7 @@ public class VolumeControl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //updateSlider();
+        updateSlider();
         mySlider.onValueChanged.AddListener(volumeChange);
     }
 
@@ -34,7 +34,7 @@ public class VolumeControl : MonoBehaviour
     {
         float curVol;
         myMixer.GetFloat(volumeParameter, out curVol);
-        curVol = Mathf.Pow(curVol / multiplier, 10);
+        curVol = Mathf.Pow(10, curVol / multiplier);
         mySlider.value = Mathf.Max(.0001f, Mathf.Min(1, curVol));
     }
 }
