@@ -30,7 +30,8 @@ These newly spawned units can take action on the next turn and they become selec
 If you are not sure what unit type a certain unit is, you can select that unit, and refer to the information panel which is located in the bottom of the screen.
 The information panel also shows a certain unit's specific health amount.
 
-Use the arrow keys or WASD to move the camera. Pressing space will lock the camera on the selected unit and will force the camera to follow that unit. You can press space again to regain free camera control.
+Use the arrow keys or WASD to move the camera. Pressing space will lock the camera on the selected unit and will force the camera to follow that unit. You can press space again to regain free camera control. 
+The state of this is represented through the icon in the bottom right of the screen, with the camera icon having a red slash through it when the camera is following a unit.
 Left click on a specific unit to select that unit.
 With a unit selected, right click on the ground to move the selected unit.
 With a unit selected, right click on the enemy to order the selected unit to attack the enemy.
