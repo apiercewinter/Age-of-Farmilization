@@ -38,5 +38,5 @@ With a unit selected, right click on the resource to gather resources.
 Gather resources to build troops.
 Left click buttons in the right hand corner to spawn units, must have the required resources.
 To swap turns, click the button in the top left corner.
-Open settings in the top right corner.  Use the slider to adjust camera move speed and zoom speed.
+Open settings in the top right corner.  Use the slider to adjust camera move speed, zoom speed and also the volume of the background music.
 
