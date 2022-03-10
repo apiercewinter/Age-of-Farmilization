@@ -13,7 +13,8 @@ Right clicking the ground anywhere within that circle will make that unit move a
 To take an action, right click a resource or other unit depending on what type of unit that is taking the action 
 (ex. Bowmen can only take action on enemy units to attack them). 
 Only one action can be taken per turn (on any given unit), when a unit has taken its action, it will not be able to move that turn. 
-Also, when a unit has taken its action, the range indicator ring will disappear. This mechanism also works to tell whether a certain unit has action available.
+Also, when a unit has taken its action, the attacking/collecting/healing range indicator ring (depending on what type of unit that is) will disappear. 
+This mechanism also works to tell whether a certain unit has action available.
 An unit's range ring is indicated in the following color:
 Red ring represents a unit's attacking range.
 Green ring represents a unit's collecting range.
