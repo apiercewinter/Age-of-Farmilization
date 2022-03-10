@@ -12,6 +12,8 @@ around them which indicates the distance that unit can move during its turn.
 Right clicking the ground anywhere within that circle will make that unit move around, but only within its movement range. 
 To take an action, right click a resource or other unit depending on what type of unit that is taking the action 
 (ex. Bowmen can only take action on enemy units to attack them). 
+Any target needs to be within the range to let unit actually take action, or the unit will just stand there (the unit can only attack enemy unit if that enemy unit is
+in the unit's attacking range).
 Only one action can be taken per turn (on any given unit), when a unit has taken its action, it will not be able to move that turn. 
 Also, when a unit has taken its action, the attacking/collecting/healing range indicator ring (depending on what type of unit that is) will disappear. 
 This mechanism also works to tell whether a certain unit has action available.
