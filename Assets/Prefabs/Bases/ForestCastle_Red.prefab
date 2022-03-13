@@ -2781,6 +2781,7 @@ GameObject:
   - component: {fileID: 4488223904351555977}
   - component: {fileID: 2913099692139468998}
   - component: {fileID: 251832539}
+  - component: {fileID: 494925212816738538}
   m_Layer: 8
   m_Name: ForestCastle_Red
   m_TagString: Player2
@@ -2919,6 +2920,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 3.4780002, z: 0.016}
   m_TimeToStationary: 0.5
+--- !u!114 &494925212816738538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577265027518120921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554bc6f72b4b32342973384263891d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6577281641790108741
 GameObject:
   m_ObjectHideFlags: 0

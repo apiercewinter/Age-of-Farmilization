@@ -260,7 +260,6 @@ public class AIMainPlayer : AI
             currentState = new CollectorHarvesting(collectorList, resourceToGather);
         }
         base.performAction();
-        Debug.Log("collector");
         // ========== End of Collector behavior ==========
     }
 
