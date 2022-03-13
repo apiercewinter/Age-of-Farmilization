@@ -36,7 +36,7 @@ public class AIMainPlayer : AI
     private GameObject resourceToGather;
     private GameObject threat;
 
-    void Start()
+    void Awake()
     {
         this.gameObject.tag = "PlayerAI";
         // I don't want to use Find() here, but I can't think of any other 
@@ -260,6 +260,7 @@ public class AIMainPlayer : AI
             currentState = new CollectorHarvesting(collectorList, resourceToGather);
         }
         base.performAction();
+        Debug.Log("collector");
         // ========== End of Collector behavior ==========
     }
 

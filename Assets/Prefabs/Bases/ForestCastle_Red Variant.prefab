@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1568082032573430422
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2723150181916568490, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723150181916568490, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723150183041512553, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723150183041512553, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577265027518120921, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_Name
+      value: ForestCastle_Red Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577265027518120921, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_TagString
+      value: PlayerAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.31089
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5097246
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.601654
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9051946
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.42499742
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 50.301
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580708560078048109, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7bbd65f15b4bf9c448e15c54b4247030, type: 3}
