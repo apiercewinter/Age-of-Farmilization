@@ -459,7 +459,6 @@ GameObject:
   - component: {fileID: 5414788315135560404}
   - component: {fileID: 5414788315135560405}
   - component: {fileID: 5414788315135560403}
-  - component: {fileID: 5414788315135560402}
   m_Layer: 7
   m_Name: SimpleFarmer_Man_01_White
   m_TagString: Untagged
@@ -554,20 +553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxHealth: 1.32
   m_CurrentHealth: 0
---- !u!114 &5414788315135560402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5414788315205123931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed44861495074b4890a771a1da61182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team: 
-  myData: {fileID: 11400000, guid: d290f33de61e2384eb8390e1f9ef7a37, type: 2}
 --- !u!1 &5414788315205123935
 GameObject:
   m_ObjectHideFlags: 0

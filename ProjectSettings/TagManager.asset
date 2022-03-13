@@ -14,6 +14,14 @@ TagManager:
   - Resource
   - PlayerAI
   - Ground
+  - ResourceL
+  - AUI
+  - ActionText
+  - Food
+  - Stone
+  - Wood
+  - Gold
+  - Silver
   layers:
   - Default
   - TransparentFX

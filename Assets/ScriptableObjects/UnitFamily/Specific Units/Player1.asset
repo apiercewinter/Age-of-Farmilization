@@ -21,7 +21,7 @@ MonoBehaviour:
   costWood: 0
   costSilver: 0
   costGold: 0
-  moveDistance: 20
+  moveDistance: 18
   collectionMultiplier: 1
   range: 5
   damage: 5

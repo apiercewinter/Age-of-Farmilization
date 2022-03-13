@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4012901715673573382}
   - component: {fileID: 4012901715673573384}
   - component: {fileID: 4012901715673573385}
-  - component: {fileID: 6419076561027726300}
   - component: {fileID: 4000210941029589858}
+  - component: {fileID: 2303786311513347462}
   m_Layer: 0
   m_Name: StoneResource
   m_TagString: Resource
@@ -130,21 +130,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.062000003, y: 0.64500004, z: 0.23700002}
   m_TimeToStationary: 0.5
---- !u!114 &6419076561027726300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012901715673530577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e257d2d3c5f14947a6bc4da28a4e368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Highlight: {fileID: 0}
-  Display: {fileID: 0}
-  Text: {fileID: 0}
 --- !u!114 &4000210941029589858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +148,15 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &2303786311513347462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012901715673530577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e257d2d3c5f14947a6bc4da28a4e368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

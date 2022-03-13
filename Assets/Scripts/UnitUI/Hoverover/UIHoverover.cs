@@ -56,7 +56,7 @@ public class UIHoverover : MonoBehaviour
         {
             selected = false;
         }
-        if (selected == false)
+        if (selected == false && isHovering == false)
         {
             lineRenderer.positionCount = 0;
             collectorRender.cancelRender();
@@ -141,6 +141,7 @@ public class UIHoverover : MonoBehaviour
 
             angle += (360f / segments);
         }
+
         if (myBase.canTakeAction())
         {
             if (myCollector)
@@ -156,6 +157,5 @@ public class UIHoverover : MonoBehaviour
                 healerRender.renderRange(myHealer.getRange(), transform.position);
             }
         }
-
     }
 }

@@ -1,5 +1,6 @@
 //Alec Kaxon-Rupp
 //Boyuan Huang
+//Daniel Zhang
 
 using System.Collections;
 using System.Collections.Generic;
@@ -11,22 +12,33 @@ using TMPro;
 
 public class UIResource : MonoBehaviour
 {
-    [SerializeField]
     private GameObject Highlight;
-    [SerializeField]
     private GameObject Display;
-    [SerializeField]
     private GameObject Text;
 
     private ResourceObject resourceObj;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        string resourceType;
+        int resIndex;
+
         resourceObj = gameObject.GetComponent<ResourceObject>();
+        resIndex = this.name.IndexOf('R');
+        resourceType = this.name.Substring(0, resIndex);
+        Highlight = GameObject.FindGameObjectWithTag(resourceType);
+
+        Display = GameObject.FindGameObjectWithTag("AUI");
+        Text = GameObject.FindGameObjectWithTag("ActionText");
     }
 
-    private void OnMouseOver()
+    void Start()
+    {
+        Highlight.SetActive(false);
+        Display.SetActive(false);
+    }
+
+    void OnMouseOver()
     {
         int resourceSupply = resourceObj.getResourceSupply();
         string name = resourceObj.getResourcename();
@@ -35,7 +47,7 @@ public class UIResource : MonoBehaviour
         Display.SetActive(true);
     }
 
-    private void OnMouseExit()
+    void OnMouseExit()
     {
         Highlight.SetActive(false);
         Display.SetActive(false);

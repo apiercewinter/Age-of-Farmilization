@@ -145,7 +145,7 @@ public class CameraMovement : MonoBehaviour
 
     void godView()
     {
-        transform.position = new Vector3(18.72092f, 40, 33.28321f);
+        transform.position = new Vector3(-8.8f, 40, -10.1f);
     }
 
     public void changeMovementSpeed(float ms)
