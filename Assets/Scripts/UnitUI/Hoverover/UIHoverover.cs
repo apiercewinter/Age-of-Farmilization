@@ -71,7 +71,6 @@ public class UIHoverover : MonoBehaviour
                 {
                     collectorRender.renderRange(myCollector.getRange(), transform.position);
                 }
-
                 if (myAttacker)
                 {
                     attackerRender.renderRange(myAttacker.getRange(), transform.position);
@@ -129,7 +128,6 @@ public class UIHoverover : MonoBehaviour
 
         angle = 20f;
 
-        
         lineRenderer.positionCount = segments + 1;
 
         for (int i = 0; i < (segments + 1); i++)
@@ -137,10 +135,12 @@ public class UIHoverover : MonoBehaviour
             float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
             float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 
-            lineRenderer.SetPosition(i, new Vector3(x, 0, z) + roundStartLocation);
+            lineRenderer.SetPosition(i, new Vector3(x, 0.4f, z) + roundStartLocation);
 
             angle += (360f / segments);
         }
+        lineRenderer.startColor = Color.yellow;
+        lineRenderer.endColor = Color.yellow;
 
         if (myBase.canTakeAction())
         {
