@@ -20,7 +20,7 @@ public class ResourceGenerator : MonoBehaviour
 
         foreach(GameObject resourceLocations in resourceLocations)
         {
-            Instantiate(resources[Random.Range(0, 5)], resourceLocations.transform.position, resourceLocations.transform.rotation, resourcesParent.transform);
+            Instantiate(resources[Random.Range(0, 3)], resourceLocations.transform.position, resourceLocations.transform.rotation, resourcesParent.transform);
         }
 
     }

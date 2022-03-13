@@ -82,7 +82,7 @@ public class AIMainPlayer : AI
     {
         return threatSet.Count != 0;
     }
-    
+
     private bool hasThreatToBase()
     {
         return threatToBaseSet.Count != 0;
@@ -130,7 +130,7 @@ public class AIMainPlayer : AI
     {
         foreach (GameObject attackerGO in attackerList)
         {
-            Collider[] colliders = Physics.OverlapSphere(attackerGO.transform.position, attackerGO.GetComponent<UnitMover>().getMoveDistance());
+            Collider[] colliders = Physics.OverlapSphere(attackerGO.transform.position, attackerGO.GetComponent<UnitMover>().getMoveDistance() * 2.7f);
             foreach (Collider collidedGO in colliders)
             {
                 string tag = collidedGO.tag;
@@ -272,12 +272,12 @@ public class AIMainPlayer : AI
         {
             unitIndexList.Add(2);
         }
-         
+
         while (true)
         {
             int randomIndex = Random.Range(0, unitIndexList.Count);
             GameObject spawnedUnit = spawner.GetComponent<UnitSpawner>().spawnUnit(unitIndexList[randomIndex]);
- 
+
             if (spawnedUnit == null)
             {
                 unitIndexList.RemoveAt(randomIndex);

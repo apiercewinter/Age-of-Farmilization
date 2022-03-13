@@ -1,4 +1,5 @@
 // Boyuan Huang
+//Daniel Zhang (minor bugfix only)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +17,10 @@ public class AttackerSeeking : State
     public override void update()
     {
         base.update();
-        Vector3 randomDirection = new Vector3(Random.value, 0, Random.value).normalized;
         foreach (GameObject go in attackerList)
         {
             UnitMover myMover = go.GetComponent<UnitMover>();
+            Vector3 randomDirection = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)).normalized;
             myMover.moveRel(randomDirection * (myMover.getMoveDistance() - 1));
         }
     }
