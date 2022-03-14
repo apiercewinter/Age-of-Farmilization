@@ -45,6 +45,7 @@ public class WinLoseManager : MonoBehaviour
         spawnUI1.SetActive(false);
         spawnUI2.SetActive(false);
         transitionCanvas.SetActive(false);
+      
     }
 
     public static void subscribeToDisableControl(Action action)

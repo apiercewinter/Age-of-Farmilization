@@ -40,4 +40,5 @@ public class TransitionManager : MonoBehaviour
     {
         lookAtPlayerDel += del;
     }
+
 }

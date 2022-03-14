@@ -50,6 +50,20 @@ public class TeamManager : MonoBehaviour
         GetComponent<TransitionManager>().subscribeToLookAtPlayerDel(lookAtCurrentPlayer);
     }
 
+    private IEnumerator TurnRoutine()
+    {
+        SelectedObject.deselect();
+        removeCurrentTeamControl();
+        moveToNextIndex();
+        yield return new WaitForSeconds(0.1f);
+        if (hasWinner)
+            StopCoroutine("TurnRoutine");
+        else
+            GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getTag());
+        giveCurrentTeamControl();
+        godViewDel();
+    }
+
     public static List<Team> getAllTeams()
     {
         return teamList;
@@ -90,7 +104,7 @@ public class TeamManager : MonoBehaviour
             }
         }
         currentTeam = teamList[teamList.Count -1];
-        if (currentTeam.getTag() == "AIAnimal")
+        if (currentTeam.getTag() == "AIAnimal" || currentTeam.getTag() == "PlayerAI")
         {
             moveToNextIndex();
         }
@@ -153,12 +167,7 @@ public class TeamManager : MonoBehaviour
     public void OnNextTurnButtonClick()
     {
         // a failsafe
-        SelectedObject.deselect();
-        removeCurrentTeamControl();
-        moveToNextIndex();
-        giveCurrentTeamControl();
-        GetComponent<TransitionManager>().showTransitionCanvas(currentTeam.getTag());
-        godViewDel();
+        StartCoroutine("TurnRoutine");
     }
 
     public void lookAtCurrentPlayer()
