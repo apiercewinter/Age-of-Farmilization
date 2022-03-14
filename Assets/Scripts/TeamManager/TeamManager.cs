@@ -50,7 +50,7 @@ public class TeamManager : MonoBehaviour
         GetComponent<TransitionManager>().subscribeToLookAtPlayerDel(lookAtCurrentPlayer);
     }
 
-    private IEnumerator TurnRoutine()
+    private IEnumerator TurnRoutine() //moved NextButton code to Coroutine to help resolve conflict between UI Canvases (Daniel Zhang)
     {
         SelectedObject.deselect();
         removeCurrentTeamControl();
