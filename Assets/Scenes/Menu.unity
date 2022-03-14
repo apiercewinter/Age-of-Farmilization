@@ -1861,7 +1861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -123}
+  m_AnchoredPosition: {x: 0, y: -146.4}
   m_SizeDelta: {x: 107.6693, y: 71.3333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256945106
@@ -3374,8 +3374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82.325, y: 41.238}
-  m_SizeDelta: {x: 443.7606, y: 206.1736}
+  m_AnchoredPosition: {x: 82.325, y: 23.461815}
+  m_SizeDelta: {x: 443.7606, y: 241.726}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1923611504
 MonoBehaviour:
@@ -3416,10 +3416,12 @@ MonoBehaviour:
 
     Alec Nicholas Kaxon-Rupp
 
-    Aaron Pierce
-    Winter
+    Aaron Winter
 
-    Daniel Ningcheng Zhang'
+    Daniel
+    Ningcheng Zhang
+
+    <size=25>Music by Ben Cohen</size>'
 --- !u!222 &1923611505
 CanvasRenderer:
   m_ObjectHideFlags: 0

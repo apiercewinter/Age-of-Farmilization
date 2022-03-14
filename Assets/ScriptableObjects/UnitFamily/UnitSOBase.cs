@@ -48,8 +48,9 @@ public abstract class UnitSOBase : ScriptableObject
     //  invalid resource.
     public int getCost(string resource)
     {
-        //I am sorry for the switch case....
-        switch(resource)
+        //Not possible to have a serialized field dictionary in Unity (that you can change in editor), 
+        //  so using switch case with constant and finite amount of resources
+        switch (resource)
         {
             case "Food":
                 return costFood;

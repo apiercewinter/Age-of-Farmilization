@@ -26,8 +26,6 @@ public abstract class ProjectileSOBase : ScriptableObject
         //Set Model
         GameObject model = Instantiate(modelPrefab);
         model.transform.SetParent(spawnedProjectile.transform, false);
-        //Animator animator = model.GetComponent<Animator>();
-        //if (animator) animator.logWarnings = false;
 
         return spawnedProjectile;
     }

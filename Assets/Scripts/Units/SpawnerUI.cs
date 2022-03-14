@@ -1,4 +1,3 @@
-//Aaron Winter
 //Alec Kaxon-Rupp
 //Daniel Zhang
 
